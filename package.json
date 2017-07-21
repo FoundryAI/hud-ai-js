@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npm run grunt && mocha"
   },
+  "repository": "https://github.com/FoundryAI/hud-ai-node",
   "keywords": [
     "foundryai",
     "hudai"
