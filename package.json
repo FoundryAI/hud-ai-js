@@ -1,0 +1,25 @@
+{
+  "name": "hud-ai-node",
+  "version": "1.0.0",
+  "description": "Hud.ai API wrapper",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run grunt && mocha"
+  },
+  "keywords": [
+    "foundryai",
+    "hudai"
+  ],
+  "author": "Hud.ai Engineering",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/lodash": "^4.14.70",
+    "@types/request-promise": "^4.1.36",
+    "typings": "^2.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
