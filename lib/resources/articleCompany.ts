@@ -53,7 +53,7 @@ export class ArticleCompanyResource extends Resource {
      * @param params {HudAiArticleCompanyListAttributes}
      * @returns {Promise<{docs: HudAiArticleCompany[], total: number}>}
      */
-    search (params: HudAiArticleCompanyListAttributes) {
+    list (params: HudAiArticleCompanyListAttributes) {
         return this.makeRequest({
             method: 'GET',
             query: _.pick(params, ['limit', 'offset', 'url']),
