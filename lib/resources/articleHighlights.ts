@@ -54,7 +54,7 @@ export class ArticleHighlightsResource extends Resource {
 
     /**
      * @param params {HudAiArticleHighlightsListAttributes}
-     * @returns {Promise<{docs: HudAiArticleHighlights[], total: number}>}
+     * @returns {Promise<{Items: HudAiArticleHighlights[], Count: number}>}
      */
     list(params: HudAiArticleHighlightsListAttributes) {
         return this.makeRequest({

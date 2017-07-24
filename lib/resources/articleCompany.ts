@@ -51,7 +51,7 @@ export class ArticleCompanyResource extends Resource {
 
     /**
      * @param params {HudAiArticleCompanyListAttributes}
-     * @returns {Promise<{docs: HudAiArticleCompany[], total: number}>}
+     * @returns {Promise<{Items: HudAiArticleCompany[], Count: number}>}
      */
     list (params: HudAiArticleCompanyListAttributes) {
         return this.makeRequest({
