@@ -1,7 +1,7 @@
 import * as Request from 'request-promise';
 import * as _ from 'lodash'
 
-import { HudAiError } from './error';
+import { HudAiError } from './HudAiError';
 
 
 export interface HudAiListAttributes {
@@ -19,14 +19,6 @@ export interface HudAiUpdateAttributes {
 
 export interface HudAiDeleteAttributes {
     id: number | string;
-}
-
-export interface HudAiRequestAttributes {
-    method: 'GET' | 'PUT' | 'POST' | 'DELETE';
-    data?: object;
-    query?: object;
-    params?: object;
-    url: string;
 }
 
 export abstract class Resource {
@@ -68,7 +60,6 @@ export abstract class Resource {
 
     private buildHeaders() {
         return {
-            'x-api-key': this.secretKey,
             "User-Agent": `Hud.ai node v1.0.0 +(https://github.com/FoundryAI/hud-ai-node#readme)`
         }
     }
