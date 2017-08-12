@@ -1,6 +1,6 @@
 import { defaultsDeep } from 'lodash';
 import * as https from 'https';
-import joi from 'joi';
+import * as joi from 'joi';
 import {HudAiError} from './HudAiError';
 const version = require('../../package.json').version;
 
@@ -23,7 +23,7 @@ export const Schema = {
     })
 };
 
-export function Factory (config: HudAiClientConfiguration) {
+export function Factory (config: HudAiClientConfiguration): HudAiClientConfiguration {
     const validation = joi.validate(config, Schema);
     if (validation.error) throw new HudAiError(validation.error.annotate());
     return defaultsDeep(config, {
