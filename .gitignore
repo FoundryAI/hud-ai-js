@@ -1,3 +1,9 @@
+### Project
+test/**/*.js
+test/**/*.js.map
+lib/**/*.js
+lib/**/*.js.map
+build
 
 ### Node template
 # Logs
