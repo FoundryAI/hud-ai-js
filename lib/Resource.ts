@@ -22,18 +22,14 @@ export interface HudAiUpdateAttributes {
 
 }
 
-export interface HudAiDeleteAttributes {
-    id: number | string;
-}
-
 export abstract class Resource {
 
-    protected config: HudAiClientConfiguration;
+    protected basePath: string;
     public apiSession: BasicSession|PersistentSession;
     protected requestManager: RequestManager;
 
-    constructor(config: HudAiClientConfiguration, apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
-        this.config = config;
+    constructor(basePath: string, apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+        this.basePath = basePath;
         this.apiSession = apiSession;
         this.requestManager = requestManager;
     }
@@ -51,6 +47,47 @@ export abstract class Resource {
         .catch(err => {
             if (err.statusCode === 401) return this.apiSession.handleExpiredToken(err);
             throw err;
+        })
+    }
+
+    public get(id: string|number) {
+        return this.requestManager.makeRequest({
+            method: 'GET',
+            params: { id },
+            url: `${this.basePath}/{id}`
+        })
+    }
+
+    public list(params: HudAiListAttributes) {
+        return this.requestManager.makeRequest({
+            method: 'GET',
+            query: params,
+            url: `${this.basePath}`
+        })
+    }
+
+    public update(id: string|number, params: HudAiUpdateAttributes) {
+        return this.requestManager.makeRequest({
+            method: 'PUT',
+            data: params,
+            params: { id },
+            url: `${this.basePath}/{id}`
+        })
+    }
+
+    public create(params: HudAiCreateAttributes) {
+        return this.requestManager.makeRequest({
+            method: 'POST',
+            data: params,
+            url: `${this.basePath}`
+        })
+    }
+
+    public del(id: string|number) {
+        return this.requestManager.makeRequest({
+            method: 'DELETE',
+            params: { id },
+            url: `${this.basePath}/{id}`
         })
     }
 
