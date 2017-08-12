@@ -1,12 +1,9 @@
-import * as Request from 'request-promise';
+import * as Promise from 'bluebird';
 import * as _ from 'lodash'
 
-import { HudAiError } from './util/HudAiError';
 import {HudAiRequestAttributes, RequestManager} from './RequestManager';
-import {HudAiClientConfiguration} from './util/ClientConfigFactory';
 import {BasicSession} from './sessions/BasicSession';
 import {PersistentSession} from './sessions/PersistentSession';
-import * as _ from 'lodash';
 
 
 export interface HudAiListAttributes {
@@ -35,14 +32,14 @@ export abstract class Resource {
     }
 
     public makeRequest(options: HudAiRequestAttributes) {
-        return this.apiSession.getAccessToken()
+        return Promise.resolve(this.apiSession.getAccessToken())
         .then(accessToken => {
             const requestArgs = _.defaultsDeep(options, {
                 headers: {
                     Authorization: `Bearer ${accessToken}`
                 }
             });
-            return this.requestManager.makeRequest(requestArgs);
+            return this.requestManager.makeRequest(<HudAiRequestAttributes>requestArgs);
         })
         .catch(err => {
             if (err.statusCode === 401) return this.apiSession.handleExpiredToken(err);

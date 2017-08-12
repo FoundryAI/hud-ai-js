@@ -11,6 +11,7 @@
     "noImplicitThis": false,
     "moduleResolution": "node",
     "target": "es6",
+    "outDir": "build",
     "strictNullChecks": true
   },
   "include": [

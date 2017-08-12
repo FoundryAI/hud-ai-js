@@ -6,13 +6,14 @@ import {HudAiError} from '../util/HudAiError';
 
 export class PersistentSession {
     public tokenInfo: TokenInfo;
-    public tokenStore?: TokenStore;
     public tokenManager: TokenManager;
+    public tokenStore?: TokenStore;
     private config: HudAiClientConfiguration;
 
-    constructor (config: HudAiClientConfiguration, tokenInfo: TokenInfo, tokenStore: TokenStore, tokenManager: TokenManager) {
+    constructor (config: HudAiClientConfiguration, tokenInfo: TokenInfo, tokenManager: TokenManager, tokenStore?: TokenStore) {
         this.tokenInfo = tokenInfo;
         this.tokenManager = tokenManager;
+        this.tokenStore = tokenStore;
         this.config = config;
     }
 
@@ -25,7 +26,7 @@ export class PersistentSession {
     }
 
     public refreshTokens () {
-        return this.tokenManager.getTokensRefreshGrant(this.tokenInfo.refreshToken)
+        return this.tokenManager.getTokensRefreshGrant(<string>this.tokenInfo.refreshToken)
         .then((tokenInfo: TokenInfo) => {
             if (this.tokenStore) {
                 return this.tokenStore.write(tokenInfo)
@@ -52,15 +53,16 @@ export class PersistentSession {
         });
     }
 
+    public handleExpiredToken (err: Error) {
+        if (!this.tokenStore) return Promise.reject(err);
+        return this.tokenStore.clear()
+    }
+
     private handleTokenRefresh (tokenInfo: TokenInfo) {
         this.tokenInfo = tokenInfo;
         return this.tokenInfo.accessToken;
     }
 
-    private handleExpiredToken (err: Error) {
-        if (!this.tokenStore) return Promise.reject(err);
-        return this.tokenStore.clear()
-    }
 
 
 }

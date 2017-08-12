@@ -12,7 +12,7 @@ export class BasicSession {
     }
 
     public getAccessToken () {
-        return this.accessToken;
+        return Promise.resolve(this.accessToken);
     }
 
     public handleExpiredToken (err: Error) {

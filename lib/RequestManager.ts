@@ -1,5 +1,5 @@
 import {HudAiClientConfiguration} from './util/ClientConfigFactory';
-import {RequestPromise} from 'request-promise';
+import * as Request from 'request-promise';
 import * as _ from 'lodash';
 import {HudAiError} from './util/HudAiError';
 
@@ -27,14 +27,14 @@ export class RequestManager {
             uri: this.buildUrl(options)
         });
 
-        return RequestPromise(requestOptions)
+        return Request(requestOptions)
         .catch(err => { throw new HudAiError(err.message, err.type); })
     }
 
     private buildUrl(options: HudAiRequestAttributes): string {
         let url = options.url;
-        _.mapKeys(options.params, (value, key) => {
-            url = url.replace(`{${key}}`, value)
+        _.mapKeys(<ArrayLike<{}>>options.params, (value, key) => {
+            url = url.replace(`{${key}}`, <string>value)
         });
         return url;
     }

@@ -32,7 +32,7 @@ export class HudAiSDK {
     }
 
     getPersistentClient (tokenInfo, tokenStore?: TokenStore) {
-        const session = new PersistentSession(this.config, tokenInfo, tokenStore, this.tokenManager);
+        const session = new PersistentSession(this.config, tokenInfo, this.tokenManager, tokenStore);
         return new HudAiClient(this.config, session, this.requestManager);
     }
 
