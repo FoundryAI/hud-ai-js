@@ -15,6 +15,6 @@ export class HudAiClient {
         this.apiSession = apiSession;
         this.requestManager = requestManager;
 
-        this.article = new ArticleResource(config, apiSession, requestManager);
+        this.article = new ArticleResource(apiSession, requestManager);
     }
 }

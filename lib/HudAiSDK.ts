@@ -4,6 +4,7 @@ import {TokenManager} from './TokenManager';
 import * as _ from 'lodash';
 import {BasicSession} from './sessions/BasicSession';
 import {PersistentSession} from './sessions/PersistentSession';
+import {HudAiClient} from './HudAiClient';
 
 export interface TokenStore {
     read: Function;
@@ -26,11 +27,13 @@ export class HudAiSDK {
 
     getBasicClient (accessToken: string) {
         const session = new BasicSession(accessToken, this.tokenManager);
+        return new HudAiClient(this.config, session, this.requestManager);
 
     }
 
     getPersistentClient (tokenInfo, tokenStore?: TokenStore) {
         const session = new PersistentSession(this.config, tokenInfo, tokenStore, this.tokenManager);
+        return new HudAiClient(this.config, session, this.requestManager);
     }
 
     getTokensRefreshGrant (refreshToken) {

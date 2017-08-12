@@ -42,8 +42,8 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
 
 export class ArticleResource extends Resource {
 
-    constructor(config: HudAiClientConfiguration, apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
-        super(config, apiSession, requestManager);
+    constructor(apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+        super('/articles', apiSession, requestManager);
     }
 
     public get(id: string) {
