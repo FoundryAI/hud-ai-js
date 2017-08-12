@@ -1,7 +1,12 @@
 import * as Request from 'request-promise';
 import * as _ from 'lodash'
 
-import { HudAiError } from './HudAiError';
+import { HudAiError } from './util/HudAiError';
+import {HudAiRequestAttributes, RequestManager} from './RequestManager';
+import {HudAiClientConfiguration} from './util/ClientConfigFactory';
+import {BasicSession} from './sessions/BasicSession';
+import {PersistentSession} from './sessions/PersistentSession';
+import * as _ from 'lodash';
 
 
 export interface HudAiListAttributes {
@@ -23,52 +28,30 @@ export interface HudAiDeleteAttributes {
 
 export abstract class Resource {
 
-    protected resourceName: string;
-    protected secretKey: string;
-    protected baseUrl: string;
+    protected config: HudAiClientConfiguration;
+    public apiSession: BasicSession|PersistentSession;
+    protected requestManager: RequestManager;
 
-    constructor(secretKey: string, baseUrl: string = 'https://api.hud.ai') {
-
-        this.secretKey = secretKey;
-        this.baseUrl = baseUrl;
-
-        if (!this.secretKey) {
-            throw new HudAiError('Missing required parameter "secretKey".', 'authentication_error');
-        }
-
+    constructor(config: HudAiClientConfiguration, apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+        this.config = config;
+        this.apiSession = apiSession;
+        this.requestManager = requestManager;
     }
 
-    /**
-     * @param requestConfig
-     * @returns {Promise<>}
-     */
-    public makeRequest(requestConfig: HudAiRequestAttributes) {
-        return Request({
-            baseUrl: this.baseUrl,
-            body: requestConfig.data || {},
-            headers: this.buildHeaders(),
-            method: requestConfig.method,
-            qs: requestConfig.query || {},
-            timeout: 60000,
-            uri: this.buildUrl(requestConfig),
-            json: true
+    public makeRequest(options: HudAiRequestAttributes) {
+        return this.apiSession.getAccessToken()
+        .then(accessToken => {
+            const requestArgs = _.defaultsDeep(options, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            return this.requestManager.makeRequest(requestArgs);
         })
-            .catch(err => {
-                throw new HudAiError(err.message, err.type);
-            })
+        .catch(err => {
+            if (err.statusCode === 401) return this.apiSession.handleExpiredToken(err);
+            throw err;
+        })
     }
 
-    private buildHeaders() {
-        return {
-            "User-Agent": `Hud.ai node v1.0.0 +(https://github.com/FoundryAI/hud-ai-node#readme)`
-        }
-    }
-
-    private buildUrl(requestConfig) {
-        let url = requestConfig.url;
-        _.mapKeys(requestConfig.params, (value, key) => {
-            url = url.replace(`{${key}}`, value)
-        });
-        return url;
-    }
 }
