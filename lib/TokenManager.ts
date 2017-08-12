@@ -54,9 +54,10 @@ export class TokenManager {
         })
     }
 
-    public getTokensRefreshGrant () {
+    public getTokensRefreshGrant (refreshToken: string) {
         return this.getTokens({
-            grant_type: 'refresh_grant'
+            grant_type: 'refresh_grant',
+            refresh_token: refreshToken
         })
     }
 
