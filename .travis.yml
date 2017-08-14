@@ -1,17 +1,20 @@
 language: node_js
 node_js:
-  - 7
+  - '6'
+  - '7'
+  - '8'
 install:
+  - npm update -g npm
+  - npm install -g typescript
   - npm install
-
 script:
   - npm
   - npm test
 
 deploy:
   provider: npm
-  email: "hello@njgerner.com"
+  email: engineering@foundry.ai
   api_key:
-    secure: iNgwUc/mZXas8bm8EVBwFyau98p1PKxbUlj6ZYWNHZILM5tpdSWHBNMhN9FEpPeLT5FwFMjXFWoAxU9bsbi+oYv44FhMuv3adO3sXe81ZAHEl/l+vWi1e1O8sTIWFb83DLtsGf/0vWmSQKro+/ewU+1Spy0PdtPQcUovKwCu0RBGql50M4DmxIExDKZtTyLIGCEhT2XuOtvk/eTtQEA0vECTSbBmtpiB45ypEud801T6/hCRtgxCkVck6hdQ/tMkgC8E/P2XmgoS9wfS662AY5dMYkArN14carnE27g9Tlg1mNS+80DNL57ZWzWdP5adW4XBMsqyIXXQ6GmFXxODUlbxd+w2GqYr27vi1RlIhZEw5YIH6+0sOy0QojXHMxA7eaU5R9G3/CMqx7dMCEJfPWlcJglWGBQvTvuHExzkl0jCFDyvnCUhCRaotivcnEuYfvYGcDgbjSG/LUSLzpOb3S4WBt+fwJ07IXnDd4ma4Yx591Z9UjO9N6SUAlMrzTsK3Lm1+GLjrUEVgvR8BwJb/7EWcW8NBX48xIrHJ32O8MGhxSE5xtfNY+1ZQQ/yb9K+GHaqmPAvBgUlxmvvtcoOTlSiK2gVM+vFtEI6CgK9ShbDTvIeKfh6rk/MOj7q8iHhxfpcJIQHbzXsyJuE3FhnJXsIoDzzDY2qmjEieSAibUc=
+    secure: "ScA+1On9/UYA54drBwJ9aTbPgTmROND+tY+CJMKLoNixpOJasqyAjc8aMSExIq9ZRsbGdkM5PDZ9SQajqUtfXVfifkS4uSeXj2FSmVdGBc4c/GSdEnqiiH4tCtn7SEBk5B5ftNJC43SWyA/X6uE6NbGrrD3S1OyACW7StKe9SBnYko4PYyFNqmcJ8vjyK03uDSRvTlTPphSD04GbPvancA/w/7L/HNRwyNim4YAIicw40KkUdHl+7GU8Tqo34V2Hwl22PIBpVxRtpAFeg4Dy+4zjizVef/srVHdPXYfxoeOSIdnPLhIAamNI0Y8l0dNPrpnvVjOpnFuMwbgmSMIlg6Jnx2/eafCqIIakQ6QWgZgZhEJMPLwonP2nPZx08RYXyYInn+aPLGTs4E25D27rt+V48UZJ10VzW4iNB7A5UgKDA8WJz1xStCOVMpvohynTSdT+EYeJd1bqof7tMr4SMcbFiyYJhT/3T6RTmA1zmtjY4mhaWPeZzOagAjE8PnliuavdrTL45Elh/7v9e7WZjv1gL6CrNg10gyQ0FhpDMKJKeu9qR8HGZbYdvjYZKPjVdUlXNQutdyJ54Pv8dJ79aT8Hwq/0rwi4iFQDWbyDtREaFFLhWtAHeleSjqZBJswSOf0ohOk+PflN60aSMoYgY/anLF7DzyTdCbjauocFr4U="
   on:
     tags: true

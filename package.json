@@ -1,18 +1,33 @@
 {
-  "name": "hud-ai-node",
+  "name": "hud-ai-sdk",
   "version": "1.0.0",
-  "description": "Hud.ai API wrapper",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha --opts test/mocha.opts",
-    "transpile": "node ./node_modules/typescript/bin/tsc  --listEmittedFiles"
+  "description": "Hud.ai API SDK",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/FoundryAI/hud-ai-node-sdk/issues"
   },
-  "repository": "https://github.com/FoundryAI/hud-ai-node",
+  "scripts": {
+    "build": "tsc -p ./",
+    "prepublishOnly": "tsc -p ./",
+    "reportCoverage": "nyc report --reporter=text-lcov | coveralls",
+    "run": "ts-node ./src/index.ts",
+    "test": "nyc mocha",
+    "watch": "mocha-typescript-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FoundryAI/hud-ai-node-sdk"
+  },
+  "homepage": "https://github.com/FoundryAI/hud-ai-node-sdk#readme",
   "keywords": [
+    "foundry",
     "foundryai",
-    "hudai"
+    "hudai",
+    "hud-ai",
+    "hud-ai-sdk"
   ],
-  "author": "Hud.ai Engineering",
+  "author": "FoundryAI Engineering",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.0.3",
@@ -25,6 +40,7 @@
     "chance": "^1.0.10",
     "mocha": "^3.5.0",
     "mocha-typescript": "^1.1.7",
+    "nyc": "^11.1.0",
     "nock": "^9.0.14",
     "sinon": "^3.2.0",
     "sinon-chai": "^2.13.0",
@@ -37,5 +53,22 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
     "ts-node": "^3.3.0"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
