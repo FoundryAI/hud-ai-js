@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 7
+install:
+  - npm install
+
+script:
+  - npm
+  - npm test
+
+deploy:
+  provider: npm
+  email: "hello@njgerner.com"
+  api_key:
+    secure: iNgwUc/mZXas8bm8EVBwFyau98p1PKxbUlj6ZYWNHZILM5tpdSWHBNMhN9FEpPeLT5FwFMjXFWoAxU9bsbi+oYv44FhMuv3adO3sXe81ZAHEl/l+vWi1e1O8sTIWFb83DLtsGf/0vWmSQKro+/ewU+1Spy0PdtPQcUovKwCu0RBGql50M4DmxIExDKZtTyLIGCEhT2XuOtvk/eTtQEA0vECTSbBmtpiB45ypEud801T6/hCRtgxCkVck6hdQ/tMkgC8E/P2XmgoS9wfS662AY5dMYkArN14carnE27g9Tlg1mNS+80DNL57ZWzWdP5adW4XBMsqyIXXQ6GmFXxODUlbxd+w2GqYr27vi1RlIhZEw5YIH6+0sOy0QojXHMxA7eaU5R9G3/CMqx7dMCEJfPWlcJglWGBQvTvuHExzkl0jCFDyvnCUhCRaotivcnEuYfvYGcDgbjSG/LUSLzpOb3S4WBt+fwJ07IXnDd4ma4Yx591Z9UjO9N6SUAlMrzTsK3Lm1+GLjrUEVgvR8BwJb/7EWcW8NBX48xIrHJ32O8MGhxSE5xtfNY+1ZQQ/yb9K+GHaqmPAvBgUlxmvvtcoOTlSiK2gVM+vFtEI6CgK9ShbDTvIeKfh6rk/MOj7q8iHhxfpcJIQHbzXsyJuE3FhnJXsIoDzzDY2qmjEieSAibUc=
+  on:
+    tags: true
