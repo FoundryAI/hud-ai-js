@@ -66,7 +66,6 @@ export class TokenManager {
     private getTokens(data: TokenManagerRequestData) {
         return Promise.resolve()
         .then(() => {
-
             return this.requestManager.makeRequest(<HudAiRequestAttributes>{
                 method: 'POST',
                 data: _.defaults(data, {
@@ -76,11 +75,11 @@ export class TokenManager {
                 url: '/oauth/token'
             })
         })
-        .then((result) => getTokensFromGrantResponse(result))
+        .then((result) => getTokensFromGrantResponse(result));
     }
 
     public static isAccessTokenValid(tokenInfo: TokenInfo) {
         const expiresAt = moment(tokenInfo.accessTokenAcquiredAtMS).add(tokenInfo.accessTokenTTLMS, 'ms');
-        return moment().isAfter(expiresAt);
+        return moment().isBefore(expiresAt);
     }
 }

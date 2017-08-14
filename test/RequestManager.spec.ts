@@ -1,5 +1,3 @@
-
-
 process.env.NODE_ENV = 'test';
 
 import * as https from 'https';
