@@ -18,7 +18,9 @@ export class HudAiSDK {
     public tokenManager: TokenManager;
 
     constructor(config: HudAiClientConfiguration) {
-        this.config = Factory(config)
+        this.config = Factory(config);
+        this.requestManager = new RequestManager(this.config);
+        this.tokenManager = new TokenManager(this.config, this.requestManager);
     }
 
     configure (config: HudAiClientConfiguration) {
