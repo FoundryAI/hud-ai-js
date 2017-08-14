@@ -1,8 +1,6 @@
 process.env.NODE_ENV = 'test';
 
-import * as https from 'https';
 import * as nock from 'nock';
-import * as Promise from 'bluebird';
 import * as Chance from 'chance';
 import {suite, test} from 'mocha-typescript';
 import * as sinon from 'sinon';
@@ -17,9 +15,6 @@ chai.use(sinonChai);
 nock.disableNetConnect();
 const expect = chai.expect;
 const chance = new Chance();
-const accessToken = chance.guid();
-const refreshToken = chance.guid();
-
 
 @suite
 class RequestManagerSpec {

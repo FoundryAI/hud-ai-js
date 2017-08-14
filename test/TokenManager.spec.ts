@@ -3,15 +3,11 @@ import * as moment from 'moment';
 
 process.env.NODE_ENV = 'test';
 
-import * as https from 'https';
 import * as nock from 'nock';
-import * as Promise from 'bluebird';
 import * as Chance from 'chance';
 import {suite, test} from 'mocha-typescript';
-import * as sinon from 'sinon';
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
-import * as request from 'request-promise';
 
 import {Factory, HudAiClientConfiguration} from '../lib/util/ClientConfigFactory';
 import {RequestManager} from '../lib/RequestManager';
