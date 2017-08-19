@@ -10,11 +10,15 @@ export class PersistentSession {
     public tokenStore?: TokenStore;
     private config: HudAiClientConfiguration;
 
-    constructor (config: HudAiClientConfiguration, tokenInfo: TokenInfo, tokenManager: TokenManager, tokenStore?: TokenStore) {
-        this.tokenInfo = tokenInfo;
+    constructor (config: HudAiClientConfiguration, tokenManager: TokenManager, tokenStore?: TokenStore) {
         this.tokenManager = tokenManager;
         this.tokenStore = tokenStore;
         this.config = config;
+        this.tokenInfo = {
+            accessToken: '',
+            accessTokenAcquiredAtMS: 0,
+            accessTokenTTLMS: 0
+        };
     }
 
     public getAccessToken () {

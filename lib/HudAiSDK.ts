@@ -2,7 +2,6 @@ import {Factory, HudAiClientConfiguration} from './util/ClientConfigFactory';
 import {RequestManager} from './RequestManager';
 import {TokenInfo, TokenManager} from './TokenManager';
 import * as _ from 'lodash';
-import {BasicSession} from './sessions/BasicSession';
 import {PersistentSession} from './sessions/PersistentSession';
 import {HudAiClient} from './HudAiClient';
 
@@ -27,14 +26,12 @@ export class HudAiSDK {
         this.config = _.assignIn(this.config, config);
     }
 
-    getBasicClient (accessToken: string) {
-        const session = new BasicSession(accessToken, this.tokenManager);
-        return new HudAiClient(this.config, session, this.requestManager);
-    }
-
-    getPersistentClient (tokenInfo: TokenInfo, tokenStore?: TokenStore) {
-        const session = new PersistentSession(this.config, tokenInfo, this.tokenManager, tokenStore);
-        return new HudAiClient(this.config, session, this.requestManager);
+    createClient (tokenStore?: TokenStore) {
+        return Promise.resolve(this.tokenManager.getTokensClientCredentialsGrant())
+        .then((tokenInfo: TokenInfo) => {
+            const session = new PersistentSession(this.config, tokenInfo, this.tokenManager, tokenStore);
+            return new HudAiClient(this.config, session, this.requestManager);
+        })
     }
 
     getTokensRefreshGrant (refreshToken) {
