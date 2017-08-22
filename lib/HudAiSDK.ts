@@ -22,19 +22,16 @@ export class HudAiSDK {
         this.tokenManager = new TokenManager(this.config, this.requestManager);
     }
 
-    configure (config: HudAiClientConfiguration) {
+    configure(config: HudAiClientConfiguration) {
         this.config = _.assignIn(this.config, config);
     }
 
-    createClient (tokenStore?: TokenStore) {
-        return Promise.resolve(this.tokenManager.getTokensClientCredentialsGrant())
-        .then((tokenInfo: TokenInfo) => {
-            const session = new PersistentSession(this.config, tokenInfo, this.tokenManager, tokenStore);
-            return new HudAiClient(this.config, session, this.requestManager);
-        })
+    createClient(tokenStore?: TokenStore) {
+        const session = new PersistentSession(this.config, this.tokenManager, tokenStore);
+        return new HudAiClient(this.config, session, this.requestManager, this.tokenManager);
     }
 
-    getTokensRefreshGrant (refreshToken) {
+    getTokensRefreshGrant(refreshToken) {
         return this.tokenManager.getTokensRefreshGrant(refreshToken);
     }
 }
