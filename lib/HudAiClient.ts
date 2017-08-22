@@ -52,6 +52,18 @@ export class HudAiClient {
         this.config = _.assignIn(this.config, config);
     }
 
+    getTokensPasswordGrant (username: string, password: string) {
+        return this.tokenManager.getTokensPasswordGrant(username, password);
+    }
+
+    getTokensClientCredentialsGrant() {
+        return this.tokenManager.getTokensClientCredentialsGrant();
+    }
+
+    getTokensAuthorizationGrant (authorizationCode: string) {
+        return this.tokenManager.getTokensAuthorizationGrant(authorizationCode);
+    }
+
     getTokensRefreshGrant (refreshToken) {
         return this.tokenManager.getTokensRefreshGrant(refreshToken);
     }

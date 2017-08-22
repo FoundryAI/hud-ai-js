@@ -23,6 +23,10 @@ class HudAiClientSpec {
         expect(client.apiSession).to.be.an.instanceOf(PersistentSession);
         expect(client.requestManager).to.be.an.instanceOf(RequestManager);
         expect(client.tokenManager).to.be.an.instanceOf(TokenManager);
+        expect(client.getTokensPasswordGrant).to.be.a('function');
+        expect(client.getTokensClientCredentialsGrant).to.be.a('function');
+        expect(client.getTokensAuthorizationGrant).to.be.a('function');
+        expect(client.getTokensRefreshGrant).to.be.a('function');
     }
 
 }
