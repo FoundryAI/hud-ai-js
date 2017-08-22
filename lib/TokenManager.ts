@@ -86,7 +86,7 @@ export class TokenManager {
                     client_id: this.config.clientId,
                     client_secret: this.config.clientSecret
                 }),
-                url: '/oauth/token'
+                url: '/oauth2/token'
             })
         })
         .then((result) => getTokensFromGrantResponse(result));
