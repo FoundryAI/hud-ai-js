@@ -4,6 +4,12 @@ import {HudAiClientConfiguration} from './util/ClientConfigFactory';
 import {HudAiRequestAttributes, RequestManager} from './RequestManager';
 import * as _ from 'lodash';
 
+export interface TokenStore {
+    read: Function;
+    write: Function;
+    clear: Function;
+}
+
 export interface TokenInfo {
     accessToken: string;
     accessTokenAcquiredAtMS: number;

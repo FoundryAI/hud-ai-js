@@ -9,8 +9,8 @@ import {DomainResource} from './resources/Domain';
 import {KeyTermResource} from './resources/KeyTerm';
 import {TextCorpusResource} from './resources/TextCorpus';
 import {UserResource} from './resources/User';
-import {TokenManager} from './TokenManager';
-import {TokenStore} from './HudAiSDK';
+import {TokenStore, TokenManager} from './TokenManager';
+import * as _ from 'lodash';
 
 export class HudAiClient {
     public config: HudAiClientConfiguration;

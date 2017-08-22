@@ -39,12 +39,7 @@ class ArticleHighlightSpec {
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
         this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, {
-            accessToken,
-            refreshToken: chance.guid(),
-            accessTokenTTLMS: 86400000,
-            accessTokenAcquiredAtMS: +moment()
-        }, this.tokenManager);
+        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
     }
 
     after() {

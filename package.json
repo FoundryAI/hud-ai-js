@@ -1,11 +1,11 @@
 {
-  "name": "hud-ai-sdk",
+  "name": "hud-ai",
   "version": "1.0.0",
-  "description": "Hud.ai API SDK",
+  "description": "Hud.ai API Client",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bugs": {
-    "url": "https://github.com/FoundryAI/hud-ai-node-sdk/issues"
+    "url": "https://github.com/FoundryAI/hud-ai-node/issues"
   },
   "scripts": {
     "build": "tsc -p ./",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FoundryAI/hud-ai-node-sdk"
+    "url": "https://github.com/FoundryAI/hud-ai-node"
   },
-  "homepage": "https://github.com/FoundryAI/hud-ai-node-sdk#readme",
+  "homepage": "https://github.com/FoundryAI/hud-ai-node#readme",
   "keywords": [
     "foundry",
     "foundryai",
     "hudai",
     "hud-ai",
-    "hud-ai-sdk"
+    "hud-ai"
   ],
   "author": "FoundryAI Engineering",
   "license": "MIT",

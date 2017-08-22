@@ -1,6 +1,5 @@
 import * as Promise from 'bluebird';
-import {TokenInfo, TokenManager} from '../TokenManager';
-import {TokenStore} from '../HudAiSDK';
+import {TokenInfo, TokenManager, TokenStore} from '../TokenManager';
 import {HudAiClientConfiguration} from '../util/ClientConfigFactory';
 import {HudAiError} from '../util/HudAiError';
 
@@ -15,9 +14,9 @@ export class PersistentSession {
         this.tokenStore = tokenStore;
         this.config = config;
         this.tokenInfo = {
-            accessToken: '',
-            accessTokenAcquiredAtMS: 0,
-            accessTokenTTLMS: 0
+            accessToken: <string>'',
+            accessTokenAcquiredAtMS: <number>0,
+            accessTokenTTLMS: <number>0
         };
     }
 
