@@ -52,6 +52,10 @@ export class HudAiClient {
         this.config = _.assignIn(this.config, config);
     }
 
+    getAuthorizeUri () {
+        return `${this.config.baseApiUrl}/${this.config.apiVersion}/auth/dialog/authorize?client_id=${this.config.clientId}&redirect_uri=${this.config.redirectUri}`
+    }
+
     getTokensPasswordGrant (username: string, password: string) {
         return this.tokenManager.getTokensPasswordGrant(username, password);
     }
@@ -67,4 +71,5 @@ export class HudAiClient {
     getTokensRefreshGrant (refreshToken) {
         return this.tokenManager.getTokensRefreshGrant(refreshToken);
     }
+
 }

@@ -7,7 +7,8 @@ const version = require('../../package.json').version;
 
 export interface HudAiClientConfiguration {
     clientId: string;
-    clientSecret: string;
+    clientSecret?: string;
+    redirectUri?: string;
     baseApiUrl?: string;
     apiVersion?: string;
     request?: object;
@@ -15,7 +16,8 @@ export interface HudAiClientConfiguration {
 
 export const Schema = {
     clientId: joi.string().guid().required(),
-    clientSecret: joi.string().guid().required(),
+    clientSecret: joi.string().guid(),
+    redirectUri: joi.string().uri(),
     baseApiUrl: joi.string().uri(),
     apiVersion: joi.string().allow('v1'),
     request: joi.object({

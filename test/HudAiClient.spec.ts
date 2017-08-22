@@ -33,6 +33,7 @@ class HudAiClientSpec {
         expect(client.requestManager).to.be.an.instanceOf(RequestManager);
         expect(client.tokenManager).to.be.an.instanceOf(TokenManager);
 
+        expect(client.getAuthorizeUri).to.be.a('function');
         expect(client.getTokensPasswordGrant).to.be.a('function');
         expect(client.getTokensClientCredentialsGrant).to.be.a('function');
         expect(client.getTokensAuthorizationGrant).to.be.a('function');
@@ -45,6 +46,14 @@ class HudAiClientSpec {
         expect(client.keyTerm).to.be.an.instanceOf(KeyTermResource);
         expect(client.textCorpus).to.be.an.instanceOf(TextCorpusResource);
         expect(client.user).to.be.an.instanceOf(UserResource);
+    }
+
+    @test
+    getAuthorizeUri() {
+        const config = {clientId: chance.guid(), redirectUri: chance.url()};
+        const client = HudAiClient.create(config);
+        const authorizeUri = client.getAuthorizeUri();
+        expect(authorizeUri).to.equal(`https://api.hud.ai/v1/auth/dialog/authorize?client_id=${config.clientId}&redirect_uri=${config.redirectUri}`);
     }
 
 }
