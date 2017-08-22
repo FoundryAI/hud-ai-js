@@ -75,6 +75,16 @@ class TokenManagerSpec {
     }
 
     @test
+    getTokensAuthorizationGrant () {
+        const tokenManager = new TokenManager(this.config, this.requestManager);
+        return tokenManager.getTokensAuthorizationGrant('myfakeauthorizationcode')
+        .then((tokensInfo: TokenInfo) => {
+            expect(tokensInfo.accessToken).to.equal(accessToken);
+            expect(tokensInfo.refreshToken).to.equal(refreshToken);
+        })
+    }
+
+    @test
     getTokensRefreshGrant () {
         const tokenManager = new TokenManager(this.config, this.requestManager);
         return tokenManager.getTokensRefreshGrant(refreshToken)

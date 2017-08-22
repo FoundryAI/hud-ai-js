@@ -24,10 +24,11 @@ export interface GrantResponseBody {
 }
 
 export interface TokenManagerRequestData {
-    grant_type: 'client_credentials' | 'refresh_grant' | 'password';
+    grant_type: 'client_credentials' | 'refresh_grant' | 'password' | 'authorization_code';
     refresh_token?: string;
     username?: string;
     password?: string;
+    code?: string;
 }
 
 export function getTokensFromGrantResponse(responseBody: GrantResponseBody) {
@@ -66,6 +67,13 @@ export class TokenManager {
         return this.getTokens({
             grant_type: 'refresh_grant',
             refresh_token: refreshToken
+        })
+    }
+
+    public getTokensAuthorizationGrant(authorizationCode: string) {
+        return this.getTokens({
+            grant_type: 'authorization_code',
+            code: authorizationCode
         })
     }
 
