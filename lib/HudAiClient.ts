@@ -47,16 +47,8 @@ export class HudAiClient {
         this.user = new UserResource(apiSession, requestManager);
     }
 
-    configure (config: HudAiClientConfiguration) {
-        this.config = _.assignIn(this.config, config);
-    }
-
     getAuthorizeUri () {
         return `${this.config.baseApiUrl}/${this.config.apiVersion}/auth/dialog/authorize?response_type=token&client_id=${this.config.clientId}&redirect_uri=${this.config.redirectUri}`
-    }
-
-    getTokensPasswordGrant (username: string, password: string) {
-        return this.tokenManager.getTokensPasswordGrant(username, password);
     }
 
     getTokensClientCredentialsGrant() {

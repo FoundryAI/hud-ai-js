@@ -43,14 +43,6 @@ export class TokenManager {
         this.requestManager = requestManager;
     }
 
-    public getTokensPasswordGrant(username: string, password: string) {
-        return this.getTokens({
-            username,
-            password,
-            grant_type: 'password',
-        })
-    }
-
     public getTokensClientCredentialsGrant() {
         return this.getTokens({
             grant_type: 'client_credentials'

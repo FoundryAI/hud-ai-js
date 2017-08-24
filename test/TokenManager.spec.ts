@@ -49,19 +49,8 @@ class TokenManagerSpec {
     instantiate () {
         const tokenManager = new TokenManager(this.config, this.requestManager);
         expect(tokenManager).to.be.an.instanceOf(TokenManager);
-        expect(tokenManager.getTokensPasswordGrant).to.be.a('function');
         expect(tokenManager.getTokensClientCredentialsGrant).to.be.a('function');
         expect(tokenManager.getTokensRefreshGrant).to.be.a('function');
-    }
-
-    @test
-    getTokensPasswordGrant () {
-        const tokenManager = new TokenManager(this.config, this.requestManager);
-        return tokenManager.getTokensPasswordGrant('test@hud.ai', 'mypassword')
-        .then((tokensInfo: TokenInfo) => {
-            expect(tokensInfo.accessToken).to.equal(accessToken);
-            expect(tokensInfo.refreshToken).to.equal(refreshToken);
-        })
     }
 
     @test

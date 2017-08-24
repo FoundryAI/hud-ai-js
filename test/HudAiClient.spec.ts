@@ -35,7 +35,6 @@ class HudAiClientSpec {
         expect(client.tokenManager).to.be.an.instanceOf(TokenManager);
 
         expect(client.getAuthorizeUri).to.be.a('function');
-        expect(client.getTokensPasswordGrant).to.be.a('function');
         expect(client.getTokensClientCredentialsGrant).to.be.a('function');
         expect(client.getTokensAuthorizationGrant).to.be.a('function');
         expect(client.getTokensRefreshGrant).to.be.a('function');

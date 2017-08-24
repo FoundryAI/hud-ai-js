@@ -49,7 +49,7 @@ export function Factory (config: HudAiClientConfiguration): HudAiClientConfigura
             headers: {
                 'User-Agent': `Hud.ai Node SDK v${version}`
             },
-            timeout: 60000
+            timeout: 10000
 
         }
     });
