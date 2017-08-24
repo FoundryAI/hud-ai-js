@@ -1,6 +1,4 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {BasicSession} from '../sessions/BasicSession';
-import {PersistentSession} from '../sessions/Session';
 import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
 
