@@ -1,6 +1,11 @@
 Hud.ai Client for Node.js
 ===================
 
+[![Version](https://img.shields.io/npm/v/hud-ai-node.svg)](https://www.npmjs.org/package/hud-ai-node)
+[![Build Status](https://travis-ci.org/FoundryAI/hud-ai-node.svg?branch=master)](https://travis-ci.org/FoundryAI/hud-ai-node)
+[![Downloads](https://img.shields.io/npm/dm/hud-ai-node.svg)](https://www.npmjs.com/package/hud-ai-node)
+[![Try on RunKit](https://badge.runkitcdn.com/hud-ai-node.svg)](https://runkit.com/npm/hud-ai-node)
+
 A JavaScript interface to the [Hud.ai API](https://docs.hud.ai). To get started install via npm:
 
 ```
@@ -64,20 +69,3 @@ client.getTokensRefreshGrant('ACCESS_TOKEN_OR_REFRESH_TOKEN')
 	// ...
 });
 ```
-
-Accessing Data on Hud.ai
----------------------
-
-### Resources
-
-The following resources are supported by the SDK:
-
-- [Authentication](https://github.com/foundryAI/hud-ai-node/blob/master/docs/authentication.md)
-- [Articles](https://github.com/foundryAI/hud-ai-node/blob/master/docs/articles.md)
-- [Article Highlights](https://github.com/foundryAI/hud-ai-node/blob/master/docs/article-highlights.md)
-- [Companies](https://github.com/foundryAI/hud-ai-node/blob/master/docs/companies.md)
-- [Domains](https://github.com/foundryAI/hud-ai-node/blob/master/docs/domains.md)
-- [Key Terms](https://github.com/foundryAI/hud-ai-node/blob/master/docs/key-terms.md)
-- [System Tasks](https://github.com/foundryAI/hud-ai-node/blob/master/docs/system-tasks.md)
-- [Text Corpora](https://github.com/foundryAI/hud-ai-node/blob/master/docs/text-corpora.md)
-- [Users](https://github.com/foundryAI/hud-ai-node/blob/master/docs/users.md)
