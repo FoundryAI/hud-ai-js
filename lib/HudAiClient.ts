@@ -53,7 +53,7 @@ export class HudAiClient {
     }
 
     getAuthorizeUri () {
-        return `${this.config.baseApiUrl}/${this.config.apiVersion}/auth/dialog/authorize?client_id=${this.config.clientId}&redirect_uri=${this.config.redirectUri}`
+        return `${this.config.baseApiUrl}/${this.config.apiVersion}/auth/dialog/authorize?response_type=token&client_id=${this.config.clientId}&redirect_uri=${this.config.redirectUri}`
     }
 
     getTokensPasswordGrant (username: string, password: string) {
