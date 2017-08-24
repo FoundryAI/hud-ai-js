@@ -9,7 +9,7 @@ import {DomainResource} from './resources/Domain';
 import {KeyTermResource} from './resources/KeyTerm';
 import {TextCorpusResource} from './resources/TextCorpus';
 import {UserResource} from './resources/User';
-import {TokenStore, TokenManager} from './TokenManager';
+import {TokenManager} from './TokenManager';
 import * as _ from 'lodash';
 
 export class HudAiClient {
@@ -25,11 +25,11 @@ export class HudAiClient {
     public textCorpus: TextCorpusResource;
     public user: UserResource;
 
-    public static create (clientConfig: HudAiClientConfiguration, tokenStore?: TokenStore) {
+    public static create (clientConfig: HudAiClientConfiguration) {
         const config = Factory(clientConfig);
         const requestManager = new RequestManager(config);
         const tokenManager = new TokenManager(config, requestManager);
-        const session = new PersistentSession(config, tokenManager, tokenStore);
+        const session = new PersistentSession(config, tokenManager);
         return new HudAiClient(config, session, requestManager, tokenManager);
     }
 

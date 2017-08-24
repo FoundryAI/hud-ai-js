@@ -19,7 +19,7 @@ const HudAi = require('hud-ai-node');
 const client = HudAi.create({
   clientId: 'CLIENT_ID',
   clientSecret: 'CLIENT_SECRET'
-}[, tokenStore]);
+});
 
 // for client side applications
 const client = HudAi.create({
@@ -64,18 +64,6 @@ client.getTokensRefreshGrant('ACCESS_TOKEN_OR_REFRESH_TOKEN')
 	// ...
 });
 ```
-
-#### Optional: Token Store
-
-The token store is the interface used by persistent clients to interact with the consumer app's central storage layer. For a token store to be valid, it must have the following three methods which return a promise:
-
-```js
-store.read(); // read TokenInfo from app central store.
-store.write(tokenInfo); // write TokenInfo to the app's central store.
-store.clear(); // delete TokenInfo from the app's central store.
-```
-
-Notice that these methods don't pass in identifying information as arguments.
 
 Accessing Data on Hud.ai
 ---------------------
