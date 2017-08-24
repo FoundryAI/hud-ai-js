@@ -53,7 +53,7 @@ class HudAiClientSpec {
         const config = {clientId: chance.guid(), redirectUri: chance.url()};
         const client = HudAiClient.create(config);
         const authorizeUri = client.getAuthorizeUri();
-        expect(authorizeUri).to.equal(`https://api.hud.ai/v1/auth/dialog/authorize?client_id=${config.clientId}&redirect_uri=${config.redirectUri}`);
+        expect(authorizeUri).to.equal(`https://api.hud.ai/v1/auth/dialog/authorize?response_type=token&client_id=${config.clientId}&redirect_uri=${config.redirectUri}`);
     }
 
 }

@@ -33,7 +33,7 @@ class TokenManagerSpec {
 
     before () {
         nock('https://api.hud.ai/v1')
-        .post('/oauth/token')
+        .post('/auth/oauth2/token')
         .reply(200, tokensInfo);
 
         this.config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
