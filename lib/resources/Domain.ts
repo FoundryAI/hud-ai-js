@@ -1,7 +1,6 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {BasicSession} from '../sessions/BasicSession';
-import {PersistentSession} from '../sessions/PersistentSession';
 import {RequestManager} from '../RequestManager';
+import {Session} from '../Session';
 
 export interface DomainListAttributes extends HudAiListAttributes {
     companyId?: string;
@@ -20,7 +19,7 @@ export interface DomainUpdateAttributes extends HudAiUpdateAttributes {
 
 export class DomainResource extends Resource {
 
-    constructor(apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+    constructor(apiSession: Session, requestManager: RequestManager) {
         super('/domains', apiSession, requestManager);
     }
 

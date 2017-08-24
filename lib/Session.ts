@@ -1,8 +1,8 @@
 import * as Promise from 'bluebird';
-import {TokenInfo, TokenManager} from '../TokenManager';
-import {HudAiClientConfiguration} from '../util/ClientConfigFactory';
+import {TokenInfo, TokenManager} from './TokenManager';
+import {HudAiClientConfiguration} from './util/ClientConfigFactory';
 
-export class PersistentSession {
+export class Session {
     public tokenInfo: TokenInfo;
     public tokenManager: TokenManager;
     private config: HudAiClientConfiguration;

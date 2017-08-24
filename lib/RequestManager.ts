@@ -2,6 +2,7 @@ import {HudAiClientConfiguration} from './util/ClientConfigFactory';
 import * as Request from 'request-promise';
 import * as _ from 'lodash';
 import {HudAiError} from './util/HudAiError';
+import {Session} from './Session';
 
 export interface HudAiRequestAttributes {
     method: 'GET' | 'PUT' | 'POST' | 'DELETE';
@@ -13,6 +14,7 @@ export interface HudAiRequestAttributes {
 
 export class RequestManager {
     public config: HudAiClientConfiguration;
+    public apiSession?: Session;
 
     constructor(config: HudAiClientConfiguration) {
         this.config = config;

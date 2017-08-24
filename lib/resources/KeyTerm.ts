@@ -1,7 +1,8 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {BasicSession} from '../sessions/BasicSession';
-import {PersistentSession} from '../sessions/PersistentSession';
+import {PersistentSession} from '../sessions/Session';
 import {RequestManager} from '../RequestManager';
+import {Session} from '../Session';
 
 export interface KeyTermListAttributes extends HudAiListAttributes {
     term?: string;
@@ -13,7 +14,7 @@ export interface KeyTermCreateAttributes extends HudAiCreateAttributes {
 
 export class KeyTermResource extends Resource {
 
-    constructor(apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+    constructor(apiSession: Session, requestManager: RequestManager) {
         super('/key-terms', apiSession, requestManager);
     }
 

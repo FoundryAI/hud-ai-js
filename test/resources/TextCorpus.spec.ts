@@ -1,4 +1,3 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
 
 process.env.NODE_ENV = 'test';
 
@@ -11,8 +10,8 @@ import * as sinonChai from 'sinon-chai';
 
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
+import {Session} from '../../lib/Session';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
 import * as moment from 'moment';
 import {TextCorpusResource} from '../../lib/resources/TextCorpus';
 
@@ -29,8 +28,7 @@ class TextCorpusSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -38,8 +36,7 @@ class TextCorpusSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(accessToken, this.tokenManager);
     }
 
     after() {
@@ -48,7 +45,7 @@ class TextCorpusSpec {
 
     @test
     instantiate() {
-        const resource = new TextCorpusResource(this.basicSession, this.requestManager);
+        const resource = new TextCorpusResource(this.session, this.requestManager);
         expect(resource.get).to.be.a('function');
         expect(resource.list).to.be.a('function');
         expect(resource.create).to.be.a('function');

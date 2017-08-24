@@ -1,5 +1,3 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
-
 process.env.NODE_ENV = 'test';
 
 import * as nock from 'nock';
@@ -12,7 +10,7 @@ import * as sinonChai from 'sinon-chai';
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
+import {Session} from '../../lib/Session';
 import * as moment from 'moment';
 import {UserResource} from '../../lib/resources/User';
 
@@ -29,8 +27,7 @@ class UserSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -38,8 +35,7 @@ class UserSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(accessToken, this.tokenManager);
     }
 
     after() {
@@ -48,7 +44,7 @@ class UserSpec {
 
     @test
     instantiate() {
-        const resource = new UserResource(this.basicSession, this.requestManager);
+        const resource = new UserResource(this.session, this.requestManager);
         expect(resource.get).to.be.a('function');
         expect(resource.list).to.be.a('function');
         expect(resource.create).to.be.a('function');

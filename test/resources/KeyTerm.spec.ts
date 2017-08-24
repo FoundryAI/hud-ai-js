@@ -1,5 +1,3 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
-
 process.env.NODE_ENV = 'test';
 
 import * as nock from 'nock';
@@ -12,9 +10,9 @@ import * as sinonChai from 'sinon-chai';
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
 import * as moment from 'moment';
 import {KeyTermResource} from '../../lib/resources/KeyTerm';
+import {Session} from '../../lib/Session';
 
 chai.use(sinonChai);
 nock.disableNetConnect();
@@ -29,8 +27,7 @@ class KeyTermSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -38,8 +35,7 @@ class KeyTermSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(accessToken, this.tokenManager);
     }
 
     after() {
@@ -48,7 +44,7 @@ class KeyTermSpec {
 
     @test
     instantiate() {
-        const resource = new KeyTermResource(this.basicSession, this.requestManager);
+        const resource = new KeyTermResource(this.session, this.requestManager);
         expect(resource.get).to.be.a('function');
         expect(resource.list).to.be.a('function');
         expect(resource.create).to.be.a('function');

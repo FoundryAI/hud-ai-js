@@ -1,5 +1,3 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
-
 process.env.NODE_ENV = 'test';
 
 import * as nock from 'nock';
@@ -12,9 +10,9 @@ import * as sinonChai from 'sinon-chai';
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
 import * as moment from 'moment';
 import {ArticleResource} from '../../lib/resources/Article';
+import {Session} from '../../lib/Session';
 
 chai.use(sinonChai);
 nock.disableNetConnect();
@@ -30,8 +28,7 @@ class ArticleSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -39,8 +36,7 @@ class ArticleSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(this.config, this.tokenManager);
     }
 
     after() {
@@ -50,7 +46,7 @@ class ArticleSpec {
     @test
     instantiate() {
         const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
-        const articleResource = new ArticleResource(this.basicSession, this.requestManager);
+        const articleResource = new ArticleResource(this.session, this.requestManager);
         expect(articleResource.get).to.be.a('function');
         expect(articleResource.list).to.be.a('function');
         expect(articleResource.create).to.be.a('function');

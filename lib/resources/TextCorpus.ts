@@ -1,7 +1,8 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {BasicSession} from '../sessions/BasicSession';
-import {PersistentSession} from '../sessions/PersistentSession';
+import {PersistentSession} from '../sessions/Session';
 import {RequestManager} from '../RequestManager';
+import {Session} from '../Session';
 
 export interface TextCorpusListAttributes extends HudAiListAttributes {
     type?: string;
@@ -22,7 +23,7 @@ export interface TextCorpusUpdateAttributes extends HudAiUpdateAttributes {
 
 export class TextCorpusResource extends Resource {
 
-    constructor(apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+    constructor(apiSession: Session, requestManager: RequestManager) {
         super('/text-corpora', apiSession, requestManager);
     }
 

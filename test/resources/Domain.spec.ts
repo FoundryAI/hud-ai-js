@@ -1,4 +1,4 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
+import {Session} from '../../lib/Session';
 
 process.env.NODE_ENV = 'test';
 
@@ -12,7 +12,6 @@ import * as sinonChai from 'sinon-chai';
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
 import * as moment from 'moment';
 import {DomainResource} from '../../lib/resources/Domain';
 
@@ -29,8 +28,7 @@ class DomainSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -38,8 +36,7 @@ class DomainSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(accessToken, this.tokenManager);
     }
 
     after() {
@@ -48,7 +45,7 @@ class DomainSpec {
 
     @test
     instantiate() {
-        const resource = new DomainResource(this.basicSession, this.requestManager);
+        const resource = new DomainResource(this.session, this.requestManager);
         expect(resource.get).to.be.a('function');
         expect(resource.list).to.be.a('function');
         expect(resource.create).to.be.a('function');

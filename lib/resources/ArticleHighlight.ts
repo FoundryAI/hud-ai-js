@@ -1,7 +1,6 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {BasicSession} from '../sessions/BasicSession';
-import {PersistentSession} from '../sessions/PersistentSession';
 import {RequestManager} from '../RequestManager';
+import {Session} from '../Session';
 
 export interface ArticleHighlightListAttributes extends HudAiListAttributes {
     articleId?: string;
@@ -23,7 +22,7 @@ export interface ArticleHighlightUpdateAttributes extends HudAiUpdateAttributes 
 
 export class ArticleHighlightResource extends Resource {
 
-    constructor(apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+    constructor(apiSession: Session, requestManager: RequestManager) {
         super('/article-highlights', apiSession, requestManager);
     }
 

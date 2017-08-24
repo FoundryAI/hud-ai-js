@@ -1,5 +1,3 @@
-import {BasicSession} from '../../lib/sessions/BasicSession';
-
 process.env.NODE_ENV = 'test';
 
 import * as nock from 'nock';
@@ -12,7 +10,7 @@ import * as sinonChai from 'sinon-chai';
 import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
 import {TokenManager} from '../../lib/TokenManager';
 import {RequestManager} from '../../lib/RequestManager';
-import {PersistentSession} from '../../lib/sessions/PersistentSession';
+import {Session} from '../../lib/Session';
 import * as moment from 'moment';
 import {ArticleHighlightResource} from '../../lib/resources/ArticleHighlight';
 
@@ -29,8 +27,7 @@ class ArticleHighlightSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private tokenManager: TokenManager;
-    private basicSession: BasicSession;
-    private persistentSession: PersistentSession;
+    private session: Session;
     private requestManager: RequestManager;
 
     before() {
@@ -38,8 +35,7 @@ class ArticleHighlightSpec {
         this.config = Factory({ clientId, clientSecret });
         this.requestManager = new RequestManager(this.config);
         this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.basicSession = new BasicSession(accessToken, this.tokenManager);
-        this.persistentSession = new PersistentSession(this.config, this.tokenManager);
+        this.session = new Session(this.config, this.tokenManager);
     }
 
     after() {
@@ -49,7 +45,7 @@ class ArticleHighlightSpec {
     @test
     instantiate() {
         const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
-        const resource = new ArticleHighlightResource(this.basicSession, this.requestManager);
+        const resource = new ArticleHighlightResource(this.session, this.requestManager);
         expect(resource.get).to.be.a('function');
         expect(resource.list).to.be.a('function');
         expect(resource.create).to.be.a('function');

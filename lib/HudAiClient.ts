@@ -1,7 +1,5 @@
 import { ArticleResource } from './resources/Article';
 import {Factory, HudAiClientConfiguration} from './util/ClientConfigFactory';
-import {BasicSession} from './sessions/BasicSession';
-import {PersistentSession} from './sessions/PersistentSession';
 import {RequestManager} from './RequestManager';
 import {ArticleHighlightResource} from './resources/ArticleHighlight';
 import {CompanyResource} from './resources/Company';
@@ -10,11 +8,12 @@ import {KeyTermResource} from './resources/KeyTerm';
 import {TextCorpusResource} from './resources/TextCorpus';
 import {UserResource} from './resources/User';
 import {TokenManager} from './TokenManager';
+import {Session} from './Session';
 import * as _ from 'lodash';
 
 export class HudAiClient {
     public config: HudAiClientConfiguration;
-    public apiSession: BasicSession|PersistentSession;
+    public apiSession: Session;
     public requestManager: RequestManager;
     public tokenManager: TokenManager;
     public article: ArticleResource;
@@ -29,11 +28,11 @@ export class HudAiClient {
         const config = Factory(clientConfig);
         const requestManager = new RequestManager(config);
         const tokenManager = new TokenManager(config, requestManager);
-        const session = new PersistentSession(config, tokenManager);
+        const session = new Session(config, tokenManager);
         return new HudAiClient(config, session, requestManager, tokenManager);
     }
 
-    constructor(config: HudAiClientConfiguration, apiSession: BasicSession|PersistentSession, requestManager: RequestManager, tokenManager: TokenManager) {
+    constructor(config: HudAiClientConfiguration, apiSession: Session, requestManager: RequestManager, tokenManager: TokenManager) {
         this.config = config;
         this.apiSession = apiSession;
         this.requestManager = requestManager;

@@ -2,8 +2,7 @@ import * as Promise from 'bluebird';
 import * as _ from 'lodash'
 
 import {HudAiRequestAttributes, RequestManager} from './RequestManager';
-import {BasicSession} from './sessions/BasicSession';
-import {PersistentSession} from './sessions/PersistentSession';
+import {Session} from './Session';
 
 
 export interface HudAiListAttributes {
@@ -22,10 +21,10 @@ export interface HudAiUpdateAttributes {
 export abstract class Resource {
 
     protected basePath: string;
-    public apiSession: BasicSession|PersistentSession;
+    public apiSession: Session;
     protected requestManager: RequestManager;
 
-    constructor(basePath: string, apiSession: BasicSession|PersistentSession, requestManager: RequestManager) {
+    constructor(basePath: string, apiSession: Session, requestManager: RequestManager) {
         this.basePath = basePath;
         this.apiSession = apiSession;
         this.requestManager = requestManager;
