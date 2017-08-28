@@ -3,15 +3,14 @@ install:
   - npm update -g npm
   - npm install -g typescript
   - npm install
+script: npm test
+node_js:
+  - '6'
+  - '7'
+  - '8'
 
 jobs:
   include:
-    - stage: test
-      script: npm test
-      node_js:
-        - '6'
-        - '7'
-        - '8'
     - stage: npm release
       node_js: "8"
       script: echo "Deploying to npm ..."
