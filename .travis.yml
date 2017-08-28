@@ -12,13 +12,13 @@ node_js:
 jobs:
   include:
     - stage: npm release
-      node_js: "8"
+      node_js: '8'
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
         skip_cleanup: true
         email: engineering@foundry.ai
         api_key:
-          secure: "ScA+1On9/UYA54drBwJ9aTbPgTmROND+tY+CJMKLoNixpOJasqyAjc8aMSExIq9ZRsbGdkM5PDZ9SQajqUtfXVfifkS4uSeXj2FSmVdGBc4c/GSdEnqiiH4tCtn7SEBk5B5ftNJC43SWyA/X6uE6NbGrrD3S1OyACW7StKe9SBnYko4PYyFNqmcJ8vjyK03uDSRvTlTPphSD04GbPvancA/w/7L/HNRwyNim4YAIicw40KkUdHl+7GU8Tqo34V2Hwl22PIBpVxRtpAFeg4Dy+4zjizVef/srVHdPXYfxoeOSIdnPLhIAamNI0Y8l0dNPrpnvVjOpnFuMwbgmSMIlg6Jnx2/eafCqIIakQ6QWgZgZhEJMPLwonP2nPZx08RYXyYInn+aPLGTs4E25D27rt+V48UZJ10VzW4iNB7A5UgKDA8WJz1xStCOVMpvohynTSdT+EYeJd1bqof7tMr4SMcbFiyYJhT/3T6RTmA1zmtjY4mhaWPeZzOagAjE8PnliuavdrTL45Elh/7v9e7WZjv1gL6CrNg10gyQ0FhpDMKJKeu9qR8HGZbYdvjYZKPjVdUlXNQutdyJ54Pv8dJ79aT8Hwq/0rwi4iFQDWbyDtREaFFLhWtAHeleSjqZBJswSOf0ohOk+PflN60aSMoYgY/anLF7DzyTdCbjauocFr4U="
+          secure: guZabVR5wR+izJz521BrGeaYlkWabMXwdz65oU5VRkconX12p/s+MjDrdw6uPb81yKyQ+Ykfkpi1pE2/dbAc8Ofq+bEFBiv8teBssRFT7u90VIFifJI6QCO783e1Ybt4V+Y9ple61UdUgHCWAWqvkwcJ+wr7tJKb30ZjT4c/6nSvZuTFsUMY/Hb5yZV5snpQxjMZEvgTiO0hHoPFEtz5r94Corxz9WsjDOOQ4dqGot/pXolnEa7fSMwfjiHlk/gLRYVSInAVRqg6gen5LSgveVL0N36jZHb60NNDGP7v8Z9nIIA72FiPGabU/MsRqcdeQFyUxieMg5rDtKn949y+LfHKtQULjtSygQcX4RFAElz8Kns+piQj+JQwJ2M1IJL1OLvjZZFWuD0dBjoa3vqpqa6K13WX1bNa3tZto77378SKVlvL+7d+94X7qSA/+gnjuWYfwZJT/PDGAfDNGLgHlTtJpcGI8CdPAWdeYCNjSj8inpqNSvl0ClQjdXUmwan9FlTz3NIyqxo9tU0sh+6hT6m7Yyze8m0tbC+cjs65kMAWNn9uVS+V0CopfxulMOZI4A5rif8z5hwimSUbwNE6Ra7pz3Ie4Aqs+33ZHOfcFbK2cuWQGCTWmwXdjtu+5EdqcVtfnYF/LKhFMFwn+NAZn/rK9PN8I0bmUcAwUIRhRcY=
         on:
           tags: true
