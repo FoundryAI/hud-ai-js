@@ -1,6 +1,7 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
+import * as Promise from 'bluebird';
 
 export interface KeyTermListAttributes extends HudAiListAttributes {
     term?: string;

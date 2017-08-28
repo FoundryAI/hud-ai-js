@@ -10,6 +10,7 @@ import {UserResource} from './resources/User';
 import {TokenManager} from './TokenManager';
 import {Session} from './Session';
 import * as _ from 'lodash';
+import * as Promise from 'bluebird';
 
 export class HudAiClient {
     public config: HudAiClientConfiguration;
