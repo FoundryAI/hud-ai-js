@@ -33,6 +33,7 @@
     "@types/chai": "^4.0.3",
     "@types/joi": "^10.4.1",
     "@types/lodash": "^4.14.70",
+    "@types/node": "^8.0.25",
     "@types/request-promise": "^4.1.36",
     "@types/sinon-chai": "^2.7.28",
     "chai": "^4.1.1",
@@ -40,8 +41,8 @@
     "chance": "^1.0.10",
     "mocha": "^3.5.0",
     "mocha-typescript": "^1.1.7",
-    "nyc": "^11.1.0",
     "nock": "^9.0.14",
+    "nyc": "^11.1.0",
     "sinon": "^3.2.0",
     "sinon-chai": "^2.13.0",
     "typings": "^2.1.1"
