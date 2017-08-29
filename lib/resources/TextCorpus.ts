@@ -1,4 +1,5 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
+import * as Promise from 'bluebird';
 import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
 

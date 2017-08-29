@@ -1,9 +1,9 @@
 {
   "name": "hud-ai",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hud.ai API Client",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./build/HudAiClient.js",
+  "types": "./build/HudAiClient.d.ts",
   "bugs": {
     "url": "https://github.com/FoundryAI/hud-ai-node/issues"
   },

@@ -3,6 +3,7 @@ import * as Request from 'request-promise';
 import * as _ from 'lodash';
 import {HudAiError} from './util/HudAiError';
 import {Session} from './Session';
+import * as Promise from 'bluebird';
 
 export interface HudAiRequestAttributes {
     method: 'GET' | 'PUT' | 'POST' | 'DELETE';
