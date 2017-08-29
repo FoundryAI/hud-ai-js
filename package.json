@@ -11,7 +11,7 @@
     "build": "tsc -p ./",
     "prepublishOnly": "tsc -p ./",
     "reportCoverage": "nyc report --reporter=text-lcov | coveralls",
-    "run": "ts-node ./src/index.ts",
+    "run": "ts-node ./lib/index.ts",
     "test": "nyc mocha",
     "watch": "mocha-typescript-watch"
   },
