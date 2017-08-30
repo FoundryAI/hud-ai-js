@@ -1,15 +1,15 @@
 Hud.ai Client for Node.js
 ===================
 
-[![Version](https://img.shields.io/npm/v/hud-ai-node.svg)](https://www.npmjs.org/package/hud-ai-node)
+[![Version](https://img.shields.io/npm/v/hud-ai.svg)](https://www.npmjs.org/package/hud-ai)
 [![Build Status](https://travis-ci.org/FoundryAI/hud-ai-node.svg?branch=master)](https://travis-ci.org/FoundryAI/hud-ai-node)
-[![Downloads](https://img.shields.io/npm/dm/hud-ai-node.svg)](https://www.npmjs.com/package/hud-ai-node)
-[![Try on RunKit](https://badge.runkitcdn.com/hud-ai-node.svg)](https://runkit.com/npm/hud-ai-node)
+[![Downloads](https://img.shields.io/npm/dm/hud-ai.svg)](https://www.npmjs.com/package/hud-ai)
+[![Try on RunKit](https://badge.runkitcdn.com/hud-ai-node.svg)](https://runkit.com/npm/hud-ai)
 
 A JavaScript interface to the [Hud.ai API](https://docs.hud.ai). To get started install via npm:
 
 ```
-npm install --save hud-ai-node
+npm install --save hud-ai
 ```
 
 Basic Usage
@@ -18,7 +18,7 @@ Basic Usage
 The first thing you'll need to do is initialize the client with your client credentials. Client ID and secret are required for server side applications, or you can provide your client ID and a redirect URI for client side applications.
 ```js
 // Initialize the client
-const HudAi = require('hud-ai-node');
+const HudAi = require('hud-ai');
 
 // for server side applications
 const client = HudAi.create({
