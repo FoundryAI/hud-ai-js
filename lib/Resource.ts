@@ -47,7 +47,7 @@ export abstract class Resource {
     }
 
     public get(id: string|number) {
-        return this.requestManager.makeRequest({
+        return this.makeRequest({
             method: 'GET',
             params: { id },
             url: `${this.basePath}/{id}`
@@ -55,7 +55,7 @@ export abstract class Resource {
     }
 
     public list(params: HudAiListAttributes) {
-        return this.requestManager.makeRequest({
+        return this.makeRequest({
             method: 'GET',
             query: params,
             url: `${this.basePath}`
@@ -63,7 +63,7 @@ export abstract class Resource {
     }
 
     public update(id: string|number, params: HudAiUpdateAttributes) {
-        return this.requestManager.makeRequest({
+        return this.makeRequest({
             method: 'PUT',
             data: params,
             params: { id },
@@ -72,7 +72,7 @@ export abstract class Resource {
     }
 
     public create(params: HudAiCreateAttributes) {
-        return this.requestManager.makeRequest({
+        return this.makeRequest({
             method: 'POST',
             data: params,
             url: `${this.basePath}`
@@ -80,7 +80,7 @@ export abstract class Resource {
     }
 
     public del(id: string|number) {
-        return this.requestManager.makeRequest({
+        return this.makeRequest({
             method: 'DELETE',
             params: { id },
             url: `${this.basePath}/{id}`
