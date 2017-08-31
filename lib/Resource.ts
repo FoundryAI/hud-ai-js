@@ -54,27 +54,27 @@ export abstract class Resource {
         })
     }
 
-    public list(params: HudAiListAttributes) {
+    public list(listArgs: HudAiListAttributes) {
         return this.makeRequest({
             method: 'GET',
-            query: params,
+            params: listArgs,
             url: `${this.basePath}`
         })
     }
 
-    public update(id: string|number, params: HudAiUpdateAttributes) {
+    public update(id: string|number, updateArgs: HudAiUpdateAttributes) {
         return this.makeRequest({
             method: 'PUT',
-            data: params,
+            data: updateArgs,
             params: { id },
             url: `${this.basePath}/{id}`
         })
     }
 
-    public create(params: HudAiCreateAttributes) {
+    public create(createArgs: HudAiCreateAttributes) {
         return this.makeRequest({
             method: 'POST',
-            data: params,
+            data: createArgs,
             url: `${this.basePath}`
         })
     }
