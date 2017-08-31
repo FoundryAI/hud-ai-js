@@ -21,7 +21,7 @@ export const Schema = {
     baseApiUrl: joi.string().uri(),
     apiVersion: joi.string().allow('v1'),
     request: joi.object({
-        strictSSL: joi.boolean()
+        // strictSSL: joi.boolean()
     })
 };
 

@@ -6,7 +6,6 @@ import {suite, test} from 'mocha-typescript';
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
-import * as request from 'request-promise';
 
 import {Factory} from '../lib/util/ClientConfigFactory';
 import {RequestManager} from '../lib/RequestManager';
@@ -33,7 +32,6 @@ class RequestManagerSpec {
     @test makeRequest() {
         const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
         const requestManager = new RequestManager(config);
-        const spy = this.sandbox.spy(request);
         nock('https://api.hud.ai/v1')
         .get('/')
         .query(true)
@@ -43,7 +41,7 @@ class RequestManagerSpec {
         return requestManager.makeRequest({
             method: 'GET',
             url: '/',
-            query: { test: 'param' }
+            params: { test: 'param' }
         })
     }
 }
