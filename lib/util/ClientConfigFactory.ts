@@ -2,6 +2,7 @@ import { defaultsDeep } from 'lodash';
 import * as https from 'https';
 import * as joi from 'joi';
 import {HudAiError} from './HudAiError';
+import {AxiosRequestConfig} from "axios";
 const version = require('../../package.json').version;
 
 
@@ -31,20 +32,14 @@ export function Factory (config: HudAiClientConfiguration): HudAiClientConfigura
     return defaultsDeep(config, {
         baseApiUrl: 'https://api.hud.ai',
         apiVersion: 'v1',
-        request: {
-            // By default, require API SSL cert to be valid
-            strictSSL: true,
-            // Use an agent with keep-alive enabled to avoid performing SSL handshake per connection
-            agentClass: https.Agent,
-            agentOptions: {
-                keepAlive: true
-            },
+        request: <AxiosRequestConfig> {
+            // Use an agent with keep-alive enabled to avoid performing SSL handshake per connection.
+            httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: true }),
+
             // Encode requests as JSON. Encode the response as well if JSON is returned.
-            json: true,
-            // Do not encode the response as a string, since the response could be a file. return Buffers instead.
-            encoding: null,
+            responseType: 'json',
             // A redirect is usually information we want to handle, so don't automatically follow
-            followRedirect: false,
+            maxRedirects: 0,
             // By default, we attach a version-specific user-agent string to SDK requests
             headers: {
                 'User-Agent': `Hud.ai Node SDK v${version}`
