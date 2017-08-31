@@ -46,7 +46,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public get(id: string|number) : T {
+    public get(id: string|number) : Promise<T> {
         return this.makeRequest({
             method: 'GET',
             params: { id },
@@ -54,7 +54,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public list(params: L) : T[] {
+    public list(params: L) : Promise<T[]> {
         return this.makeRequest({
             method: 'GET',
             params: params,
