@@ -3,6 +3,15 @@ import * as Promise from 'bluebird';
 import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
 
+export interface TextCorpus {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    type: string;
+    userId: string;
+    body: string;
+}
+
 export interface TextCorpusListAttributes extends HudAiListAttributes {
     type?: string;
     userId?: string;
@@ -20,29 +29,8 @@ export interface TextCorpusUpdateAttributes extends HudAiUpdateAttributes {
     userId?: string;
 }
 
-export class TextCorpusResource extends Resource {
-
+export class TextCorpusResource extends Resource<TextCorpus, TextCorpusListAttributes, TextCorpusCreateAttributes, TextCorpusUpdateAttributes> {
     constructor(apiSession: Session, requestManager: RequestManager) {
         super('/text-corpora', apiSession, requestManager);
-    }
-
-    public get(id: string) {
-        return super.get(id);
-    }
-
-    public list(params: TextCorpusListAttributes) {
-        return super.list(params);
-    }
-
-    public create(params: TextCorpusCreateAttributes) {
-        return super.create(params);
-    }
-
-    public update(id: string, params: TextCorpusUpdateAttributes) {
-        return super.update(id, params);
-    }
-
-    public del(id: string) {
-        return super.del(id);
     }
 }

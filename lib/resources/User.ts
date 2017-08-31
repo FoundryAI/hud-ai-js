@@ -3,6 +3,14 @@ import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
+export interface User {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    name: string;
+    email: string;
+}
+
 export interface UserListAttributes extends HudAiListAttributes {
     name?: string;
     email?: string;
@@ -20,29 +28,8 @@ export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     timeZone?: string;
 }
 
-export class UserResource extends Resource {
-
+export class UserResource extends Resource<User, UserListAttributes, UserCreateAttributes, UserUpdateAttributes> {
     constructor(apiSession: Session, requestManager: RequestManager) {
         super('/users', apiSession, requestManager);
-    }
-
-    public get(id: string) {
-        return super.get(id);
-    }
-
-    public list(params: UserListAttributes) {
-        return super.list(params);
-    }
-
-    public create(params: UserCreateAttributes) {
-        return super.create(params);
-    }
-
-    public update(id: string, params: UserUpdateAttributes) {
-        return super.update(id, params);
-    }
-
-    public del(id: string) {
-        return super.del(id);
     }
 }
