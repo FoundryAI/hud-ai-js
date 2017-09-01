@@ -18,7 +18,7 @@ export interface HudAiUpdateAttributes {
 
 }
 
-export abstract class Resource {
+export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAiCreateAttributes, U extends HudAiUpdateAttributes> {
 
     protected basePath: string;
     public apiSession: Session;
@@ -46,7 +46,7 @@ export abstract class Resource {
         })
     }
 
-    public get(id: string|number) {
+    public get(id: string|number) : Promise<T> {
         return this.makeRequest({
             method: 'GET',
             params: { id },
@@ -54,7 +54,7 @@ export abstract class Resource {
         })
     }
 
-    public list(listArgs: HudAiListAttributes) {
+    public list(listArgs: L) : Promise<T[]> {
         return this.makeRequest({
             method: 'GET',
             params: listArgs,
@@ -62,7 +62,7 @@ export abstract class Resource {
         })
     }
 
-    public update(id: string|number, updateArgs: HudAiUpdateAttributes) {
+    public update(id: string|number, updateArgs: U) {
         return this.makeRequest({
             method: 'PUT',
             data: updateArgs,
@@ -71,7 +71,7 @@ export abstract class Resource {
         })
     }
 
-    public create(createArgs: HudAiCreateAttributes) {
+    public create(createArgs: C) {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,

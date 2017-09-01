@@ -3,6 +3,24 @@ import {RequestManager} from '../RequestManager';
 import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
+export interface Article {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    type: string;
+    title: string;
+    text: string;
+    imageUrl: string;
+    rawDataUrl: string;
+    importanceScore: number;
+    linkHash: string;
+    linkUrl: string;
+    sourceUrl: string;
+    publishedAt: Date;
+    authors: any[]; // TODO: types
+    articleKeyTerms: any[]; // TODO: types
+}
+
 export interface ArticleListAttributes extends HudAiListAttributes {
     type?: string;
     importanceScoreMin?: number;
@@ -39,29 +57,8 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
     type?: string;
 }
 
-export class ArticleResource extends Resource {
-
+export class ArticleResource extends Resource<Article, ArticleListAttributes, ArticleCreateAttributes, ArticleUpdateAttributes> {
     constructor(apiSession: Session, requestManager: RequestManager) {
         super('/articles', apiSession, requestManager);
-    }
-
-    public get(id: string) {
-        return super.get(id);
-    }
-
-    public list(params: ArticleListAttributes) {
-        return super.list(params);
-    }
-
-    public create(params: ArticleCreateAttributes) {
-        return super.create(params);
-    }
-
-    public update(id: string, params: ArticleUpdateAttributes) {
-        return super.update(id, params);
-    }
-
-    public del(id: string) {
-        return super.del(id);
     }
 }
