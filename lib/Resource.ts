@@ -54,27 +54,27 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public list(params: L) : Promise<T[]> {
+    public list(listArgs: L) : Promise<T[]> {
         return this.makeRequest({
             method: 'GET',
-            params: params,
+            params: listArgs,
             url: `${this.basePath}`
         })
     }
 
-    public update(id: string|number, params: U) {
+    public update(id: string|number, updateArgs: U) {
         return this.makeRequest({
             method: 'PUT',
-            data: params,
+            data: updateArgs,
             params: { id },
             url: `${this.basePath}/{id}`
         })
     }
 
-    public create(params: C) {
+    public create(createArgs: C) {
         return this.makeRequest({
             method: 'POST',
-            data: params,
+            data: createArgs,
             url: `${this.basePath}`
         })
     }
