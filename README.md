@@ -1,71 +1,81 @@
-Hud.ai Client for Node.js
-===================
+# HUD.ai Javascript Client
 
-[![Version](https://img.shields.io/npm/v/hud-ai.svg)](https://www.npmjs.org/package/hud-ai)
-[![Build Status](https://travis-ci.org/FoundryAI/hud-ai-node.svg?branch=master)](https://travis-ci.org/FoundryAI/hud-ai-node)
-[![Downloads](https://img.shields.io/npm/dm/hud-ai.svg)](https://www.npmjs.com/package/hud-ai)
-[![Try on RunKit](https://badge.runkitcdn.com/hud-ai-node.svg)](https://runkit.com/npm/hud-ai)
+[![Version][npm-version-badge]][npm-version-link]
+[![Build Status][build-status-badge]][build-status-link]
+[![Downloads][downloads-badge]][downloads-link]
+[![Try on RunKit][runkit-badge]][runkit-link]
 
-A JavaScript interface to the [Hud.ai API](https://docs.hud.ai). To get started install via npm:
+A JavaScript interface to the [Hud.ai API][hud-ai-docs-link]. To get started
+install via npm:
 
-```
+```bash
 npm install --save hud-ai
 ```
 
-Basic Usage
------------
+## Getting Started
 
-The first thing you'll need to do is initialize the client with your client credentials. Client ID and secret are required for server side applications, or you can provide your client ID and a redirect URI for client side applications.
+First, you'll need to register a client application. This can currently only be
+done by [reaching out to the engineering team](mailto:engineering@hud.ai).
+
+### Single Page Apps
+
 ```js
-// Initialize the client
 const HudAi = require('hud-ai');
 
-// for server side applications
+const client = HudAi.create({
+  clientId: 'CLIENT_ID',
+  redirectUri: 'http://www.example.com/oauth/callbacks/hud-ai'
+});
+
+// Send the user to the authorization URL, where they can choose to grant your
+// app permissions to access the service on their behalf (if permission has
+// already been given, they'll automatically be redirected)
+window.location = client.getAuthorizeUri(); // => https://auth.hud.ai/oauth2/authorize?etc...
+
+// token will be returned as the query param `authToken` to your redirect URL
+const token = parseToken(window.location.search);
+client.setBearerToken(token);
+```
+
+NOTE: The process of token retrieval will need to be performed again when the
+token becomes invalid (they're currently valid for 24 hours).
+
+### Server Applications
+
+Because servers can be trusted to keep a secret, setup is much more
+straightforward.
+
+```js
+const HudAi = require('hud-ai');
+
 const client = HudAi.create({
   clientId: 'CLIENT_ID',
   clientSecret: 'CLIENT_SECRET'
 });
+```
 
-// for client side applications
-const client = HudAi.create({
-  clientId: 'CLIENT_ID',
-  redirectUri: 'http://myapp.com'
-});
+### Additional Configuration
 
-// Get some
+The client constructor accepts options for configuring your instance of the
+lient. Here is where you can set things like strictSSL, API endpoints, and more.
+See [config.ts][project-config-link] for a list of all supported properties.
+
+## Basic Usage
+
+```js
 client.articles.get('SOME_ARTICLE_ID')
 	.then(article => console.log(article))
 	.catch(err => console.log('Got an error!', err));
 ```
 
-In addition, the client constructor accepts options for configuring your instance of the client. Here is where you can set things like strictSSL, API endpoints, and more. See [config.ts](https://github.com/FoundryAI/hud-ai-node/blob/master/lib/util/ClientConfigFactory.ts#L16) for a list of all supported properties.
+[npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
+[npm-version-link]: https://www.npmjs.org/package/hud-ai
+[build-status-badge]: https://travis-ci.org/FoundryAI/hud-ai-node.svg?branch=master
+[build-status-link]: https://travis-ci.org/FoundryAI/hud-ai-node
+[downloads-badge]: https://img.shields.io/npm/dm/hud-ai.svg
+[downloads-link]: https://www.npmjs.com/package/hud-ai
+[runkit-badge]: https://badge.runkitcdn.com/hud-ai.svg
+[runkit-link]: https://runkit.com/npm/hud-ai-node
 
-OAuth2
-------
-
-### Getting Tokens
-
-Acquires token info using your client credentials.
-
-```js
-client.getTokensClientCredentialsGrant()
-.then((tokenInfo) => {
-	// tokenInfo: {
-	//  accessToken: 'ACCESS_TOKEN',
-	//  refreshToken: 'REFRESH_TOKEN',
-	//  accessTokenAcquiredAtMS: 1464129218402,
-	//  accessTokenTTLMS: 3600000,
-	// }
-});
-```
-
-### Refreshing Tokens
-
-Refreshes the access and refresh tokens for a given refresh token.
-
-```js
-client.getTokensRefreshGrant('ACCESS_TOKEN_OR_REFRESH_TOKEN')
-.then((tokenInfo) => {  
-	// ...
-});
-```
+[hud-ai-docs-link]: https://docs.hud.ai
+[project-config-link]: https://github.com/FoundryAI/hud-ai-node/blob/master/lib/util/ClientConfigFactory.ts#L16
