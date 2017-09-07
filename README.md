@@ -33,8 +33,9 @@ const client = HudAi.create({
 window.location = client.getAuthorizeUri('token');
 
 // token will be returned as the query param `authToken` to your redirect URL
-const token = parseToken(window.location.search);
-client.setBearerToken(token);
+const queryString = require('query-string');
+const parsed = queryString.parse(location.search);
+client.setAccessToken(parsed.authToken);
 ```
 
 NOTE: The process of token retrieval will need to be performed again when the
@@ -67,8 +68,9 @@ const redirectUrl = client.getAuthorizeUri('code');
 
 // the code to exchange will be returned as the query param `code` to your
 // redirect URL
-const code = parseToken(window.location.search);
-client.setAuthorizationCode(code);
+const queryString = require('query-string');
+const parsed = queryString.parse(location.search);
+client.setAuthorizationCode(parsed.code);
 ```
 
 ### Additional Configuration

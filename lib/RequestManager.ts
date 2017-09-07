@@ -55,8 +55,13 @@ export class RequestManager {
 
         return Promise.resolve(this.client.refreshTokens())
             .then(() => {
-                const accessToken = this.client.getAccessToken();
-                if (accessToken) _.set(requestOptions, 'headers.Authorization', accessToken);
+                const bearerToken = this.client.accessToken;
+                if (!bearerToken) return;
+                _.set(
+                    requestOptions,
+                    'headers.Authorization',
+                    `Bearer ${bearerToken}`
+                );
             })
             .then(() => this.axios.request(requestOptions))
             .then(response => response.data)

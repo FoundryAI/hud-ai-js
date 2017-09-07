@@ -75,7 +75,7 @@ export class HudAiClient {
     }
 
     // Defaults to the more secure 'code' option
-    public getAuthorizeUri(response_type: string = 'code') {
+    public getAuthorizeUri(response_type: string = 'code'): string {
         if (!this.clientId) throw new HudAiError('cannot generate authorization URL without clientId');
         if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
 
@@ -91,10 +91,6 @@ export class HudAiClient {
         return `${this.baseAuthUrl}/authorize?${params}`
     }
 
-    public getAccessToken (): string | null {
-        return this.accessToken ? this.accessToken : null;
-    }
-
     public setAccessToken (accessToken: string) {
         this.accessToken = accessToken;
     }
@@ -105,7 +101,7 @@ export class HudAiClient {
 
     // Private
 
-    private exchangeAuthCode() {
+    private exchangeAuthCode(): Promise {
         return this.getTokens({
             grant_type: 'authorization_code',
             code: this.authorizationCode
@@ -113,13 +109,13 @@ export class HudAiClient {
             .then(() => { delete this.authorizationCode; })
     }
 
-    public exchangeClientCredentials() {
+    public exchangeClientCredentials(): Promise {
         return this.getTokens({
             grant_type: 'client_credentials'
         })
     }
 
-    private getTokens(data: TokenRequestData) {
+    private getTokens(data: TokenRequestData): Promise {
         return this.requestManager.makeRequest({
             method: 'POST',
             data,
@@ -132,7 +128,7 @@ export class HudAiClient {
             });
     }
 
-    public handleTokenRefresh() {
+    public handleTokenRefresh(): Promise {
         return this.getTokens({
             grant_type: 'refresh_grant',
             refresh_token: this.refreshToken
