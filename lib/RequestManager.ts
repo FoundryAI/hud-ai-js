@@ -6,11 +6,15 @@ import { Agent as HttpsAgent } from 'https';
 import { HudAiClient, HudAiClientConfiguration } from './HudAiClient';
 import { HudAiError } from './util/HudAiError';
 
-export interface HudAiRequestAttributes {
+export interface RequestOptions {
     method: 'GET' | 'PUT' | 'POST' | 'DELETE';
     data?: object;
     params?: object;
     url: string;
+}
+
+export interface MakeRequestOptions {
+    refreshTokens?: boolean
 }
 
 const clientVersion = require('../package.json').version;
@@ -45,30 +49,30 @@ export class RequestManager {
         this.axios = axios.create(axiosConfig);
     }
 
-    public makeRequest (options: HudAiRequestAttributes) {
-        const requestOptions = {
-            body: options.data,
-            method: options.method,
-            params: options.params,
-            url: this.buildUrl(options.url, options.params),
-        };
+    public makeRequest(requestOptions: RequestOptions, options: MakeRequestOptions = {}) {
+        if (options.refreshTokens == undefined) options.refreshTokens = true;
 
-        return Promise.resolve(this.client.refreshTokens())
+        return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : null)
             .then(() => {
-                const bearerToken = this.client.accessToken;
-                if (!bearerToken) return;
-                _.set(
-                    requestOptions,
-                    'headers.Authorization',
-                    `Bearer ${bearerToken}`
-                );
+                const axiosOptions = this.buildAxiosOptions(requestOptions);
+                const token = this.client.accessToken;
+                if (token) _.set(axiosOptions, 'headers.Authorization', `Bearer ${token}`);
+                return this.axios.request(axiosOptions);
             })
-            .then(() => this.axios.request(requestOptions))
             .then(response => response.data)
             .catch(err => { throw new HudAiError(err.message, err.type); });
     }
 
     // Private Methods
+
+    buildAxiosOptions(options: RequestOptions) {
+        return {
+            body: options.data,
+            method: options.method,
+            params: options.params,
+            url: this.buildUrl(options.url, options.params),
+        }
+    }
 
     private buildUrl(url: string, params: Object = {}): string {
         return _.reduce(

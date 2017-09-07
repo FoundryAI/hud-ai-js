@@ -2,13 +2,16 @@ import * as Chance from 'chance';
 import * as moment from 'moment';
 import * as nock from 'nock';
 import { suite, test } from 'mocha-typescript';
-import { expect } from 'chai';
+import * as chai from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
 
 import { HudAiClient, HudAiClientConfiguration } from '../lib/HudAiClient';
 import { RequestManager } from '../lib/RequestManager';
 import * as resources from '../lib/resources';
 import { HudAiError } from '../lib/util/HudAiError';
 
+chai.use(chaiAsPromised);
+const expect = chai.expect;
 nock.disableNetConnect();
 
 const chance = new Chance();
@@ -53,7 +56,7 @@ class HudAiClientSpec {
     '#getAuthorizeUri enforce redirectUri'() {
         const client = HudAiClient.create(serverSideConfig);
 
-        expect(client.getAuthorizeUri()).to.throw(HudAiError);
+        expect(() => client.getAuthorizeUri()).to.throw(HudAiError);
     }
 
     @test
@@ -61,8 +64,8 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri();
         expect(authorizeUri).to.equal(
-            'https://api.hud.ai/v1/auth/authorize?' +
-                'response_type=token' +
+            'https://auth.hud.ai/oauth2/authorize' +
+                '?response_type=code' +
                 `&client_id=${clientSideConfig.clientId}` +
                 `&redirect_uri=${clientSideConfig.redirectUri}`
         );
@@ -73,8 +76,8 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri('token');
         expect(authorizeUri).to.equal(
-            'https://api.hud.ai/v1/auth/authorize?' +
-                'response_type=token' +
+            'https://auth.hud.ai/oauth2/authorize' +
+                '?response_type=token' +
                 `&client_id=${clientSideConfig.clientId}` +
                 `&redirect_uri=${clientSideConfig.redirectUri}`
         );
@@ -85,8 +88,8 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri('code');
         expect(authorizeUri).to.equal(
-            'https://api.hud.ai/v1/auth/authorize?' +
-                'response_type=code' +
+            'https://auth.hud.ai/oauth2/authorize' +
+                '?response_type=code' +
                 `&client_id=${clientSideConfig.clientId}` +
                 `&redirect_uri=${clientSideConfig.redirectUri}`
         );
@@ -104,7 +107,7 @@ class HudAiClientSpec {
 
         client.tokenExpiresAt = moment().add(1, 'day').toDate();
 
-        expect(Promise.resolve(client.refreshTokens())).to.be.null;
+        return expect(client.refreshTokens()).to.eventually.be.null;
     }
 
     @test
@@ -127,8 +130,8 @@ class HudAiClientSpec {
 
                 const expectedExpiration = moment.now() + this.authResponse.expires_in;
                 expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    expectedExpiration - 100,
-                    expectedExpiration + 100
+                    moment(expectedExpiration - 100).unix(),
+                    moment(expectedExpiration + 100).unix()
                 );
             })
     }
@@ -151,8 +154,8 @@ class HudAiClientSpec {
 
                 const expectedExpiration = moment.now() + this.authResponse.expires_in;
                 expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    expectedExpiration - 100,
-                    expectedExpiration + 100
+                    moment(expectedExpiration - 100).unix(),
+                    moment(expectedExpiration + 100).unix()
                 );
             })
     }
@@ -173,8 +176,8 @@ class HudAiClientSpec {
 
                 const expectedExpiration = moment.now() + this.authResponse.expires_in;
                 expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    expectedExpiration - 100,
-                    expectedExpiration + 100
+                    moment(expectedExpiration - 100).unix(),
+                    moment(expectedExpiration + 100).unix()
                 );
             })
     }

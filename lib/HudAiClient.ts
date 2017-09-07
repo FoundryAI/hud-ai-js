@@ -56,7 +56,7 @@ export class HudAiClient {
     }
 
     constructor(config: HudAiClientConfiguration) {
-        this.baseApiUrl = config.baseApiUrl || 'https://api.hud.ai';
+        this.baseApiUrl = config.baseApiUrl || 'https://api.hud.ai/v1';
         this.baseAuthUrl = config.baseAuthUrl || 'https://auth.hud.ai';
         if (config.redirectUri) this.redirectUri = config.redirectUri;
 
@@ -75,11 +75,11 @@ export class HudAiClient {
     }
 
     // Defaults to the more secure 'code' option
-    public getAuthorizeUri(response_type: string = 'code'): string {
+    public getAuthorizeUri(responseType: string = 'code'): string {
         if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
 
         const params = _.chain({
-                response_type,
+                response_type: responseType,
                 client_id: this.clientId,
                 redirect_uri: this.redirectUri,
             })
@@ -87,11 +87,12 @@ export class HudAiClient {
             .join('&')
             .value();
 
-        return `${this.baseAuthUrl}/authorize?${params}`
+        return `${this.baseAuthUrl}/oauth2/authorize?${params}`
     }
 
     public refreshTokens(): Promise {
-        if (moment(this.tokenExpiresAt).isAfter(moment.now())) return Promise.resolve();
+        if (moment(this.tokenExpiresAt).isAfter(moment.now()))
+            return Promise.resolve(null);
 
         if (this.authorizationCode) return this.exchangeAuthCode();
 
@@ -125,11 +126,10 @@ export class HudAiClient {
     }
 
     private getTokens(data: TokenRequestData): Promise {
-        return this.requestManager.makeRequest({
-            method: 'POST',
-            data,
-            url: '/auth/oauth2/token'
-        })
+        return this.requestManager.makeRequest(
+            { method: 'POST', data, url: `${this.baseAuthUrl}/oauth2/token` },
+            { refreshTokens: false }
+        )
             .then((response) => {
                 this.accessToken = response.access_token;
                 if (response.refresh_token) this.refreshToken = response.refresh_token;

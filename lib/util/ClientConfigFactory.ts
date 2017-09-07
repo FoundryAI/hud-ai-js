@@ -11,9 +11,7 @@ export const Schema = {
     redirectUri: joi.string().uri(),
     baseApiUrl: joi.string().uri(),
     baseAuthUrl: joi.string().uri(),
-    request: joi.object({
-        // strictSSL: joi.boolean()
-    })
+    request: joi.object()
 };
 
 export function Factory (config: HudAiClientConfiguration): HudAiClientConfiguration {
