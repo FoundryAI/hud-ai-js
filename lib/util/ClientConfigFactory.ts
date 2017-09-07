@@ -3,7 +3,7 @@ import * as joi from 'joi';
 
 import { HudAiError } from './HudAiError';
 import { HudAiClientConfiguration } from '../HudAiClient';
-import { defaultConfig as defaultRequestConfig } from '../RequestManager';
+import { defaultAxiosConfig } from '../RequestManager';
 
 export const Schema = {
     clientId: joi.string().guid().required(),
@@ -22,6 +22,6 @@ export function Factory (config: HudAiClientConfiguration): HudAiClientConfigura
     return defaultsDeep(config, {
         baseApiUrl: 'https://api.hud.ai/v1',
         baseAuthUrl: 'https://auth.hud.ai',
-        request: defaultRequestConfig
+        request: defaultAxiosConfig
     });
 }

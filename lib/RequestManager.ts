@@ -15,7 +15,7 @@ export interface HudAiRequestAttributes {
 
 const clientVersion = require('../../package.json').version;
 
-const defaultAxiosConfig = <AxiosRequestConfig> {
+export const defaultAxiosConfig = <AxiosRequestConfig> {
     headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}` },
     // Use an agent with keep-alive enabled to avoid performing SSL handshake
     // per connection.

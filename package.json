@@ -37,6 +37,7 @@
     "@types/node": "^8.0.25",
     "@types/sinon-chai": "^2.7.28",
     "chai": "^4.1.1",
+    "chai-as-promised": "^7.1.1",
     "chai-interface": "^2.0.3",
     "chance": "^1.0.10",
     "mocha": "^3.5.0",
@@ -45,6 +46,7 @@
     "nyc": "^11.1.0",
     "sinon": "^3.2.0",
     "sinon-chai": "^2.13.0",
+    "typescript": "^2.5.2",
     "typings": "^2.1.1"
   },
   "dependencies": {

@@ -76,7 +76,6 @@ export class HudAiClient {
 
     // Defaults to the more secure 'code' option
     public getAuthorizeUri(response_type: string = 'code'): string {
-        if (!this.clientId) throw new HudAiError('cannot generate authorization URL without clientId');
         if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
 
         const params = _.chain({
@@ -91,11 +90,21 @@ export class HudAiClient {
         return `${this.baseAuthUrl}/authorize?${params}`
     }
 
-    public setAccessToken (accessToken: string) {
+    public refreshTokens(): Promise {
+        if (moment(this.tokenExpiresAt).isAfter(moment.now())) return Promise.resolve();
+
+        if (this.authorizationCode) return this.exchangeAuthCode();
+
+        if (this.refreshToken) return this.handleTokenRefresh();
+
+        if (this.clientSecret) return this.exchangeClientCredentials();
+    }
+
+    public setAccessToken(accessToken: string) {
         this.accessToken = accessToken;
     }
 
-    public setAuthorizationCode (authorizationCode: string) {
+    public setAuthorizationCode(authorizationCode: string) {
         this.authorizationCode = authorizationCode;
     }
 
@@ -109,7 +118,7 @@ export class HudAiClient {
             .then(() => { delete this.authorizationCode; })
     }
 
-    public exchangeClientCredentials(): Promise {
+    private exchangeClientCredentials(): Promise {
         return this.getTokens({
             grant_type: 'client_credentials'
         })
@@ -128,20 +137,10 @@ export class HudAiClient {
             });
     }
 
-    public handleTokenRefresh(): Promise {
+    private handleTokenRefresh(): Promise {
         return this.getTokens({
             grant_type: 'refresh_grant',
             refresh_token: this.refreshToken
         })
-    }
-
-    public refreshTokens(): Promise {
-        if (moment(this.tokenExpiresAt).isAfter(moment.now())) return Promise.resolve();
-
-        if (this.authorizationCode) return this.exchangeAuthCode();
-
-        if (this.refreshToken) return this.handleTokenRefresh();
-
-        if (this.clientSecret) return this.exchangeClientCredentials();
     }
 }
