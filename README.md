@@ -30,7 +30,7 @@ const client = HudAi.create({
 // Send the user to the authorization URL, where they can choose to grant your
 // app permissions to access the service on their behalf (if permission has
 // already been given, they'll automatically be redirected)
-window.location = client.getAuthorizeUri(); // => https://auth.hud.ai/oauth2/authorize?etc...
+window.location = client.getAuthorizeUri('token');
 
 // token will be returned as the query param `authToken` to your redirect URL
 const token = parseToken(window.location.search);
@@ -45,6 +45,8 @@ token becomes invalid (they're currently valid for 24 hours).
 Because servers can be trusted to keep a secret, setup is much more
 straightforward.
 
+Client Authentication:
+
 ```js
 const HudAi = require('hud-ai');
 
@@ -52,6 +54,21 @@ const client = HudAi.create({
   clientId: 'CLIENT_ID',
   clientSecret: 'CLIENT_SECRET'
 });
+```
+
+Acting on behalf of a user:
+
+```js
+const redirectUrl = client.getAuthorizeUri('code');
+
+// Send the user to the authorization URL, where they can choose to grant your
+// app permissions to access the service on their behalf (if permission has
+// already been given, they'll automatically be redirected)
+
+// the code to exchange will be returned as the query param `code` to your
+// redirect URL
+const code = parseToken(window.location.search);
+client.setAuthorizationCode(code);
 ```
 
 ### Additional Configuration

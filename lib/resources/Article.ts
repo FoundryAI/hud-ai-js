@@ -1,6 +1,5 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {RequestManager} from '../RequestManager';
-import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
 export interface Article {
@@ -58,7 +57,7 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
 }
 
 export class ArticleResource extends Resource<Article, ArticleListAttributes, ArticleCreateAttributes, ArticleUpdateAttributes> {
-    constructor(apiSession: Session, requestManager: RequestManager) {
-        super('/articles', apiSession, requestManager);
+    constructor(requestManager: RequestManager) {
+        super('/articles', requestManager);
     }
 }

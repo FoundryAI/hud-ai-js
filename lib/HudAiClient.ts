@@ -1,22 +1,39 @@
-import { ArticleResource } from './resources/Article';
-import {Factory, HudAiClientConfiguration} from './util/ClientConfigFactory';
-import {RequestManager} from './RequestManager';
-import {ArticleHighlightResource} from './resources/ArticleHighlight';
-import {CompanyResource} from './resources/Company';
-import {DomainResource} from './resources/Domain';
-import {KeyTermResource} from './resources/KeyTerm';
-import {TextCorpusResource} from './resources/TextCorpus';
-import {UserResource} from './resources/User';
-import {TokenManager} from './TokenManager';
-import {Session} from './Session';
 import * as _ from 'lodash';
 import * as Promise from 'bluebird';
+import * as moment from 'moment';
+
+import { TokenRequestData } from './util/TokenExchange';
+
+import { Factory } from './util/ClientConfigFactory';
+import { RequestManager } from './RequestManager';
+import { HudAiError } from './util/HudAiError';
+
+import {
+    ArticleResource,
+    ArticleHighlightResource,
+    CompanyResource,
+    DomainResource,
+    KeyTermResource,
+    TextCorpusResource,
+    UserResource,
+} from './resources';
+
+
+export interface HudAiClientConfiguration {
+    clientId: string;
+    clientSecret?: string;
+    redirectUri?: string;
+    baseApiUrl?: string;
+    baseAuthUrl?: string;
+    request?: object;
+}
 
 export class HudAiClient {
-    public config: HudAiClientConfiguration;
-    public apiSession: Session;
-    public requestManager: RequestManager;
-    public tokenManager: TokenManager;
+    public baseApiUrl: string;
+    public accessToken?: string;
+    public refreshToken?: string;
+    public tokenExpiresAt?: Date;
+
     public article: ArticleResource;
     public articleHighlight: ArticleHighlightResource;
     public company: CompanyResource;
@@ -25,43 +42,110 @@ export class HudAiClient {
     public textCorpus: TextCorpusResource;
     public user: UserResource;
 
+    private authorizationCode?: string;
+    private baseAuthUrl: string;
+    private clientId: string;
+    private clientSecret?: string;
+    private redirectUri?: string;
+
+    private requestManager: RequestManager;
+
     public static create (clientConfig: HudAiClientConfiguration) {
         const config = Factory(clientConfig);
-        const requestManager = new RequestManager(config);
-        const tokenManager = new TokenManager(config, requestManager);
-        const session = new Session(config, tokenManager);
-        return new HudAiClient(config, session, requestManager, tokenManager);
+        return new HudAiClient(config);
     }
 
-    constructor(config: HudAiClientConfiguration, apiSession: Session, requestManager: RequestManager, tokenManager: TokenManager) {
-        this.config = config;
-        this.apiSession = apiSession;
-        this.requestManager = requestManager;
-        this.tokenManager = tokenManager;
+    constructor(config: HudAiClientConfiguration) {
+        this.baseApiUrl = config.baseApiUrl || 'https://api.hud.ai';
+        this.baseAuthUrl = config.baseAuthUrl || 'https://auth.hud.ai';
+        if (config.redirectUri) this.redirectUri = config.redirectUri;
 
-        this.article = new ArticleResource(apiSession, requestManager);
-        this.articleHighlight = new ArticleHighlightResource(apiSession, requestManager);
-        this.company = new CompanyResource(apiSession, requestManager);
-        this.domain = new DomainResource(apiSession, requestManager);
-        this.keyTerm = new KeyTermResource(apiSession, requestManager);
-        this.textCorpus = new TextCorpusResource(apiSession, requestManager);
-        this.user = new UserResource(apiSession, requestManager);
+        this.clientId = config.clientId;
+        if (config.clientSecret) this.clientSecret = config.clientSecret;
+
+        this.requestManager = new RequestManager(this, config);
+
+        this.article = new ArticleResource(this.requestManager);
+        this.articleHighlight = new ArticleHighlightResource(this.requestManager);
+        this.company = new CompanyResource(this.requestManager);
+        this.domain = new DomainResource(this.requestManager);
+        this.keyTerm = new KeyTermResource(this.requestManager);
+        this.textCorpus = new TextCorpusResource(this.requestManager);
+        this.user = new UserResource(this.requestManager);
     }
 
-    getAuthorizeUri () {
-        return `${this.config.baseApiUrl}/${this.config.apiVersion}/auth/authorize?response_type=token&client_id=${this.config.clientId}&redirect_uri=${this.config.redirectUri}`
+    // Defaults to the more secure 'code' option
+    public getAuthorizeUri(response_type: string = 'code') {
+        if (!this.clientId) throw new HudAiError('cannot generate authorization URL without clientId');
+        if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
+
+        const params = _.chain({
+                response_type,
+                client_id: this.clientId,
+                redirect_uri: this.redirectUri,
+            })
+            .map((value, key) => `${key}=${value}`)
+            .join('&')
+            .value();
+
+        return `${this.baseAuthUrl}/authorize?${params}`
     }
 
-    getTokensClientCredentialsGrant() {
-        return this.tokenManager.getTokensClientCredentialsGrant();
+    public getAccessToken (): string | null {
+        return this.accessToken ? this.accessToken : null;
     }
 
-    getTokensAuthorizationGrant (authorizationCode: string) {
-        return this.tokenManager.getTokensAuthorizationGrant(authorizationCode);
+    public setAccessToken (accessToken: string) {
+        this.accessToken = accessToken;
     }
 
-    getTokensRefreshGrant (refreshToken) {
-        return this.tokenManager.getTokensRefreshGrant(refreshToken);
+    public setAuthorizationCode (authorizationCode: string) {
+        this.authorizationCode = authorizationCode;
     }
 
+    // Private
+
+    private exchangeAuthCode() {
+        return this.getTokens({
+            grant_type: 'authorization_code',
+            code: this.authorizationCode
+        })
+            .then(() => { delete this.authorizationCode; })
+    }
+
+    public exchangeClientCredentials() {
+        return this.getTokens({
+            grant_type: 'client_credentials'
+        })
+    }
+
+    private getTokens(data: TokenRequestData) {
+        return this.requestManager.makeRequest({
+            method: 'POST',
+            data,
+            url: '/auth/oauth2/token'
+        })
+            .then((response) => {
+                this.accessToken = response.access_token;
+                if (response.refresh_token) this.refreshToken = response.refresh_token;
+                this.tokenExpiresAt = moment().add(response.expires_in, 'ms').toDate();
+            });
+    }
+
+    public handleTokenRefresh() {
+        return this.getTokens({
+            grant_type: 'refresh_grant',
+            refresh_token: this.refreshToken
+        })
+    }
+
+    public refreshTokens(): Promise {
+        if (moment(this.tokenExpiresAt).isAfter(moment.now())) return Promise.resolve();
+
+        if (this.authorizationCode) return this.exchangeAuthCode();
+
+        if (this.refreshToken) return this.handleTokenRefresh();
+
+        if (this.clientSecret) return this.exchangeClientCredentials();
+    }
 }

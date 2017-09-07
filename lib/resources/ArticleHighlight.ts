@@ -1,6 +1,5 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {RequestManager} from '../RequestManager';
-import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
 export interface ArticleHighlightListAttributes extends HudAiListAttributes {
@@ -22,7 +21,7 @@ export interface ArticleHighlightUpdateAttributes extends HudAiUpdateAttributes 
 }
 
 export class ArticleHighlightResource extends Resource<any, ArticleHighlightListAttributes, ArticleHighlightCreateAttributes, ArticleHighlightUpdateAttributes> {
-    constructor(apiSession: Session, requestManager: RequestManager) {
-        super('/article-highlights', apiSession, requestManager);
+    constructor(requestManager: RequestManager) {
+        super('/article-highlights', requestManager);
     }
 }
