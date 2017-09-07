@@ -4,9 +4,7 @@ import * as Chance from 'chance';
 import {suite, test} from 'mocha-typescript';
 import {expect} from 'chai';
 
-import {Session} from '../lib/Session';
 import {HudAiClient} from '../lib/HudAiClient';
-import {TokenManager} from '../lib/TokenManager';
 import {RequestManager} from '../lib/RequestManager';
 
 import {ArticleResource} from '../lib/resources/Article';
@@ -24,7 +22,10 @@ class HudAiClientSpec {
 
     @test
     create() {
-        const config = {clientId: chance.guid(), clientSecret: chance.guid()};
+        const config = {
+            clientId: chance.guid(),
+            clientSecret: chance.guid()
+        };
         const client = HudAiClient.create(config);
         expect(client).to.be.an.instanceOf(HudAiClient);
         expect(client.apiSession).to.be.an.instanceOf(Session);
@@ -51,6 +52,86 @@ class HudAiClientSpec {
         const client = HudAiClient.create(config);
         const authorizeUri = client.getAuthorizeUri();
         expect(authorizeUri).to.equal(`https://api.hud.ai/v1/auth/authorize?response_type=token&client_id=${config.clientId}&redirect_uri=${config.redirectUri}`);
+    }
+
+}
+
+
+@suite
+class TokenManagerSpec {
+    private config: HudAiClientConfiguration;
+    private requestManager: RequestManager;
+
+    before() {
+        nock('https://api.hud.ai/v1')
+            .post('/auth/oauth2/token')
+            .reply(200, tokensInfo);
+
+        this.config = Factory({ clientId: chance.guid(), clientSecret: chance.guid() });
+        this.requestManager = new RequestManager(this.config);
+    }
+
+    @test
+    static() {
+        expect(TokenManager.isAccessTokenValid).to.be.a('function');
+    }
+
+    @test
+    instantiate() {
+        const tokenManager = new TokenManager(this.config, this.requestManager);
+        expect(tokenManager).to.be.an.instanceOf(TokenManager);
+        expect(tokenManager.getTokensClientCredentialsGrant).to.be.a('function');
+        expect(tokenManager.getTokensRefreshGrant).to.be.a('function');
+    }
+
+    @test
+    getTokensClientCredentialsGrant() {
+        const tokenManager = new TokenManager(this.config, this.requestManager);
+        return tokenManager.getTokensClientCredentialsGrant()
+            .then((tokensInfo: TokenInfo) => {
+                expect(tokensInfo.accessToken).to.equal(accessToken);
+                expect(tokensInfo.refreshToken).to.equal(refreshToken);
+            })
+    }
+
+    @test
+    getTokensAuthorizationGrant() {
+        const tokenManager = new TokenManager(this.config, this.requestManager);
+        return tokenManager.getTokensAuthorizationGrant('myfakeauthorizationcode')
+            .then((tokensInfo: TokenInfo) => {
+                expect(tokensInfo.accessToken).to.equal(accessToken);
+                expect(tokensInfo.refreshToken).to.equal(refreshToken);
+            })
+    }
+
+    @test
+    getTokensRefreshGrant() {
+        const tokenManager = new TokenManager(this.config, this.requestManager);
+        return tokenManager.getTokensRefreshGrant(refreshToken)
+            .then((tokensInfo: TokenInfo) => {
+                expect(tokensInfo.accessToken).to.equal(accessToken);
+                expect(tokensInfo.refreshToken).to.equal(refreshToken);
+            })
+    }
+
+    @test
+    isAccessTokenValid() {
+        expect(TokenManager.isAccessTokenValid({
+            accessToken,
+            refreshToken,
+            accessTokenTTLMS: 86400000,
+            accessTokenAcquiredAtMS: +moment()
+        })).to.be.true;
+    }
+
+    @test
+    isAccessTokenInvalid() {
+        expect(TokenManager.isAccessTokenValid({
+            accessToken,
+            refreshToken,
+            accessTokenTTLMS: 86400000,
+            accessTokenAcquiredAtMS: +moment().subtract(2, 'days')
+        })).to.be.false;
     }
 
 }

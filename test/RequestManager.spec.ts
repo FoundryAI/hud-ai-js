@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'test';
-
 import * as nock from 'nock';
 import * as Chance from 'chance';
 import {suite, test} from 'mocha-typescript';
