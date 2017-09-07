@@ -13,7 +13,7 @@ export interface HudAiRequestAttributes {
     url: string;
 }
 
-const clientVersion = require('../../package.json').version;
+const clientVersion = require('../package.json').version;
 
 export const defaultAxiosConfig = <AxiosRequestConfig> {
     headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}` },

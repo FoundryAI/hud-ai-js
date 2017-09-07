@@ -30,8 +30,6 @@ const clientSideConfig = {
 @suite
 class HudAiClientSpec {
 
-    before() {}
-
     @test
     create() {
         const client = HudAiClient.create(minimumConfig);
@@ -76,9 +74,9 @@ class HudAiClientSpec {
         const authorizeUri = client.getAuthorizeUri('token');
         expect(authorizeUri).to.equal(
             'https://api.hud.ai/v1/auth/authorize?' +
-            'response_type=token' +
-            `&client_id=${clientSideConfig.clientId}` +
-            `&redirect_uri=${clientSideConfig.redirectUri}`
+                'response_type=token' +
+                `&client_id=${clientSideConfig.clientId}` +
+                `&redirect_uri=${clientSideConfig.redirectUri}`
         );
     }
 
@@ -88,9 +86,9 @@ class HudAiClientSpec {
         const authorizeUri = client.getAuthorizeUri('code');
         expect(authorizeUri).to.equal(
             'https://api.hud.ai/v1/auth/authorize?' +
-            'response_type=code' +
-            `&client_id=${clientSideConfig.clientId}` +
-            `&redirect_uri=${clientSideConfig.redirectUri}`
+                'response_type=code' +
+                `&client_id=${clientSideConfig.clientId}` +
+                `&redirect_uri=${clientSideConfig.redirectUri}`
         );
     }
 
