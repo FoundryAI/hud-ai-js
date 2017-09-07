@@ -6,15 +6,8 @@ import { expect } from 'chai';
 
 import { HudAiClient, HudAiClientConfiguration } from '../lib/HudAiClient';
 import { RequestManager } from '../lib/RequestManager';
+import * as resources from '../lib/resources';
 import { HudAiError } from '../lib/util/HudAiError';
-
-import { ArticleResource } from '../lib/resources/Article';
-import { ArticleHighlightResource } from '../lib/resources/ArticleHighlight';
-import { CompanyResource } from '../lib/resources/Company';
-import { DomainResource } from '../lib/resources/Domain';
-import { KeyTermResource } from '../lib/resources/KeyTerm';
-import { TextCorpusResource } from '../lib/resources/TextCorpus';
-import { UserResource } from '../lib/resources/User';
 
 nock.disableNetConnect();
 
@@ -49,13 +42,13 @@ class HudAiClientSpec {
         expect(client.setAccessToken).to.be.a('function');
         expect(client.setAuthorizationCode).to.be.a('function');
 
-        expect(client.article).to.be.an.instanceOf(ArticleResource);
-        expect(client.articleHighlight).to.be.an.instanceOf(ArticleHighlightResource);
-        expect(client.company).to.be.an.instanceOf(CompanyResource);
-        expect(client.domain).to.be.an.instanceOf(DomainResource);
-        expect(client.keyTerm).to.be.an.instanceOf(KeyTermResource);
-        expect(client.textCorpus).to.be.an.instanceOf(TextCorpusResource);
-        expect(client.user).to.be.an.instanceOf(UserResource);
+        expect(client.article).to.be.an.instanceOf(resources.ArticleResource);
+        expect(client.articleHighlight).to.be.an.instanceOf(resources.ArticleHighlightResource);
+        expect(client.company).to.be.an.instanceOf(resources.CompanyResource);
+        expect(client.domain).to.be.an.instanceOf(resources.DomainResource);
+        expect(client.keyTerm).to.be.an.instanceOf(resources.KeyTermResource);
+        expect(client.textCorpus).to.be.an.instanceOf(resources.TextCorpusResource);
+        expect(client.user).to.be.an.instanceOf(resources.UserResource);
     }
 
     @test
