@@ -1,8 +1,7 @@
 import * as Promise from 'bluebird';
 import * as _ from 'lodash'
 
-import {HudAiRequestAttributes, RequestManager} from './RequestManager';
-import {Session} from './Session';
+import { HudAiRequestAttributes, RequestManager } from './RequestManager';
 
 
 export interface HudAiListAttributes {
@@ -10,40 +9,22 @@ export interface HudAiListAttributes {
     offset: number;
 }
 
-export interface  HudAiCreateAttributes {
+export interface  HudAiCreateAttributes {}
 
-}
-
-export interface HudAiUpdateAttributes {
-
-}
+export interface HudAiUpdateAttributes {}
 
 export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAiCreateAttributes, U extends HudAiUpdateAttributes> {
 
     protected basePath: string;
-    public apiSession: Session;
     protected requestManager: RequestManager;
 
-    constructor(basePath: string, apiSession: Session, requestManager: RequestManager) {
+    constructor(basePath: string, requestManager: RequestManager) {
         this.basePath = basePath;
-        this.apiSession = apiSession;
         this.requestManager = requestManager;
     }
 
     public makeRequest(options: HudAiRequestAttributes) {
-        return Promise.resolve(this.apiSession.getAccessToken())
-        .then(accessToken => {
-            const requestArgs = _.defaultsDeep(options, {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`
-                }
-            });
-            return this.requestManager.makeRequest(<HudAiRequestAttributes>requestArgs);
-        })
-        .catch(err => {
-            if (err.statusCode === 401) return this.apiSession.handleExpiredToken(err);
-            throw err;
-        })
+        return this.requestManager.makeRequest(options);
     }
 
     public get(id: string|number) : Promise<T> {

@@ -1,7 +1,6 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import * as Promise from 'bluebird';
 import {RequestManager} from '../RequestManager';
-import {Session} from '../Session';
 
 export interface TextCorpus {
     id: string;
@@ -30,7 +29,7 @@ export interface TextCorpusUpdateAttributes extends HudAiUpdateAttributes {
 }
 
 export class TextCorpusResource extends Resource<TextCorpus, TextCorpusListAttributes, TextCorpusCreateAttributes, TextCorpusUpdateAttributes> {
-    constructor(apiSession: Session, requestManager: RequestManager) {
-        super('/text-corpora', apiSession, requestManager);
+    constructor(requestManager: RequestManager) {
+        super('/text-corpora', requestManager);
     }
 }

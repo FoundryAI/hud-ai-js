@@ -1,6 +1,5 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {RequestManager} from '../RequestManager';
-import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
 export interface KeyTerm {
@@ -18,7 +17,7 @@ export interface KeyTermCreateAttributes extends HudAiCreateAttributes {
 }
 
 export class KeyTermResource extends Resource<KeyTerm, KeyTermListAttributes, KeyTermCreateAttributes, HudAiUpdateAttributes> {
-    constructor(apiSession: Session, requestManager: RequestManager) {
-        super('/key-terms', apiSession, requestManager);
+    constructor(requestManager: RequestManager) {
+        super('/key-terms', requestManager);
     }
 }

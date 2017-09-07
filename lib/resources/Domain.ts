@@ -1,6 +1,5 @@
 import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
 import {RequestManager} from '../RequestManager';
-import {Session} from '../Session';
 import * as Promise from 'bluebird';
 
 export interface Domain {
@@ -25,7 +24,7 @@ export interface DomainUpdateAttributes extends HudAiUpdateAttributes {
 
 export class DomainResource extends Resource<Domain, DomainListAttributes, DomainCreateAttributes, DomainUpdateAttributes> {
 
-    constructor(apiSession: Session, requestManager: RequestManager) {
-        super('/domains', apiSession, requestManager);
+    constructor(requestManager: RequestManager) {
+        super('/domains', requestManager);
     }
 }

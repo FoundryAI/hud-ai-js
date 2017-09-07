@@ -1,18 +1,15 @@
-process.env.NODE_ENV = 'test';
-
 import * as nock from 'nock';
 import * as Chance from 'chance';
-import {suite, test} from 'mocha-typescript';
+import { suite, test } from 'mocha-typescript';
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
-
-import {Factory, HudAiClientConfiguration} from '../../lib/util/ClientConfigFactory';
-import {TokenManager} from '../../lib/TokenManager';
-import {RequestManager} from '../../lib/RequestManager';
 import * as moment from 'moment';
-import {ArticleResource} from '../../lib/resources/Article';
-import {Session} from '../../lib/Session';
+
+import { Factory } from '../../lib/util/ClientConfigFactory';
+import { HudAiClient, HudAiClientConfiguration } from '../../lib/HudAiClient';
+import { RequestManager } from '../../lib/RequestManager';
+import { ArticleResource } from '../../lib/resources/Article';
 
 chai.use(sinonChai);
 nock.disableNetConnect();
@@ -27,16 +24,14 @@ const refreshToken = chance.guid();
 class ArticleSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
-    private tokenManager: TokenManager;
-    private session: Session;
     private requestManager: RequestManager;
+    private client: HudAiClient;
 
     before() {
         this.sandbox = sinon.sandbox.create();
         this.config = Factory({ clientId, clientSecret });
-        this.requestManager = new RequestManager(this.config);
-        this.tokenManager = new TokenManager(this.config, this.requestManager);
-        this.session = new Session(this.config, this.tokenManager);
+        this.client = new HudAiClient(this.config);
+        this.requestManager = new RequestManager(this.client, this.config);
     }
 
     after() {
@@ -45,8 +40,8 @@ class ArticleSpec {
 
     @test
     instantiate() {
-        const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
-        const articleResource = new ArticleResource(this.session, this.requestManager);
+        const config = Factory({ clientId: chance.guid(), clientSecret: chance.guid() });
+        const articleResource = new ArticleResource(this.requestManager);
         expect(articleResource.get).to.be.a('function');
         expect(articleResource.list).to.be.a('function');
         expect(articleResource.create).to.be.a('function');
