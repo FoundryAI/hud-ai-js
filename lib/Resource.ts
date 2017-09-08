@@ -1,7 +1,7 @@
 import * as Promise from 'bluebird';
 import * as _ from 'lodash'
 
-import { HudAiRequestAttributes, RequestManager } from './RequestManager';
+import { RequestOptions, RequestManager } from './RequestManager';
 
 
 export interface HudAiListAttributes {
@@ -23,7 +23,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         this.requestManager = requestManager;
     }
 
-    public makeRequest(options: HudAiRequestAttributes) {
+    public makeRequest(options: RequestOptions) {
         return this.requestManager.makeRequest(options);
     }
 
