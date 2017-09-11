@@ -1,14 +1,14 @@
 import * as Chance from 'chance';
 import * as moment from 'moment';
 import * as nock from 'nock';
-import { suite, test } from 'mocha-typescript';
+import {suite, test} from 'mocha-typescript';
 import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 
-import { HudAiClient, HudAiClientConfiguration } from '../lib/HudAiClient';
-import { RequestManager } from '../lib/RequestManager';
+import {HudAiClient, HudAiClientConfiguration} from '../lib/HudAiClient';
+import {RequestManager} from '../lib/RequestManager';
 import * as resources from '../lib/resources';
-import { HudAiError } from '../lib/util/HudAiError';
+import {HudAiError} from '../lib/util/HudAiError';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
@@ -65,9 +65,9 @@ class HudAiClientSpec {
         const authorizeUri = client.getAuthorizeUri();
         expect(authorizeUri).to.equal(
             'https://auth.hud.ai/oauth2/authorize' +
-                '?response_type=code' +
-                `&client_id=${clientSideConfig.clientId}` +
-                `&redirect_uri=${clientSideConfig.redirectUri}`
+            '?response_type=code' +
+            `&client_id=${clientSideConfig.clientId}` +
+            `&redirect_uri=${clientSideConfig.redirectUri}`
         );
     }
 
@@ -77,9 +77,9 @@ class HudAiClientSpec {
         const authorizeUri = client.getAuthorizeUri('token');
         expect(authorizeUri).to.equal(
             'https://auth.hud.ai/oauth2/authorize' +
-                '?response_type=token' +
-                `&client_id=${clientSideConfig.clientId}` +
-                `&redirect_uri=${clientSideConfig.redirectUri}`
+            '?response_type=token' +
+            `&client_id=${clientSideConfig.clientId}` +
+            `&redirect_uri=${clientSideConfig.redirectUri}`
         );
     }
 
@@ -89,9 +89,9 @@ class HudAiClientSpec {
         const authorizeUri = client.getAuthorizeUri('code');
         expect(authorizeUri).to.equal(
             'https://auth.hud.ai/oauth2/authorize' +
-                '?response_type=code' +
-                `&client_id=${clientSideConfig.clientId}` +
-                `&redirect_uri=${clientSideConfig.redirectUri}`
+            '?response_type=code' +
+            `&client_id=${clientSideConfig.clientId}` +
+            `&redirect_uri=${clientSideConfig.redirectUri}`
         );
     }
 
@@ -112,28 +112,32 @@ class HudAiClientSpec {
 
     @test
     '#refreshTokens with an authorization code'() {
+        const code = chance.guid();
         const client = HudAiClient.create(serverSideConfig);
 
-        client['authorizationCode'] = chance.guid();
+        client['authorizationCode'] = code;
 
         nock('https://auth.hud.ai')
-            .post('/oauth2/token')
-            .reply(200, this.authResponse);
+        .post('/oauth2/token', {
+            grant_type: 'authorization_code',
+            code
+        })
+        .reply(200, this.authResponse);
 
         return client.refreshTokens()
-            .then(() => {
-                expect(client['authorizationCode']).to.be.undefined;
+        .then(() => {
+            expect(client['authorizationCode']).to.be.undefined;
 
-                expect(client.accessToken).to.equal(this.authResponse.access_token);
+            expect(client.accessToken).to.equal(this.authResponse.access_token);
 
-                expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
+            expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
 
-                const expectedExpiration = moment.now() + this.authResponse.expires_in;
-                expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    moment(expectedExpiration - 100).unix(),
-                    moment(expectedExpiration + 100).unix()
-                );
-            })
+            const expectedExpiration = moment.now() + this.authResponse.expires_in;
+            expect(moment(client.tokenExpiresAt).unix()).to.be.within(
+                moment(expectedExpiration - 100).unix(),
+                moment(expectedExpiration + 100).unix()
+            );
+        })
     }
 
     @test
@@ -143,21 +147,24 @@ class HudAiClientSpec {
         client.refreshToken = chance.guid();
 
         nock('https://auth.hud.ai')
-            .post('/oauth2/token')
-            .reply(200, this.authResponse);
+        .post('/oauth2/token', {
+            grant_type: 'refresh_grant',
+            refresh_token: client.refreshToken
+        })
+        .reply(200, this.authResponse);
 
         return client.refreshTokens()
-            .then(() => {
-                expect(client.accessToken).to.equal(this.authResponse.access_token);
+        .then(() => {
+            expect(client.accessToken).to.equal(this.authResponse.access_token);
 
-                expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
+            expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
 
-                const expectedExpiration = moment.now() + this.authResponse.expires_in;
-                expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    moment(expectedExpiration - 100).unix(),
-                    moment(expectedExpiration + 100).unix()
-                );
-            })
+            const expectedExpiration = moment.now() + this.authResponse.expires_in;
+            expect(moment(client.tokenExpiresAt).unix()).to.be.within(
+                moment(expectedExpiration - 100).unix(),
+                moment(expectedExpiration + 100).unix()
+            );
+        })
     }
 
     @test
@@ -165,21 +172,23 @@ class HudAiClientSpec {
         const client = HudAiClient.create(serverSideConfig);
 
         nock('https://auth.hud.ai')
-            .post('/oauth2/token')
-            .reply(200, this.authResponse);
+        .post('/oauth2/token', {
+            grant_type: 'client_credentials'
+        })
+        .reply(200, this.authResponse);
 
         return client.refreshTokens()
-            .then(() => {
-                expect(client.accessToken).to.equal(this.authResponse.access_token);
+        .then(() => {
+            expect(client.accessToken).to.equal(this.authResponse.access_token);
 
-                expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
+            expect(client.refreshToken).to.equal(this.authResponse.refresh_token);
 
-                const expectedExpiration = moment.now() + this.authResponse.expires_in;
-                expect(moment(client.tokenExpiresAt).unix()).to.be.within(
-                    moment(expectedExpiration - 100).unix(),
-                    moment(expectedExpiration + 100).unix()
-                );
-            })
+            const expectedExpiration = moment.now() + this.authResponse.expires_in;
+            expect(moment(client.tokenExpiresAt).unix()).to.be.within(
+                moment(expectedExpiration - 100).unix(),
+                moment(expectedExpiration + 100).unix()
+            );
+        })
     }
 
     @test
