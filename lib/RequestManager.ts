@@ -67,7 +67,7 @@ export class RequestManager {
 
     buildAxiosOptions(options: RequestOptions) {
         return {
-            body: options.data,
+            data: options.data,
             method: options.method,
             params: options.params,
             url: this.buildUrl(options.url, options.params),
