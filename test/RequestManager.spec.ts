@@ -35,8 +35,25 @@ class RequestManagerSpec {
 
     @test makeRequest() {
         const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
-        const requestManager = new RequestManager(this.client, this.config);
+        const requestManager = new RequestManager(this.client, config);
         nock('https://api.hud.ai/v1')
+        .get('/')
+        .query(true)
+        .reply(200, 'ok');
+
+        // TODO - come back to this and check spy.calledWith
+        return requestManager.makeRequest({
+            method: 'GET',
+            url: '/',
+            params: { test: 'param' }
+        })
+    }
+
+    @test makeRequestWithPort() {
+        const config = Factory({clientId: chance.guid(), clientSecret: chance.guid()});
+        const client = new HudAiClient({ clientId: chance.guid(), baseApiUrl: 'http://localhost:3000/v1' });
+        const requestManager = new RequestManager(client, config);
+        nock('http://localhost:3000/v1')
         .get('/')
         .query(true)
         .reply(200, 'ok');

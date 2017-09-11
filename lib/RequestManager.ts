@@ -31,7 +31,7 @@ export const defaultAxiosConfig = <AxiosRequestConfig> {
     responseType: 'json',
     // Standard 10s timeout
     timeout: 10000
-}
+};
 
 export class RequestManager {
     private axios: AxiosInstance;
@@ -52,7 +52,7 @@ export class RequestManager {
     public makeRequest(requestOptions: RequestOptions, options: MakeRequestOptions = {}) {
         if (options.refreshTokens == undefined) options.refreshTokens = true;
 
-        return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : null)
+        return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : undefined)
             .then(() => {
                 const axiosOptions = this.buildAxiosOptions(requestOptions);
                 const token = this.client.accessToken;
