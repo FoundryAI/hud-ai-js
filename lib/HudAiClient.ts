@@ -90,15 +90,17 @@ export class HudAiClient {
         return `${this.baseAuthUrl}/oauth2/authorize?${params}`
     }
 
-    public refreshTokens(): Promise {
+    public refreshTokens(): Promise<void> {
         if (moment(this.tokenExpiresAt).isAfter(moment.now()))
-            return Promise.resolve(null);
+            return Promise.resolve();
 
         if (this.authorizationCode) return this.exchangeAuthCode();
 
         if (this.refreshToken) return this.handleTokenRefresh();
 
         if (this.clientSecret) return this.exchangeClientCredentials();
+
+        return Promise.resolve();
     }
 
     public setAccessToken(accessToken: string) {
@@ -111,7 +113,7 @@ export class HudAiClient {
 
     // Private
 
-    private exchangeAuthCode(): Promise {
+    private exchangeAuthCode(): Promise<void> {
         return this.getTokens({
             grant_type: 'authorization_code',
             code: this.authorizationCode
@@ -119,13 +121,13 @@ export class HudAiClient {
             .then(() => { delete this.authorizationCode; })
     }
 
-    private exchangeClientCredentials(): Promise {
+    private exchangeClientCredentials(): Promise<void> {
         return this.getTokens({
             grant_type: 'client_credentials'
         })
     }
 
-    private getTokens(data: TokenRequestData): Promise {
+    private getTokens(data: TokenRequestData): Promise<void> {
         return this.requestManager.makeRequest(
             { method: 'POST', data, url: `${this.baseAuthUrl}/oauth2/token` },
             { refreshTokens: false }
@@ -137,8 +139,8 @@ export class HudAiClient {
             });
     }
 
-    private handleTokenRefresh(): Promise {
-        return this.getTokens({
+    private handleTokenRefresh(): Promise<void> {
+            return this.getTokens({
             grant_type: 'refresh_grant',
             refresh_token: this.refreshToken
         })

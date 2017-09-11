@@ -107,7 +107,7 @@ class HudAiClientSpec {
 
         client.tokenExpiresAt = moment().add(1, 'day').toDate();
 
-        return expect(client.refreshTokens()).to.eventually.be.null;
+        return expect(client.refreshTokens()).to.eventually.be.undefined;
     }
 
     @test
