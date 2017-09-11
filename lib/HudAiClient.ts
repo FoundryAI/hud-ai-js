@@ -128,10 +128,16 @@ export class HudAiClient {
     }
 
     private getTokens(data: TokenRequestData): Promise<void> {
-        return this.requestManager.makeRequest(
-            { method: 'POST', data, url: `${this.baseAuthUrl}/oauth2/token` },
-            { refreshTokens: false }
-        )
+        const payload = _.merge({
+            client_id: this.clientId,
+            client_secret: this.clientSecret,
+        }, data);
+
+        return this.requestManager.makeRequest({
+                method: 'POST',
+                data: payload,
+                url: `${this.baseAuthUrl}/oauth2/token`
+            }, { refreshTokens: false })
             .then((response) => {
                 this.accessToken = response.access_token;
                 if (response.refresh_token) this.refreshToken = response.refresh_token;
