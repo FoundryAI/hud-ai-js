@@ -34,6 +34,15 @@ export class HudAiClient {
     public refreshToken?: string;
     public tokenExpiresAt?: Date;
 
+    public articles: ArticleResource;
+    public articleHighlights: ArticleHighlightResource;
+    public companies: CompanyResource;
+    public domains: DomainResource;
+    public keyTerms: KeyTermResource;
+    public textCorpora: TextCorpusResource;
+    public users: UserResource;
+
+    // Deprecated
     public article: ArticleResource;
     public articleHighlight: ArticleHighlightResource;
     public company: CompanyResource;
@@ -65,13 +74,15 @@ export class HudAiClient {
 
         this.requestManager = new RequestManager(this, config);
 
-        this.article = new ArticleResource(this.requestManager);
-        this.articleHighlight = new ArticleHighlightResource(this.requestManager);
-        this.company = new CompanyResource(this.requestManager);
-        this.domain = new DomainResource(this.requestManager);
-        this.keyTerm = new KeyTermResource(this.requestManager);
-        this.textCorpus = new TextCorpusResource(this.requestManager);
-        this.user = new UserResource(this.requestManager);
+        this.articles = new ArticleResource(this.requestManager);
+        this.articleHighlights = new ArticleHighlightResource(this.requestManager);
+        this.companies = new CompanyResource(this.requestManager);
+        this.domains = new DomainResource(this.requestManager);
+        this.keyTerms = new KeyTermResource(this.requestManager);
+        this.textCorpora = new TextCorpusResource(this.requestManager);
+        this.users = new UserResource(this.requestManager);
+
+        this.addDeprecatedAttributes();
     }
 
     // Defaults to the more secure 'code' option
@@ -112,6 +123,16 @@ export class HudAiClient {
     }
 
     // Private
+
+    private addDeprecatedAttributes(): Promise<void> {
+        this.article = this.articles;
+        this.articleHighlight = this.articleHighlights;
+        this.company = this.companies;
+        this.domain = this.domains;
+        this.keyTerm = this.keyTerms;
+        this.textCorpus = this.textCorpora;
+        this.user = this.users;
+    }
 
     private exchangeAuthCode(): Promise<void> {
         return this.getTokens({

@@ -56,7 +56,12 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
     type?: string;
 }
 
-export class ArticleResource extends Resource<Article, ArticleListAttributes, ArticleCreateAttributes, ArticleUpdateAttributes> {
+export class ArticleResource extends Resource<
+    Article,
+    ArticleListAttributes,
+    ArticleCreateAttributes,
+    ArticleUpdateAttributes
+> {
     constructor(requestManager: RequestManager) {
         super('/articles', requestManager);
     }
