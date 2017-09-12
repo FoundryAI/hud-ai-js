@@ -20,7 +20,7 @@ export interface MakeRequestOptions {
 const clientVersion = require('../package.json').version;
 
 export const defaultAxiosConfig = <AxiosRequestConfig> {
-    headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}` },
+    headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}`},
     // Use an agent with keep-alive enabled to avoid performing SSL handshake
     // per connection.
     httpsAgent: new HttpsAgent({ keepAlive: true, rejectUnauthorized: true }),
@@ -50,6 +50,7 @@ export class RequestManager {
     }
 
     public makeRequest(requestOptions: RequestOptions, options: MakeRequestOptions = {}) {
+        console.log('requestOptions', requestOptions)
         if (options.refreshTokens == undefined) options.refreshTokens = true;
 
         return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : undefined)
