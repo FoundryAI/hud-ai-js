@@ -21,6 +21,7 @@ import {
     TextCorpusResource,
     UserResource,
     UserDigestSubscriptionResource,
+    UserKeyTermResource,
 } from './resources';
 
 
@@ -51,6 +52,7 @@ export class HudAiClient {
     public textCorpora: TextCorpusResource;
     public users: UserResource;
     public userDigestSubscriptions: UserDigestSubscriptionResource;
+    public userKeyTerms: UserKeyTermResource;
 
     // Deprecated
     public article: ArticleResource;
@@ -96,6 +98,7 @@ export class HudAiClient {
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
+        this.userKeyTerms = new UserKeyTermResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }

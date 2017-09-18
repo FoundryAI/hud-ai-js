@@ -10,3 +10,4 @@ export { RelevantArticleResource } from './RelevantArticle';
 export { TextCorpusResource } from './TextCorpus';
 export { UserResource } from './User';
 export { UserDigestSubscriptionResource } from './UserDigestSubscription';
+export { UserKeyTermResource } from './UserKeyTerm';
