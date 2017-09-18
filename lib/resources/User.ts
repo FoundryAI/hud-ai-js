@@ -19,6 +19,9 @@ export interface User {
 export interface UserListAttributes extends HudAiListAttributes {
     name?: string;
     email?: string;
+    digestSubscriptionDay?: string;
+    digestSubscriptionHour?: string;
+    keyTerm?: string;
 }
 
 export interface UserCreateAttributes extends HudAiCreateAttributes {

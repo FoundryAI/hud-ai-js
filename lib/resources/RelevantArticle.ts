@@ -10,13 +10,13 @@ import { RequestManager } from '../RequestManager';
 
 export interface RelevantArticle {
     id: string;
-    userId: string;
-    articleId: string;
-    score: number;
-    scoredAt: Date;
-    articlePublishedAt: Date;
     createdAt: Date;
     updatedAt: Date;
+    articleId: string;
+    articlePublishedAt: Date;
+    score: number;
+    scoredAt: Date;
+    userId: string;
 }
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {

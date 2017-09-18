@@ -12,18 +12,18 @@ export interface Article {
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    type: string;
-    title: string;
-    text: string;
+    articleKeyTerms: string[];
+    authors: string[];
     imageUrl: string;
-    rawDataUrl: string;
     importanceScore: number;
     linkHash: string;
     linkUrl: string;
-    sourceUrl: string;
     publishedAt: Date;
-    authors: string[];
-    articleKeyTerms: string[];
+    rawDataUrl: string;
+    sourceUrl: string;
+    text: string;
+    title: string;
+    type: string;
 }
 
 export interface ArticleListAttributes extends HudAiListAttributes {
@@ -72,20 +72,20 @@ export class ArticleResource extends Resource<
         super('/articles', requestManager);
     }
 
-    public get(id: string | number): Promise<Article> {
-        return this._get(id);
-    }
-
     public list(listArgs: ArticleListAttributes): Promise<Article[]> {
         return this._list(listArgs);
     }
 
-    public update(id: string | number, updateArgs: ArticleUpdateAttributes) {
-        return this._update(id, updateArgs);
-    }
-
     public create(createArgs: ArticleCreateAttributes) {
         return this._create(createArgs);
+    }
+
+    public get(id: string | number): Promise<Article> {
+        return this._get(id);
+    }
+
+    public update(id: string | number, updateArgs: ArticleUpdateAttributes) {
+        return this._update(id, updateArgs);
     }
 
     public del(id: string | number) {
