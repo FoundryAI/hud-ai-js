@@ -50,7 +50,6 @@ export class RequestManager {
     }
 
     public makeRequest(requestOptions: RequestOptions, options: MakeRequestOptions = {}) {
-        console.log('requestOptions', requestOptions)
         if (options.refreshTokens == undefined) options.refreshTokens = true;
 
         return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : undefined)

@@ -36,7 +36,12 @@ export interface CompanyKeyTermDestroyAttributes {
     term: string;
 }
 
-export class CompanyResource extends Resource<CompanyKeyTerm, CompanyKeyTermListAttributes, CompanyKeyTermCreateAttributes, any> {
+export class CompanyKeyTermResource extends Resource<
+    CompanyKeyTerm,
+    CompanyKeyTermListAttributes,
+    CompanyKeyTermCreateAttributes,
+    any
+> {
     constructor(requestManager: RequestManager) {
         super('/companies/{companyId}/key-terms', requestManager);
     }
