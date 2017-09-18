@@ -71,6 +71,10 @@ export class CompanyKeyTermResource extends Resource<
     }
 
     public del(destroyArgs: CompanyKeyTermDestroyAttributes) {
+        return this.destroy(destroyArgs)
+    }
+
+    public destroy(destroyArgs: CompanyKeyTermDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,

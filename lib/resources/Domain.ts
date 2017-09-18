@@ -55,6 +55,10 @@ export class DomainResource extends Resource<
     }
 
     public del(id: string | number) {
-        return this._del(id);
+        return this.destroy(id);
+    }
+
+    public destroy(id: string | number) {
+        return this._destroy(id);
     }
 }

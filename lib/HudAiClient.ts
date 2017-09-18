@@ -20,6 +20,7 @@ import {
     RelevantArticleResource,
     TextCorpusResource,
     UserResource,
+    UserDigestSubscriptionResource,
 } from './resources';
 
 
@@ -49,6 +50,7 @@ export class HudAiClient {
     public relevantArticles: RelevantArticleResource;
     public textCorpora: TextCorpusResource;
     public users: UserResource;
+    public userDigestSubscriptions: UserDigestSubscriptionResource;
 
     // Deprecated
     public article: ArticleResource;
@@ -93,6 +95,7 @@ export class HudAiClient {
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
+        this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }

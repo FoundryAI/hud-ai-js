@@ -71,6 +71,10 @@ export class ArticleKeyTermResource extends Resource<
     }
 
     public del(destroyArgs: ArticleKeyTermDestroyAttributes) {
+        return this.destroy(destroyArgs)
+    }
+
+    public destroy(destroyArgs: ArticleKeyTermDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,

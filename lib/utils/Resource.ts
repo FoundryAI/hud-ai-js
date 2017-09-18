@@ -60,7 +60,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    protected _del(id: string|number) {
+    protected _destroy(id: string|number) {
         return this.makeRequest({
             method: 'DELETE',
             params: { id },
