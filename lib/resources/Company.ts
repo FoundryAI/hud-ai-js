@@ -5,21 +5,13 @@ import {
     HudAiListAttributes,
     HudAiUpdateAttributes,
     Resource
-} from '../Resource';
+} from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 
 export interface Company {
     id: string;
     name: string;
     ticker: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-export interface CompanyKeyTerm {
-    id: string;
-    companyId: string;
-    term: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -37,47 +29,33 @@ export interface CompanyUpdateAttributes extends HudAiUpdateAttributes {
     name: string;
 }
 
-export interface CompanyKeyTermListAttributes extends HudAiListAttributes {
-    companyId: string;
-    term?: string;
-}
-
-export interface CompanyKeyTermCreateAttributes extends HudAiCreateAttributes {
-    companyId: string;
-    term: string;
-}
-
-export interface CompanyKeyTermDestroyAttributes {
-    companyId: string;
-    term: string;
-}
-
-export class CompanyResource extends Resource<Company, CompanyListAttributes, CompanyCreateAttributes, CompanyUpdateAttributes> {
+export class CompanyResource extends Resource<
+    Company,
+    CompanyListAttributes,
+    CompanyCreateAttributes,
+    CompanyUpdateAttributes
+> {
     constructor(requestManager: RequestManager) {
         super('/companies', requestManager);
     }
 
-    public keyTerms(listArgs: CompanyKeyTermDestroyAttributes): Promise<CompanyKeyTerm[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}/{companyId}/key-terms`
-        })
+    public get(id: string | number): Promise<Company> {
+        return this._get(id);
     }
 
-    public createKeyTerm(createArgs: CompanyKeyTermCreateAttributes): Promise<CompanyKeyTerm> {
-        return this.makeRequest({
-            method: 'POST',
-            params: createArgs,
-            url: `${this.basePath}/{companyId}/key-terms`
-        })
+    public list(listArgs: CompanyListAttributes): Promise<Company[]> {
+        return this._list(listArgs);
     }
 
-    public removeKeyTerm(deleteArgs: CompanyKeyTermDestroyAttributes): Promise<CompanyKeyTerm> {
-        return this.makeRequest({
-            method: 'POST',
-            params: deleteArgs,
-            url: `${this.basePath}/{companyId}/key-terms`
-        })
+    public update(id: string | number, updateArgs: CompanyUpdateAttributes) {
+        return this._update(id, updateArgs);
+    }
+
+    public create(createArgs: CompanyCreateAttributes) {
+        return this._create(createArgs);
+    }
+
+    public del(id: string | number) {
+        return this._del(id);
     }
 }

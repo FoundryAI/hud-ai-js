@@ -2,11 +2,11 @@ import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import * as moment from 'moment';
 
-import { TokenRequestData } from './util/TokenExchange';
+import { TokenRequestData } from './utils/TokenExchange';
 
-import { Factory } from './util/ClientConfigFactory';
+import { Factory as ClientConfigFactory } from './utils/ClientConfigFactory';
 import { RequestManager } from './RequestManager';
-import { HudAiError } from './util/HudAiError';
+import { HudAiError } from './utils/HudAiError';
 
 import {
     ArticleResource,
@@ -60,7 +60,7 @@ export class HudAiClient {
     private requestManager: RequestManager;
 
     public static create (clientConfig: HudAiClientConfiguration) {
-        const config = Factory(clientConfig);
+        const config = ClientConfigFactory(clientConfig);
         return new HudAiClient(config);
     }
 

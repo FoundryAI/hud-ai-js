@@ -4,7 +4,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Agent as HttpsAgent } from 'https';
 
 import { HudAiClient, HudAiClientConfiguration } from './HudAiClient';
-import { HudAiError } from './util/HudAiError';
+import { HudAiError } from './utils/HudAiError';
 
 export interface RequestOptions {
     method: 'GET' | 'PUT' | 'POST' | 'DELETE';

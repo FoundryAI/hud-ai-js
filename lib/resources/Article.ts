@@ -1,6 +1,12 @@
-import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {RequestManager} from '../RequestManager';
 import * as Promise from 'bluebird';
+
+import {
+    HudAiCreateAttributes,
+    HudAiListAttributes,
+    HudAiUpdateAttributes,
+    Resource
+} from '../utils/Resource';
+import { RequestManager } from '../RequestManager';
 
 export interface Article {
     id: string;
@@ -16,8 +22,8 @@ export interface Article {
     linkUrl: string;
     sourceUrl: string;
     publishedAt: Date;
-    authors: any[]; // TODO: types
-    articleKeyTerms: any[]; // TODO: types
+    authors: string[];
+    articleKeyTerms: string[];
 }
 
 export interface ArticleListAttributes extends HudAiListAttributes {
@@ -64,5 +70,25 @@ export class ArticleResource extends Resource<
 > {
     constructor(requestManager: RequestManager) {
         super('/articles', requestManager);
+    }
+
+    public get(id: string | number): Promise<Article> {
+        return this._get(id);
+    }
+
+    public list(listArgs: ArticleListAttributes): Promise<Article[]> {
+        return this._list(listArgs);
+    }
+
+    public update(id: string | number, updateArgs: ArticleUpdateAttributes) {
+        return this._update(id, updateArgs);
+    }
+
+    public create(createArgs: ArticleCreateAttributes) {
+        return this._create(createArgs);
+    }
+
+    public del(id: string | number) {
+        return this._del(id);
     }
 }
