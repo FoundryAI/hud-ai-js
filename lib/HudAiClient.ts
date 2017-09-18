@@ -11,6 +11,8 @@ import { HudAiError } from './utils/HudAiError';
 import {
     ArticleResource,
     ArticleHighlightResource,
+    ArticleKeyTermResource,
+    ArticleTagResource,
     CompanyResource,
     CompanyKeyTermResource,
     DomainResource,
@@ -38,6 +40,8 @@ export class HudAiClient {
 
     public articles: ArticleResource;
     public articleHighlights: ArticleHighlightResource;
+    public articleKeyTerms: ArticleKeyTermResource;
+    public articleTags: ArticleTagResource;
     public companies: CompanyResource;
     public companyKeyTerms: CompanyKeyTermResource;
     public domains: DomainResource;
@@ -80,6 +84,8 @@ export class HudAiClient {
 
         this.articles = new ArticleResource(this.requestManager);
         this.articleHighlights = new ArticleHighlightResource(this.requestManager);
+        this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
+        this.articleTags = new ArticleTagResource(this.requestManager);
         this.companies = new CompanyResource(this.requestManager);
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);

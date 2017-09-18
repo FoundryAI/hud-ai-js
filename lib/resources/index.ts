@@ -1,5 +1,7 @@
 export { ArticleResource } from './Article';
 export { ArticleHighlightResource } from './ArticleHighlight';
+export { ArticleKeyTermResource } from './ArticleKeyTerm';
+export { ArticleTagResource } from './ArticleTag';
 export { CompanyResource } from './Company';
 export { CompanyKeyTermResource } from './CompanyKeyTerm';
 export { DomainResource } from './Domain';
