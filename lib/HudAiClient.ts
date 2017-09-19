@@ -112,7 +112,7 @@ export class HudAiClient {
                 client_id: this.clientId,
                 redirect_uri: this.redirectUri,
             })
-            .map((value, key) => `${key}=${value}`)
+            .map((value, key) => `${key}=${encodeURIComponent(value)}`)
             .join('&')
             .value();
 
