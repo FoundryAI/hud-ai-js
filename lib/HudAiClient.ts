@@ -78,7 +78,7 @@ export class HudAiClient {
 
     constructor(config: HudAiClientConfiguration) {
         this.baseApiUrl = config.baseApiUrl || 'https://api.hud.ai/v1';
-        this.baseAuthUrl = config.baseAuthUrl || 'https://auth.hud.ai';
+        this.baseAuthUrl = config.baseAuthUrl || 'https://accounts.hud.ai';
         if (config.redirectUri) this.redirectUri = config.redirectUri;
 
         this.clientId = config.clientId;
