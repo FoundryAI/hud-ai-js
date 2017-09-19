@@ -67,7 +67,7 @@ class HudAiClientSpec {
             'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=code' +
             `&client_id=${clientSideConfig.clientId}` +
-            `&redirect_uri=${clientSideConfig.redirectUri}`
+            `&redirect_uri=${encodeURIComponent(clientSideConfig.redirectUri)}`
         );
     }
 
@@ -79,7 +79,7 @@ class HudAiClientSpec {
             'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=token' +
             `&client_id=${clientSideConfig.clientId}` +
-            `&redirect_uri=${clientSideConfig.redirectUri}`
+            `&redirect_uri=${encodeURIComponent(clientSideConfig.redirectUri)}`
         );
     }
 
@@ -91,7 +91,7 @@ class HudAiClientSpec {
             'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=code' +
             `&client_id=${clientSideConfig.clientId}` +
-            `&redirect_uri=${clientSideConfig.redirectUri}`
+            `&redirect_uri=${encodeURIComponent(clientSideConfig.redirectUri)}`
         );
     }
 
