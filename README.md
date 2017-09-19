@@ -377,8 +377,8 @@ Takes all an object with the model attributes
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
 [npm-version-link]: https://www.npmjs.org/package/hud-ai
-[build-status-badge]: https://travis-ci.org/FoundryAI/hud-ai-node.svg?branch=master
-[build-status-link]: https://travis-ci.org/FoundryAI/hud-ai-node
+[build-status-badge]: https://travis-ci.org/FoundryAI/hud-ai-js.svg?branch=master
+[build-status-link]: https://travis-ci.org/FoundryAI/hud-ai-js
 [downloads-badge]: https://img.shields.io/npm/dm/hud-ai.svg
 [downloads-link]: https://www.npmjs.com/package/hud-ai
 [runkit-badge]: https://badge.runkitcdn.com/hud-ai.svg
