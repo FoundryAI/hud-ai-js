@@ -34,8 +34,8 @@ window.location = client.getAuthorizeUri('token');
 
 // token will be returned as the query param `authToken` to your redirect URL
 const querystring = require('query-string');
-const parsed = querystring.parse(location.search);
-client.setAccessToken(parsed.authToken);
+const parsed = querystring.parse(location.hash);
+client.setAccessToken(parsed.access_token);
 ```
 
 NOTE: The process of token retrieval will need to be performed again when the
