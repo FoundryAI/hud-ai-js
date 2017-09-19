@@ -19,6 +19,8 @@ export interface Company {
 export interface CompanyListAttributes extends HudAiListAttributes {
     id?: string;
     name?: string;
+    ticker?: string;
+    keyTerm?: string;
 }
 
 export interface CompanyCreateAttributes extends HudAiCreateAttributes {
