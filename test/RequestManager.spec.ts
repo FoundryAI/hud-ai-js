@@ -6,7 +6,7 @@ import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 
 import { HudAiClient, HudAiClientConfiguration } from '../lib/HudAiClient';
-import { Factory } from '../lib/util/ClientConfigFactory';
+import { Factory } from '../lib/utils/ClientConfigFactory';
 import { RequestManager } from '../lib/RequestManager';
 
 chai.use(sinonChai);

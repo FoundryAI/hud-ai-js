@@ -4,7 +4,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Agent as HttpsAgent } from 'https';
 
 import { HudAiClient, HudAiClientConfiguration } from './HudAiClient';
-import { HudAiError } from './util/HudAiError';
+import { HudAiError } from './utils/HudAiError';
 
 export interface RequestOptions {
     method: 'GET' | 'PUT' | 'POST' | 'DELETE';
@@ -50,7 +50,6 @@ export class RequestManager {
     }
 
     public makeRequest(requestOptions: RequestOptions, options: MakeRequestOptions = {}) {
-        console.log('requestOptions', requestOptions)
         if (options.refreshTokens == undefined) options.refreshTokens = true;
 
         return Promise.resolve(options.refreshTokens ? this.client.refreshTokens() : undefined)

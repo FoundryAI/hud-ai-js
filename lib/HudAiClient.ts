@@ -2,20 +2,26 @@ import * as _ from 'lodash';
 import * as Promise from 'bluebird';
 import * as moment from 'moment';
 
-import { TokenRequestData } from './util/TokenExchange';
+import { TokenRequestData } from './utils/TokenExchange';
 
-import { Factory } from './util/ClientConfigFactory';
+import { Factory as ClientConfigFactory } from './utils/ClientConfigFactory';
 import { RequestManager } from './RequestManager';
-import { HudAiError } from './util/HudAiError';
+import { HudAiError } from './utils/HudAiError';
 
 import {
     ArticleResource,
     ArticleHighlightResource,
+    ArticleKeyTermResource,
+    ArticleTagResource,
     CompanyResource,
+    CompanyKeyTermResource,
     DomainResource,
     KeyTermResource,
+    RelevantArticleResource,
     TextCorpusResource,
     UserResource,
+    UserDigestSubscriptionResource,
+    UserKeyTermResource,
 } from './resources';
 
 
@@ -34,6 +40,21 @@ export class HudAiClient {
     public refreshToken?: string;
     public tokenExpiresAt?: Date;
 
+    public articles: ArticleResource;
+    public articleHighlights: ArticleHighlightResource;
+    public articleKeyTerms: ArticleKeyTermResource;
+    public articleTags: ArticleTagResource;
+    public companies: CompanyResource;
+    public companyKeyTerms: CompanyKeyTermResource;
+    public domains: DomainResource;
+    public keyTerms: KeyTermResource;
+    public relevantArticles: RelevantArticleResource;
+    public textCorpora: TextCorpusResource;
+    public users: UserResource;
+    public userDigestSubscriptions: UserDigestSubscriptionResource;
+    public userKeyTerms: UserKeyTermResource;
+
+    // Deprecated
     public article: ArticleResource;
     public articleHighlight: ArticleHighlightResource;
     public company: CompanyResource;
@@ -51,7 +72,7 @@ export class HudAiClient {
     private requestManager: RequestManager;
 
     public static create (clientConfig: HudAiClientConfiguration) {
-        const config = Factory(clientConfig);
+        const config = ClientConfigFactory(clientConfig);
         return new HudAiClient(config);
     }
 
@@ -65,13 +86,21 @@ export class HudAiClient {
 
         this.requestManager = new RequestManager(this, config);
 
-        this.article = new ArticleResource(this.requestManager);
-        this.articleHighlight = new ArticleHighlightResource(this.requestManager);
-        this.company = new CompanyResource(this.requestManager);
-        this.domain = new DomainResource(this.requestManager);
-        this.keyTerm = new KeyTermResource(this.requestManager);
-        this.textCorpus = new TextCorpusResource(this.requestManager);
-        this.user = new UserResource(this.requestManager);
+        this.articles = new ArticleResource(this.requestManager);
+        this.articleHighlights = new ArticleHighlightResource(this.requestManager);
+        this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
+        this.articleTags = new ArticleTagResource(this.requestManager);
+        this.companies = new CompanyResource(this.requestManager);
+        this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
+        this.domains = new DomainResource(this.requestManager);
+        this.keyTerms = new KeyTermResource(this.requestManager);
+        this.relevantArticles = new RelevantArticleResource(this.requestManager);
+        this.textCorpora = new TextCorpusResource(this.requestManager);
+        this.users = new UserResource(this.requestManager);
+        this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
+        this.userKeyTerms = new UserKeyTermResource(this.requestManager);
+
+        this.addDeprecatedAttributes();
     }
 
     // Defaults to the more secure 'code' option
@@ -112,6 +141,16 @@ export class HudAiClient {
     }
 
     // Private
+
+    private addDeprecatedAttributes(): Promise<void> {
+        this.article = this.articles;
+        this.articleHighlight = this.articleHighlights;
+        this.company = this.companies;
+        this.domain = this.domains;
+        this.keyTerm = this.keyTerms;
+        this.textCorpus = this.textCorpora;
+        this.user = this.users;
+    }
 
     private exchangeAuthCode(): Promise<void> {
         return this.getTokens({

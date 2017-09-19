@@ -1,7 +1,7 @@
 import * as Promise from 'bluebird';
 import * as _ from 'lodash'
 
-import { RequestOptions, RequestManager } from './RequestManager';
+import { RequestOptions, RequestManager } from '../RequestManager';
 
 
 export interface HudAiListAttributes {
@@ -27,7 +27,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         return this.requestManager.makeRequest(options);
     }
 
-    public get(id: string|number) : Promise<T> {
+    protected _get(id: string|number) : Promise<T> {
         return this.makeRequest({
             method: 'GET',
             params: { id },
@@ -35,7 +35,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public list(listArgs: L) : Promise<T[]> {
+    protected _list(listArgs: L) : Promise<T[]> {
         return this.makeRequest({
             method: 'GET',
             params: listArgs,
@@ -43,7 +43,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public update(id: string|number, updateArgs: U) {
+    protected _update(id: string|number, updateArgs: U) {
         return this.makeRequest({
             method: 'PUT',
             data: updateArgs,
@@ -52,7 +52,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public create(createArgs: C) {
+    protected _create(createArgs: C) {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,
@@ -60,7 +60,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    public del(id: string|number) {
+    protected _destroy(id: string|number) {
         return this.makeRequest({
             method: 'DELETE',
             params: { id },

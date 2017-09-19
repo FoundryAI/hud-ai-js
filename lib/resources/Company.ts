@@ -1,6 +1,12 @@
-import { HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource } from '../Resource';
-import { RequestManager } from '../RequestManager';
 import * as Promise from 'bluebird';
+
+import {
+    HudAiCreateAttributes,
+    HudAiListAttributes,
+    HudAiUpdateAttributes,
+    Resource
+} from '../utils/Resource';
+import { RequestManager } from '../RequestManager';
 
 export interface Company {
     id: string;
@@ -23,8 +29,37 @@ export interface CompanyUpdateAttributes extends HudAiUpdateAttributes {
     name: string;
 }
 
-export class CompanyResource extends Resource<Company, CompanyListAttributes, CompanyCreateAttributes, CompanyUpdateAttributes> {
+export class CompanyResource extends Resource<
+    Company,
+    CompanyListAttributes,
+    CompanyCreateAttributes,
+    CompanyUpdateAttributes
+> {
     constructor(requestManager: RequestManager) {
         super('/companies', requestManager);
+    }
+
+    public get(id: string | number): Promise<Company> {
+        return this._get(id);
+    }
+
+    public list(listArgs: CompanyListAttributes): Promise<Company[]> {
+        return this._list(listArgs);
+    }
+
+    public update(id: string | number, updateArgs: CompanyUpdateAttributes) {
+        return this._update(id, updateArgs);
+    }
+
+    public create(createArgs: CompanyCreateAttributes) {
+        return this._create(createArgs);
+    }
+
+    public del(id: string | number) {
+        return this.destroy(id);
+    }
+
+    public destroy(id: string | number) {
+        return this._destroy(id);
     }
 }

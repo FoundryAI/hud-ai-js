@@ -6,7 +6,7 @@ import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 import * as moment from 'moment';
 
-import { Factory } from '../../lib/util/ClientConfigFactory';
+import { Factory } from '../../lib/utils/ClientConfigFactory';
 import { HudAiClient, HudAiClientConfiguration } from '../../lib/HudAiClient';
 import { RequestManager } from '../../lib/RequestManager';
 import { ArticleHighlightResource } from '../../lib/resources/ArticleHighlight';
@@ -21,7 +21,7 @@ const accessToken = chance.guid();
 const refreshToken = chance.guid();
 
 @suite
-class ArticleSpec {
+class ArticleHighlightSpec {
     private sandbox: any;
     private config: HudAiClientConfiguration;
     private requestManager: RequestManager;

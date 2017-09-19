@@ -6,7 +6,7 @@ import * as chai from 'chai';
 import * as sinonChai from 'sinon-chai';
 import * as moment from 'moment';
 
-import { Factory } from '../../lib/util/ClientConfigFactory';
+import { Factory } from '../../lib/utils/ClientConfigFactory';
 import { HudAiClient, HudAiClientConfiguration } from '../../lib/HudAiClient';
 import { RequestManager } from '../../lib/RequestManager';
 import { ArticleResource } from '../../lib/resources/Article';

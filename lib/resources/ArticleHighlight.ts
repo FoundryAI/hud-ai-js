@@ -1,6 +1,18 @@
-import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {RequestManager} from '../RequestManager';
 import * as Promise from 'bluebird';
+
+import {
+    HudAiCreateAttributes,
+    HudAiListAttributes,
+    HudAiUpdateAttributes,
+    Resource
+} from '../utils/Resource';
+import { RequestManager } from '../RequestManager';
+
+export interface ArticleHighlight {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
 export interface ArticleHighlightListAttributes extends HudAiListAttributes {
     articleId?: string;
@@ -20,8 +32,37 @@ export interface ArticleHighlightUpdateAttributes extends HudAiUpdateAttributes 
     userId?: string;
 }
 
-export class ArticleHighlightResource extends Resource<any, ArticleHighlightListAttributes, ArticleHighlightCreateAttributes, ArticleHighlightUpdateAttributes> {
+export class ArticleHighlightResource extends Resource<
+    ArticleHighlight,
+    ArticleHighlightListAttributes,
+    ArticleHighlightCreateAttributes,
+    ArticleHighlightUpdateAttributes
+> {
     constructor(requestManager: RequestManager) {
         super('/article-highlights', requestManager);
+    }
+
+    public get(id: string | number): Promise<ArticleHighlight> {
+        return this._get(id);
+    }
+
+    public list(listArgs: ArticleHighlightListAttributes): Promise<ArticleHighlight[]> {
+        return this._list(listArgs);
+    }
+
+    public update(id: string | number, updateArgs: ArticleHighlightUpdateAttributes) {
+        return this._update(id, updateArgs);
+    }
+
+    public create(createArgs: ArticleHighlightCreateAttributes) {
+        return this._create(createArgs);
+    }
+
+    public del(id: string | number) {
+        return this.destroy(id);
+    }
+
+    public destroy(id: string | number) {
+        return this._destroy(id);
     }
 }

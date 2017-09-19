@@ -8,7 +8,7 @@ import * as chaiAsPromised from 'chai-as-promised';
 import {HudAiClient, HudAiClientConfiguration} from '../lib/HudAiClient';
 import {RequestManager} from '../lib/RequestManager';
 import * as resources from '../lib/resources';
-import {HudAiError} from '../lib/util/HudAiError';
+import {HudAiError} from '../lib/utils/HudAiError';
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;

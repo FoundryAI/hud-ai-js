@@ -1,23 +1,29 @@
-import {HudAiCreateAttributes, HudAiListAttributes, HudAiUpdateAttributes, Resource} from '../Resource';
-import {RequestManager} from '../RequestManager';
 import * as Promise from 'bluebird';
+
+import {
+    HudAiCreateAttributes,
+    HudAiListAttributes,
+    HudAiUpdateAttributes,
+    Resource
+} from '../utils/Resource';
+import { RequestManager } from '../RequestManager';
 
 export interface Article {
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    type: string;
-    title: string;
-    text: string;
+    articleKeyTerms: string[];
+    authors: string[];
     imageUrl: string;
-    rawDataUrl: string;
     importanceScore: number;
     linkHash: string;
     linkUrl: string;
-    sourceUrl: string;
     publishedAt: Date;
-    authors: any[]; // TODO: types
-    articleKeyTerms: any[]; // TODO: types
+    rawDataUrl: string;
+    sourceUrl: string;
+    text: string;
+    title: string;
+    type: string;
 }
 
 export interface ArticleListAttributes extends HudAiListAttributes {
@@ -56,8 +62,37 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
     type?: string;
 }
 
-export class ArticleResource extends Resource<Article, ArticleListAttributes, ArticleCreateAttributes, ArticleUpdateAttributes> {
+export class ArticleResource extends Resource<
+    Article,
+    ArticleListAttributes,
+    ArticleCreateAttributes,
+    ArticleUpdateAttributes
+> {
     constructor(requestManager: RequestManager) {
         super('/articles', requestManager);
+    }
+
+    public list(listArgs: ArticleListAttributes): Promise<Article[]> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: ArticleCreateAttributes) {
+        return this._create(createArgs);
+    }
+
+    public get(id: string | number): Promise<Article> {
+        return this._get(id);
+    }
+
+    public update(id: string | number, updateArgs: ArticleUpdateAttributes) {
+        return this._update(id, updateArgs);
+    }
+
+    public del(id: string | number) {
+        return this.destroy(id);
+    }
+
+    public destroy(id: string | number) {
+        return this._destroy(id);
     }
 }
