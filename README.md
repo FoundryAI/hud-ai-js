@@ -178,7 +178,7 @@ Takes all an object with the model attributes
 | `id`    | string     | Resource ID **Cannot be edited** |
 | `name`* | **string** | Primary company name (others can be associated as key terms) |
 
-#### `client.companies.list({ limit?, offset? })`
+#### `client.companies.list({ name?, ticker?, keyTerm?, limit?, offset? })`
 
 #### `client.companies.create(obj)`
 
