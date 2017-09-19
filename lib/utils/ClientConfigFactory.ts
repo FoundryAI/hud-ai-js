@@ -19,7 +19,7 @@ export function Factory (config: HudAiClientConfiguration): HudAiClientConfigura
     if (validation.error) throw new HudAiError(validation.error.annotate());
     return defaultsDeep(config, {
         baseApiUrl: 'https://api.hud.ai/v1',
-        baseAuthUrl: 'https://auth.hud.ai',
+        baseAuthUrl: 'https://accounts.hud.ai',
         request: defaultAxiosConfig
     });
 }
