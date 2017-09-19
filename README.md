@@ -80,7 +80,7 @@ client.setAuthorizationCode(parsed.code);
 | `clientId`*    | Registered Client ID | `'46ef9d9b-89a9-4fd2-84cf-af6de31f2618'` |
 | `clientSecret` | Registered Client Secret | `'59170c3e-e2c9-4244-92d8-c3595d4af325'` |
 | `baseApiUrl`   | Specify an alternate server to request resources from | `'https://stage.api.hud.ai/v1'` |
-| `baseAuthUrl`  | Specify an alternate server to request auth tokens from | `'https://stage.auth.hud.ai'` |
+| `baseAuthUrl`  | Specify an alternate server to request auth tokens from | `'https://stage.accounts.hud.ai'` |
 | `redirectUri`  | Path to redirect auth requests to (required for `#get_authorize_uri`) | `'https://app.example.com/oauth/callbacks/hud-ai'` |
 | `request`      | [`axios`][axios-project-link] is used under the hood, pass a config through here | |
 

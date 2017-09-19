@@ -64,7 +64,7 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri();
         expect(authorizeUri).to.equal(
-            'https://auth.hud.ai/oauth2/authorize' +
+            'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=code' +
             `&client_id=${clientSideConfig.clientId}` +
             `&redirect_uri=${clientSideConfig.redirectUri}`
@@ -76,7 +76,7 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri('token');
         expect(authorizeUri).to.equal(
-            'https://auth.hud.ai/oauth2/authorize' +
+            'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=token' +
             `&client_id=${clientSideConfig.clientId}` +
             `&redirect_uri=${clientSideConfig.redirectUri}`
@@ -88,7 +88,7 @@ class HudAiClientSpec {
         const client = HudAiClient.create(clientSideConfig);
         const authorizeUri = client.getAuthorizeUri('code');
         expect(authorizeUri).to.equal(
-            'https://auth.hud.ai/oauth2/authorize' +
+            'https://accounts.hud.ai/oauth2/authorize' +
             '?response_type=code' +
             `&client_id=${clientSideConfig.clientId}` +
             `&redirect_uri=${clientSideConfig.redirectUri}`
@@ -118,7 +118,7 @@ class HudAiClientSpec {
 
         client['authorizationCode'] = code;
 
-        nock('https://auth.hud.ai')
+        nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
             grant_type: 'authorization_code',
             code
@@ -147,7 +147,7 @@ class HudAiClientSpec {
 
         client.refreshToken = chance.guid();
 
-        nock('https://auth.hud.ai')
+        nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
             grant_type: 'refresh_grant',
             refresh_token: client.refreshToken
@@ -172,7 +172,7 @@ class HudAiClientSpec {
     '#refreshTokens with only a client secret'() {
         const client = HudAiClient.create(serverSideConfig);
 
-        nock('https://auth.hud.ai')
+        nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
             grant_type: 'client_credentials'
         })
