@@ -336,9 +336,9 @@ Takes all an object with the model attributes
 
 Takes all an object with the model attributes
 
-#### `client.userCompanies.get(id)`
+#### `client.userCompanies.get(companyId)`
 
-#### `client.userCompanies.destroy(id)`
+#### `client.userCompanies.destroy(companyId)`
 
 ### UserDigestSubscription
 
