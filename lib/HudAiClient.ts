@@ -20,6 +20,7 @@ import {
     RelevantArticleResource,
     TextCorpusResource,
     UserResource,
+    UserCompanyResource,
     UserDigestSubscriptionResource,
     UserKeyTermResource,
 } from './resources';
@@ -51,6 +52,7 @@ export class HudAiClient {
     public relevantArticles: RelevantArticleResource;
     public textCorpora: TextCorpusResource;
     public users: UserResource;
+    public userCompanies: UserCompanyResource;
     public userDigestSubscriptions: UserDigestSubscriptionResource;
     public userKeyTerms: UserKeyTermResource;
 
@@ -97,6 +99,7 @@ export class HudAiClient {
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
+        this.userCompanies = new UserCompanyResource(this.requestManager);
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);
 

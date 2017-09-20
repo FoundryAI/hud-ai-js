@@ -9,5 +9,6 @@ export { KeyTermResource } from './KeyTerm';
 export { RelevantArticleResource } from './RelevantArticle';
 export { TextCorpusResource } from './TextCorpus';
 export { UserResource } from './User';
+export { UserCompanyResource } from './UserCompany';
 export { UserDigestSubscriptionResource } from './UserDigestSubscription';
 export { UserKeyTermResource } from './UserKeyTerm';
