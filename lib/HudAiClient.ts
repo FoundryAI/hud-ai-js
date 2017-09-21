@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import { flow, map, join } from 'lodash/fp';
 import * as Promise from 'bluebird';
 import * as moment from 'moment';
 
@@ -110,14 +111,14 @@ export class HudAiClient {
     public getAuthorizeUri(responseType: string = 'code'): string {
         if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
 
-        const params = _.chain({
-                response_type: responseType,
-                client_id: this.clientId,
-                redirect_uri: this.redirectUri,
-            })
-            .map((value, key) => `${key}=${encodeURIComponent(value)}`)
-            .join('&')
-            .value();
+        const params = flow(
+            map((value, key) => `${key}=${encodeURIComponent(value)}`),
+            join('&')
+        )({
+            response_type: responseType,
+            client_id: this.clientId,
+            redirect_uri: this.redirectUri,
+        });
 
         return `${this.baseAuthUrl}/oauth2/authorize?${params}`
     }
