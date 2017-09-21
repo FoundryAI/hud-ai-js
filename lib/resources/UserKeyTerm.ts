@@ -1,9 +1,9 @@
 import * as Promise from 'bluebird';
+import * as _ from 'lodash';
 
 import {
     HudAiCreateAttributes,
     HudAiListAttributes,
-    HudAiUpdateAttributes,
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
@@ -65,6 +65,7 @@ export class UserKeyTermResource extends Resource<
     public create(createArgs: UserKeyTermCreateAttributes) {
         return this.makeRequest({
             method: 'POST',
+            params: _.pick(createArgs, 'userId'),
             data: createArgs,
             url: `${this.basePath}`
         })
