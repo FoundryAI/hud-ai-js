@@ -314,6 +314,8 @@ Takes all an object with the model attributes
 
 Takes all an object with the model attributes
 
+#### `client.users.me()`
+
 #### `client.users.get(id)`
 
 #### `client.users.update(obj)`
