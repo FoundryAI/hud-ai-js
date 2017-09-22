@@ -58,7 +58,7 @@ export class UserCompanyResource extends Resource<
         return this.makeRequest({
             method: 'POST',
             params: _.pick(createArgs, 'userId'),
-            data: createArgs,
+            data: _.omit(createArgs, 'userId'),
             url: `${this.basePath}`
         })
     }
@@ -78,7 +78,8 @@ export class UserCompanyResource extends Resource<
     public destroy(destroyArgs: UserCompanyDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
-            params: destroyArgs,
+            params: _.pick(destroyArgs, 'userId'),
+            data: _.omit(destroyArgs, 'userId'),
             url: `${this.basePath}/{companyId}`
         })
     }

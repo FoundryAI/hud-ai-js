@@ -66,7 +66,7 @@ export class UserKeyTermResource extends Resource<
         return this.makeRequest({
             method: 'POST',
             params: _.pick(createArgs, 'userId'),
-            data: createArgs,
+            data: _.omit(createArgs, 'userId'),
             url: `${this.basePath}`
         })
     }
@@ -78,7 +78,8 @@ export class UserKeyTermResource extends Resource<
     public destroy(destroyArgs: UserKeyTermDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
-            params: destroyArgs,
+            params: _.pick(destroyArgs, 'userId'),
+            data: _.omit(destroyArgs, 'userId'),
             url: `${this.basePath}/{term}`
         })
     }

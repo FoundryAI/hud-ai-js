@@ -68,11 +68,17 @@ export class RequestManager {
     // Private Methods
 
     buildAxiosOptions(options: RequestOptions) {
+        const rawParams = options.params || {};
+        const urlParams = _.pickBy(rawParams, (value, key) => {
+            return options.url.includes(`{${key}`);
+        });
+        const queryParams = _.omit(rawParams, _.keys(urlParams));
+
         return {
             data: options.data,
             method: options.method,
-            params: options.params,
-            url: this.buildUrl(options.url, options.params),
+            params: queryParams,
+            url: this.buildUrl(options.url, urlParams),
         }
     }
 
