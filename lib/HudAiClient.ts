@@ -19,6 +19,9 @@ import {
     CompanyKeyTermResource,
     DomainResource,
     KeyTermResource,
+    PersonResource,
+    PersonKeyTermResource,
+    QuoteResource,
     RelevantArticleResource,
     TextCorpusResource,
     UserResource,
@@ -51,6 +54,9 @@ export class HudAiClient {
     public companyKeyTerms: CompanyKeyTermResource;
     public domains: DomainResource;
     public keyTerms: KeyTermResource;
+    public people: PersonResource;
+    public peopleKeyTerms: PersonKeyTermResource;
+    public quotes: QuoteResource;
     public relevantArticles: RelevantArticleResource;
     public textCorpora: TextCorpusResource;
     public users: UserResource;
@@ -98,6 +104,9 @@ export class HudAiClient {
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
+        this.people = new PersonResource(this.requestManager);
+        this.peopleKeyTerms = new PersonKeyTermResource(this.requestManager);
+        this.quotes = new QuoteResource(this.requestManager);
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.users = new UserResource(this.requestManager);

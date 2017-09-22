@@ -35,7 +35,7 @@ export class DomainResource extends Resource<
     DomainUpdateAttributes
 > {
     constructor(requestManager: RequestManager) {
-        super('/domains', requestManager);
+        super('/companies/domains', requestManager);
     }
 
     public get(id: string | number): Promise<Domain> {
