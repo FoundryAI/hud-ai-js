@@ -1,5 +1,4 @@
 import * as Promise from 'bluebird';
-import * as _ from 'lodash';
 
 import {
     HudAiCreateAttributes,
@@ -12,30 +11,30 @@ export interface UserDigestSubscription {
     id: string;
     dayOfWeek: string;
     isoHour: string;
-    userId: string;
+    userId?: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export interface UserDigestSubscriptionListAttributes extends HudAiListAttributes {
-    userId: string;
+    userId?: string;
     dayOfWeek?: string;
     isoHour?: string;
 }
 
 export interface UserDigestSubscriptionCreateAttributes extends HudAiCreateAttributes {
-    userId: string;
+    userId?: string;
     dayOfWeek: string;
     isoHour: string;
 }
 
 export interface UserDigestSubscriptionGetAttributes {
-    userId: string;
+    userId?: string;
     id: string;
 }
 
 export interface UserDigestSubscriptionDestroyAttributes {
-    userId: string;
+    userId?: string;
     id: string;
 }
 
@@ -46,7 +45,7 @@ export class UserDigestSubscriptionResource extends Resource<
     any
 > {
     constructor(requestManager: RequestManager) {
-        super('/users/{userId}/digest-subscriptions', requestManager);
+        super('/users/digest-subscriptions', requestManager);
     }
 
     public list(listArgs: UserDigestSubscriptionListAttributes): Promise<UserDigestSubscription[]> {
@@ -60,7 +59,6 @@ export class UserDigestSubscriptionResource extends Resource<
     public create(createArgs: UserDigestSubscriptionCreateAttributes) {
         return this.makeRequest({
             method: 'POST',
-            params: _.pick(createArgs, 'userId'),
             data: createArgs,
             url: `${this.basePath}`
         })
