@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import {flow, merge, defaults} from 'lodash/fp';
 import * as Promise from 'bluebird';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Agent as HttpsAgent } from 'https';
@@ -42,10 +43,11 @@ export class RequestManager {
     constructor(client: HudAiClient, config: HudAiClientConfiguration) {
         this.client = client;
 
-        const axiosConfig = _.chain(config.request)
-            .merge({ baseURL: client.baseApiUrl })
-            .defaults(defaultAxiosConfig)
-            .value();
+        const axiosConfig = flow(
+            merge({ baseURL: client.baseApiUrl }),
+            defaults(defaultAxiosConfig)
+        )(config.request);
+
         this.axios = axios.create(axiosConfig);
     }
 
@@ -66,11 +68,17 @@ export class RequestManager {
     // Private Methods
 
     buildAxiosOptions(options: RequestOptions) {
+        const rawParams = options.params || {};
+        const urlParams = _.pickBy(rawParams, (value, key) => {
+            return options.url.includes(`{${key}`);
+        });
+        const queryParams = _.omit(rawParams, _.keys(urlParams));
+
         return {
             data: options.data,
             method: options.method,
-            params: options.params,
-            url: this.buildUrl(options.url, options.params),
+            params: queryParams,
+            url: this.buildUrl(options.url, urlParams),
         }
     }
 

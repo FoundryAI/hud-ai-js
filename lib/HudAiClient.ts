@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
+
 import * as Promise from 'bluebird';
-import * as moment from 'moment';
+import * as isAfter from 'date-fns/is_after';
+import * as addMilliseconds from 'date-fns/add_milliseconds';
 
 import { TokenRequestData } from './utils/TokenExchange';
 
@@ -110,20 +112,17 @@ export class HudAiClient {
     public getAuthorizeUri(responseType: string = 'code'): string {
         if (!this.redirectUri) throw new HudAiError('cannot generate authorization URL without redirectUri');
 
-        const params = _.chain({
-                response_type: responseType,
-                client_id: this.clientId,
-                redirect_uri: this.redirectUri,
-            })
-            .map((value, key) => `${key}=${encodeURIComponent(value)}`)
-            .join('&')
-            .value();
+        const params = _.map({
+            response_type: responseType,
+            client_id: this.clientId,
+            redirect_uri: this.redirectUri,
+        }, (value, key) => `${key}=${encodeURIComponent(value)}`).join('&');
 
         return `${this.baseAuthUrl}/oauth2/authorize?${params}`
     }
 
     public refreshTokens(): Promise<void> {
-        if (moment(this.tokenExpiresAt).isAfter(moment.now()))
+        if (this.tokenExpiresAt && isAfter(this.tokenExpiresAt, new Date()))
             return Promise.resolve();
 
         if (this.authorizationCode) return this.exchangeAuthCode();
@@ -183,7 +182,7 @@ export class HudAiClient {
             .then((response) => {
                 this.accessToken = response.access_token;
                 if (response.refresh_token) this.refreshToken = response.refresh_token;
-                this.tokenExpiresAt = moment().add(response.expires_in, 'ms').toDate();
+                this.tokenExpiresAt = addMilliseconds(new Date(), response.expires_in);
             });
     }
 

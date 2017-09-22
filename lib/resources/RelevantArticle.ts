@@ -17,6 +17,8 @@ export interface RelevantArticle {
     score: number;
     scoredAt: Date;
     userId: string;
+    keyTerms: string[];
+    companyIds: string[];
 }
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {
@@ -28,6 +30,8 @@ export interface RelevantArticleListAttributes extends HudAiListAttributes {
     scoredBelow?: number;
     scoredBefore?: Date;
     scoredAfter?: Date;
+    keyTerms: string[];
+    companyIds: string[];
 }
 
 export interface RelevantArticleCreateAttributes extends HudAiCreateAttributes {
@@ -36,6 +40,8 @@ export interface RelevantArticleCreateAttributes extends HudAiCreateAttributes {
     score: number;
     scoredAt: Date;
     articlePublishedAt?: Date;
+    keyTerms: string[];
+    companyIds: string[];
 }
 
 export interface RelevantArticleUpdateAttributes extends HudAiUpdateAttributes {
@@ -44,6 +50,8 @@ export interface RelevantArticleUpdateAttributes extends HudAiUpdateAttributes {
     score?: number;
     scoredAt?: Date;
     articlePublishedAt?: Date;
+    keyTerms: string[];
+    companyIds: string[];
 }
 
 export class RelevantArticleResource extends Resource<
