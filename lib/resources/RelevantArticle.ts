@@ -18,7 +18,7 @@ export interface RelevantArticle {
     scoredAt: Date;
     userId: string;
     keyTerms: string[];
-    companyIds: string[];
+    tags: string[];
 }
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {
@@ -31,7 +31,7 @@ export interface RelevantArticleListAttributes extends HudAiListAttributes {
     scoredBefore?: Date;
     scoredAfter?: Date;
     keyTerms: string[];
-    companyIds: string[];
+    tags: string[];
 }
 
 export interface RelevantArticleCreateAttributes extends HudAiCreateAttributes {
