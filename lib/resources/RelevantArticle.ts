@@ -61,7 +61,7 @@ export class RelevantArticleResource extends Resource<
     RelevantArticleUpdateAttributes
 > {
     constructor(requestManager: RequestManager) {
-        super('/relevant-articles', requestManager);
+        super('/articles/relevant', requestManager);
     }
 
     public get(id: string | number): Promise<RelevantArticle> {
