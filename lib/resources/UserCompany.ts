@@ -10,29 +10,29 @@ import { RequestManager } from '../RequestManager';
 
 export interface UserCompany {
     id: string;
-    userId: string;
+    userId?: string;
     companyId: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export interface UserCompanyGetAttributes {
-    userId: string;
+    userId?: string;
     companyId: string;
 }
 
 export interface UserCompanyListAttributes extends HudAiListAttributes {
-    userId: string;
+    userId?: string;
     companyId?: string;
 }
 
 export interface UserCompanyCreateAttributes extends HudAiCreateAttributes {
-    userId: string;
+    userId?: string;
     companyId: string;
 }
 
 export interface UserCompanyDestroyAttributes {
-    userId: string;
+    userId?: string;
     companyId: string;
 }
 
@@ -43,7 +43,7 @@ export class UserCompanyResource extends Resource<
     any
 > {
     constructor(requestManager: RequestManager) {
-        super('/users/{userId}/companies', requestManager);
+        super('/users/companies', requestManager);
     }
 
     public list(listArgs: UserCompanyListAttributes): Promise<UserCompany[]> {
@@ -57,8 +57,7 @@ export class UserCompanyResource extends Resource<
     public create(createArgs: UserCompanyCreateAttributes) {
         return this.makeRequest({
             method: 'POST',
-            params: _.pick(createArgs, 'userId'),
-            data: _.omit(createArgs, 'userId'),
+            data: createArgs,
             url: `${this.basePath}`
         })
     }

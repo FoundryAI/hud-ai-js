@@ -10,29 +10,29 @@ import { RequestManager } from '../RequestManager';
 
 export interface UserKeyTerm {
     id: string;
-    userId: string;
+    userId?: string;
     term: string;
     createdAt: Date;
     updatedAt: Date;
 }
 
 export interface UserKeyTermGetAttributes {
-    userId: string;
+    userId?: string;
     term: string;
 }
 
 export interface UserKeyTermListAttributes extends HudAiListAttributes {
-    userId: string;
+    userId?: string;
     term?: string;
 }
 
 export interface UserKeyTermCreateAttributes extends HudAiCreateAttributes {
-    userId: string;
+    userId?: string;
     term: string;
 }
 
 export interface UserKeyTermDestroyAttributes {
-    userId: string;
+    userId?: string;
     term: string;
 }
 
@@ -43,7 +43,7 @@ export class UserKeyTermResource extends Resource<
     any
 > {
     constructor(requestManager: RequestManager) {
-        super('/users/{userId}/key-terms', requestManager);
+        super('/users/key-terms', requestManager);
     }
 
     public get(getArgs: UserKeyTermGetAttributes): Promise<UserKeyTerm> {
@@ -65,8 +65,7 @@ export class UserKeyTermResource extends Resource<
     public create(createArgs: UserKeyTermCreateAttributes) {
         return this.makeRequest({
             method: 'POST',
-            params: _.pick(createArgs, 'userId'),
-            data: _.omit(createArgs, 'userId'),
+            data: createArgs,
             url: `${this.basePath}`
         })
     }

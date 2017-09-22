@@ -41,6 +41,13 @@ export class UserResource extends Resource<User, UserListAttributes, UserCreateA
         super('/users', requestManager);
     }
 
+    public me(): Promise<User> {
+        return this.makeRequest({
+            method: 'GET',
+            url: `${this.basePath}/me`
+        })
+    }
+
     public get(id: string | number): Promise<User> {
         return this._get(id);
     }
