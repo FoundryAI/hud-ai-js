@@ -130,6 +130,12 @@ export class HudAiClient {
         return `${this.baseAuthUrl}/oauth2/authorize?${params}`
     }
 
+    public getLogoutUri(): string {
+        if (!this.redirectUri) throw new HudAiError('cannot generate logout URL without redirectUri');
+
+        return `${this.baseAuthUrl}/logout/?redirectTo=${this.redirectUri}`
+    }
+
     public refreshTokens(): Promise<void> {
         if (this.tokenExpiresAt && isAfter(this.tokenExpiresAt, new Date()))
             return Promise.resolve();
