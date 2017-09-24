@@ -32,6 +32,7 @@ export interface RelevantArticleListAttributes extends HudAiListAttributes {
     scoredAfter?: Date;
     keyTerms: string[];
     tags: string[];
+    include: string[];
 }
 
 export interface RelevantArticleCreateAttributes extends HudAiCreateAttributes {
