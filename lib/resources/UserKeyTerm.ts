@@ -77,8 +77,7 @@ export class UserKeyTermResource extends Resource<
     public destroy(destroyArgs: UserKeyTermDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
-            params: _.pick(destroyArgs, 'userId'),
-            data: _.omit(destroyArgs, 'userId'),
+            params: _.pick(destroyArgs, ['userId', 'term']),
             url: `${this.basePath}/{term}`
         })
     }

@@ -77,8 +77,7 @@ export class UserCompanyResource extends Resource<
     public destroy(destroyArgs: UserCompanyDestroyAttributes) {
         return this.makeRequest({
             method: 'DELETE',
-            params: _.pick(destroyArgs, 'userId'),
-            data: _.omit(destroyArgs, 'userId'),
+            params: _.pick(destroyArgs, ['userId', 'companyId']),
             url: `${this.basePath}/{companyId}`
         })
     }
