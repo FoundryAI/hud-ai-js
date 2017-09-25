@@ -19,7 +19,7 @@ export interface MakeRequestOptions {
 }
 
 const clientVersion = require('../package.json').version;
-const isNodeEnv = (typeof process !== 'undefined') && (get(process, 'release.name')=== 'node');
+const isNodeEnv = (typeof process !== 'undefined') && (get(process, 'release.name') === 'node');
 
 export const defaultAxiosConfig = <AxiosRequestConfig> {
     headers: { 'User-Agent': isNodeEnv ? `HUD.ai Javascript SDK v${clientVersion}` : undefined},
