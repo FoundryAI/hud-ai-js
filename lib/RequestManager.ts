@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import {flow, merge, defaults} from 'lodash/fp';
+import {flow, merge, defaults, get} from 'lodash/fp';
 import * as Promise from 'bluebird';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Agent as HttpsAgent } from 'https';
@@ -19,9 +19,10 @@ export interface MakeRequestOptions {
 }
 
 const clientVersion = require('../package.json').version;
+const isNodeEnv = (typeof process !== 'undefined') && (get(process, 'release.name') === 'node');
 
 export const defaultAxiosConfig = <AxiosRequestConfig> {
-    headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}`},
+    headers: { 'User-Agent': isNodeEnv ? `HUD.ai Javascript SDK v${clientVersion}` : undefined},
     // Use an agent with keep-alive enabled to avoid performing SSL handshake
     // per connection.
     httpsAgent: new HttpsAgent({ keepAlive: true, rejectUnauthorized: true }),
