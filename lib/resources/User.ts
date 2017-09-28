@@ -14,7 +14,7 @@ export interface User {
     updatedAt: Date;
     name: string;
     email: string;
-    linkedinProfileId: string;
+    linkedinProfileId?: string | null;
 }
 
 export interface UserListAttributes extends HudAiListAttributes {
@@ -29,14 +29,14 @@ export interface UserCreateAttributes extends HudAiCreateAttributes {
     name: string;
     email: string;
     timeZone?: string;
-    linkedinProfileId: string;
+    linkedinProfileId?: string | null;
 }
 
 export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     name?: string;
     email?: string;
     timeZone?: string;
-    linkedinProfileId: string;
+    linkedinProfileId?: string | null;
 }
 
 export class UserResource extends Resource<User, UserListAttributes, UserCreateAttributes, UserUpdateAttributes> {
