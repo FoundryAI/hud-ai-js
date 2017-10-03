@@ -342,6 +342,31 @@ Takes all an object with the model attributes
 
 #### `client.userCompanies.destroy(companyId)`
 
+### UserContact
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `id`          | String     | Resource ID **Cannot be edited** |
+| `companyId`*  | **String** | Associated company |
+| `userId`*     | **String** | Associated user |
+| `name`*       | **String** | Contact's name |
+| `email`       | String     | Contact's email address |
+| `phoneNumber` | String     | Contact's phone number |
+
+#### `client.userContacts.list({ userId?, companyId?, limit?, offset? })`
+
+#### `client.userContacts.create(obj)`
+
+Takes all an object with the model attributes
+
+#### `client.userContacts.fetch(id)`
+
+#### `client.userContacts.update(id, obj)`
+
+Takes all an object with the model attributes
+
+#### `client.userContacts.delete(id)`
+
 ### UserDigestSubscription
 
 | Attribute | Type | Description |
