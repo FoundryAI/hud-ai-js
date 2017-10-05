@@ -28,17 +28,17 @@ export interface OrganizationListAttributes extends HudAiListAttributes {
 
 export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
     name: string;
-    maxBillableAccounts: number;
+    maxBillableAccounts?: number;
     emailDomain: string;
-    signedLicenseAgreementAt: Date;
-    signupKey: string;
+    signedLicenseAgreementAt?: Date;
+    signupKey?: string;
 }
 
 export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
-    name: string;
-    maxBillableAccounts: number;
-    emailDomain: string;
-    signedLicenseAgreementAt: Date;
+    name?: string;
+    maxBillableAccounts?: number;
+    emailDomain?: string;
+    signedLicenseAgreementAt?: Date;
 }
 
 export class OrganizationResource extends Resource<
