@@ -19,6 +19,7 @@ import {
     CompanyKeyTermResource,
     DomainResource,
     KeyTermResource,
+    OrganizationResource,
     PersonResource,
     PersonKeyTermResource,
     QuoteResource,
@@ -55,6 +56,7 @@ export class HudAiClient {
     public companyKeyTerms: CompanyKeyTermResource;
     public domains: DomainResource;
     public keyTerms: KeyTermResource;
+    public organizations: OrganizationResource;
     public people: PersonResource;
     public peopleKeyTerms: PersonKeyTermResource;
     public quotes: QuoteResource;
@@ -106,6 +108,7 @@ export class HudAiClient {
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
+        this.organizations = new OrganizationResource(this.requestManager);
         this.people = new PersonResource(this.requestManager);
         this.peopleKeyTerms = new PersonKeyTermResource(this.requestManager);
         this.quotes = new QuoteResource(this.requestManager);
