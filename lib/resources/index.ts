@@ -6,6 +6,7 @@ export { CompanyResource } from './Company';
 export { CompanyKeyTermResource } from './CompanyKeyTerm';
 export { DomainResource } from './Domain';
 export { KeyTermResource } from './KeyTerm';
+export { OrganizationResource } from './Organization';
 export { PersonResource } from './Person';
 export { PersonKeyTermResource } from './PersonKeyTerm';
 export { QuoteResource } from './Quote';

@@ -248,6 +248,31 @@ Takes all an object with the model attributes
 
 #### `client.keyTerms.destroy(term)`
 
+### Organization
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `id`                       | string     | Resource ID **Cannot be edited** |
+| `name`*                    | **string** | Recognizable organization name |
+| `maxBillableAccounts`      | number     | Max number of active accounts (must be positive) |
+| `emailDomain`              | string     | Hostname e.g. `mail.example.com`, used to allow additional users to signup and be automatically associated with the org |
+| `signedLicenseAgreementAt` | Date       | Update after user acknowledges license agreement |
+| `signupKey`                | string     | Automatically generated, but can be updated |
+
+#### `client.organizations.list({ limit?, offset? })`
+
+#### `client.organizations.create(obj)`
+
+Takes all an object with the model attributes
+
+#### `client.organizations.get(id)`
+
+#### `client.organizations.update(id, obj)`
+
+Takes all an object with the model attributes
+
+#### `client.organizations.destroy(id)`
+
 ### RelevantArticle
 
 | Attribute | Type | Description |
