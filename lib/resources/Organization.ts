@@ -23,6 +23,7 @@ export interface OrganizationListAttributes extends HudAiListAttributes {
     id?: string;
     name?: string;
     signupKey?: string;
+    emailDomain?: string;
 }
 
 export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
@@ -50,20 +51,20 @@ export class OrganizationResource extends Resource<
         super('/organizations', requestManager);
     }
 
-    public get(id: string): Promise<Organization> {
-        return this._get(id);
-    }
-
     public list(listArgs: OrganizationListAttributes): Promise<Organization[]> {
         return this._list(listArgs);
     }
 
-    public update(id: string, updateArgs: OrganizationUpdateAttributes) {
-        return this._update(id, updateArgs);
-    }
-
     public create(createArgs: OrganizationCreateAttributes) {
         return this._create(createArgs);
+    }
+
+    public get(id: string): Promise<Organization> {
+        return this._get(id);
+    }
+
+    public update(id: string, updateArgs: OrganizationUpdateAttributes) {
+        return this._update(id, updateArgs);
     }
 
     public del(id: string) {
