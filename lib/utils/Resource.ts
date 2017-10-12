@@ -43,7 +43,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    protected _update(id: string|number, updateArgs: U) {
+    protected _update(id: string | number, updateArgs: U): Promise<T> {
         return this.makeRequest({
             method: 'PUT',
             data: updateArgs,
@@ -52,7 +52,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    protected _create(createArgs: C) {
+    protected _create(createArgs: C): Promise<T> {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,
@@ -60,7 +60,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    protected _destroy(id: string|number) {
+    protected _destroy(id: string | number): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: { id },
