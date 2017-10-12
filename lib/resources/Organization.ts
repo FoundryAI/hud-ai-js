@@ -15,7 +15,7 @@ export interface Organization {
     name: string;
     maxBillableAccounts: number;
     emailDomain: string;
-    signedLicenseAgreementAt: Date;
+    signedLicenseAgreementAt: Date | null;
     signupKey: string;
 }
 
