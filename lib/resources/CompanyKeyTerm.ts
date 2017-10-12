@@ -46,6 +46,22 @@ export class CompanyKeyTermResource extends Resource<
         super('/companies/{companyId}/key-terms', requestManager);
     }
 
+    public list(listArgs: CompanyKeyTermListAttributes): Promise<{ count: number, rows: CompanyKeyTerm[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: listArgs,
+            url: `${this.basePath}`
+        })
+    }
+
+    public create(createArgs: CompanyKeyTermCreateAttributes): Promise<CompanyKeyTerm> {
+        return this.makeRequest({
+            method: 'POST',
+            data: createArgs,
+            url: `${this.basePath}`
+        })
+    }
+
     public get(getArgs: CompanyKeyTermGetAttributes): Promise<CompanyKeyTerm> {
         return this.makeRequest({
             method: 'GET',
@@ -54,27 +70,11 @@ export class CompanyKeyTermResource extends Resource<
         })
     }
 
-    public list(listArgs: CompanyKeyTermListAttributes): Promise<CompanyKeyTerm[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public create(createArgs: CompanyKeyTermCreateAttributes) {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public del(destroyArgs: CompanyKeyTermDestroyAttributes) {
+    public del(destroyArgs: CompanyKeyTermDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: CompanyKeyTermDestroyAttributes) {
+    public destroy(destroyArgs: CompanyKeyTermDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,

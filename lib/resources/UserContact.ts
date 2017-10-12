@@ -56,27 +56,27 @@ export class UserContactResource extends Resource<
         super('/users/contacts', requestManager);
     }
 
+    public list(listArgs: UserContactListAttributes): Promise<{ count: number, rows: UserContact[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: UserContactCreateAttributes): Promise<UserContact> {
+        return this._create(createArgs);
+    }
+
     public get(id: string): Promise<UserContact> {
         return this._get(id);
     }
 
-    public list(listArgs: UserContactListAttributes): Promise<UserContact[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string, updateArgs: UserContactUpdateAttributes) {
+    public update(id: string, updateArgs: UserContactUpdateAttributes): Promise<UserContact> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: UserContactCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string) {
+    public del(id: string): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string) {
+    public destroy(id: string): Promise<void> {
         return this._destroy(id);
     }
 }

@@ -38,27 +38,27 @@ export class DomainResource extends Resource<
         super('/companies/domains', requestManager);
     }
 
+    public list(listArgs: DomainListAttributes): Promise<{ count: number, rows: Domain[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: DomainCreateAttributes): Promise<Domain> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<Domain> {
         return this._get(id);
     }
 
-    public list(listArgs: DomainListAttributes): Promise<Domain[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: DomainUpdateAttributes) {
+    public update(id: string | number, updateArgs: DomainUpdateAttributes): Promise<Domain> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: DomainCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

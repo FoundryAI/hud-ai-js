@@ -46,6 +46,22 @@ export class ArticleKeyTermResource extends Resource<
         super('/articles/{articleId}/key-terms', requestManager);
     }
 
+    public list(listArgs: ArticleKeyTermListAttributes): Promise<{ count: number, rows: ArticleKeyTerm[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: listArgs,
+            url: `${this.basePath}`
+        })
+    }
+
+    public create(createArgs: ArticleKeyTermCreateAttributes): Promise<ArticleKeyTerm> {
+        return this.makeRequest({
+            method: 'POST',
+            data: createArgs,
+            url: `${this.basePath}`
+        })
+    }
+
     public get(getArgs: ArticleKeyTermGetAttributes): Promise<ArticleKeyTerm> {
         return this.makeRequest({
             method: 'GET',
@@ -54,27 +70,11 @@ export class ArticleKeyTermResource extends Resource<
         })
     }
 
-    public list(listArgs: ArticleKeyTermListAttributes): Promise<ArticleKeyTerm[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public create(createArgs: ArticleKeyTermCreateAttributes) {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public del(destroyArgs: ArticleKeyTermDestroyAttributes) {
+    public del(destroyArgs: ArticleKeyTermDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: ArticleKeyTermDestroyAttributes) {
+    public destroy(destroyArgs: ArticleKeyTermDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,

@@ -32,25 +32,27 @@ import {
     UserKeyTermResource,
 } from './resources';
 
-export { Article } from './resources/Article'
-export { ArticleHighlight } from './resources/ArticleHighlight'
-export { ArticleKeyTerm } from './resources/ArticleKeyTerm'
-export { ArticleTag } from './resources/ArticleTag'
-export { Company } from './resources/Company'
-export { CompanyKeyTerm } from './resources/CompanyKeyTerm'
-export { Domain } from './resources/Domain'
-export { KeyTerm } from './resources/KeyTerm'
-export { Organization } from './resources/Organization'
-export { Person } from './resources/Person'
-export { PersonKeyTerm } from './resources/PersonKeyTerm'
-export { Quote } from './resources/Quote'
-export { RelevantArticle } from './resources/RelevantArticle'
-export { TextCorpus } from './resources/TextCorpus'
-export { User } from './resources/User'
-export { UserCompany } from './resources/UserCompany'
-export { UserContact } from './resources/UserContact'
-export { UserDigestSubscription } from './resources/UserDigestSubscription'
-export { UserKeyTerm } from './resources/UserKeyTerm'
+export {
+    Article,
+    ArticleHighlight,
+    ArticleKeyTerm,
+    ArticleTag,
+    Company,
+    CompanyKeyTerm,
+    Domain,
+    KeyTerm,
+    Organization,
+    Person,
+    PersonKeyTerm,
+    Quote,
+    RelevantArticle,
+    TextCorpus,
+    User,
+    UserCompany,
+    UserContact,
+    UserDigestSubscription,
+    UserKeyTerm,
+} from './resources';
 
 
 export interface HudAiClientConfiguration {

@@ -27,7 +27,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         return this.requestManager.makeRequest(options);
     }
 
-    protected _get(id: string|number) : Promise<T> {
+    protected _get(id: string | number): Promise<T> {
         return this.makeRequest({
             method: 'GET',
             params: { id },
@@ -35,7 +35,7 @@ export abstract class Resource<T, L extends HudAiListAttributes, C extends HudAi
         })
     }
 
-    protected _list(listArgs: L) : Promise<T[]> {
+    protected _list(listArgs: L) : Promise<{ count: number, rows: T[] }> {
         return this.makeRequest({
             method: 'GET',
             params: listArgs,

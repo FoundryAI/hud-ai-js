@@ -46,7 +46,7 @@ export class UserCompanyResource extends Resource<
         super('/users/companies', requestManager);
     }
 
-    public list(listArgs: UserCompanyListAttributes): Promise<UserCompany[]> {
+    public list(listArgs: UserCompanyListAttributes): Promise<{ count: number, rows: UserCompany[] }> {
         return this.makeRequest({
             method: 'GET',
             params: listArgs,
@@ -54,7 +54,7 @@ export class UserCompanyResource extends Resource<
         })
     }
 
-    public create(createArgs: UserCompanyCreateAttributes) {
+    public create(createArgs: UserCompanyCreateAttributes): Promise<UserCompany> {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,
@@ -70,11 +70,11 @@ export class UserCompanyResource extends Resource<
         })
     }
 
-    public del(destroyArgs: UserCompanyDestroyAttributes) {
+    public del(destroyArgs: UserCompanyDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: UserCompanyDestroyAttributes) {
+    public destroy(destroyArgs: UserCompanyDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: _.pick(destroyArgs, ['userId', 'companyId']),

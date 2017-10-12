@@ -46,6 +46,22 @@ export class UserKeyTermResource extends Resource<
         super('/users/key-terms', requestManager);
     }
 
+    public list(listArgs: UserKeyTermListAttributes): Promise<{ count: number, rows: UserKeyTerm[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: listArgs,
+            url: `${this.basePath}`
+        })
+    }
+
+    public create(createArgs: UserKeyTermCreateAttributes): Promise<UserKeyTerm> {
+        return this.makeRequest({
+            method: 'POST',
+            data: createArgs,
+            url: `${this.basePath}`
+        })
+    }
+
     public get(getArgs: UserKeyTermGetAttributes): Promise<UserKeyTerm> {
         return this.makeRequest({
             method: 'GET',
@@ -54,27 +70,11 @@ export class UserKeyTermResource extends Resource<
         })
     }
 
-    public list(listArgs: UserKeyTermListAttributes): Promise<UserKeyTerm[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public create(createArgs: UserKeyTermCreateAttributes) {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public del(destroyArgs: UserKeyTermDestroyAttributes) {
+    public del(destroyArgs: UserKeyTermDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: UserKeyTermDestroyAttributes) {
+    public destroy(destroyArgs: UserKeyTermDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: _.pick(destroyArgs, ['userId', 'term']),

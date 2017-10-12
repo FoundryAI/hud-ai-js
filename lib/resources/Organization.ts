@@ -51,11 +51,11 @@ export class OrganizationResource extends Resource<
         super('/organizations', requestManager);
     }
 
-    public list(listArgs: OrganizationListAttributes): Promise<Organization[]> {
+    public list(listArgs: OrganizationListAttributes): Promise<{ count: number, rows: Organization[] }> {
         return this._list(listArgs);
     }
 
-    public create(createArgs: OrganizationCreateAttributes) {
+    public create(createArgs: OrganizationCreateAttributes): Promise<Organization> {
         return this._create(createArgs);
     }
 
@@ -63,15 +63,15 @@ export class OrganizationResource extends Resource<
         return this._get(id);
     }
 
-    public update(id: string, updateArgs: OrganizationUpdateAttributes) {
+    public update(id: string, updateArgs: OrganizationUpdateAttributes): Promise<Organization> {
         return this._update(id, updateArgs);
     }
 
-    public del(id: string) {
+    public del(id: string): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string) {
+    public destroy(id: string): Promise<void> {
         return this._destroy(id);
     }
 }

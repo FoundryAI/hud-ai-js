@@ -32,23 +32,23 @@ export class KeyTermResource extends Resource<
         super('/key-terms', requestManager);
     }
 
+    public list(listArgs: KeyTermListAttributes): Promise<{ count: number, rows: KeyTerm[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: KeyTermCreateAttributes): Promise<KeyTerm> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<KeyTerm> {
         return this._get(id);
     }
 
-    public list(listArgs: KeyTermListAttributes): Promise<KeyTerm[]> {
-        return this._list(listArgs);
-    }
-
-    public create(createArgs: KeyTermCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

@@ -40,27 +40,27 @@ export class PersonResource extends Resource<Person, PersonListAttributes, Perso
         super('/people', requestManager);
     }
 
+    public list(listArgs: PersonListAttributes): Promise<{ count: number, rows: Person[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: PersonCreateAttributes): Promise<Person> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<Person> {
         return this._get(id);
     }
 
-    public list(listArgs: PersonListAttributes): Promise<Person[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: PersonUpdateAttributes) {
+    public update(id: string | number, updateArgs: PersonUpdateAttributes): Promise<Person> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: PersonCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }
