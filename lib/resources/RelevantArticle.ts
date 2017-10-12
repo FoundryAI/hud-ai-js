@@ -65,27 +65,27 @@ export class RelevantArticleResource extends Resource<
         super('/articles/relevant', requestManager);
     }
 
+    public list(listArgs: RelevantArticleListAttributes): Promise<{ count: number, rows: RelevantArticle[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: RelevantArticleCreateAttributes): Promise<RelevantArticle> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<RelevantArticle> {
         return this._get(id);
     }
 
-    public list(listArgs: RelevantArticleListAttributes): Promise<RelevantArticle[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: RelevantArticleUpdateAttributes) {
+    public update(id: string | number, updateArgs: RelevantArticleUpdateAttributes): Promise<RelevantArticle> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: RelevantArticleCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

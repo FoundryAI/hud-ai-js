@@ -41,27 +41,27 @@ export class CompanyResource extends Resource<
         super('/companies', requestManager);
     }
 
+    public list(listArgs: CompanyListAttributes): Promise<{ count: number, rows: Company[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: CompanyCreateAttributes): Promise<Company> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<Company> {
         return this._get(id);
     }
 
-    public list(listArgs: CompanyListAttributes): Promise<Company[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: CompanyUpdateAttributes) {
+    public update(id: string | number, updateArgs: CompanyUpdateAttributes): Promise<Company> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: CompanyCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

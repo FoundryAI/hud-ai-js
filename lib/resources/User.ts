@@ -48,6 +48,18 @@ export class UserResource extends Resource<User, UserListAttributes, UserCreateA
         super('/users', requestManager);
     }
 
+    public list(listArgs: UserListAttributes): Promise<{ count: number, rows: User[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: UserCreateAttributes): Promise<User> {
+        return this._create(createArgs);
+    }
+
+    public get(id: string | number): Promise<User> {
+        return this._get(id);
+    }
+
     public me(): Promise<User> {
         return this.makeRequest({
             method: 'GET',
@@ -55,27 +67,15 @@ export class UserResource extends Resource<User, UserListAttributes, UserCreateA
         })
     }
 
-    public get(id: string | number): Promise<User> {
-        return this._get(id);
-    }
-
-    public list(listArgs: UserListAttributes): Promise<User[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: UserUpdateAttributes) {
+    public update(id: string | number, updateArgs: UserUpdateAttributes): Promise<User> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: UserCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

@@ -42,27 +42,27 @@ export class ArticleHighlightResource extends Resource<
         super('/article-highlights', requestManager);
     }
 
+    public list(listArgs: ArticleHighlightListAttributes): Promise<{ count: number, rows: ArticleHighlight[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: ArticleHighlightCreateAttributes): Promise<ArticleHighlight> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<ArticleHighlight> {
         return this._get(id);
     }
 
-    public list(listArgs: ArticleHighlightListAttributes): Promise<ArticleHighlight[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: ArticleHighlightUpdateAttributes) {
+    public update(id: string | number, updateArgs: ArticleHighlightUpdateAttributes): Promise<ArticleHighlight> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: ArticleHighlightCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

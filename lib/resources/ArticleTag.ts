@@ -46,6 +46,22 @@ export class ArticleTagResource extends Resource<
         super('/articles/{articleId}/tags', requestManager);
     }
 
+    public list(listArgs: ArticleTagListAttributes): Promise<{ count: number, rows: ArticleTag[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: listArgs,
+            url: `${this.basePath}`
+        })
+    }
+
+    public create(createArgs: ArticleTagCreateAttributes): Promise<ArticleTag> {
+        return this.makeRequest({
+            method: 'POST',
+            data: createArgs,
+            url: `${this.basePath}`
+        })
+    }
+
     public get(getArgs: ArticleTagGetAttributes): Promise<ArticleTag> {
         return this.makeRequest({
             method: 'GET',
@@ -54,27 +70,11 @@ export class ArticleTagResource extends Resource<
         })
     }
 
-    public list(listArgs: ArticleTagListAttributes): Promise<ArticleTag[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public create(createArgs: ArticleTagCreateAttributes) {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        })
-    }
-
-    public del(destroyArgs: ArticleTagDestroyAttributes) {
+    public del(destroyArgs: ArticleTagDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: ArticleTagDestroyAttributes) {
+    public destroy(destroyArgs: ArticleTagDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,

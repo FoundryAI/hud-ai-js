@@ -78,7 +78,8 @@ export class UserDigestSubscriptionResource extends Resource<
         });
     }
 
-    public list(listArgs: UserDigestSubscriptionListAttributes): Promise<UserDigestSubscription[]> {
+    public list(listArgs: UserDigestSubscriptionListAttributes):
+        Promise<{ count: number, rows: UserDigestSubscription[] }> {
         return this.makeRequest({
             method: 'GET',
             params: listArgs,
@@ -86,7 +87,7 @@ export class UserDigestSubscriptionResource extends Resource<
         })
     }
 
-    public create(createArgs: UserDigestSubscriptionCreateAttributes) {
+    public create(createArgs: UserDigestSubscriptionCreateAttributes): Promise<UserDigestSubscription> {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,
@@ -102,11 +103,11 @@ export class UserDigestSubscriptionResource extends Resource<
         })
     }
 
-    public del(destroyArgs: UserDigestSubscriptionDestroyAttributes) {
+    public del(destroyArgs: UserDigestSubscriptionDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs)
     }
 
-    public destroy(destroyArgs: UserDigestSubscriptionDestroyAttributes) {
+    public destroy(destroyArgs: UserDigestSubscriptionDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             params: _.pick(destroyArgs, 'userId'),

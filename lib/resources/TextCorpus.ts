@@ -44,27 +44,27 @@ export class TextCorpusResource extends Resource<
         super('/text-corpora', requestManager);
     }
 
+    public list(listArgs: TextCorpusListAttributes): Promise<{ count: number, rows: TextCorpus[] }> {
+        return this._list(listArgs);
+    }
+
+    public create(createArgs: TextCorpusCreateAttributes): Promise<TextCorpus> {
+        return this._create(createArgs);
+    }
+
     public get(id: string | number): Promise<TextCorpus> {
         return this._get(id);
     }
 
-    public list(listArgs: TextCorpusListAttributes): Promise<TextCorpus[]> {
-        return this._list(listArgs);
-    }
-
-    public update(id: string | number, updateArgs: TextCorpusUpdateAttributes) {
+    public update(id: string | number, updateArgs: TextCorpusUpdateAttributes): Promise<TextCorpus> {
         return this._update(id, updateArgs);
     }
 
-    public create(createArgs: TextCorpusCreateAttributes) {
-        return this._create(createArgs);
-    }
-
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

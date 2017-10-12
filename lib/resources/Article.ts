@@ -72,11 +72,11 @@ export class ArticleResource extends Resource<
         super('/articles', requestManager);
     }
 
-    public list(listArgs: ArticleListAttributes): Promise<Article[]> {
+    public list(listArgs: ArticleListAttributes): Promise<{ count: number, rows: Article[] }> {
         return this._list(listArgs);
     }
 
-    public create(createArgs: ArticleCreateAttributes) {
+    public create(createArgs: ArticleCreateAttributes): Promise<Article> {
         return this._create(createArgs);
     }
 
@@ -84,15 +84,15 @@ export class ArticleResource extends Resource<
         return this._get(id);
     }
 
-    public update(id: string | number, updateArgs: ArticleUpdateAttributes) {
+    public update(id: string | number, updateArgs: ArticleUpdateAttributes): Promise<Article> {
         return this._update(id, updateArgs);
     }
 
-    public del(id: string | number) {
+    public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number) {
+    public destroy(id: string | number): Promise<void> {
         return this._destroy(id);
     }
 }

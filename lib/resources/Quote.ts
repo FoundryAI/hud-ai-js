@@ -47,6 +47,22 @@ export class QuoteResource extends Resource<
         super('/people/quotes', requestManager);
     }
 
+    public list(listArgs: QuoteListAttributes): Promise<{ count: number, rows: Quote[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: listArgs,
+            url: `${this.basePath}`
+        });
+    }
+
+    public create(createArgs: QuoteCreateAttributes): Promise<Quote> {
+        return this.makeRequest({
+            method: 'POST',
+            data: createArgs,
+            url: `${this.basePath}`
+        });
+    }
+
     public get(getArgs: QuoteGetAttributes): Promise<Quote> {
         return this.makeRequest({
             method: 'GET',
@@ -55,27 +71,11 @@ export class QuoteResource extends Resource<
         });
     }
 
-    public list(listArgs: QuoteListAttributes): Promise<Quote[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        });
-    }
-
-    public create(createArgs: QuoteCreateAttributes) {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        });
-    }
-
-    public del(destroyArgs: QuoteDestroyAttributes) {
+    public del(destroyArgs: QuoteDestroyAttributes): Promise<void> {
         return this.destroy(destroyArgs);
     }
 
-    public destroy(destroyArgs: QuoteDestroyAttributes) {
+    public destroy(destroyArgs: QuoteDestroyAttributes): Promise<void> {
         return this.makeRequest({
             method: 'DELETE',
             data: destroyArgs,
