@@ -61,7 +61,7 @@ export class UserDigestSubscriptionResource extends Resource<
     public subscribe(upsertArgs: UserDigestSubscriptionCreateAttributes) {
         return this.makeRequest({
             method: 'PUT',
-            params: upsertArgs,
+            data: upsertArgs,
             url: `${this.basePath}`
         });
     }
