@@ -15,6 +15,7 @@ import {
     ArticleHighlightResource,
     ArticleKeyTermResource,
     ArticleTagResource,
+    CollateralResource,
     CompanyResource,
     CompanyKeyTermResource,
     DomainResource,
@@ -24,6 +25,7 @@ import {
     PersonKeyTermResource,
     QuoteResource,
     RelevantArticleResource,
+    RelevantArticleCollateralResource,
     TextCorpusResource,
     UserResource,
     UserCompanyResource,
@@ -37,6 +39,7 @@ export {
     ArticleHighlight,
     ArticleKeyTerm,
     ArticleTag,
+    Collateral,
     Company,
     CompanyKeyTerm,
     Domain,
@@ -46,6 +49,7 @@ export {
     PersonKeyTerm,
     Quote,
     RelevantArticle,
+    RelevantArticleCollateral,
     TextCorpus,
     User,
     UserCompany,
@@ -74,6 +78,7 @@ export class HudAiClient {
     public articleHighlights: ArticleHighlightResource;
     public articleKeyTerms: ArticleKeyTermResource;
     public articleTags: ArticleTagResource;
+    public collateral: CollateralResource;
     public companies: CompanyResource;
     public companyKeyTerms: CompanyKeyTermResource;
     public domains: DomainResource;
@@ -83,6 +88,7 @@ export class HudAiClient {
     public peopleKeyTerms: PersonKeyTermResource;
     public quotes: QuoteResource;
     public relevantArticles: RelevantArticleResource;
+    public relevantArticleCollateral: RelevantArticleCollateralResource;
     public textCorpora: TextCorpusResource;
     public users: UserResource;
     public userCompanies: UserCompanyResource;
@@ -126,6 +132,7 @@ export class HudAiClient {
         this.articleHighlights = new ArticleHighlightResource(this.requestManager);
         this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
         this.articleTags = new ArticleTagResource(this.requestManager);
+        this.collateral = new CollateralResource(this.requestManager);
         this.companies = new CompanyResource(this.requestManager);
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
@@ -135,6 +142,7 @@ export class HudAiClient {
         this.peopleKeyTerms = new PersonKeyTermResource(this.requestManager);
         this.quotes = new QuoteResource(this.requestManager);
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
+        this.relevantArticleCollateral = new RelevantArticleCollateralResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
         this.userCompanies = new UserCompanyResource(this.requestManager);
