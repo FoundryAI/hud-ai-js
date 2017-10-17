@@ -15,6 +15,7 @@ import {
     ArticleHighlightResource,
     ArticleKeyTermResource,
     ArticleTagResource,
+    CollateralResource,
     CompanyResource,
     CompanyKeyTermResource,
     DomainResource,
@@ -37,6 +38,7 @@ export {
     ArticleHighlight,
     ArticleKeyTerm,
     ArticleTag,
+    Collateral,
     Company,
     CompanyKeyTerm,
     Domain,
@@ -74,6 +76,7 @@ export class HudAiClient {
     public articleHighlights: ArticleHighlightResource;
     public articleKeyTerms: ArticleKeyTermResource;
     public articleTags: ArticleTagResource;
+    public collateral: CollateralResource;
     public companies: CompanyResource;
     public companyKeyTerms: CompanyKeyTermResource;
     public domains: DomainResource;
@@ -126,6 +129,7 @@ export class HudAiClient {
         this.articleHighlights = new ArticleHighlightResource(this.requestManager);
         this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
         this.articleTags = new ArticleTagResource(this.requestManager);
+        this.collateral = new CollateralResource(this.requestManager);
         this.companies = new CompanyResource(this.requestManager);
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);

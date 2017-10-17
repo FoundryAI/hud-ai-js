@@ -2,6 +2,7 @@ export { Article, ArticleResource } from './Article';
 export { ArticleHighlight, ArticleHighlightResource } from './ArticleHighlight';
 export { ArticleKeyTerm, ArticleKeyTermResource } from './ArticleKeyTerm';
 export { ArticleTag, ArticleTagResource } from './ArticleTag';
+export { Collateral, CollateralResource } from './Collateral';
 export { Company, CompanyResource } from './Company';
 export { CompanyKeyTerm, CompanyKeyTermResource } from './CompanyKeyTerm';
 export { Domain, DomainResource } from './Domain';
