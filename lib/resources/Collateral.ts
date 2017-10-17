@@ -38,7 +38,7 @@ export interface CollateralCreateAttributes extends HudAiCreateAttributes {
     dataScienceMetadata?: Object;
 }
 
-export interface CollateralGetAttributes extends HudAiListAttributes {
+export interface CollateralGetAttributes {
     id: string;
     organizationId: string;
 }
