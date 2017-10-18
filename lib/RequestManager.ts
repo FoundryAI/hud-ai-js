@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import {flow, merge, defaults, get} from 'lodash/fp';
 import * as Promise from 'bluebird';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import * as qs from 'qs';
 import { Agent as HttpsAgent } from 'https';
 
 import { HudAiClient, HudAiClientConfiguration } from './HudAiClient';
@@ -32,7 +33,9 @@ export const defaultAxiosConfig = <AxiosRequestConfig> {
     // Encode requests as JSON. Encode the response as well if JSON is returned.
     responseType: 'json',
     // Standard 10s timeout
-    timeout: 10000
+    timeout: 10000,
+    // Use ?param[0]=foo&param[1]=bar for duplicated query params to make API gateway happy
+    paramsSerializer: params => qs.stringify(params, { indices: true, strict: false, encode: true })
 };
 
 export class RequestManager {
