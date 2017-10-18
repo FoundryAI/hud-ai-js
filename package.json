@@ -1,6 +1,6 @@
 {
   "name": "hud-ai",
-  "version": "1.9.6",
+  "version": "1.10.0",
   "description": "Hud.ai API Client",
   "main": "./build/HudAiClient.js",
   "types": "./build/HudAiClient.d.ts",
@@ -56,7 +56,9 @@
     "bluebird": "^3.5.0",
     "date-fns": "^1.28.5",
     "joi": "^10.6.0",
+    "joi-browser": "^10.6.1",
     "lodash": "^4.17.4",
+    "qs": "^6.5.1",
     "ts-node": "^3.3.0"
   },
   "nyc": {

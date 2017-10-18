@@ -7,8 +7,9 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
+import {BasicKeyTerm} from './KeyTerm';
 
-export interface UserKeyTerm {
+export interface UserKeyTerm extends BasicKeyTerm {
     id: string;
     userId?: string;
     term: string;

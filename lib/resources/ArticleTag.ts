@@ -8,7 +8,11 @@ import {
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 
-export interface ArticleTag {
+export interface BasicArticleTag {
+    tag: string;
+}
+
+export interface ArticleTag extends BasicArticleTag {
     id: string;
     articleId: string;
     tag: string;
