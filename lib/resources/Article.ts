@@ -100,6 +100,12 @@ export interface ArticleSearchAttributes {
     scoredAfter: Date;
 }
 
+export interface GroupedTagCount {
+    [term: string]: {
+        [tag: string]: number
+    };
+}
+
 export class ArticleResource extends Resource<
     Article,
     ArticleListAttributes,
@@ -127,6 +133,14 @@ export class ArticleResource extends Resource<
             method: 'GET',
             params: searchArgs,
             url: `${this.basePath}/search/byTerm`
+        })
+    }
+
+    public countTagsByTerm(countArgs: ArticleSearchAttributes): Promise<GroupedTagCount> {
+        return this.makeRequest({
+            method: 'GET',
+            params: countArgs,
+            url: `${this.basePath}/search/byTerm/countTags`
         })
     }
 
