@@ -43,7 +43,7 @@ export class RelevantArticleCollateralResource extends Resource<
     {} // No update attributes
 > {
     constructor(requestManager: RequestManager) {
-        super('/relevant-articles/{relevantArticleId}/collateral', requestManager);
+        super('/articles/relevant/{relevantArticleId}/collateral', requestManager);
     }
 
     public list(listArgs: RelevantArticleCollateralListAttributes): Promise<{ count: number, rows: RelevantArticleCollateral[] }> {
