@@ -120,6 +120,8 @@ class HudAiClientSpec {
 
         nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
+            client_id: serverSideConfig.clientId,
+            client_secret: serverSideConfig.clientSecret,
             grant_type: 'authorization_code',
             code
         })
@@ -149,6 +151,8 @@ class HudAiClientSpec {
 
         nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
+            client_id: serverSideConfig.clientId,
+            client_secret: serverSideConfig.clientSecret,
             grant_type: 'refresh_grant',
             refresh_token: client.refreshToken
         })
@@ -174,6 +178,8 @@ class HudAiClientSpec {
 
         nock('https://accounts.hud.ai')
         .post('/oauth2/token', {
+            client_id: serverSideConfig.clientId,
+            client_secret: serverSideConfig.clientSecret,
             grant_type: 'client_credentials'
         })
         .reply(200, this.authResponse);
