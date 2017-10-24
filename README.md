@@ -210,6 +210,15 @@ Takes all an object with the model attributes
 
 #### `client.companyKeyTerm.destroy(term)`
 
+### CompanyProfile
+
+| Attribute | Type | Description |
+| --------- | ---- | ----------- |
+| `id`         | string     | Resource ID **Cannot be edited** |
+| `companyId`* | **string** | Associated company |
+
+#### `client.companyProfiles.get({ companyId })`
+
 ### Domain
 
 | Attribute | Type | Description |
