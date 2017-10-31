@@ -5,8 +5,8 @@ import { RequestOptions, RequestManager } from '../RequestManager';
 
 
 export interface HudAiListAttributes {
-    limit: number;
-    offset: number;
+    limit?: number;
+    offset?: number;
 }
 
 export interface  HudAiCreateAttributes {}
