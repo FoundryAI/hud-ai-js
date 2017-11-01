@@ -43,7 +43,7 @@
 | `query.body`      | string |
 | `query.userId`    | string |
 
-## `client.articleHighlights.delete(id)`
+## `client.articleHighlights.destroy(id)`
 
 | Param | Type |
 |-------|------|

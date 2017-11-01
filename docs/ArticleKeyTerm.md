@@ -34,7 +34,7 @@
 | `query.articleId`* | **string** |
 | `query.term`*      | **string** |
 
-## `client.articleKeyTerms.delete(articleId, term)`
+## `client.articleKeyTerms.destroy(articleId, term)`
 
 | Param | Type |
 |-------|------|

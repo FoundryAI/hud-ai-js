@@ -17,4 +17,4 @@
 
 ## `client.user_contacts.update(user_id, contact_id, **params)`
 
-## `client.user_contacts.delete(user_id, contact_id)`
+## `client.user_contacts.destroy(user_id, contact_id)`

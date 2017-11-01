@@ -34,7 +34,7 @@
 | `query.articleId`* | **string** |
 | `query.tag`*       | **string** |
 
-## `client.articleTags.delete(articleId, tag)`
+## `client.articleTags.destroy(articleId, tag)`
 
 | Param | Type |
 |-------|------|

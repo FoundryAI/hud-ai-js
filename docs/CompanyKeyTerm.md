@@ -3,12 +3,12 @@
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `id`         | String     | Resource ID **Cannot be edited** |
-| `createdAt`       | Date       | Creation date **Cannot be edited** |
-| `updatedAt`       | Date       | Last touch date **Cannot be edited** |
+| `createdAt`  | Date       | Creation date **Cannot be edited** |
+| `updatedAt`  | Date       | Last touch date **Cannot be edited** |
 | `companyId`* | **String** | Associated company |
 | `term`*      | **String** | Term (can be word or phrase) to find in articles |
 
-## `client.company_key_terms.list(params)`
+## `client.companyKeyTerms.list(params)`
 
 | Param | Type |
 |-------|------|
@@ -16,7 +16,7 @@
 | `query.companyId`*  | **string** |
 | `query.term`*       | **string** |
 
-## `client.company_key_terms.create(params)`
+## `client.companyKeyTerms.create(params)`
 
 | Param | Type |
 |-------|------|
@@ -24,7 +24,7 @@
 | `query.companyId`*  | **string** |
 | `query.term`*       | **string** |
 
-## `client.company_key_terms.get(params)`
+## `client.companyKeyTerms.get(params)`
 
 | Param | Type |
 |-------|------|
@@ -32,7 +32,7 @@
 | `query.companyId`*  | **string** |
 | `query.term`*       | **string** |
 
-## `client.company_key_terms.delete(params)`
+## `client.companyKeyTerms.destroy(params)`
 
 | Param | Type |
 |-------|------|

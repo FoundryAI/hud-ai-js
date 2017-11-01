@@ -2,12 +2,12 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`        | String     | Resource ID **Cannot be edited** |
+| `id`        | string     | Resource ID **Cannot be edited** |
 | `createdAt` | Date       | Creation date **Cannot be edited** |
 | `updatedAt` | Date       | Last touch date **Cannot be edited** |
-| `name`*     | **String** | Full name |
-| `title`*    | **String** | Professional title (e.g. `'Partner, Foundry.ai'`) |
-| `imageUrl`  | String     | URL for a picture of the person |
+| `name`*     | **string** | Full name |
+| `title`*    | **string** | Professional title (e.g. `'Partner, Foundry.ai'`) |
+| `imageUrl`  | string     | URL for a picture of the person |
 
 ## `client.people.list(params)`
 
@@ -44,7 +44,7 @@
 | `params.title` | string |
 | `params.term`  | string |
 
-## `client.people.delete(id)`
+## `client.people.destroy(id)`
 
 | Param | Type |
 |-------|------|

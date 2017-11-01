@@ -21,4 +21,4 @@ Takes all of the model attributes as keyword params
 
 Takes all of the model attributes as keyword params
 
-## `client.users.delete(id)`
+## `client.users.destroy(id)`

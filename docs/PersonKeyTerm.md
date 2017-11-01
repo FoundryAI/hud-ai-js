@@ -2,16 +2,40 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`         | String     | Resource ID **Cannot be edited** |
-| `person_id`* | **String** | Related entity ID |
-| `term`*      | **String** | Term (can be word or phrase) to find in articles |
+| `id`        | String     | Resource ID **Cannot be edited** |
+| `createdAt` | Date       | Creation date **Cannot be edited** |
+| `updatedAt` | Date       | Last touch date **Cannot be edited** |
+| `personId`* | **String** | Associated person |
+| `term`*     | **String** | Term (can be word or phrase) to find in articles |
 
-## `client.person_key_terms.list(person_id, page?)`
+## `client.peopleKeyTerms.list(params)`
 
-## `client.person_key_terms.create(**params)`
+| Param | Type |
+|-------|------|
+| `query`           | Object |
+| `query.personId`* | **string** |
+| `query.term`*     | **string** |
 
-Takes all of the model attributes as keyword params
+## `client.peopleKeyTerms.create(params)`
 
-## `client.person_key_terms.get(person_id, term)`
+| Param | Type |
+|-------|------|
+| `query`           | Object |
+| `query.personId`* | **string** |
+| `query.term`*     | **string** |
 
-## `client.person_key_terms.delete(person_id, term)`
+## `client.peopleKeyTerms.get(params)`
+
+| Param | Type |
+|-------|------|
+| `query`           | Object |
+| `query.personId`* | **string** |
+| `query.term`*     | **string** |
+
+## `client.peopleKeyTerms.destroy(params)`
+
+| Param | Type |
+|-------|------|
+| `query`           | Object |
+| `query.personId`* | **string** |
+| `query.term`*     | **string** |

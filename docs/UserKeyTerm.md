@@ -12,4 +12,4 @@
 
 ## `client.user_key_terms.get(user_id, term)`
 
-## `client.user_key_terms.delete(user_id, term)`
+## `client.user_key_terms.destroy(user_id, term)`

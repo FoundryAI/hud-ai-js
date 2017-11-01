@@ -19,4 +19,4 @@ Takes all of the model attributes as keyword params
 
 Takes all of the model attributes as keyword params
 
-## `client.person_quotes.delete(person_id, quote_id)`
+## `client.person_quotes.destroy(person_id, quote_id)`

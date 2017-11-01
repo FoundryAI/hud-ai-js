@@ -12,7 +12,7 @@
 | `startsAt`*   | **Date**   | When does this event start |
 | `endsAt`*     | **Date**   | When does this event end |
 
-## `client.companyEvent.list(params)`
+## `client.companyEvents.list(params)`
 
 | Param | Type |
 |-------|------|
@@ -28,7 +28,7 @@
 | `params.limit`          | number |
 | `params.offset`         | number |
 
-## `client.companyEvent.create(params)`
+## `client.companyEvents.create(params)`
 
 | Param | Type |
 |-------|------|
@@ -40,7 +40,7 @@
 | `params.startsAt`*   | **Date** |
 | `params.endsAt`*     | **Date** |
 
-## `client.companyEvent.fetch(params)`
+## `client.companyEvents.fetch(params)`
 
 | Param | Type |
 |-------|------|
@@ -48,7 +48,7 @@
 | `params.companyId`*  | **string** |
 | `params.id`*         | **string** |
 
-## `client.companyEvent.update(params)`
+## `client.companyEvents.update(params)`
 
 | Param | Type |
 |-------|------|
@@ -62,7 +62,7 @@
 | `params.startsAt`    | Date |
 | `params.endsAt`      | Date |
 
-## `client.companyEvent.delete(params)`
+## `client.companyEvents.destroy(params)`
 
 | Param | Type |
 |-------|------|

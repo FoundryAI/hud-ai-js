@@ -15,4 +15,4 @@
 
 ## `client.text_corpora.update(id, user_id?, corpus_type?, body?)`
 
-## `client.text_corpora.delete(id)`
+## `client.text_corpora.destroy(id)`

@@ -26,4 +26,4 @@ Takes all of the model attributes as keyword params
 
 When `completed_at` is omitted, it will default to now.
 
-## `client.system_tasks.delete(id)`
+## `client.system_tasks.destroy(id)`

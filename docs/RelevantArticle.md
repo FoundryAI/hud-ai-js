@@ -24,4 +24,4 @@ and `article_id`
 
 Only the `score` and `scored_at` and `article_published_at` can be updated.
 
-## `client.relevant_articles.delete(id)`
+## `client.relevant_articles.destroy(id)`

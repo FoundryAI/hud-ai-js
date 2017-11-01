@@ -39,7 +39,7 @@
 | `params.companyId` | string |
 | `params.hostname`  | string |
 
-## `client.domains.delete(id)`
+## `client.domains.destroy(id)`
 
 | Param | Type |
 |-------|------|

@@ -12,4 +12,4 @@
 
 ## `client.user_companies.get(user_id, company_id)`
 
-## `client.user_companies.delete(user_id, company_id)`
+## `client.user_companies.destroy(user_id, company_id)`
