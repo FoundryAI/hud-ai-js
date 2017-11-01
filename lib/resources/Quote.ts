@@ -19,10 +19,6 @@ export interface Quote {
     person?: Person;
 }
 
-export interface QuoteGetAttributes {
-    id: string;
-}
-
 export interface QuoteListAttributes extends HudAiListAttributes {
     personId?: string;
     articleId?: string;
@@ -34,10 +30,6 @@ export interface QuoteCreateAttributes extends HudAiCreateAttributes {
     articleId: string;
     text: string;
     term: string;
-}
-
-export interface QuoteDestroyAttributes {
-    id: string;
 }
 
 export class QuoteResource extends Resource<
@@ -58,15 +50,15 @@ export class QuoteResource extends Resource<
         return this._create(createArgs);
     }
 
-    public get(getArgs: QuoteGetAttributes): Promise<Quote> {
-        return this._get(getArgs.id);
+    public get(id: string | number): Promise<Quote> {
+        return this._get(id);
     }
 
-    public del(destroyArgs: QuoteDestroyAttributes): Promise<void> {
-        return this.destroy(destroyArgs);
+    public del(id: string | number): Promise<void> {
+        return this.destroy(id);
     }
 
-    public destroy(destroyArgs: QuoteDestroyAttributes): Promise<void> {
-        return this._destroy(destroyArgs.id);
+    public destroy(id: string | number): Promise<void> {
+        return this._destroy(id);
     }
 }
