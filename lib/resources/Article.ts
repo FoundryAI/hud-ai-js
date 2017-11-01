@@ -56,7 +56,6 @@ export interface ArticleCreateAttributes extends HudAiCreateAttributes {
     authors?: string[];
     imageUrl?: string;
     importanceScore?: number;
-    linkHash?: string;
     linkUrl: string;
     publishedAt?: Date;
     rawDataUrl: string;
@@ -96,8 +95,8 @@ export interface ArticleSearchAttributes {
     userId?: string;
     minRelevance?: number;
     maxRelevance?: number;
-    scoredBefore: Date;
-    scoredAfter: Date;
+    scoredBefore?: Date;
+    scoredAfter?: Date;
 }
 
 export interface GroupedTagCount {

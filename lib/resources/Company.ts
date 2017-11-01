@@ -25,10 +25,12 @@ export interface CompanyListAttributes extends HudAiListAttributes {
 
 export interface CompanyCreateAttributes extends HudAiCreateAttributes {
     name: string;
+    ticker?: string;
 }
 
 export interface CompanyUpdateAttributes extends HudAiUpdateAttributes {
-    name: string;
+    name?: string;
+    ticker?: string;
 }
 
 export class CompanyResource extends Resource<
