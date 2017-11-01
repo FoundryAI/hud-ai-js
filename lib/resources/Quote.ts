@@ -6,6 +6,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
+import {Person} from './Person';
 
 export interface Quote {
     id: string;
@@ -14,6 +15,8 @@ export interface Quote {
     personId: string;
     articleId: string;
     text: string;
+    term: string;
+    person?: Person;
 }
 
 export interface QuoteGetAttributes {
