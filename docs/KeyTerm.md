@@ -10,8 +10,10 @@
 
 | Param | Type |
 |-------|------|
-| `params`      | Object |
-| `params.term` | string |
+| `params`        | Object |
+| `params.term`   | string |
+| `params.limit`  | number |
+| `params.offset` | number |
 
 ## `client.keyTerms.create(params)`
 

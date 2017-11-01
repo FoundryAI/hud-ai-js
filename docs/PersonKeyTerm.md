@@ -12,30 +12,32 @@
 
 | Param | Type |
 |-------|------|
-| `query`           | Object |
-| `query.personId`* | **string** |
-| `query.term`*     | **string** |
+| `params`           | Object |
+| `params.personId`* | **string** |
+| `params.term`*     | **string** |
+| `params.limit`     | number |
+| `params.offset`    | number |
 
 ## `client.peopleKeyTerms.create(params)`
 
 | Param | Type |
 |-------|------|
-| `query`           | Object |
-| `query.personId`* | **string** |
-| `query.term`*     | **string** |
+| `params`           | Object |
+| `params.personId`* | **string** |
+| `params.term`*     | **string** |
 
 ## `client.peopleKeyTerms.get(params)`
 
 | Param | Type |
 |-------|------|
-| `query`           | Object |
-| `query.personId`* | **string** |
-| `query.term`*     | **string** |
+| `params`           | Object |
+| `params.personId`* | **string** |
+| `params.term`*     | **string** |
 
 ## `client.peopleKeyTerms.destroy(params)`
 
 | Param | Type |
 |-------|------|
-| `query`           | Object |
-| `query.personId`* | **string** |
-| `query.term`*     | **string** |
+| `params`           | Object |
+| `params.personId`* | **string** |
+| `params.term`*     | **string** |

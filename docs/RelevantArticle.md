@@ -2,26 +2,65 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`                   | String     | Resource ID **Cannot be edited** |
-| `article_id`*          | **String** | Scored article |
-| `user_id`*             | **String** | User the score applies to |
-| `score`*               | **Float**  | Score between 0 and 1 |
-| `scored_at`*           | **Date**   | When the scoring was performed |
-| `article_published_at` | Date       | When scored article was published |
+| `id`                 | string     | Resource ID **Cannot be edited** |
+| `createdAt`          | Date       | Creation date **Cannot be edited** |
+| `updatedAt`          | Date       | Last touch date **Cannot be edited** |
+| `articleId`*         | **string** | Scored article |
+| `userId`*            | **string** | User the score applies to |
+| `score`*             | **number** | Score between 0 and 1 |
+| `scoredAt`*          | **Date**   | When the scoring was performed |
+| `articlePublishedAt` | Date       | When scored article was published |
+| `keyTerms`           | string[]   | Terms that matched against the article |
+| `tags`               | string[]   | Tags that the article fit (categories) |
 
-## `client.relevant_articles.list(article_id?, user_id?, scored_above?, scored_below?, scored_before?, scored_after?, published_before?, published_after?, page?)`
+## `client.relevantArticles.list(params)`
 
-## `client.relevant_articles.create(**params)`
+| Param | Type |
+|-------|------|
+| `params`                 | Object |
+| `params.userId`          | string |
+| `params.articleId`       | string |
+| `params.publishedBefore` | Date |
+| `params.publishedAfter`  | Date |
+| `params.scoredAbove`     | number |
+| `params.scoredBelow`     | number |
+| `params.scoredBefore`    | Date |
+| `params.scoredAfter`     | Date |
+| `params.keyTerms`        | string[] |
+| `params.tags`            | string[] |
+| `params.include`         | string[] |
 
-Takes all of the model attributes as keyword params.
+## `client.relevantArticles.create(params)`
 
-**NOTE:** Multiple RelevantArticles *cannot* be created with the same `user_id`
-and `article_id`
+| Param | Type |
+|-------|------|
+| `params`                    | Object |
+| `params.articleId`*         | **string** |
+| `params.userId`*            | **string** |
+| `params.score`*             | **number** |
+| `params.scoredAt`*          | **Date**   |
+| `params.articlePublishedAt` | Date       |
 
-## `client.relevant_articles.get(id)`
+## `client.relevantArticles.get(id)`
 
-## `client.relevant_articles.update(id, **params)`
+| Param | Type |
+|-------|------|
+| `id` | string |
 
-Only the `score` and `scored_at` and `article_published_at` can be updated.
+## `client.relevantArticles.update(id, params)`
 
-## `client.relevant_articles.destroy(id)`
+| Param | Type |
+|-------|------|
+| `id`                        | string |
+| `params`                    | Object |
+| `params.articleId`          | string |
+| `params.userId`             | string |
+| `params.score`              | number |
+| `params.scoredAt`           | Date |
+| `params.articlePublishedAt` | Date |
+
+## `client.relevantArticles.destroy(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |

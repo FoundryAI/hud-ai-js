@@ -18,6 +18,8 @@
 | `params.personId`  | string |
 | `params.articleId` | string |
 | `params.term`      | string |
+| `params.limit`     | number |
+| `params.offset`    | number |
 
 ## `client.quotes.create(params)`
 

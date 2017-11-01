@@ -15,6 +15,8 @@
 | `query`             | Object |
 | `query.companyId`*  | **string** |
 | `query.term`*       | **string** |
+| `query.limit`       | number |
+| `query.offset`      | number |
 
 ## `client.companyKeyTerms.create(params)`
 

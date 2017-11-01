@@ -14,7 +14,7 @@
 | `state`           | string     | Headquarters state |
 | `country`         | string     | Headquarters country |
 
-## `client.company_key_terms.getlist(params)`
+## `client.companyProfiles.get(params)`
 
 | Param | Type |
 |-------|------|

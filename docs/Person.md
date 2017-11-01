@@ -13,10 +13,12 @@
 
 | Param | Type |
 |-------|------|
-| `params`       | Object |
-| `params.name`  | string |
-| `params.title` | string |
-| `params.term`  | string |
+| `params`        | Object |
+| `params.name`   | string |
+| `params.title`  | string |
+| `params.term`   | string |
+| `params.limit`  | number |
+| `params.offset` | number |
 
 ## `client.people.create(params)`
 

@@ -15,6 +15,8 @@
 | `params`           | Object |
 | `params.companyId` | string |
 | `params.hostname`  | string |
+| `params.limit`     | number |
+| `params.offset`    | number |
 
 ## `client.domains.create(params)`
 

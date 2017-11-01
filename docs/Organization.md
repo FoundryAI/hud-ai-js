@@ -19,6 +19,8 @@
 | `params.name`        | string |
 | `params.signupKey`   | string |
 | `params.emailDomain` | string |
+| `params.limit`       | number |
+| `params.offset`      | number |
 
 ## `client.organizations.create(params)`
 
