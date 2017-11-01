@@ -116,6 +116,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | PersonKeyTerm | [client.personKeyTerms](docs/PersonKeyTerm.md) |
 | Quote | [client.quotes](docs/Quote.md) |
 | RelevantArticle | [client.relevantArticles](docs/RelevantArticle.md) |
+| RelevantArticleCollateral | [client.relevantArticleCollateral](docs/RelevantArticleCollateral.md) |
 | SystemEvent | [client.systemEvents](docs/SystemEvent.md) |
 | SystemTask | [client.systemTasks](docs/SystemTask.md) |
 | TextCorpus | [client.textCorpora](docs/TextCorpus.md) |
