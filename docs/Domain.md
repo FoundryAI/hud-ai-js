@@ -2,20 +2,43 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`          | String     | Resource ID **Cannot be edited** |
-| `company_id`* | **String** | Associated company |
-| `hostname`*   | **String** | FQDN e.g. `api.hud.ai` |
+| `id`         | String     | Resource ID **Cannot be edited** |
+| `companyId`* | **String** | Associated company |
+| `hostname`*  | **String** | FQDN e.g. `api.hud.ai` |
 
-## `client.domains.list(company_id?, hostname?, page?)`
+## `client.domains.list(params)`
 
-## `client.domains.create(**params)`
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.companyId` | string |
+| `params.hostname`  | string |
 
-Takes all of the model attributes as keyword params
+## `client.domains.create(params)`
+
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.companyId`* | **string** |
+| `params.hostname`*  | **string** |
 
 ## `client.domains.fetch(id)`
 
-## `client.domains.update(id, **params)`
+| Param | Type |
+|-------|------|
+| `id` | string |
 
-Takes all of the model attributes as keyword params
+## `client.domains.update(id, params)`
+
+| Param | Type |
+|-------|------|
+| `id`               | string |
+| `params`           | Object |
+| `params.companyId` | string |
+| `params.hostname`  | string |
 
 ## `client.domains.delete(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
