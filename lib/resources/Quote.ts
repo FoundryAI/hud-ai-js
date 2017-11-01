@@ -45,7 +45,7 @@ export class QuoteResource extends Resource<
     QuoteListAttributes,
     QuoteCreateAttributes,
     any
-    > {
+> {
     constructor(requestManager: RequestManager) {
         super('/people/quotes', requestManager);
     }
