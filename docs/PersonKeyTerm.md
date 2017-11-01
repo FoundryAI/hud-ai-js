@@ -12,6 +12,6 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.person_key_terms.fetch(person_id, term)`
+## `client.person_key_terms.get(person_id, term)`
 
 ## `client.person_key_terms.delete(person_id, term)`

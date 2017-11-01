@@ -11,7 +11,7 @@
 
 ## `client.text_corpora.create(user_id?, corpus_type?, body?)`
 
-## `client.text_corpora.fetch(id)`
+## `client.text_corpora.get(id)`
 
 ## `client.text_corpora.update(id, user_id?, corpus_type?, body?)`
 

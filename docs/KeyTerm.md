@@ -2,14 +2,40 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `term`* | **String** | Term (can be word or phrase) to find in articles |
+| `createdAt` | Date       | Creation date **Cannot be edited** |
+| `updatedAt` | Date       | Last touch date **Cannot be edited** |
+| `term`*     | **String** | Term (can be word or phrase) to find in articles |
 
-## `client.key_terms.list(page?)`
+## `client.keyTerms.list(params)`
 
-## `client.key_terms.create(**params)`
+| Param | Type |
+|-------|------|
+| `params`      | Object |
+| `params.term` | string |
 
-Takes all of the model attributes as keyword params
+## `client.keyTerms.create(params)`
 
-## `client.key_terms.fetch(term)`
+| Param | Type |
+|-------|------|
+| `params`       | Object |
+| `params.term`* | **string** |
 
-## `client.key_terms.delete(term)`
+## `client.keyTerms.get(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
+
+## `client.keyTerms.update(id, params)`
+
+| Param | Type |
+|-------|------|
+| `id`          | string |
+| `params`      | Object |
+| `params.term` | string |
+
+## `client.keyTerms.delete(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |

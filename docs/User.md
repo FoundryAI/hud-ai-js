@@ -13,7 +13,7 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.users.fetch(id)`
+## `client.users.get(id)`
 
 ## `client.users.me()`
 

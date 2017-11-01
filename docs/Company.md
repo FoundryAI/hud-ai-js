@@ -2,11 +2,11 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`        | String     | Resource ID **Cannot be edited** |
+| `id`        | string     | Resource ID **Cannot be edited** |
 | `createdAt` | Date       | Creation date **Cannot be edited** |
 | `updatedAt` | Date       | Last touch date **Cannot be edited** |
-| `name`*     | **String** | Primary company name (others can be associated as key terms) |
-| `ticker`    | String     | Stock ticker (e.g. `"NASDAQ:TWTR"`) |
+| `name`*     | **string** | Primary company name (others can be associated as key terms) |
+| `ticker`    | string     | Stock ticker (e.g. `"NASDAQ:TWTR"`) |
 
 ## `client.companies.list(query)`
 

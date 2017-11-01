@@ -14,9 +14,9 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.system_tasks.fetch(id)`
+## `client.system_tasks.get(id)`
 
-## `client.system_tasks.fetch_by_task_id(task_id)`
+## `client.system_tasks.get_by_task_id(task_id)`
 
 ## `client.system_tasks.update(id, **params)`
 

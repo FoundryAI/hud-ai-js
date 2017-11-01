@@ -28,7 +28,7 @@
 | `query.body`*      | **string** |
 | `query.userId`*    | **string** |
 
-## `client.articleHighlights.fetch(id)`
+## `client.articleHighlights.get(id)`
 
 | Param | Type |
 |-------|------|

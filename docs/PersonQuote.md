@@ -13,7 +13,7 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.person_quotes.fetch(person_id, quote_id)`
+## `client.person_quotes.get(person_id, quote_id)`
 
 ## `client.person_quotes.update(person_id, quote_id)`
 

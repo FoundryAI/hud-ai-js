@@ -26,7 +26,7 @@
 | `query.articleId`* | **string** |
 | `query.tag`*       | **string** |
 
-## `client.articleTags.fetch(articleId, tag)`
+## `client.articleTags.get(articleId, tag)`
 
 | Param | Type |
 |-------|------|

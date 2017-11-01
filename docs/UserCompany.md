@@ -10,6 +10,6 @@
 
 ## `client.user_companies.create(user_id, company_id)`
 
-## `client.user_companies.fetch(user_id, company_id)`
+## `client.user_companies.get(user_id, company_id)`
 
 ## `client.user_companies.delete(user_id, company_id)`

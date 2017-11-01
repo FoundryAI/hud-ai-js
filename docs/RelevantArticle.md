@@ -18,7 +18,7 @@ Takes all of the model attributes as keyword params.
 **NOTE:** Multiple RelevantArticles *cannot* be created with the same `user_id`
 and `article_id`
 
-## `client.relevant_articles.fetch(id)`
+## `client.relevant_articles.get(id)`
 
 ## `client.relevant_articles.update(id, **params)`
 

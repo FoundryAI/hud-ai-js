@@ -12,4 +12,4 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.system_events.fetch(id)`
+## `client.system_events.get(id)`

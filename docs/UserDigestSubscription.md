@@ -13,6 +13,6 @@
 
 Takes all of the model attributes as keyword params
 
-## `client.user_digest_subscriptions.fetch(user_id, digest_id)`
+## `client.user_digest_subscriptions.get(user_id, digest_id)`
 
 ## `client.user_digest_subscriptions.delete(user_id, digest_id)`

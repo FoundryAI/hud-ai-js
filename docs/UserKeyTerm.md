@@ -10,6 +10,6 @@
 
 ## `client.user_key_terms.create(user_id, term)`
 
-## `client.user_key_terms.fetch(user_id, term)`
+## `client.user_key_terms.get(user_id, term)`
 
 ## `client.user_key_terms.delete(user_id, term)`

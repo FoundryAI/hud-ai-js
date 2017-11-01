@@ -3,24 +3,49 @@
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `id`        | String     | Resource ID **Cannot be edited** |
+| `createdAt` | Date       | Creation date **Cannot be edited** |
+| `updatedAt` | Date       | Last touch date **Cannot be edited** |
 | `name`*     | **String** | Full name |
 | `title`*    | **String** | Professional title (e.g. `'Partner, Foundry.ai'`) |
-| `image_url` | String     | URL for a picture of the person |
+| `imageUrl`  | String     | URL for a picture of the person |
 
-## `client.people.list(name?, title?, term?, page?)`
+## `client.people.list(params)`
 
-## `client.people.create(**params)`
+| Param | Type |
+|-------|------|
+| `params`       | Object |
+| `params.name`  | string |
+| `params.title` | string |
+| `params.term`  | string |
 
-Takes all of the model attributes as keyword params
+## `client.people.create(params)`
 
-## `client.people.fetch(person_id)`
+| Param | Type |
+|-------|------|
+| `params`        | Object |
+| `params`        | Object |
+| `params.name`*  | **string** |
+| `params.title`* | **string** |
+| `params.term`   | string |
 
-## `client.people.update(person_id, **params)`
+## `client.people.get(id)`
 
-Takes all of the model attributes as keyword params
+| Param | Type |
+|-------|------|
+| `id` | string |
 
-## `client.people.delete(person_id)`
+## `client.people.update(id, params)`
 
-## `client.people.quotes(pseron_id, page?)`
+| Param | Type |
+|-------|------|
+| `id`           | string |
+| `params`       | Object |
+| `params.name`  | string |
+| `params.title` | string |
+| `params.term`  | string |
 
-Convenience method
+## `client.people.delete(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |

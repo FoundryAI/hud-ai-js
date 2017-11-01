@@ -3,6 +3,8 @@
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `id`          | string     | Resource ID **Cannot be edited** |
+| `createdAt`   | Date       | Creation date **Cannot be edited** |
+| `updatedAt`   | Date       | Last touch date **Cannot be edited** |
 | `title`*      | **string** | Name of the event for display/search purposes |
 | `description` | string     | Term (can be word or phrase) to find in articles |
 | `type`*       | **string** | Used for filtering (e.g. `earnings_call`) |

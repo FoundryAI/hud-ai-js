@@ -26,7 +26,7 @@
 | `query.articleId`* | **string** |
 | `query.term`*      | **string** |
 
-## `client.articleKeyTerms.fetch(articleId, term)`
+## `client.articleKeyTerms.get(articleId, term)`
 
 | Param | Type |
 |-------|------|

@@ -3,6 +3,8 @@
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `id`         | String     | Resource ID **Cannot be edited** |
+| `createdAt`  | Date       | Creation date **Cannot be edited** |
+| `updatedAt`  | Date       | Last touch date **Cannot be edited** |
 | `companyId`* | **String** | Associated company |
 | `hostname`*  | **String** | FQDN e.g. `api.hud.ai` |
 
@@ -22,7 +24,7 @@
 | `params.companyId`* | **string** |
 | `params.hostname`*  | **string** |
 
-## `client.domains.fetch(id)`
+## `client.domains.get(id)`
 
 | Param | Type |
 |-------|------|
