@@ -30,7 +30,6 @@ export interface UserListAttributes extends HudAiListAttributes {
 export interface UserCreateAttributes extends HudAiCreateAttributes {
     name: string;
     email: string;
-    timeZone?: string;
     linkedinProfileId?: string | null;
     organizationId?: string;
 }
@@ -38,7 +37,6 @@ export interface UserCreateAttributes extends HudAiCreateAttributes {
 export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     name?: string;
     email?: string;
-    timeZone?: string;
     linkedinProfileId?: string | null;
     organizationId?: string;
 }

@@ -2,23 +2,57 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`        | String     | Resource ID **Cannot be edited** |
-| `email`*    | **String** | Primary email address for updates/notifications |
-| `name`*     | **String** | User's full name (used in emails and other communications) |
-| `time_zone` | String     | [tz database][tz-database-link] time zone used to determine when to send notifications (defaults to `America/New_York`) |
+| `id`                | string     | Resource ID **Cannot be edited** |
+| `createdAt`         | Date       | Creation date **Cannot be edited** |
+| `updatedAt`         | Date       | Last touch date **Cannot be edited** |
+| `email`*            | **string** | Primary email address for updates/notifications |
+| `name`*             | **string** | User's full name (used in emails and other communications) |
+| `linkedinProfileId` | string     | Linked LinkedIn profile |
+| `organizationId`    | string     | Organization (billable account) the user is a part of |
 
-## `client.users.list(email?, digest_subscription_day?, digest_subscription_hour?, name?, key_term?, company_id?, page?)`
+## `client.people.list(params)`
 
-## `client.users.create(**params)`
+| Param | Type |
+|-------|------|
+| `params`                        | Object |
+| `params.name`                   | string |
+| `params.email`                  | string |
+| `params.digestSubscriptionDay`  | string |
+| `params.digestSubscriptionHour` | string |
+| `params.keyTerm`                | string |
+| `params.organizationId`         | string |
+| `params.limit`                  | number |
+| `params.offset`                 | number |
 
-Takes all of the model attributes as keyword params
+## `client.people.create(params)`
 
-## `client.users.get(id)`
+| Param | Type |
+|-------|------|
+| `params`                   | Object |
+| `params.email`*            | **string** |
+| `params.name`*             | **string** |
+| `params.linkedinProfileId` | string |
+| `params.organizationId`    | string |
 
-## `client.users.me()`
+## `client.people.get(id)`
 
-## `client.users.update(id, **params)`
+| Param | Type |
+|-------|------|
+| `id` | string |
 
-Takes all of the model attributes as keyword params
+## `client.people.update(id, params)`
 
-## `client.users.destroy(id)`
+| Param | Type |
+|-------|------|
+| `id`                       | string |
+| `params`                   | Object |
+| `params.email`             | string |
+| `params.name`              | string |
+| `params.linkedinProfileId` | string |
+| `params.organizationId`    | string |
+
+## `client.people.destroy(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
