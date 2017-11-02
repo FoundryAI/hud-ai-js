@@ -2,14 +2,42 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`       | String     | Resource ID **Cannot be edited** |
-| `term`*    | **String** | Term (can be word or phrase) to find in articles |
-| `user_id`* | **String** | Associated user |
+| `id`        | String     | Resource ID **Cannot be edited** |
+| `createdAt` | Date       | Creation date **Cannot be edited** |
+| `updatedAt` | Date       | Last touch date **Cannot be edited** |
+| `userId`*   | **String** | Associated user |
+| `term`*     | **String** | Term (can be word or phrase) to find in articles |
 
-## `client.user_key_terms.list(user_id, page?)`
+## `client.userKeyTerms.list(params)`
 
-## `client.user_key_terms.create(user_id, term)`
+| Param | Type |
+|-------|------|
+| `query`         | Object |
+| `query.userId`* | **string** |
+| `query.term`*   | **string** |
+| `query.limit`   | number |
+| `query.offset`  | number |
 
-## `client.user_key_terms.get(user_id, term)`
+## `client.userKeyTerms.create(params)`
 
-## `client.user_key_terms.destroy(user_id, term)`
+| Param | Type |
+|-------|------|
+| `query`         | Object |
+| `query.userId`* | **string** |
+| `query.term`*   | **string** |
+
+## `client.userKeyTerms.get(params)`
+
+| Param | Type |
+|-------|------|
+| `query`         | Object |
+| `query.userId`* | **string** |
+| `query.term`*   | **string** |
+
+## `client.userKeyTerms.destroy(params)`
+
+| Param | Type |
+|-------|------|
+| `query`         | Object |
+| `query.userId`* | **string** |
+| `query.term`*   | **string** |
