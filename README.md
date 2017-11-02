@@ -97,32 +97,31 @@ client.articles.get('SOME_ARTICLE_ID')
 ### Notes
 
 * `*` and bolded `Type` indicates required param
-* Params indicated with `?` are optional
-* All list resources have a max of 50 elements per request (e.g. limits higher than that will have no effect)
+* All list resources have a max of 50 elements per request (e.g. `limit`s higher than that will have no effect)
 
 | Entity | Method Base |
 |--------|-------------|
-| Article | [client.articles](docs/Article.md) |
-| ArticleHighlights | [client.articleHighlights](docs/ArticleHighlights.d') |
-| ArticleKeyTerm | [client.articleKeyTerms](docs/ArticleKeyTerm.md) |
-| ArticleTag | [client.articleTags](docs/ArticleTag.md) |
-| Company | [client.companies](docs/Company.md) |
-| CompanyEvent | [client.companyEvents](docs/CompanyEvent.md) |
-| CompanyKeyTerm | [client.companyKeyTerms](docs/CompanyKeyTerm.md) |
-| CompanyProfile | [client.companyProfile](docs/CompanyProfile.md) |
-| Domain | [client.domains](docs/Domain.md) |
-| KeyTerm | [client.keyTerms](docs/KeyTerm.md) |
-| Person | [client.people](docs/Person.md) |
-| PersonKeyTerm | [client.personKeyTerms](docs/PersonKeyTerm.md) |
-| Quote | [client.quotes](docs/Quote.md) |
-| RelevantArticle | [client.relevantArticles](docs/RelevantArticle.md) |
+| Article                   | [client.articles](docs/Article.md) |
+| ArticleHighlights         | [client.articleHighlights](docs/ArticleHighlights.d') |
+| ArticleKeyTerm            | [client.articleKeyTerms](docs/ArticleKeyTerm.md) |
+| ArticleTag                | [client.articleTags](docs/ArticleTag.md) |
+| Company                   | [client.companies](docs/Company.md) |
+| CompanyEvent              | [client.companyEvents](docs/CompanyEvent.md) |
+| CompanyKeyTerm            | [client.companyKeyTerms](docs/CompanyKeyTerm.md) |
+| CompanyProfile            | [client.companyProfile](docs/CompanyProfile.md) |
+| Domain                    | [client.domains](docs/Domain.md) |
+| KeyTerm                   | [client.keyTerms](docs/KeyTerm.md) |
+| Person                    | [client.people](docs/Person.md) |
+| PersonKeyTerm             | [client.personKeyTerms](docs/PersonKeyTerm.md) |
+| Quote                     | [client.quotes](docs/Quote.md) |
+| RelevantArticle           | [client.relevantArticles](docs/RelevantArticle.md) |
 | RelevantArticleCollateral | [client.relevantArticleCollateral](docs/RelevantArticleCollateral.md) |
-| TextCorpus | [client.textCorpora](docs/TextCorpus.md) |
-| User | [client.users](docs/User.md) |
-| UserCompany | [client.userCompanies](docs/UserCompany.md) |
-| UserContact | [client.userContacts](docs/UserContact.md) |
-| UserDigestSubscription | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
-| UserKeyTerm | [client.userKeyTerms](docs/UserKeyTerm.md) |
+| TextCorpus                | [client.textCorpora](docs/TextCorpus.md) |
+| User                      | [client.users](docs/User.md) |
+| UserCompany               | [client.userCompanies](docs/UserCompany.md) |
+| UserContact               | [client.userContacts](docs/UserContact.md) |
+| UserDigestSubscription    | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
+| UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
 [npm-version-link]: https://www.npmjs.org/package/hud-ai
