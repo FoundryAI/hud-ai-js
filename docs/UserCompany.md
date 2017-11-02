@@ -2,14 +2,40 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`          | String     | Resource ID **Cannot be edited** |
-| `company_id`* | **String** | Associated company |
-| `user_id`*    | **String** | Associated user |
+| `id`         | String     | Resource ID **Cannot be edited** |
+| `companyId`* | **String** | Associated company |
+| `userId`*    | **String** | Associated user |
 
-## `client.user_companies.list(user_id, page?)`
+## `client.userCompanies.list(params)`
 
-## `client.user_companies.create(user_id, company_id)`
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.userId`    | string |
+| `params.companyId` | string |
+| `params.limit`     | number |
+| `params.offset`    | number |
 
-## `client.user_companies.get(user_id, company_id)`
+## `client.userCompanies.create(params)`
 
-## `client.user_companies.destroy(user_id, company_id)`
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.userId`     | string |
+| `params.companyId`* | **string** |
+
+## `client.userCompanies.get(params)`
+
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.userId`     | string |
+| `params.companyId`* | **string** |
+
+## `client.userCompanies.destroy(params)`
+
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.userId`     | string |
+| `params.companyId`* | **string** |
