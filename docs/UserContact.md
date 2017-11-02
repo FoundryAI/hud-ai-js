@@ -2,19 +2,59 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`           | String     | Resource ID **Cannot be edited** |
-| `company_id`*  | **String** | Associated company |
-| `user_id`*     | **String** | Associated user |
-| `name`*        | **String** | Contact's name |
-| `email`        | String     | Contact's email address |
-| `phone_number` | String     | Contact's phone number |
+| `id`          | String     | Resource ID **Cannot be edited** |
+| `createdAt`   | Date       | Creation date **Cannot be edited** |
+| `updatedAt`   | Date       | Last touch date **Cannot be edited** |
+| `companyId`*  | **String** | Associated company |
+| `userId`*     | **String** | Associated user |
+| `name`*       | **String** | Contact's name |
+| `email`       | String     | Contact's email address |
+| `phoneNumber` | String     | Contact's phone number |
 
-## `client.user_contacts.list(user_id, company_id?, page?)`
+## `client.userContacts.list(params)`
 
-## `client.user_contacts.create(user_id, company_id, **params)`
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.userId`    | string |
+| `params.companyId` | string |
+| `params.limit`     | number |
+| `params.offset`    | number |
 
-## `client.user_contacts.get(user_id, contact_id)`
+## `client.userContacts.create(params)`
 
-## `client.user_contacts.update(user_id, contact_id, **params)`
+| Param | Type |
+|-------|------|
+| `params`             | Object |
+| `params.userId`      | string |
+| `params.companyId`*  | **string** |
+| `params.name`*       | **string** |
+| `params.email`       | string |
+| `params.phoneNumber` | string |
 
-## `client.user_contacts.destroy(user_id, contact_id)`
+## `client.userContacts.get(params)`
+
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.userId`     | string |
+| `params.companyId`* | **string** |
+
+## `client.userContacts.update(params)`
+
+| Param | Type |
+|-------|------|
+| `params`             | Object |
+| `params.userId`      | string |
+| `params.companyId`*  | **string** |
+| `params.name`        | string |
+| `params.email`       | string |
+| `params.phoneNumber` | string |
+
+## `client.userContacts.destroy(params)`
+
+| Param | Type |
+|-------|------|
+| `params`            | Object |
+| `params.userId`     | string |
+| `params.companyId`* | **string** |
