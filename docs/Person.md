@@ -25,7 +25,6 @@
 | Param | Type |
 |-------|------|
 | `params`        | Object |
-| `params`        | Object |
 | `params.name`*  | **string** |
 | `params.title`* | **string** |
 | `params.term`   | string |

@@ -3,16 +3,49 @@
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
 | `id`        | String     | Resource ID **Cannot be edited** |
+| `createdAt` | Date       | Creation date **Cannot be edited** |
+| `updatedAt` | Date       | Last touch date **Cannot be edited** |
 | `body`*     | **String** | Text blob to use for relevance matching |
-| `type`*     | **String** | Text origin e.g. `email` or `email` |
-| `user_id`*  | **String** | User the corpus is used to identify articles for |
+| `type`*     | **String** | Text origin (`manual`, `email`, `website`, or `linkedin`) |
+| `userId`*   | **String** | User the corpus is used to identify articles for |
 
-## `client.text_corpora.list(corpus_type?, user_id?, page?)`
+## `client.textCorpora.list(params)`
 
-## `client.text_corpora.create(user_id?, corpus_type?, body?)`
+| Param | Type |
+|-------|------|
+| `params`        | Object |
+| `params.type`   | string |
+| `params.userId` | string |
+| `params.limit`  | number |
+| `params.offset` | number |
 
-## `client.text_corpora.get(id)`
+## `client.textCorpora.create(params)`
 
-## `client.text_corpora.update(id, user_id?, corpus_type?, body?)`
+| Param | Type |
+|-------|------|
+| `params`         | Object |
+| `params.type`*   | **string** |
+| `params.userId`* | **string** |
+| `params.body`*   | **string** |
 
-## `client.text_corpora.destroy(id)`
+## `client.textCorpora.get(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
+
+## `client.textCorpora.update(id, params)`
+
+| Param | Type |
+|-------|------|
+| `id`            | string |
+| `params`        | Object |
+| `params.type`   | string |
+| `params.userId` | string |
+| `params.body`   | string |
+
+## `client.textCorpora.destroy(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
