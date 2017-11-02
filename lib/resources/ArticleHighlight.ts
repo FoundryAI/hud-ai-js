@@ -12,6 +12,9 @@ export interface ArticleHighlight {
     id: string;
     createdAt: Date;
     updatedAt: Date;
+    articleId: string;
+    body: string;
+    userId: string;
 }
 
 export interface ArticleHighlightListAttributes extends HudAiListAttributes {

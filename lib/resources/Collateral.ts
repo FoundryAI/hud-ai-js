@@ -44,6 +44,8 @@ export interface CollateralGetAttributes {
 }
 
 export interface CollateralUpdateAttributes extends HudAiUpdateAttributes {
+    id: string;
+    organizationId: string;
     name?: string;
     description?: string;
     contentUrl?: string;

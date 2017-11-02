@@ -30,7 +30,7 @@ export class KeyTermResource extends Resource<
     KeyTerm,
     KeyTermListAttributes,
     KeyTermCreateAttributes,
-    HudAiUpdateAttributes
+    any
 > {
     constructor(requestManager: RequestManager) {
         super('/key-terms', requestManager);

@@ -21,7 +21,6 @@ export interface CompanyProfile {
 
 export interface CompanyProfileGetAttributes {
     companyId: string;
-    term: string;
 }
 
 export class CompanyProfileResource extends Resource<

@@ -19,10 +19,6 @@ export interface Quote {
     person?: Person;
 }
 
-export interface QuoteGetAttributes {
-    id: string;
-}
-
 export interface QuoteListAttributes extends HudAiListAttributes {
     personId?: string;
     articleId?: string;
@@ -46,26 +42,18 @@ export interface QuoteCreateAttributes extends HudAiCreateAttributes {
     term: string;
 }
 
-export interface QuoteDestroyAttributes {
-    id: string;
-}
-
 export class QuoteResource extends Resource<
     Quote,
     QuoteListAttributes,
     QuoteCreateAttributes,
     any
-    > {
+> {
     constructor(requestManager: RequestManager) {
         super('/people/quotes', requestManager);
     }
 
     public list(listArgs: QuoteListAttributes): Promise<{ count: number, rows: Quote[] }> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`
-        });
+        return this._list(listArgs);
     }
 
     public search(searchArgs: QuoteSearchAttributes): Promise<{ count: number, rows: Quote[] }> {
@@ -77,30 +65,18 @@ export class QuoteResource extends Resource<
     }
 
     public create(createArgs: QuoteCreateAttributes): Promise<Quote> {
-        return this.makeRequest({
-            method: 'POST',
-            data: createArgs,
-            url: `${this.basePath}`
-        });
+        return this._create(createArgs);
     }
 
-    public get(getArgs: QuoteGetAttributes): Promise<Quote> {
-        return this.makeRequest({
-            method: 'GET',
-            params: getArgs,
-            url: `${this.basePath}/{id}`
-        });
+    public get(id: string | number): Promise<Quote> {
+        return this._get(id);
     }
 
-    public del(destroyArgs: QuoteDestroyAttributes): Promise<void> {
-        return this.destroy(destroyArgs);
+    public del(id: string | number): Promise<void> {
+        return this.destroy(id);
     }
 
-    public destroy(destroyArgs: QuoteDestroyAttributes): Promise<void> {
-        return this.makeRequest({
-            method: 'DELETE',
-            data: destroyArgs,
-            url: `${this.basePath}/{term}`
-        });
+    public destroy(id: string | number): Promise<void> {
+        return this._destroy(id);
     }
 }
