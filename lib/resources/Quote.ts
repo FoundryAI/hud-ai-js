@@ -29,6 +29,16 @@ export interface QuoteListAttributes extends HudAiListAttributes {
     term?: string;
 }
 
+export interface QuoteSearchAttributes extends HudAiListAttributes {
+    id?: string;
+    personId?: string;
+    articleId?: string;
+    term?: string;
+    text?: string;
+    createdBefore?: Date;
+    createdAfter?: Date;
+}
+
 export interface QuoteCreateAttributes extends HudAiCreateAttributes {
     personId: string;
     articleId: string;
@@ -55,6 +65,14 @@ export class QuoteResource extends Resource<
             method: 'GET',
             params: listArgs,
             url: `${this.basePath}`
+        });
+    }
+
+    public search(searchArgs: QuoteSearchAttributes): Promise<{ count: number, rows: Quote[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: searchArgs,
+            url: `${this.basePath}/search`
         });
     }
 
