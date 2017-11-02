@@ -2,17 +2,60 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`           | String     | Resource ID **Cannot be edited** |
-| `day_of_week`* | **String** | `sunday` \| `monday` \| `tuesday` \| `wednesday` \| `thursday` \| `friday` \| `saturday` |
-| `iso_hour`*    | **String** | 24-hour hour e.g. `08` = 8am, `17` = 5pm |
-| `user_id`*     | **String** | Associated user |
+| `id`         | string     | Resource ID **Cannot be edited** |
+| `createdAt`  | Date       | Creation date **Cannot be edited** |
+| `updatedAt`  | Date       | Last touch date **Cannot be edited** |
+| `dayOfWeek`* | **string** | `sunday` \| `monday` \| `tuesday` \| `wednesday` \| `thursday` \| `friday` \| `saturday` |
+| `isoHour`*   | **string** | 24-hour hour e.g. `08` = 8am, `17` = 5pm |
+| `userId`*    | **string** | Associated user |
 
-## `client.user_digest_subscriptions.list(user_id, day_of_week?, iso_hour?, page?)`
+## `client.userDigestSubscriptions.subscribe(params)`
 
-## `client.user_digest_subscriptions.create(user_id, **params)`
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.dayOfWeek` | string |
+| `params.isoHour`   | string |
+| `params.userId`    | string |
 
-Takes all of the model attributes as keyword params
+## `client.userDigestSubscriptions.unsubscribe(params)`
 
-## `client.user_digest_subscriptions.get(user_id, digest_id)`
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.dayOfWeek` | string |
+| `params.userId`    | string |
 
-## `client.user_digest_subscriptions.destroy(user_id, digest_id)`
+## `client.userDigestSubscriptions.list(params)`
+
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.dayOfWeek` | string |
+| `params.isoHour`   | string |
+| `params.userId`    | string |
+
+## `client.userDigestSubscriptions.create(params)`
+
+| Param | Type |
+|-------|------|
+| `params`           | Object |
+| `params.dayOfWeek` | string |
+| `params.isoHour`   | string |
+| `params.userId`    | string |
+
+## `client.userDigestSubscriptions.get(params)`
+
+| Param | Type |
+|-------|------|
+| `params`        | Object |
+| `params.id`     | string |
+| `params.userId` | string |
+
+## `client.userDigestSubscriptions.destroy(params)`
+
+| Param | Type |
+|-------|------|
+| `params`        | Object |
+| `params.id`     | string |
+| `params.userId` | string |
