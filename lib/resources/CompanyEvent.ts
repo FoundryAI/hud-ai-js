@@ -22,7 +22,7 @@ export interface CompanyEvent {
 }
 
 export interface CompanyEventListAttributes extends HudAiListAttributes {
-    companyId: string;
+    companyId?: string | string[];
     startingBefore?: Date;
     startingAfter?: Date;
     endingBefore?: Date;
@@ -46,12 +46,11 @@ export interface CompanyEventCreateAttributes extends HudAiCreateAttributes {
 
 export interface CompanyEventGetAttributes {
     id: string;
-    companyId: string;
 }
 
 export interface CompanyEventUpdateAttributes extends HudAiUpdateAttributes {
     id: string;
-    companyId: string;
+    companyId?: string;
     title?: string;
     description?: string;
     type?: string;
@@ -62,7 +61,6 @@ export interface CompanyEventUpdateAttributes extends HudAiUpdateAttributes {
 
 export interface CompanyEventDestroyAttributes {
     id: string;
-    companyId: string;
 }
 
 export class CompanyEventResource extends Resource<
@@ -72,7 +70,7 @@ export class CompanyEventResource extends Resource<
     CompanyEventUpdateAttributes
 > {
     constructor(requestManager: RequestManager) {
-        super('/companies/{companyId}/events', requestManager);
+        super('/companies/events', requestManager);
     }
 
     public list(listArgs: CompanyEventListAttributes): Promise<{ count: number, rows: CompanyEvent[] }> {
