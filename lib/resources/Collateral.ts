@@ -103,6 +103,14 @@ export class CollateralResource extends Resource<
         })
     }
 
+    public downloadUri(getArgs: CollateralGetAttributes): Promise<Collateral> {
+        return this.makeRequest({
+            method: 'GET',
+            params: getArgs,
+            url: `${this.basePath}/{id}/download-uri`
+        })
+    }
+
     public get(getArgs: CollateralGetAttributes): Promise<Collateral> {
         return this.makeRequest({
             method: 'GET',
