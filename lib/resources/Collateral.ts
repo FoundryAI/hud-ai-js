@@ -91,7 +91,7 @@ export class CollateralResource extends Resource<
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
-            url: `${this.basePath}/search`
+            url: `/organizations/collateral/search`
         });
     }
 
