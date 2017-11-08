@@ -59,6 +59,14 @@
 | `params.organizationId`* | **string** |
 | `params.id`*             | **string** |
 
+## `client.collateral.downloadUri(params)`
+
+| Param | Type |
+|-------|------|
+| `params`                 | Object |
+| `params.organizationId`* | **string** |
+| `params.id`*             | **string** |
+
 ## `client.collateral.update(params)`
 
 | Param | Type |
