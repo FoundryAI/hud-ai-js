@@ -28,6 +28,15 @@ export interface CollateralListAttributes extends HudAiListAttributes {
     name?: string;
 }
 
+export interface CollateralSearchAttributes extends HudAiListAttributes {
+    id?: string;
+    organizationId?: string;
+    text?: string;
+    filetype?: string;
+    createdBefore?: Date;
+    createdAfter?: Date;
+}
+
 export interface CollateralCreateAttributes extends HudAiCreateAttributes {
     name: string;
     description?: string;
@@ -78,11 +87,27 @@ export class CollateralResource extends Resource<
         })
     }
 
+    public search(searchArgs: CollateralSearchAttributes): Promise<{ count: number, rows: Collateral[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: searchArgs,
+            url: `/organizations/collateral/search`
+        });
+    }
+
     public create(createArgs: CollateralCreateAttributes): Promise<Collateral> {
         return this.makeRequest({
             method: 'POST',
             data: createArgs,
             url: `${this.basePath}`
+        })
+    }
+
+    public downloadUri(getArgs: CollateralGetAttributes): Promise<Collateral> {
+        return this.makeRequest({
+            method: 'GET',
+            params: getArgs,
+            url: `${this.basePath}/{id}/download-uri`
         })
     }
 

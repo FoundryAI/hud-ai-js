@@ -1,4 +1,4 @@
-# Article
+# Collateral
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
@@ -25,6 +25,18 @@
 | `query.limit`              | number |
 | `query.offset`             | number |
 
+## `client.collateral.search(query)`
+
+| Param | Type |
+|-------|------|
+| `query`                    | Object |
+| `query.organizationId`     | string |
+| `query.id`                 | string |
+| `query.text`               | string |
+| `query.filetype`           | string |
+| `query.limit`              | number |
+| `query.offset`             | number |
+
 ## `client.collateral.create(params)`
 
 | Param | Type |
@@ -40,6 +52,14 @@
 | `params.dataScienceMetadata` | Object |
 
 ## `client.collateral.get(params)`
+
+| Param | Type |
+|-------|------|
+| `params`                 | Object |
+| `params.organizationId`* | **string** |
+| `params.id`*             | **string** |
+
+## `client.collateral.downloadUri(params)`
 
 | Param | Type |
 |-------|------|
