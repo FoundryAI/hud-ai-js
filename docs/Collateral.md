@@ -1,4 +1,4 @@
-# Article
+# Collateral
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
@@ -22,6 +22,18 @@
 | `query.organizationId`*    | **string** |
 | `query.id`                 | string |
 | `query.name`               | string |
+| `query.limit`              | number |
+| `query.offset`             | number |
+
+## `client.collateral.search(query)`
+
+| Param | Type |
+|-------|------|
+| `query`                    | Object |
+| `query.organizationId`     | string |
+| `query.id`                 | string |
+| `query.text`               | string |
+| `query.filetype`           | string |
 | `query.limit`              | number |
 | `query.offset`             | number |
 
