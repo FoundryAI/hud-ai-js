@@ -12,7 +12,6 @@ import { HudAiError } from './utils/HudAiError';
 
 import {
     ArticleResource,
-    ArticleHighlightResource,
     ArticleKeyTermResource,
     ArticleTagResource,
     CollateralResource,
@@ -36,10 +35,10 @@ import {
     UserKeyTermResource,
 } from './resources';
 import {CompanyProfile} from './resources/CompanyProfile';
+import {HighlightResource} from './resources/Highlights';
 
 export {
     Article,
-    ArticleHighlight,
     ArticleKeyTerm,
     ArticleTag,
     Collateral,
@@ -48,6 +47,7 @@ export {
     CompanyKeyTerm,
     CompanyProfile,
     Domain,
+    Highlights,
     KeyTerm,
     Organization,
     Person,
@@ -80,7 +80,6 @@ export class HudAiClient {
     public tokenExpiresAt?: Date;
 
     public articles: ArticleResource;
-    public articleHighlights: ArticleHighlightResource;
     public articleKeyTerms: ArticleKeyTermResource;
     public articleTags: ArticleTagResource;
     public collateral: CollateralResource;
@@ -89,6 +88,7 @@ export class HudAiClient {
     public companyKeyTerms: CompanyKeyTermResource;
     public companyProfiles: CompanyProfileResource;
     public domains: DomainResource;
+    public highlights: HighlightResource;
     public keyTerms: KeyTermResource;
     public organizations: OrganizationResource;
     public people: PersonResource;
@@ -105,7 +105,6 @@ export class HudAiClient {
 
     // Deprecated
     public article: ArticleResource;
-    public articleHighlight: ArticleHighlightResource;
     public company: CompanyResource;
     public domain: DomainResource;
     public keyTerm: KeyTermResource;
@@ -136,7 +135,6 @@ export class HudAiClient {
         this.requestManager = new RequestManager(this, config);
 
         this.articles = new ArticleResource(this.requestManager);
-        this.articleHighlights = new ArticleHighlightResource(this.requestManager);
         this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
         this.articleTags = new ArticleTagResource(this.requestManager);
         this.collateral = new CollateralResource(this.requestManager);
@@ -145,6 +143,7 @@ export class HudAiClient {
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.companyProfiles = new CompanyProfileResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
+        this.highlights = new HighlightResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
         this.organizations = new OrganizationResource(this.requestManager);
         this.people = new PersonResource(this.requestManager);
@@ -206,7 +205,6 @@ export class HudAiClient {
 
     private addDeprecatedAttributes(): Promise<void> {
         this.article = this.articles;
-        this.articleHighlight = this.articleHighlights;
         this.company = this.companies;
         this.domain = this.domains;
         this.keyTerm = this.keyTerms;
