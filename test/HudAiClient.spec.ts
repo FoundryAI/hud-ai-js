@@ -6,7 +6,6 @@ import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 
 import {HudAiClient, HudAiClientConfiguration} from '../lib/HudAiClient';
-import {RequestManager} from '../lib/RequestManager';
 import * as resources from '../lib/resources';
 import {HudAiError} from '../lib/utils/HudAiError';
 
@@ -18,7 +17,7 @@ const chance = new Chance();
 
 const minimumConfig = {
     clientId: chance.guid()
-}
+};
 
 const serverSideConfig = {
     clientId: chance.guid(),
@@ -28,7 +27,7 @@ const serverSideConfig = {
 const clientSideConfig = {
     clientId: chance.guid(),
     redirectUri: chance.url()
-}
+};
 
 @suite
 class HudAiClientSpec {
@@ -44,7 +43,7 @@ class HudAiClientSpec {
         expect(client.setAuthorizationCode).to.be.a('function');
 
         expect(client.article).to.be.an.instanceOf(resources.ArticleResource);
-        expect(client.articleHighlight).to.be.an.instanceOf(resources.ArticleHighlightResource);
+        expect(client.highlights).to.be.an.instanceOf(resources.HighlightResource);
         expect(client.company).to.be.an.instanceOf(resources.CompanyResource);
         expect(client.domain).to.be.an.instanceOf(resources.DomainResource);
         expect(client.keyTerm).to.be.an.instanceOf(resources.KeyTermResource);
