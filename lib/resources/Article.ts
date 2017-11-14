@@ -162,7 +162,7 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public searchRelevantAndCountTagsByTerm(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
+    public searchRelevantByTermAndCountTags(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
         return this.makeRequest({
             method: 'GET',
             params: _.merge(countArgs, { countTags: true }),
