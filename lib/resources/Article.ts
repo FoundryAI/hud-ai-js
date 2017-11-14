@@ -146,7 +146,7 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public searchRelated(searchArgs: ArticleSearchRelevantAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
+    public searchRelevant(searchArgs: ArticleSearchRelevantAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
@@ -154,7 +154,7 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public searchByTerm(searchArgs: ArticleSearchRelevantAttributes): Promise< { term: string, count: number, rows: ArticleSearchResult[] }[] > {
+    public searchRelevantByTerm(searchArgs: ArticleSearchRelevantAttributes): Promise<{ term: string, count: number, rows: ArticleSearchResult[] }[]> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
@@ -162,7 +162,7 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public countTagsByTerm(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
+    public searchRelevantAndCountTagsByTerm(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
         return this.makeRequest({
             method: 'GET',
             params: _.merge(countArgs, { countTags: true }),
