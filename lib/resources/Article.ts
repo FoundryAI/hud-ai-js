@@ -1,4 +1,5 @@
 import * as Promise from 'bluebird';
+import * as _ from 'lodash';
 
 import {
     HudAiCreateAttributes,
@@ -7,10 +8,10 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import {ArticleKeyTerm} from './ArticleKeyTerm';
-import {Author, BasicAuthor} from './Author';
-import {ArticleTag, BasicArticleTag} from './ArticleTag';
-import {BasicKeyTerm} from './KeyTerm';
+import { ArticleKeyTerm } from './ArticleKeyTerm';
+import { Author, BasicAuthor } from './Author';
+import { ArticleTag, BasicArticleTag } from './ArticleTag';
+import { BasicKeyTerm } from './KeyTerm';
 
 export interface Article extends BasicArticle {
     keyTerms?: ArticleKeyTerm[];
@@ -79,24 +80,42 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
 }
 
 export interface ArticleSearchAttributes {
-    type?: string;
-    text?: string;
-    tags?: string[];
-    keyTerms?: string[];
-    authors? : string[];
-    publishedBefore?: Date;
-    publishedAfter?: Date;
-    createdBefore?: Date;
-    createdAfter?: Date;
-    maxImportance?: number;
-    minImportance?: number;
-    limit?: number;
-    offset?: number;
-    userId?: string;
-    minRelevance?: number;
-    maxRelevance?: number;
-    scoredBefore?: Date;
-    scoredAfter?: Date;
+    limit?: number,
+    offset?: number,
+    authors?: string[],
+    tags?: string[],
+    keyTerms?: string[],
+    publishedBefore?: Date,
+    publishedAfter?: Date,
+    createdBefore?: Date,
+    createdAfter?: Date,
+    scoredBefore?: Date,
+    scoredAfter?: Date,
+    minImportance?: number,
+    maxImportance?: number,
+    type?: string,
+    text?: string,
+}
+
+export interface ArticleSearchRelevantAttributes {
+    limit?: number,
+    offset?: number,
+    authors?: string[],
+    createdAfter?: Date,
+    createdBefore?: Date,
+    keyTerms?: string[],
+    maxImportance?: number,
+    maxRelevance?: number,
+    minImportance?: number,
+    minRelevance?: number,
+    publishedAfter?: Date,
+    publishedBefore?: Date,
+    scoredAfter?: Date,
+    scoredBefore?: Date,
+    tags?: string[],
+    text?: string,
+    type?: string,
+    userId?: string,
 }
 
 export interface GroupedTagCount {
@@ -119,7 +138,7 @@ export class ArticleResource extends Resource<
         return this._list(listArgs);
     }
 
-    public search(searchArgs: ArticleSearchAttributes): Promise< { count: number, rows: ArticleSearchResult[] }> {
+    public search(searchArgs: ArticleSearchAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
@@ -127,19 +146,27 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public searchByTerm(searchArgs: ArticleSearchAttributes): Promise< { term: string, count: number, rows: ArticleSearchResult[] }[] > {
+    public searchRelated(searchArgs: ArticleSearchRelevantAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
-            url: `${this.basePath}/search/byTerm`
+            url: `${this.basePath}/search/relevant`
         })
     }
 
-    public countTagsByTerm(countArgs: ArticleSearchAttributes): Promise<GroupedTagCount> {
+    public searchByTerm(searchArgs: ArticleSearchRelevantAttributes): Promise< { term: string, count: number, rows: ArticleSearchResult[] }[] > {
         return this.makeRequest({
             method: 'GET',
-            params: countArgs,
-            url: `${this.basePath}/search/byTerm/countTags`
+            params: searchArgs,
+            url: `${this.basePath}/search/relevant/grouped/by-term`
+        })
+    }
+
+    public countTagsByTerm(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
+        return this.makeRequest({
+            method: 'GET',
+            params: _.merge(countArgs, { countTags: true }),
+            url: `${this.basePath}/search/relevant/grouped/by-term`
         })
     }
 
