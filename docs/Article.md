@@ -49,59 +49,84 @@
 | `query.minImportance`   | number |
 | `query.limit`           | number |
 | `query.offset`          | number |
-| `query.userId`          | string |
-| `query.minRelevance`    | number |
-| `query.maxRelevance`    | number |
 | `query.scoredBefore`    | Date |
 | `query.scoredAfter`     | Date |
 
-## `client.articles.searchByTerm(query)`
+## `client.articles.searchRelevant(params)`
 
 | Param | Type |
 |-------|------|
 | `query`                 | Object |
-| `query.type`            | string |
-| `query.text`            | string |
-| `query.tags`            | string[] |
-| `query.keyTerms`        | string[] |
 | `query.authors`         | string[] |
-| `query.publishedBefore` | Date |
-| `query.publishedAfter`  | Date |
-| `query.createdBefore`   | Date |
 | `query.createdAfter`    | Date |
-| `query.maxImportance`   | number |
-| `query.minImportance`   | number |
+| `query.createdBefore`   | Date |
+| `query.keyTerms`        | string[] |
 | `query.limit`           | number |
-| `query.offset`          | number |
-| `query.userId`          | string |
-| `query.minRelevance`    | number |
+| `query.maxImportance`   | number |
 | `query.maxRelevance`    | number |
-| `query.scoredBefore`    | Date |
+| `query.minImportance`   | number |
+| `query.minRelevance`    | number |
+| `query.offset`          | number |
+| `query.publishedAfter`  | Date |
+| `query.publishedBefore` | Date |
 | `query.scoredAfter`     | Date |
+| `query.scoredBefore`    | Date |
+| `query.tags`            | string[] |
+| `query.text`            | string |
+| `query.type`            | string |
+| `query.userId`          | string |
 
-## `client.articles.countTagsByTerm(query)`
+## `client.articles.searchRelevantByTerm(params)`
+
+Returns an array of `{ term: string, count: number, rows: ArticleSearchResult[] }`
 
 | Param | Type |
 |-------|------|
 | `query`                 | Object |
-| `query.type`            | string |
-| `query.text`            | string |
-| `query.tags`            | string[] |
-| `query.keyTerms`        | string[] |
 | `query.authors`         | string[] |
-| `query.publishedBefore` | Date |
-| `query.publishedAfter`  | Date |
-| `query.createdBefore`   | Date |
 | `query.createdAfter`    | Date |
-| `query.maxImportance`   | number |
-| `query.minImportance`   | number |
+| `query.createdBefore`   | Date |
+| `query.keyTerms`        | string[] |
 | `query.limit`           | number |
-| `query.offset`          | number |
-| `query.userId`          | string |
-| `query.minRelevance`    | number |
+| `query.maxImportance`   | number |
 | `query.maxRelevance`    | number |
-| `query.scoredBefore`    | Date |
+| `query.minImportance`   | number |
+| `query.minRelevance`    | number |
+| `query.offset`          | number |
+| `query.publishedAfter`  | Date |
+| `query.publishedBefore` | Date |
 | `query.scoredAfter`     | Date |
+| `query.scoredBefore`    | Date |
+| `query.tags`            | string[] |
+| `query.text`            | string |
+| `query.type`            | string |
+| `query.userId`          | string |
+
+## `client.articles.searchRelevantByTermAndCountTags(params)`
+
+Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: number } }`
+
+| Param | Type |
+|-------|------|
+| `query`                 | Object |
+| `query.authors`         | string[] |
+| `query.createdAfter`    | Date |
+| `query.createdBefore`   | Date |
+| `query.keyTerms`        | string[] |
+| `query.limit`           | number |
+| `query.maxImportance`   | number |
+| `query.maxRelevance`    | number |
+| `query.minImportance`   | number |
+| `query.minRelevance`    | number |
+| `query.offset`          | number |
+| `query.publishedAfter`  | Date |
+| `query.publishedBefore` | Date |
+| `query.scoredAfter`     | Date |
+| `query.scoredBefore`    | Date |
+| `query.tags`            | string[] |
+| `query.text`            | string |
+| `query.type`            | string |
+| `query.userId`          | string |
 
 ## `client.articles.create(params)`
 
