@@ -20,6 +20,12 @@
 | `query.limit`   | number |
 | `query.offset`  | number |
 
+## `client.companies.availableData(ids)`
+
+| Param | Type |
+|-------|------|
+| `ids` | **string \| string[]** |
+
 ## `client.companies.create(params)`
 
 | Param | Type |

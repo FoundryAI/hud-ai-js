@@ -47,6 +47,14 @@ export class CompanyResource extends Resource<
         return this._list(listArgs);
     }
 
+    public availableData(ids: string | string []): Promise<Company[]> {
+        return this.makeRequest({
+            method: 'GET',
+            params: { id: ids },
+            url: `${this.basePath}/available-data`
+        })
+    }
+
     public create(createArgs: CompanyCreateAttributes): Promise<Company> {
         return this._create(createArgs);
     }
