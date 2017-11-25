@@ -33,6 +33,7 @@ import {
     UserContactResource,
     UserDigestSubscriptionResource,
     UserKeyTermResource,
+    UserPersonResource,
 } from './resources';
 import {CompanyProfile} from './resources/CompanyProfile';
 import {HighlightResource} from './resources/Highlights';
@@ -61,6 +62,7 @@ export {
     UserContact,
     UserDigestSubscription,
     UserKeyTerm,
+    UserPerson,
 } from './resources';
 
 
@@ -102,6 +104,7 @@ export class HudAiClient {
     public userContacts: UserContactResource;
     public userDigestSubscriptions: UserDigestSubscriptionResource;
     public userKeyTerms: UserKeyTermResource;
+    public userPeople: UserPersonResource;
 
     // Deprecated
     public article: ArticleResource;
@@ -157,6 +160,7 @@ export class HudAiClient {
         this.userContacts = new UserContactResource(this.requestManager);
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);
+        this.userPeople = new UserPersonResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }
