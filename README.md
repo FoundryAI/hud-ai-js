@@ -122,6 +122,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | UserContact               | [client.userContacts](docs/UserContact.md) |
 | UserDigestSubscription    | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
 | UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
+| UserTemplate               | [client.userTemplates](docs/UserTemplate.md) |
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
 [npm-version-link]: https://www.npmjs.org/package/hud-ai

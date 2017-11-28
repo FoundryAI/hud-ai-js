@@ -4,11 +4,11 @@ import * as Promise from 'bluebird';
 import * as isAfter from 'date-fns/is_after';
 import * as addMilliseconds from 'date-fns/add_milliseconds';
 
-import { TokenRequestData } from './utils/TokenExchange';
+import {TokenRequestData} from './utils/TokenExchange';
 
-import { Factory as ClientConfigFactory } from './utils/ClientConfigFactory';
-import { RequestManager } from './RequestManager';
-import { HudAiError } from './utils/HudAiError';
+import {Factory as ClientConfigFactory} from './utils/ClientConfigFactory';
+import {RequestManager} from './RequestManager';
+import {HudAiError} from './utils/HudAiError';
 
 import {
     ArticleResource,
@@ -34,6 +34,7 @@ import {
     UserDigestSubscriptionResource,
     UserKeyTermResource,
     UserPersonResource,
+    UserTemplateResource,
 } from './resources';
 import {CompanyProfile} from './resources/CompanyProfile';
 import {HighlightResource} from './resources/Highlights';
@@ -63,6 +64,7 @@ export {
     UserDigestSubscription,
     UserKeyTerm,
     UserPerson,
+    UserTemplate,
 } from './resources';
 
 
@@ -105,6 +107,7 @@ export class HudAiClient {
     public userDigestSubscriptions: UserDigestSubscriptionResource;
     public userKeyTerms: UserKeyTermResource;
     public userPeople: UserPersonResource;
+    public userTemplates: UserTemplateResource;
 
     // Deprecated
     public article: ArticleResource;
@@ -122,7 +125,7 @@ export class HudAiClient {
 
     private requestManager: RequestManager;
 
-    public static create (clientConfig: HudAiClientConfiguration) {
+    public static create(clientConfig: HudAiClientConfiguration) {
         const config = ClientConfigFactory(clientConfig);
         return new HudAiClient(config);
     }
@@ -161,6 +164,7 @@ export class HudAiClient {
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);
         this.userPeople = new UserPersonResource(this.requestManager);
+        this.userTemplates = new UserTemplateResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }
@@ -221,7 +225,9 @@ export class HudAiClient {
             grant_type: 'authorization_code',
             code: this.authorizationCode
         })
-            .then(() => { delete this.authorizationCode; })
+        .then(() => {
+            delete this.authorizationCode;
+        })
     }
 
     private exchangeClientCredentials(): Promise<void> {
@@ -237,19 +243,19 @@ export class HudAiClient {
         }, data);
 
         return this.requestManager.makeRequest({
-                method: 'POST',
-                data: payload,
-                url: `${this.baseAuthUrl}/oauth2/token`
-            }, { refreshTokens: false })
-            .then((response) => {
-                this.accessToken = response.access_token;
-                if (response.refresh_token) this.refreshToken = response.refresh_token;
-                this.tokenExpiresAt = addMilliseconds(new Date(), response.expires_in);
-            });
+            method: 'POST',
+            data: payload,
+            url: `${this.baseAuthUrl}/oauth2/token`
+        }, {refreshTokens: false})
+        .then((response) => {
+            this.accessToken = response.access_token;
+            if (response.refresh_token) this.refreshToken = response.refresh_token;
+            this.tokenExpiresAt = addMilliseconds(new Date(), response.expires_in);
+        });
     }
 
     private handleTokenRefresh(): Promise<void> {
-            return this.getTokens({
+        return this.getTokens({
             grant_type: 'refresh_grant',
             refresh_token: this.refreshToken
         })

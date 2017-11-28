@@ -22,3 +22,4 @@ export { UserContact, UserContactResource } from './UserContact';
 export { UserDigestSubscription, UserDigestSubscriptionResource } from './UserDigestSubscription';
 export { UserKeyTerm, UserKeyTermResource } from './UserKeyTerm';
 export { UserPerson, UserPersonResource } from './UserPerson';
+export { UserTemplate, UserTemplateResource } from './UserTemplate';
