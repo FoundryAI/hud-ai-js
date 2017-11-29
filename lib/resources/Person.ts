@@ -21,6 +21,7 @@ export interface PersonListAttributes extends HudAiListAttributes {
     name?: string;
     title?: string;
     term?: string;
+    sortBy?: string;
 }
 
 export interface PersonCreateAttributes extends HudAiCreateAttributes {
