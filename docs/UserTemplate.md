@@ -33,8 +33,8 @@
 | Param | Type |
 |-------|------|
 | `params`            | Object |
+| `params.id`*        | **string** |
 | `params.userId`     | string |
-| `params.templateId`*| **string** |
 
 ## `client.userTemplates.update(params)`
 
@@ -42,15 +42,13 @@
 |-------|------|
 | `params`             | Object |
 | `params.userId`      | string |
-| `params.companyId`*  | **string** |
 | `params.name`        | string |
-| `params.email`       | string |
-| `params.phoneNumber` | string |
+| `params.markdown`    | string |
 
 ## `client.userTemplates.destroy(params)`
 
 | Param | Type |
 |-------|------|
 | `params`            | Object |
+| `params.id`*        | **string** |
 | `params.userId`     | string |
-| `params.templateId`*| **string** |
