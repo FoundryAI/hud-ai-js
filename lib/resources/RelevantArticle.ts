@@ -19,6 +19,7 @@ export interface RelevantArticle {
     userId: string;
     keyTerms: string[];
     tags: string[];
+    flag: string;
 }
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {
@@ -49,6 +50,7 @@ export interface RelevantArticleUpdateAttributes extends HudAiUpdateAttributes {
     score?: number;
     scoredAt?: Date;
     articlePublishedAt?: Date;
+    flag?: string;
 }
 
 export class RelevantArticleResource extends Resource<
