@@ -15,6 +15,7 @@ export interface Person {
     name: string;
     title: string;
     imageUrl: string;
+    flag: string;
 }
 
 export interface PersonListAttributes extends HudAiListAttributes {
@@ -34,6 +35,7 @@ export interface PersonUpdateAttributes extends HudAiUpdateAttributes {
     name?: string;
     title?: string;
     imageUrl?: string;
+    flag?: string;
 }
 
 export class PersonResource extends Resource<Person, PersonListAttributes, PersonCreateAttributes, PersonUpdateAttributes> {
