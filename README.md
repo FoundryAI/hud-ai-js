@@ -117,6 +117,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | RelevantArticle           | [client.relevantArticles](docs/RelevantArticle.md) |
 | RelevantArticleCollateral | [client.relevantArticleCollateral](docs/RelevantArticleCollateral.md) |
 | TextCorpus                | [client.textCorpora](docs/TextCorpus.md) |
+| Tweet                | [client.tweets](docs/Tweet.md) |
 | User                      | [client.users](docs/User.md) |
 | UserCompany               | [client.userCompanies](docs/UserCompany.md) |
 | UserContact               | [client.userContacts](docs/UserContact.md) |
