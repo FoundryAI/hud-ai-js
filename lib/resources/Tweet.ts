@@ -22,6 +22,15 @@ export interface TweetListAttributes extends HudAiListAttributes {
     personId?: string;
 }
 
+export interface TweetSearchAttributes extends HudAiListAttributes {
+    id?: string;
+    personId?: string;
+    twitterTweetId?: string;
+    text?: string;
+    createdBefore?: Date;
+    createdAfter?: Date;
+}
+
 export interface TweetCreateAttributes extends HudAiCreateAttributes {
     personId: string;
     twitterTweetId: number;
@@ -40,6 +49,14 @@ export class TweetResource extends Resource<
 
     public list(listArgs: TweetListAttributes): Promise<{ count: number, rows: Tweet[] }> {
         return this._list(listArgs);
+    }
+
+    public search(searchArgs: TweetSearchAttributes): Promise<{ count: number, rows: Tweet[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: searchArgs,
+            url: `${this.basePath}/search`
+        });
     }
 
     public create(createArgs: TweetCreateAttributes): Promise<Tweet> {
