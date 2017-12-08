@@ -14,7 +14,7 @@ export interface Tweet {
     updatedAt: Date;
     twitterCreatedAt: Date;
     personId: string;
-    twitterTweetId: number;
+    twitterTweetId: string;
     text: string;
     person?: Person;
 }
@@ -34,7 +34,7 @@ export interface TweetSearchAttributes extends HudAiListAttributes {
 
 export interface TweetCreateAttributes extends HudAiCreateAttributes {
     personId: string;
-    twitterTweetId: number;
+    twitterTweetId: string;
     twitterCreatedAt: Date;
     text: string;
 }
