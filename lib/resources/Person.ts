@@ -16,12 +16,15 @@ export interface Person {
     title: string;
     imageUrl: string;
     flag: string;
+    linkedInUrl: string;
+    twitterHandle: string;
 }
 
 export interface PersonListAttributes extends HudAiListAttributes {
     name?: string;
     title?: string;
     term?: string;
+    twitterHandle?: string;
     sortBy?: string;
 }
 
@@ -29,6 +32,8 @@ export interface PersonCreateAttributes extends HudAiCreateAttributes {
     name: string;
     title: string;
     imageUrl?: string;
+    linkedInUrl?: string;
+    twitterHandle?: string;
 }
 
 export interface PersonUpdateAttributes extends HudAiUpdateAttributes {
@@ -36,6 +41,8 @@ export interface PersonUpdateAttributes extends HudAiUpdateAttributes {
     title?: string;
     imageUrl?: string;
     flag?: string;
+    linkedInUrl?: string;
+    twitterHandle?: string;
 }
 
 export class PersonResource extends Resource<Person, PersonListAttributes, PersonCreateAttributes, PersonUpdateAttributes> {
