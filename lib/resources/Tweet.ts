@@ -12,6 +12,7 @@ export interface Tweet {
     id: string;
     createdAt: Date;
     updatedAt: Date;
+    twitterCreatedAt: Date;
     personId: string;
     twitterTweetId: number;
     text: string;
