@@ -35,6 +35,7 @@ export interface TweetSearchAttributes extends HudAiListAttributes {
 export interface TweetCreateAttributes extends HudAiCreateAttributes {
     personId: string;
     twitterTweetId: number;
+    twitterCreatedAt: Date;
     text: string;
 }
 
