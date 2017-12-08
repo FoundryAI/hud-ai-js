@@ -16,6 +16,7 @@ export { Quote, QuoteResource } from './Quote';
 export { RelevantArticle, RelevantArticleResource } from './RelevantArticle';
 export { RelevantArticleCollateral, RelevantArticleCollateralResource } from './RelevantArticleCollateral';
 export { TextCorpus, TextCorpusResource } from './TextCorpus';
+export { Tweet, TweetResource } from './Tweet';
 export { User, UserResource } from './User';
 export { UserCompany, UserCompanyResource } from './UserCompany';
 export { UserContact, UserContactResource } from './UserContact';
