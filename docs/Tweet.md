@@ -2,12 +2,12 @@
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
-| `id`         | String     | Resource ID **Cannot be edited** |
-| `createdAt`  | Date       | Creation date **Cannot be edited** |
-| `updatedAt`  | Date       | Last touch date **Cannot be edited** |
-| `personId`*  | **String** | Associated person |
+| `id`              | String     | Resource ID **Cannot be edited** |
+| `createdAt`       | Date       | Creation date **Cannot be edited** |
+| `updatedAt`       | Date       | Last touch date **Cannot be edited** |
+| `personId`*       | **String** | Associated person |
 | `twitterTweetId`* | **String** | Associated twitter tweet id |
-| `text`*      | **String** | Content of the tweet |
+| `text`*           | **String** | Content of the tweet |
 
 ## `client.tweets.list(params)`
 
