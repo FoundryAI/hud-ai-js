@@ -120,6 +120,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | Tweet                | [client.tweets](docs/Tweet.md) |
 | User                      | [client.users](docs/User.md) |
 | UserCompany               | [client.userCompanies](docs/UserCompany.md) |
+| UserCompany               | [client.userCompanyGroups](docs/UserCompanyGroup.md) |
 | UserContact               | [client.userContacts](docs/UserContact.md) |
 | UserDigestSubscription    | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
 | UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
