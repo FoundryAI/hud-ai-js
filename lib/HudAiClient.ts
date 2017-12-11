@@ -31,6 +31,7 @@ import {
     TweetResource,
     UserResource,
     UserCompanyResource,
+    UserCompanyGroupResource,
     UserContactResource,
     UserDigestSubscriptionResource,
     UserKeyTermResource,
@@ -62,6 +63,7 @@ export {
     Tweet,
     User,
     UserCompany,
+    UserCompanyGroup,
     UserContact,
     UserDigestSubscription,
     UserKeyTerm,
@@ -106,6 +108,7 @@ export class HudAiClient {
     public tweets: TweetResource;
     public users: UserResource;
     public userCompanies: UserCompanyResource;
+    public userCompanyGroups: UserCompanyGroupResource;
     public userContacts: UserContactResource;
     public userDigestSubscriptions: UserDigestSubscriptionResource;
     public userKeyTerms: UserKeyTermResource;

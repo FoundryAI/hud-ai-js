@@ -19,6 +19,7 @@ export { TextCorpus, TextCorpusResource } from './TextCorpus';
 export { Tweet, TweetResource } from './Tweet';
 export { User, UserResource } from './User';
 export { UserCompany, UserCompanyResource } from './UserCompany';
+export { UserCompanyGroup, UserCompanyGroupResource } from './UserCompanyGroup';
 export { UserContact, UserContactResource } from './UserContact';
 export { UserDigestSubscription, UserDigestSubscriptionResource } from './UserDigestSubscription';
 export { UserKeyTerm, UserKeyTermResource } from './UserKeyTerm';
