@@ -167,6 +167,7 @@ export class HudAiClient {
         this.tweets = new TweetResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
         this.userCompanies = new UserCompanyResource(this.requestManager);
+        this.userCompanyGroups = new UserCompanyGroupResource(this.requestManager);
         this.userContacts = new UserContactResource(this.requestManager);
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);

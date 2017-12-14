@@ -117,14 +117,14 @@ client.articles.get('SOME_ARTICLE_ID')
 | RelevantArticle           | [client.relevantArticles](docs/RelevantArticle.md) |
 | RelevantArticleCollateral | [client.relevantArticleCollateral](docs/RelevantArticleCollateral.md) |
 | TextCorpus                | [client.textCorpora](docs/TextCorpus.md) |
-| Tweet                | [client.tweets](docs/Tweet.md) |
+| Tweet                     | [client.tweets](docs/Tweet.md) |
 | User                      | [client.users](docs/User.md) |
 | UserCompany               | [client.userCompanies](docs/UserCompany.md) |
-| UserCompany               | [client.userCompanyGroups](docs/UserCompanyGroup.md) |
+| UserCompanyGroup          | [client.userCompanyGroups](docs/UserCompanyGroup.md) |
 | UserContact               | [client.userContacts](docs/UserContact.md) |
 | UserDigestSubscription    | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
 | UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
-| UserTemplate               | [client.userTemplates](docs/UserTemplate.md) |
+| UserTemplate              | [client.userTemplates](docs/UserTemplate.md) |
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
 [npm-version-link]: https://www.npmjs.org/package/hud-ai

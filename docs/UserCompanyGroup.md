@@ -1,4 +1,4 @@
-# UserCompany
+# UserCompanyGroup
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
