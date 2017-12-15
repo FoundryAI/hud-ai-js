@@ -83,7 +83,8 @@ export class UserCompanyGroupResource extends Resource<
     public addCompany(addArgs: UserCompanyGroupUpdateCompaniesAttributes): Promise<UserCompanyGroup> {
         return this.makeRequest({
             method: 'POST',
-            params: addArgs,
+            params: { id: addArgs.id },
+            data: { companyId: addArgs.companyId },
             url: `${this.basePath}/{id}/companies`
         })
     }
@@ -91,7 +92,8 @@ export class UserCompanyGroupResource extends Resource<
     public removeCompany(destroyArgs: UserCompanyGroupUpdateCompaniesAttributes): Promise<UserCompanyGroup> {
         return this.makeRequest({
             method: 'DELETE',
-            params: destroyArgs,
+            params: { id: destroyArgs.id },
+            data: { companyId: destroyArgs.companyId },
             url: `${this.basePath}/{id}/companies`
         })
     }
