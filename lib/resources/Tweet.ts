@@ -72,7 +72,7 @@ export class TweetResource extends Resource<
     public getByTwitterTweetId(id: string | number): Promise<Tweet> {
         return this.makeRequest({
             method: 'GET',
-            url: `${this.basePath}/by-twitter-id/{id}`
+            url: `${this.basePath}/by-twitter-id/${id}`
         });
     }
 
