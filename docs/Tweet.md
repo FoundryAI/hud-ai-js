@@ -13,6 +13,20 @@
 
 | Param | Type |
 |-------|------|
+| `params`                   | Object |
+| `params.personId`          | string |
+| `params.limit`             | number |
+| `params.offset`            | number |
+| `params.twitterTweetId`    | string |
+| `params.text`              | string |
+| `params.terms`             | string |
+| `params.createdBefore`     | date |
+| `params.createdAfter`      | date |
+
+## `client.tweets.search(params)`
+
+| Param | Type |
+|-------|------|
 | `params`           | Object |
 | `params.personId`  | string |
 | `params.limit`     | number |
