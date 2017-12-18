@@ -28,6 +28,7 @@ export interface TweetSearchAttributes extends HudAiListAttributes {
     personId?: string;
     twitterTweetId?: string;
     text?: string;
+    terms: string[],
     createdBefore?: Date;
     createdAfter?: Date;
 }
