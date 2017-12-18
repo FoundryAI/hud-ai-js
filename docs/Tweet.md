@@ -33,6 +33,13 @@
 |-------|------|
 | `id` | string |
 
+## `client.tweets.getByTwitterId(id)`
+
+| Param | Type |
+|-------|------|
+| `id` | string |
+
+
 ## `client.tweets.destroy(params)`
 
 | Param | Type |
