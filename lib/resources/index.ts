@@ -15,6 +15,7 @@ export { PersonKeyTerm, PersonKeyTermResource } from './PersonKeyTerm';
 export { Quote, QuoteResource } from './Quote';
 export { RelevantArticle, RelevantArticleResource } from './RelevantArticle';
 export { RelevantArticleCollateral, RelevantArticleCollateralResource } from './RelevantArticleCollateral';
+export { StockAlert, StockAlertResource } from './StockAlert';
 export { TextCorpus, TextCorpusResource } from './TextCorpus';
 export { Tweet, TweetResource } from './Tweet';
 export { User, UserResource } from './User';

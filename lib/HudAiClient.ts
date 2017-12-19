@@ -27,6 +27,7 @@ import {
     QuoteResource,
     RelevantArticleResource,
     RelevantArticleCollateralResource,
+    StockAlertResource,
     TextCorpusResource,
     TweetResource,
     UserResource,
@@ -59,6 +60,7 @@ export {
     Quote,
     RelevantArticle,
     RelevantArticleCollateral,
+    StockAlert,
     TextCorpus,
     Tweet,
     User,
@@ -104,6 +106,7 @@ export class HudAiClient {
     public quotes: QuoteResource;
     public relevantArticles: RelevantArticleResource;
     public relevantArticleCollateral: RelevantArticleCollateralResource;
+    public stockAlerts: StockAlertResource;
     public textCorpora: TextCorpusResource;
     public tweets: TweetResource;
     public users: UserResource;
@@ -163,6 +166,7 @@ export class HudAiClient {
         this.quotes = new QuoteResource(this.requestManager);
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
         this.relevantArticleCollateral = new RelevantArticleCollateralResource(this.requestManager);
+        this.stockAlerts = new StockAlertResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.tweets = new TweetResource(this.requestManager);
         this.users = new UserResource(this.requestManager);
