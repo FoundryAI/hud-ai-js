@@ -10,7 +10,7 @@
 | `linkedinProfileId` | string     | Linked LinkedIn profile |
 | `organizationId`    | string     | Organization (billable account) the user is a part of |
 
-## `client.people.list(params)`
+## `client.users.list(params)`
 
 | Param | Type |
 |-------|------|
@@ -24,7 +24,7 @@
 | `params.limit`                  | number |
 | `params.offset`                 | number |
 
-## `client.people.create(params)`
+## `client.users.create(params)`
 
 | Param | Type |
 |-------|------|
@@ -34,13 +34,18 @@
 | `params.linkedinProfileId` | string |
 | `params.organizationId`    | string |
 
-## `client.people.get(id)`
+## `client.users.get(id)`
 
 | Param | Type |
 |-------|------|
 | `id` | string |
 
-## `client.people.update(id, params)`
+## `client.users.me()`
+
+| Param | Type |
+|-------|------|
+
+## `client.users.update(id, params)`
 
 | Param | Type |
 |-------|------|
@@ -51,7 +56,7 @@
 | `params.linkedinProfileId` | string |
 | `params.organizationId`    | string |
 
-## `client.people.destroy(id)`
+## `client.users.destroy(id)`
 
 | Param | Type |
 |-------|------|

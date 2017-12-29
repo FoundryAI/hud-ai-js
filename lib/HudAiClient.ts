@@ -37,7 +37,7 @@ import {
     UserDigestSubscriptionResource,
     UserKeyTermResource,
     UserPersonResource,
-    UserTemplateResource,
+    UserTemplateResource, FeedResource,
 } from './resources';
 import {CompanyProfile} from './resources/CompanyProfile';
 import {HighlightResource} from './resources/Highlights';
@@ -98,6 +98,7 @@ export class HudAiClient {
     public companyKeyTerms: CompanyKeyTermResource;
     public companyProfiles: CompanyProfileResource;
     public domains: DomainResource;
+    public feed: FeedResource;
     public highlights: HighlightResource;
     public keyTerms: KeyTermResource;
     public organizations: OrganizationResource;
@@ -158,6 +159,7 @@ export class HudAiClient {
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.companyProfiles = new CompanyProfileResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
+        this.feed = new FeedResource(this.requestManager);
         this.highlights = new HighlightResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
         this.organizations = new OrganizationResource(this.requestManager);
