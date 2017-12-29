@@ -24,7 +24,7 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
 
 export class FeedResource extends Resource<Article|Quote|Tweet, HudAiListAttributes, HudAiCreateAttributes, HudAiUpdateAttributes> {
     constructor(requestManager: RequestManager) {
-        super('/users/feeds', requestManager);
+        super('/users/feed', requestManager);
     }
 
     public fetch(fetchArgs: FeedFetchAttributes): Promise<{ count: number, rows: [Article|Quote|Tweet] }> {
