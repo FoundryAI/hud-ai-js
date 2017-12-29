@@ -20,6 +20,8 @@ import {
     CompanyKeyTermResource,
     CompanyProfileResource,
     DomainResource,
+    FeedResource,
+    HighlightResource,
     KeyTermResource,
     OrganizationResource,
     PersonResource,
@@ -37,10 +39,8 @@ import {
     UserDigestSubscriptionResource,
     UserKeyTermResource,
     UserPersonResource,
-    UserTemplateResource, FeedResource,
+    UserTemplateResource,
 } from './resources';
-import {CompanyProfile} from './resources/CompanyProfile';
-import {HighlightResource} from './resources/Highlights';
 
 export {
     Article,
