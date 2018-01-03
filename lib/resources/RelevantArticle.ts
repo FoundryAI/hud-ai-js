@@ -19,7 +19,7 @@ export interface RelevantArticle {
     userId: string;
     keyTerms: string[];
     tags: string[];
-    flag: string;
+    flag?: string;
 }
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {
