@@ -1,15 +1,24 @@
 import * as Promise from 'bluebird';
 
-import {
-    HudAiCreateAttributes,
-    HudAiListAttributes,
-    HudAiUpdateAttributes,
-    Resource
-} from '../utils/Resource';
+import { ArticleSearchResult } from './Article';
+import { HudAiListAttributes, Resource } from '../utils/Resource';
+import { Quote } from './Quote';
 import { RequestManager } from '../RequestManager';
-import {Article} from './Article';
-import {Quote} from './Quote';
-import {Tweet} from './Tweet';
+import { Tweet } from './Tweet';
+
+export interface FeedArticle extends ArticleSearchResult {
+    _type: 'article';
+}
+
+export interface FeedQuote extends Quote {
+    _type: 'quote';
+}
+
+export interface FeedTweet extends Tweet {
+    _type: 'tweet';
+}
+
+export type FeedItem = FeedArticle | FeedQuote | FeedTweet;
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
     userId?: string;
@@ -22,12 +31,12 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
     publishedAfter?: Date;
 }
 
-export class FeedResource extends Resource<Article|Quote|Tweet, HudAiListAttributes, HudAiCreateAttributes, HudAiUpdateAttributes> {
+export class FeedResource extends Resource<FeedItem, any, any, any> {
     constructor(requestManager: RequestManager) {
         super('/users/feed', requestManager);
     }
 
-    public fetch(fetchArgs: FeedFetchAttributes): Promise<{ count: number, rows: [Article|Quote|Tweet] }> {
+    public fetch(fetchArgs: FeedFetchAttributes): Promise<{ count: number, rows: FeedItem[] }> {
         return this.makeRequest({
             method: 'GET',
             params: fetchArgs,
