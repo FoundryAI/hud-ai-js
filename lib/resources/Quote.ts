@@ -6,7 +6,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import {Person} from './Person';
+import { Person } from './Person';
 
 export interface Quote {
     id: string;
