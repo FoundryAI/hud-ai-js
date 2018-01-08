@@ -55,3 +55,26 @@
 | Param | Type |
 |-------|------|
 | `id` | string |
+
+## `client.organizations.destroy(id)`
+
+
+| Param | Type |
+|-------|------|
+| `id` | string |
+## `client.organizations.createSubscription(params)`
+
+| Param | Type |
+|-------|------|
+| `organizationId` | string |
+| `planId` | string |
+| `source` | string |
+
+| Param | Type |
+|-------|------|
+| `id` | string |
+## `client.organizations.cancelSubscription(subscriptionId)`
+
+| Param | Type |
+|-------|------|
+| `subscriptionId` | string |

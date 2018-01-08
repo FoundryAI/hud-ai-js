@@ -16,13 +16,15 @@ export interface Organization {
     maxBillableAccounts: number;
     emailDomain: string;
     signedLicenseAgreementAt: Date | null;
-    signupKey: string;
+    planId: string|null;
+    subscriptionId: string|null;
+    customerId: string|null;
 }
 
 export interface OrganizationListAttributes extends HudAiListAttributes {
     id?: string;
     name?: string;
-    signupKey?: string;
+    planId?: string;
     emailDomain?: string;
 }
 
@@ -31,7 +33,6 @@ export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
     maxBillableAccounts?: number;
     emailDomain: string;
     signedLicenseAgreementAt?: Date;
-    signupKey?: string;
 }
 
 export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
@@ -39,6 +40,12 @@ export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
     maxBillableAccounts?: number;
     emailDomain?: string;
     signedLicenseAgreementAt?: Date;
+}
+
+export interface OrganizationSubscriptionCreateAttributes extends HudAiCreateAttributes {
+    organizationId: string;
+    planId: string,
+    source?: string
 }
 
 export class OrganizationResource extends Resource<
@@ -73,5 +80,21 @@ export class OrganizationResource extends Resource<
 
     public destroy(id: string): Promise<void> {
         return this._destroy(id);
+    }
+
+    public createSubscription(args: OrganizationSubscriptionCreateAttributes) {
+        return this.makeRequest({
+            method: 'POST',
+            data: args,
+            url: `${this.basePath}/billing/subscriptions`
+        })
+    }
+
+    public cancelSubscription(subscriptionId: string) {
+        return this.makeRequest({
+            method: 'POST',
+            params: { subscriptionId },
+            url: `${this.basePath}/billing/subscriptions/{subscriptionId}/cancel`
+        })
     }
 }
