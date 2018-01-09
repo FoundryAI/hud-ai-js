@@ -43,8 +43,7 @@ export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
 }
 
 export interface OrganizationSubscriptionCreateAttributes extends HudAiCreateAttributes {
-    organizationId: string;
-    planId: string,
+    plan: string,
     source?: string
 }
 
@@ -93,8 +92,7 @@ export class OrganizationResource extends Resource<
     public cancelSubscription(subscriptionId: string) {
         return this.makeRequest({
             method: 'POST',
-            params: { subscriptionId },
-            url: `${this.basePath}/billing/subscriptions/{subscriptionId}/cancel`
+            url: `${this.basePath}/billing/subscriptions/cancel`
         })
     }
 }

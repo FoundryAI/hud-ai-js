@@ -62,19 +62,17 @@
 | Param | Type |
 |-------|------|
 | `id` | string |
-## `client.organizations.createSubscription(params)`
+## `client.organizations.createSubscription(plan, source)`
 
 | Param | Type |
 |-------|------|
-| `organizationId` | string |
-| `planId` | string |
+| `plan` | string |
 | `source` | string |
 
 | Param | Type |
 |-------|------|
 | `id` | string |
-## `client.organizations.cancelSubscription(subscriptionId)`
+## `client.organizations.cancelSubscription()`
 
 | Param | Type |
 |-------|------|
-| `subscriptionId` | string |
