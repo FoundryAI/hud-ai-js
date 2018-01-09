@@ -12,7 +12,7 @@ export interface Organization {
     id: string;
     createdAt: Date;
     updatedAt: Date;
-    name: string;
+    name: string|null;
     maxBillableAccounts: number;
     emailDomain: string;
     signedLicenseAgreementAt: Date | null;
@@ -29,7 +29,7 @@ export interface OrganizationListAttributes extends HudAiListAttributes {
 }
 
 export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
-    name: string;
+    name?: string;
     maxBillableAccounts?: number;
     emailDomain: string;
     signedLicenseAgreementAt?: Date;
@@ -89,7 +89,7 @@ export class OrganizationResource extends Resource<
         })
     }
 
-    public cancelSubscription(subscriptionId: string) {
+    public cancelSubscription() {
         return this.makeRequest({
             method: 'POST',
             url: `${this.basePath}/billing/subscriptions/cancel`
