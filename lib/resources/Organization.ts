@@ -16,6 +16,7 @@ export interface Organization {
     maxBillableAccounts: number;
     emailDomain: string;
     signedLicenseAgreementAt: Date | null;
+    ownerUserId: string;
     planId: string|null;
     subscriptionId: string|null;
     customerId: string|null;
@@ -26,6 +27,7 @@ export interface OrganizationListAttributes extends HudAiListAttributes {
     name?: string;
     planId?: string;
     emailDomain?: string;
+    ownerUserId?: string;
 }
 
 export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
@@ -33,6 +35,7 @@ export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
     maxBillableAccounts?: number;
     emailDomain: string;
     signedLicenseAgreementAt?: Date;
+    ownerUserId?: string;
 }
 
 export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
@@ -40,6 +43,7 @@ export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
     maxBillableAccounts?: number;
     emailDomain?: string;
     signedLicenseAgreementAt?: Date;
+    ownerUserId?: string;
 }
 
 export interface OrganizationSubscriptionCreateAttributes extends HudAiCreateAttributes {

@@ -9,6 +9,7 @@
 | `maxBillableAccounts`      | number     | |
 | `emailDomain`*             | **string** | Users associated with this domain will be automatically connected |
 | `signedLicenseAgreementAt` | Date       | _Cannot be backdated_ |
+| `ownerUserId`              | string       | Organization owner |
 | `planId`                   | string     | **Cannot be edited (outside of cancelSubscription)** |
 | `subscriptionId`                   | string     | **Cannot be edited (outside of cancelSubscription)** |
 | `customerId`                   | string     | **Cannot be edited** |
@@ -21,6 +22,7 @@
 | `params.name`        | string |
 | `params.planId`      | string |
 | `params.emailDomain` | string |
+| `params.ownerUserId` | string |
 | `params.limit`       | number |
 | `params.offset`      | number |
 
@@ -33,6 +35,7 @@
 | `params.maxBillableAccounts`      | number |
 | `params.emailDomain`*             | **string** |
 | `params.signedLicenseAgreementAt` | Date |
+| `params.ownerUserId` | string |
 
 ## `client.organizations.get(id)`
 
@@ -50,6 +53,7 @@
 | `params.maxBillableAccounts`      | number |
 | `params.emailDomain`              | string |
 | `params.signedLicenseAgreementAt` | Date |
+| `params.ownerUserId` | string |
 
 ## `client.organizations.destroy(id)`
 
