@@ -225,7 +225,7 @@ export class HudAiClient {
 
     // Private
 
-    private addDeprecatedAttributes(): Promise<void> {
+    private addDeprecatedAttributes() {
         this.article = this.articles;
         this.company = this.companies;
         this.domain = this.domains;
