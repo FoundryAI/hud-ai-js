@@ -8,6 +8,7 @@
 | `personId`*       | **String** | Associated person |
 | `twitterTweetId`* | **String** | Associated twitter tweet id |
 | `text`*           | **String** | Content of the tweet |
+| `importanceScore`*| Number     | Tweet importance score |
 
 ## `client.tweets.list(params)`
 
@@ -19,6 +20,8 @@
 | `params.offset`            | number |
 | `params.twitterTweetId`    | string |
 | `params.text`              | string |
+| `params.minImportance`   | number |
+| `params.maxImportance`   | number |
 | `params.terms`             | string |
 | `params.createdBefore`     | date |
 | `params.createdAfter`      | date |
@@ -31,7 +34,7 @@
 | `params.personId`  | string |
 | `params.limit`     | number |
 | `params.offset`    | number |
-
+| `params.importanceScore`   | number |
 ## `client.tweets.create(params)`
 
 | Param | Type |
@@ -40,6 +43,7 @@
 | `params.personId`*  | **string** |
 | `params.twitterTweetId`* | **number** |
 | `params.text`*      | **string** |
+| `params.importanceScore`| number |
 
 ## `client.tweets.get(id)`
 

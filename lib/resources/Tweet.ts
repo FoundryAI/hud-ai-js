@@ -16,11 +16,13 @@ export interface Tweet {
     personId: string;
     twitterTweetId: string;
     text: string;
+    importanceScore: number;
     person?: Person;
 }
 
 export interface TweetListAttributes extends HudAiListAttributes {
     personId?: string;
+    minImportanceScore?: number;
 }
 
 export interface TweetSearchAttributes extends HudAiListAttributes {
@@ -28,6 +30,8 @@ export interface TweetSearchAttributes extends HudAiListAttributes {
     personId?: string;
     twitterTweetId?: string;
     text?: string;
+    minImportance?: number,
+    maxImportance?: number,
     terms: string[],
     createdBefore?: Date;
     createdAfter?: Date;
@@ -36,6 +40,7 @@ export interface TweetSearchAttributes extends HudAiListAttributes {
 export interface TweetCreateAttributes extends HudAiCreateAttributes {
     personId: string;
     twitterTweetId: string;
+    importanceScore?: number;
     twitterCreatedAt: Date;
     text: string;
 }
