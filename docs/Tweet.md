@@ -35,6 +35,7 @@
 | `params.limit`     | number |
 | `params.offset`    | number |
 | `params.importanceScore`   | number |
+
 ## `client.tweets.create(params)`
 
 | Param | Type |
