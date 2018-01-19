@@ -24,7 +24,7 @@ export interface QuoteListAttributes extends HudAiListAttributes {
     personId?: string;
     articleId?: string;
     term?: string;
-    minImportanceScore?: number;
+    minImportance?: number;
 }
 
 export interface QuoteSearchAttributes extends HudAiListAttributes {

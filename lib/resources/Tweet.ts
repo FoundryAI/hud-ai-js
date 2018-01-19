@@ -22,7 +22,7 @@ export interface Tweet {
 
 export interface TweetListAttributes extends HudAiListAttributes {
     personId?: string;
-    minImportanceScore?: number;
+    minImportance?: number;
 }
 
 export interface TweetSearchAttributes extends HudAiListAttributes {
