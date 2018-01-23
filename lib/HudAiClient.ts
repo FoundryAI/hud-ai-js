@@ -12,6 +12,7 @@ import {HudAiError} from './utils/HudAiError';
 
 import {
     ArticleResource,
+    ArticleCompanyResource,
     ArticleKeyTermResource,
     ArticleTagResource,
     CollateralResource,
@@ -44,6 +45,7 @@ import {
 
 export {
     Article,
+    ArticleCompany,
     ArticleKeyTerm,
     ArticleTag,
     Collateral,
@@ -90,6 +92,7 @@ export class HudAiClient {
     public tokenExpiresAt?: Date;
 
     public articles: ArticleResource;
+    public articleCompanies: ArticleCompanyResource;
     public articleKeyTerms: ArticleKeyTermResource;
     public articleTags: ArticleTagResource;
     public collateral: CollateralResource;
@@ -151,6 +154,7 @@ export class HudAiClient {
         this.requestManager = new RequestManager(this, config);
 
         this.articles = new ArticleResource(this.requestManager);
+        this.articleCompanies = new ArticleCompanyResource(this.requestManager);
         this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
         this.articleTags = new ArticleTagResource(this.requestManager);
         this.collateral = new CollateralResource(this.requestManager);
