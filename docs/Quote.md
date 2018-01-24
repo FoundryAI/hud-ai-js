@@ -8,6 +8,7 @@
 | `personId`*  | **String** | Associated person |
 | `articleId`* | **String** | Associated person |
 | `text`*      | **String** | Content of the quote |
+| `importanceScore`| Number     | Tweet importance score |
 | `term`*      | **String** | Term that caused the text to match |
 
 ## `client.quotes.list(params)`
@@ -18,6 +19,8 @@
 | `params.personId`  | string |
 | `params.articleId` | string |
 | `params.term`      | string |
+| `params.minImportance` | number |
+| `params.maxImportance` | number |
 | `params.limit`     | number |
 | `params.offset`    | number |
 
@@ -30,6 +33,7 @@
 | `params.articleId`* | **string** |
 | `params.term`*      | **string** |
 | `params.text`*      | **string** |
+| `params.importanceScore`| number |
 
 ## `client.quotes.get(id)`
 

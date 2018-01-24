@@ -16,6 +16,7 @@ export interface Quote {
     articleId: string;
     text: string;
     term: string;
+    importanceScore: number;
     person?: Person;
 }
 
@@ -23,6 +24,7 @@ export interface QuoteListAttributes extends HudAiListAttributes {
     personId?: string;
     articleId?: string;
     term?: string;
+    minImportance?: number;
 }
 
 export interface QuoteSearchAttributes extends HudAiListAttributes {
@@ -31,6 +33,8 @@ export interface QuoteSearchAttributes extends HudAiListAttributes {
     articleId?: string;
     term?: string;
     text?: string;
+    minImportance?: number,
+    maxImportance?: number,
     createdBefore?: Date;
     createdAfter?: Date;
 }
@@ -40,6 +44,7 @@ export interface QuoteCreateAttributes extends HudAiCreateAttributes {
     articleId: string;
     text: string;
     term: string;
+    importanceScore?: number;
 }
 
 export class QuoteResource extends Resource<

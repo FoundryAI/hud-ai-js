@@ -1,4 +1,5 @@
 export { Article, ArticleResource } from './Article';
+export { ArticleCompany, ArticleCompanyResource } from './ArticleCompany';
 export { ArticleKeyTerm, ArticleKeyTermResource } from './ArticleKeyTerm';
 export { ArticleTag, ArticleTagResource } from './ArticleTag';
 export { Collateral, CollateralResource } from './Collateral';

@@ -12,6 +12,7 @@ import { ArticleKeyTerm } from './ArticleKeyTerm';
 import { Author, BasicAuthor } from './Author';
 import { ArticleTag, BasicArticleTag } from './ArticleTag';
 import { BasicKeyTerm } from './KeyTerm';
+import { BasicArticleCompany } from './ArticleCompany';
 
 export interface Article extends BasicArticle {
     keyTerms?: ArticleKeyTerm[];
@@ -39,19 +40,22 @@ export interface BasicArticle {
 }
 
 export interface ArticleSearchResult extends BasicArticle {
+
     groupId?: string;
-    keyTerms: BasicKeyTerm[];
     authors: BasicAuthor[];
+    companies: BasicArticleCompany[];
+    keyTerms: BasicKeyTerm[];
     tags: BasicArticleTag[];
 }
 
 export interface ArticleListAttributes extends HudAiListAttributes {
-    type?: string;
+    companyId?: string;
     importanceScoreMin?: number;
     keyTerm?: string;
     linkHash?: string;
     publishedAfter?: Date;
     publishedBefore?: Date;
+    type?: string;
 }
 
 export interface ArticleCreateAttributes extends HudAiCreateAttributes {
@@ -84,19 +88,18 @@ export interface ArticleSearchAttributes {
     limit?: number,
     offset?: number,
     authors?: string[],
-    tags?: string[],
+    companyId?: string | string[];
+    createdAfter?: Date,
+    createdBefore?: Date,
     keyTerms?: string[],
     groupId?: string,
-    publishedBefore?: Date,
     publishedAfter?: Date,
-    createdBefore?: Date,
-    createdAfter?: Date,
-    scoredBefore?: Date,
+    publishedBefore?: Date,
     scoredAfter?: Date,
-    minImportance?: number,
-    maxImportance?: number,
-    type?: string,
+    scoredBefore?: Date,
+    tags?: string[],
     text?: string,
+    type?: string,
 }
 
 export interface ArticleSearchRelevantAttributes {
