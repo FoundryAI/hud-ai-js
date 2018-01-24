@@ -39,6 +39,7 @@ export interface BasicArticle {
 }
 
 export interface ArticleSearchResult extends BasicArticle {
+    groupId?: string;
     keyTerms: BasicKeyTerm[];
     authors: BasicAuthor[];
     tags: BasicArticleTag[];
@@ -85,6 +86,7 @@ export interface ArticleSearchAttributes {
     authors?: string[],
     tags?: string[],
     keyTerms?: string[],
+    groupId?: string,
     publishedBefore?: Date,
     publishedAfter?: Date,
     createdBefore?: Date,
