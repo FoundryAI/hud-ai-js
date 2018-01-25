@@ -92,6 +92,8 @@ export interface ArticleSearchAttributes {
     createdAfter?: Date,
     createdBefore?: Date,
     keyTerms?: string[],
+    maxImportance?: number,
+    minImportance?: number,
     groupId?: string,
     publishedAfter?: Date,
     publishedBefore?: Date,
