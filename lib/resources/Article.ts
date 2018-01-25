@@ -40,6 +40,8 @@ export interface BasicArticle {
 }
 
 export interface ArticleSearchResult extends BasicArticle {
+
+    groupId?: string;
     authors: BasicAuthor[];
     companies: BasicArticleCompany[];
     keyTerms: BasicKeyTerm[];
@@ -92,6 +94,7 @@ export interface ArticleSearchAttributes {
     keyTerms?: string[],
     maxImportance?: number,
     minImportance?: number,
+    groupId?: string,
     publishedAfter?: Date,
     publishedBefore?: Date,
     scoredAfter?: Date,

@@ -15,6 +15,7 @@
 | `sourceUrl`*      | **string** | URL of the publication source (e.g. `https://newsapi.org/v1/articles?source=the-wall-street-journal`) |
 | `text`            | string     | Plaintext format of the article body |
 | `title`*          | **string** | Title article was published as |
+| `groupId`*          | string | Optional group id |
 | `type`*           | **string** | `rss` \| `newsApi` \| `facebook` \| `twitter` |
 
 ## `client.articles.list(query)`
@@ -41,6 +42,7 @@
 | `query.tags`            | string[] |
 | `query.keyTerms`        | string[] |
 | `query.authors`         | string[] |
+| `query.groupId`         | string |
 | `query.publishedBefore` | Date |
 | `query.publishedAfter`  | Date |
 | `query.createdBefore`   | Date |
