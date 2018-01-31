@@ -1,4 +1,4 @@
-# Company
+# Industry
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
