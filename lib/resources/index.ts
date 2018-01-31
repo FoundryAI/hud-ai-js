@@ -5,6 +5,7 @@ export { ArticleTag, ArticleTagResource } from './ArticleTag';
 export { Collateral, CollateralResource } from './Collateral';
 export { Company, CompanyResource } from './Company';
 export { CompanyEvent, CompanyEventResource } from './CompanyEvent';
+export { CompanyIndustry, CompanyIndustryResource } from './CompanyIndustry';
 export { CompanyKeyTerm, CompanyKeyTermResource } from './CompanyKeyTerm';
 export { CompanyProfile, CompanyProfileResource } from './CompanyProfile';
 export { Domain, DomainResource } from './Domain';

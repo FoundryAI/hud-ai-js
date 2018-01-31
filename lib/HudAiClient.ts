@@ -18,6 +18,7 @@ import {
     CollateralResource,
     CompanyResource,
     CompanyEventResource,
+    CompanyIndustryResource,
     CompanyKeyTermResource,
     CompanyProfileResource,
     DomainResource,
@@ -52,6 +53,7 @@ export {
     Collateral,
     Company,
     CompanyEvent,
+    CompanyIndustry,
     CompanyKeyTerm,
     CompanyProfile,
     Domain,
@@ -100,6 +102,7 @@ export class HudAiClient {
     public collateral: CollateralResource;
     public companies: CompanyResource;
     public companyEvents: CompanyEventResource;
+    public companyIndustries: CompanyIndustryResource;
     public companyKeyTerms: CompanyKeyTermResource;
     public companyProfiles: CompanyProfileResource;
     public domains: DomainResource;
@@ -163,6 +166,7 @@ export class HudAiClient {
         this.collateral = new CollateralResource(this.requestManager);
         this.companies = new CompanyResource(this.requestManager);
         this.companyEvents = new CompanyEventResource(this.requestManager);
+        this.companyIndustries = new CompanyIndustryResource(this.requestManager);
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.companyProfiles = new CompanyProfileResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
