@@ -10,6 +10,7 @@ export { CompanyProfile, CompanyProfileResource } from './CompanyProfile';
 export { Domain, DomainResource } from './Domain';
 export { FeedResource} from './Feed';
 export { Highlights, HighlightResource} from './Highlights';
+export { Industry, IndustryResource} from './Industry';
 export { KeyTerm, KeyTermResource } from './KeyTerm';
 export { Organization, OrganizationResource } from './Organization';
 export { Person, PersonResource } from './Person';

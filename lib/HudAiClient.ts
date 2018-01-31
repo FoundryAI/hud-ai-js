@@ -23,6 +23,7 @@ import {
     DomainResource,
     FeedResource,
     HighlightResource,
+    IndustryResource,
     KeyTermResource,
     OrganizationResource,
     PersonResource,
@@ -55,6 +56,7 @@ export {
     CompanyProfile,
     Domain,
     Highlights,
+    Industry,
     KeyTerm,
     Organization,
     Person,
@@ -103,6 +105,7 @@ export class HudAiClient {
     public domains: DomainResource;
     public feed: FeedResource;
     public highlights: HighlightResource;
+    public industries: IndustryResource;
     public keyTerms: KeyTermResource;
     public organizations: OrganizationResource;
     public people: PersonResource;
@@ -165,6 +168,7 @@ export class HudAiClient {
         this.domains = new DomainResource(this.requestManager);
         this.feed = new FeedResource(this.requestManager);
         this.highlights = new HighlightResource(this.requestManager);
+        this.industries = new IndustryResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
         this.organizations = new OrganizationResource(this.requestManager);
         this.people = new PersonResource(this.requestManager);
