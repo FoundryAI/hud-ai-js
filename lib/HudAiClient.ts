@@ -18,11 +18,13 @@ import {
     CollateralResource,
     CompanyResource,
     CompanyEventResource,
+    CompanyIndustryResource,
     CompanyKeyTermResource,
     CompanyProfileResource,
     DomainResource,
     FeedResource,
     HighlightResource,
+    IndustryResource,
     KeyTermResource,
     OrganizationResource,
     PersonResource,
@@ -51,10 +53,12 @@ export {
     Collateral,
     Company,
     CompanyEvent,
+    CompanyIndustry,
     CompanyKeyTerm,
     CompanyProfile,
     Domain,
     Highlights,
+    Industry,
     KeyTerm,
     Organization,
     Person,
@@ -98,11 +102,13 @@ export class HudAiClient {
     public collateral: CollateralResource;
     public companies: CompanyResource;
     public companyEvents: CompanyEventResource;
+    public companyIndustries: CompanyIndustryResource;
     public companyKeyTerms: CompanyKeyTermResource;
     public companyProfiles: CompanyProfileResource;
     public domains: DomainResource;
     public feed: FeedResource;
     public highlights: HighlightResource;
+    public industries: IndustryResource;
     public keyTerms: KeyTermResource;
     public organizations: OrganizationResource;
     public people: PersonResource;
@@ -160,11 +166,13 @@ export class HudAiClient {
         this.collateral = new CollateralResource(this.requestManager);
         this.companies = new CompanyResource(this.requestManager);
         this.companyEvents = new CompanyEventResource(this.requestManager);
+        this.companyIndustries = new CompanyIndustryResource(this.requestManager);
         this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
         this.companyProfiles = new CompanyProfileResource(this.requestManager);
         this.domains = new DomainResource(this.requestManager);
         this.feed = new FeedResource(this.requestManager);
         this.highlights = new HighlightResource(this.requestManager);
+        this.industries = new IndustryResource(this.requestManager);
         this.keyTerms = new KeyTermResource(this.requestManager);
         this.organizations = new OrganizationResource(this.requestManager);
         this.people = new PersonResource(this.requestManager);
