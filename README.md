@@ -118,6 +118,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | Quote                     | [client.quotes](docs/Quote.md) |
 | RelevantArticle           | [client.relevantArticles](docs/RelevantArticle.md) |
 | RelevantArticleCollateral | [client.relevantArticleCollateral](docs/RelevantArticleCollateral.md) |
+| Source                    | [client.sources](docs/Source.md) |
 | TextCorpus                | [client.textCorpora](docs/TextCorpus.md) |
 | Tweet                     | [client.tweets](docs/Tweet.md) |
 | User                      | [client.users](docs/User.md) |
@@ -126,6 +127,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | UserContact               | [client.userContacts](docs/UserContact.md) |
 | UserDigestSubscription    | [client.userDigestSubscriptions](docs/UserDigestSubscription.md) |
 | UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
+| UserSource                | [client.userSources](docs/UserSource.md) |
 | UserTemplate              | [client.userTemplates](docs/UserTemplate.md) |
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
