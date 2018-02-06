@@ -32,6 +32,7 @@ import {
     QuoteResource,
     RelevantArticleResource,
     RelevantArticleCollateralResource,
+    SourceResource,
     StockAlertResource,
     TextCorpusResource,
     TweetResource,
@@ -42,7 +43,8 @@ import {
     UserDigestSubscriptionResource,
     UserKeyTermResource,
     UserPersonResource,
-    UserTemplateResource, SourceResource, UserSource, UserSourceResource,
+    UserSourceResource,
+    UserTemplateResource,
 } from './resources';
 
 export {
