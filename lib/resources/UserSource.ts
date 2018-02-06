@@ -81,7 +81,7 @@ export class UserSourceResource extends Resource<
         return this.makeRequest({
             method: 'DELETE',
             params: destroyArgs,
-            url: `${this.basePath}
+            url: `${this.basePath}`
         })
     }
 }
