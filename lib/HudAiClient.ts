@@ -32,6 +32,7 @@ import {
     QuoteResource,
     RelevantArticleResource,
     RelevantArticleCollateralResource,
+    SourceResource,
     StockAlertResource,
     TextCorpusResource,
     TweetResource,
@@ -42,6 +43,7 @@ import {
     UserDigestSubscriptionResource,
     UserKeyTermResource,
     UserPersonResource,
+    UserSourceResource,
     UserTemplateResource,
 } from './resources';
 
@@ -66,6 +68,7 @@ export {
     Quote,
     RelevantArticle,
     RelevantArticleCollateral,
+    Source,
     StockAlert,
     TextCorpus,
     Tweet,
@@ -76,6 +79,7 @@ export {
     UserDigestSubscription,
     UserKeyTerm,
     UserPerson,
+    UserSource,
     UserTemplate,
 } from './resources';
 
@@ -116,6 +120,7 @@ export class HudAiClient {
     public quotes: QuoteResource;
     public relevantArticles: RelevantArticleResource;
     public relevantArticleCollateral: RelevantArticleCollateralResource;
+    public sources: SourceResource;
     public stockAlerts: StockAlertResource;
     public textCorpora: TextCorpusResource;
     public tweets: TweetResource;
@@ -126,6 +131,7 @@ export class HudAiClient {
     public userDigestSubscriptions: UserDigestSubscriptionResource;
     public userKeyTerms: UserKeyTermResource;
     public userPeople: UserPersonResource;
+    public userSources: UserSourceResource;
     public userTemplates: UserTemplateResource;
 
     // Deprecated
@@ -180,6 +186,7 @@ export class HudAiClient {
         this.quotes = new QuoteResource(this.requestManager);
         this.relevantArticles = new RelevantArticleResource(this.requestManager);
         this.relevantArticleCollateral = new RelevantArticleCollateralResource(this.requestManager);
+        this.sources = new SourceResource(this.requestManager);
         this.stockAlerts = new StockAlertResource(this.requestManager);
         this.textCorpora = new TextCorpusResource(this.requestManager);
         this.tweets = new TweetResource(this.requestManager);
@@ -190,6 +197,7 @@ export class HudAiClient {
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);
         this.userPeople = new UserPersonResource(this.requestManager);
+        this.userSources = new UserSourceResource(this.requestManager);
         this.userTemplates = new UserTemplateResource(this.requestManager);
 
         this.addDeprecatedAttributes();
