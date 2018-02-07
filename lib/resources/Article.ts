@@ -40,7 +40,6 @@ export interface BasicArticle {
 }
 
 export interface ArticleSearchResult extends BasicArticle {
-
     groupId?: string;
     authors: BasicAuthor[];
     companies: BasicArticleCompany[];

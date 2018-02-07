@@ -4,11 +4,11 @@ import * as Promise from 'bluebird';
 import * as isAfter from 'date-fns/is_after';
 import * as addMilliseconds from 'date-fns/add_milliseconds';
 
-import {TokenRequestData} from './utils/TokenExchange';
+import { TokenRequestData } from './utils/TokenExchange';
 
-import {Factory as ClientConfigFactory} from './utils/ClientConfigFactory';
-import {RequestManager} from './RequestManager';
-import {HudAiError} from './utils/HudAiError';
+import { Factory as ClientConfigFactory } from './utils/ClientConfigFactory';
+import { RequestManager } from './RequestManager';
+import { HudAiError } from './utils/HudAiError';
 
 import {
     ArticleResource,
@@ -40,6 +40,7 @@ import {
     UserCompanyGroupResource,
     UserContactResource,
     UserDigestSubscriptionResource,
+    UserIndustryResource,
     UserKeyTermResource,
     UserPersonResource,
     UserTemplateResource,
@@ -74,6 +75,7 @@ export {
     UserCompanyGroup,
     UserContact,
     UserDigestSubscription,
+    UserIndustry,
     UserKeyTerm,
     UserPerson,
     UserTemplate,
@@ -124,6 +126,7 @@ export class HudAiClient {
     public userCompanyGroups: UserCompanyGroupResource;
     public userContacts: UserContactResource;
     public userDigestSubscriptions: UserDigestSubscriptionResource;
+    public userIndustries: UserIndustryResource;
     public userKeyTerms: UserKeyTermResource;
     public userPeople: UserPersonResource;
     public userTemplates: UserTemplateResource;
@@ -188,6 +191,7 @@ export class HudAiClient {
         this.userCompanyGroups = new UserCompanyGroupResource(this.requestManager);
         this.userContacts = new UserContactResource(this.requestManager);
         this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
+        this.userIndustries = new UserIndustryResource(this.requestManager);
         this.userKeyTerms = new UserKeyTermResource(this.requestManager);
         this.userPeople = new UserPersonResource(this.requestManager);
         this.userTemplates = new UserTemplateResource(this.requestManager);
@@ -272,7 +276,7 @@ export class HudAiClient {
             method: 'POST',
             data: payload,
             url: `${this.baseAuthUrl}/oauth2/token`
-        }, {refreshTokens: false})
+        }, { refreshTokens: false })
         .then((response) => {
             this.accessToken = response.access_token;
             if (response.refresh_token) this.refreshToken = response.refresh_token;

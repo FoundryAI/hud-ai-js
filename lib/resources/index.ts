@@ -27,6 +27,7 @@ export { UserCompany, UserCompanyResource } from './UserCompany';
 export { UserCompanyGroup, UserCompanyGroupResource } from './UserCompanyGroup';
 export { UserContact, UserContactResource } from './UserContact';
 export { UserDigestSubscription, UserDigestSubscriptionResource } from './UserDigestSubscription';
+export { UserIndustry, UserIndustryResource } from './UserIndustry';
 export { UserKeyTerm, UserKeyTermResource } from './UserKeyTerm';
 export { UserPerson, UserPersonResource } from './UserPerson';
 export { UserTemplate, UserTemplateResource } from './UserTemplate';
