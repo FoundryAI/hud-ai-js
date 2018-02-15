@@ -15,6 +15,7 @@ export interface TextCorpus {
     type: string;
     userId: string;
     body: string;
+    parsedBody: string;
 }
 
 export interface TextCorpusListAttributes extends HudAiListAttributes {
