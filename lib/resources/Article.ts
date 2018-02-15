@@ -33,6 +33,7 @@ export interface BasicArticle {
     imageUrl: string;
     importanceScore: number;
     linkUrl: string;
+    sourceId: string;
     publishedAt: Date;
     text: string;
     title: string;
