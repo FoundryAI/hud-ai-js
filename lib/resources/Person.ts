@@ -18,6 +18,7 @@ export interface Person {
     flag: string;
     linkedInUrl: string;
     twitterHandle: string;
+    companyId: string;
 }
 
 export interface PersonListAttributes extends HudAiListAttributes {
