@@ -21,6 +21,7 @@ export interface Person {
 }
 
 export interface PersonListAttributes extends HudAiListAttributes {
+    companyId?: string;
     name?: string;
     title?: string;
     term?: string;
