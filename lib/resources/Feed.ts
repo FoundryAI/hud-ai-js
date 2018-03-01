@@ -25,10 +25,28 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
     text?: string;
     tags?: string[];
     keyTerms?: string[];
+    companyIds?: string[]|string;
+    sourceIds?: string[]|string;
+    minImportance?: number;
+    maxImportance?: number;
     minRelevance?: number;
     maxRelevance?: number;
     publishedBefore?: Date;
     publishedAfter?: Date;
+    scoredBefore?: Date;
+    scoredAfter?: Date;
+    weights?: {
+        importance: number;
+        article: number;
+        tweet: number;
+        quote: number;
+        businessWord: number;
+        industryTerm: number;
+        corpusTerm: number;
+        source: number;
+        feedContext: number;
+        followedPerson: number;
+    }
 }
 
 export class FeedResource extends Resource<FeedItem, any, any, any> {
