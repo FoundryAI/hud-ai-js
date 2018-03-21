@@ -29,10 +29,10 @@ export class HudAiClient {
     public refreshToken?: string;
     public tokenExpiresAt?: Date;
 
-    public articles: resources.ArticleResource;
     public articleCompanies: resources.ArticleCompanyResource;
     public articleKeyTerms: resources.ArticleKeyTermResource;
     public articleTags: resources.ArticleTagResource;
+    public articles: resources.ArticleResource;
     public collateral: resources.CollateralResource;
     public companies: resources.CompanyResource;
     public companyEvents: resources.CompanyEventResource;
@@ -43,27 +43,29 @@ export class HudAiClient {
     public feed: resources.FeedResource;
     public highlights: resources.HighlightResource;
     public industries: resources.IndustryResource;
+    public jobFunctions: resources.JobFunctionResource;
     public keyTerms: resources.KeyTermResource;
     public organizations: resources.OrganizationResource;
     public people: resources.PersonResource;
     public peopleKeyTerms: resources.PersonKeyTermResource;
     public quotes: resources.QuoteResource;
-    public relevantArticles: resources.RelevantArticleResource;
     public relevantArticleCollateral: resources.RelevantArticleCollateralResource;
+    public relevantArticles: resources.RelevantArticleResource;
     public sources: resources.SourceResource;
     public stockAlerts: resources.StockAlertResource;
     public textCorpora: resources.TextCorpusResource;
     public tweets: resources.TweetResource;
-    public users: resources.UserResource;
     public userCompanies: resources.UserCompanyResource;
     public userCompanyGroups: resources.UserCompanyGroupResource;
     public userContacts: resources.UserContactResource;
     public userDigestSubscriptions: resources.UserDigestSubscriptionResource;
     public userIndustries: resources.UserIndustryResource;
+    public userJobFunctions: resources.UserJobFunctionResource;
     public userKeyTerms: resources.UserKeyTermResource;
     public userPeople: resources.UserPersonResource;
     public userSources: resources.UserSourceResource;
     public userTemplates: resources.UserTemplateResource;
+    public users: resources.UserResource;
 
     // Deprecated
     public article: resources.ArticleResource;
@@ -96,10 +98,10 @@ export class HudAiClient {
 
         this.requestManager = new RequestManager(this, config);
 
-        this.articles = new resources.ArticleResource(this.requestManager);
         this.articleCompanies = new resources.ArticleCompanyResource(this.requestManager);
         this.articleKeyTerms = new resources.ArticleKeyTermResource(this.requestManager);
         this.articleTags = new resources.ArticleTagResource(this.requestManager);
+        this.articles = new resources.ArticleResource(this.requestManager);
         this.collateral = new resources.CollateralResource(this.requestManager);
         this.companies = new resources.CompanyResource(this.requestManager);
         this.companyEvents = new resources.CompanyEventResource(this.requestManager);
@@ -110,27 +112,29 @@ export class HudAiClient {
         this.feed = new resources.FeedResource(this.requestManager);
         this.highlights = new resources.HighlightResource(this.requestManager);
         this.industries = new resources.IndustryResource(this.requestManager);
+        this.jobFunctions = new resources.JobFunctionResource(this.requestManager);
         this.keyTerms = new resources.KeyTermResource(this.requestManager);
         this.organizations = new resources.OrganizationResource(this.requestManager);
         this.people = new resources.PersonResource(this.requestManager);
         this.peopleKeyTerms = new resources.PersonKeyTermResource(this.requestManager);
         this.quotes = new resources.QuoteResource(this.requestManager);
-        this.relevantArticles = new resources.RelevantArticleResource(this.requestManager);
         this.relevantArticleCollateral = new resources.RelevantArticleCollateralResource(this.requestManager);
+        this.relevantArticles = new resources.RelevantArticleResource(this.requestManager);
         this.sources = new resources.SourceResource(this.requestManager);
         this.stockAlerts = new resources.StockAlertResource(this.requestManager);
         this.textCorpora = new resources.TextCorpusResource(this.requestManager);
         this.tweets = new resources.TweetResource(this.requestManager);
-        this.users = new resources.UserResource(this.requestManager);
         this.userCompanies = new resources.UserCompanyResource(this.requestManager);
         this.userCompanyGroups = new resources.UserCompanyGroupResource(this.requestManager);
         this.userContacts = new resources.UserContactResource(this.requestManager);
         this.userDigestSubscriptions = new resources.UserDigestSubscriptionResource(this.requestManager);
         this.userIndustries = new resources.UserIndustryResource(this.requestManager);
+        this.userJobFunctions = new resources.UserJobFunctionResource(this.requestManager);
         this.userKeyTerms = new resources.UserKeyTermResource(this.requestManager);
         this.userPeople = new resources.UserPersonResource(this.requestManager);
         this.userSources = new resources.UserSourceResource(this.requestManager);
         this.userTemplates = new resources.UserTemplateResource(this.requestManager);
+        this.users = new resources.UserResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }
