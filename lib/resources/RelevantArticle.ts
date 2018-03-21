@@ -7,20 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface RelevantArticle {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    articleId: string;
-    articlePublishedAt: Date;
-    score: number;
-    scoredAt: Date;
-    userId: string;
-    keyTerms: string[];
-    tags: string[];
-    flag?: string;
-}
+import { RelevantArticle } from '../entities';
 
 export interface RelevantArticleListAttributes extends HudAiListAttributes {
     userId?: string;

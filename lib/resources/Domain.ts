@@ -7,11 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface Domain {
-    companyId: string;
-    hostname: string;
-}
+import { Domain } from '../entities';
 
 export interface DomainListAttributes extends HudAiListAttributes {
     companyId?: string;

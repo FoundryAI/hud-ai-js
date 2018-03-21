@@ -7,17 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface StockAlert {
-    id: string;
-    companyId: string;
-    firstValue: number;
-    firstValueOccurredAt: Date;
-    secondValue: number;
-    secondValueOccurredAt: Date;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { StockAlert } from '../entities';
 
 export interface StockAlertListAttributes extends HudAiListAttributes {
     companyId?: string | string[];

@@ -1,24 +1,9 @@
 import * as Promise from 'bluebird';
 
-import { ArticleSearchResult } from './Article';
 import { HudAiListAttributes, Resource } from '../utils/Resource';
-import { Quote } from './Quote';
 import { RequestManager } from '../RequestManager';
-import { Tweet } from './Tweet';
 
-export interface FeedArticle extends ArticleSearchResult {
-    _type: 'article';
-}
-
-export interface FeedQuote extends Quote {
-    _type: 'quote';
-}
-
-export interface FeedTweet extends Tweet {
-    _type: 'tweet';
-}
-
-export type FeedItem = FeedArticle | FeedQuote | FeedTweet;
+import { FeedItem } from '../entities';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
     userId?: string;

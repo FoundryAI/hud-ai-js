@@ -8,15 +8,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface UserTemplate {
-    id: string;
-    userId: string;
-    name: string;
-    markdown: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { UserTemplate } from '../entities';
 
 export interface UserTemplateListAttributes extends HudAiListAttributes {
     userId?: string;

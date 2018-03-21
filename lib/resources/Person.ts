@@ -7,19 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface Person {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    title: string;
-    imageUrl: string;
-    flag: string;
-    linkedInUrl: string;
-    twitterHandle: string;
-    companyId: string;
-}
+import { Person } from '../entities';
 
 export interface PersonListAttributes extends HudAiListAttributes {
     companyId?: string;

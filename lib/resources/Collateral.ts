@@ -7,20 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface Collateral {
-    id: string;
-    organizationId: string;
-    name: string;
-    description: string;
-    contentUrl: string;
-    plaintextUrl: string;
-    filetype: string;
-    size: number;
-    dataScienceMetadata: Object;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { Collateral } from '../entities';
 
 export interface CollateralListAttributes extends HudAiListAttributes {
     id?: string;

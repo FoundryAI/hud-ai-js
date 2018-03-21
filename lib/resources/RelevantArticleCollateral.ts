@@ -7,14 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface RelevantArticleCollateral {
-    id: string;
-    relevantArticleId: string;
-    collateralId: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { RelevantArticleCollateral } from '../entities';
 
 export interface RelevantArticleCollateralListAttributes extends HudAiListAttributes {
     relevantArticleId: string;

@@ -7,18 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface BasicArticleTag {
-    tag: string;
-}
-
-export interface ArticleTag extends BasicArticleTag {
-    id: string;
-    articleId: string;
-    tag: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { ArticleTag } from '../entities';
 
 export interface ArticleTagGetAttributes {
     articleId: string;

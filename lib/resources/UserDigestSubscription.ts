@@ -7,15 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface UserDigestSubscription {
-    id: string;
-    dayOfWeek: string;
-    isoHour: string;
-    userId?: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { UserDigestSubscription } from '../entities';
 
 export interface UserDigestSubscriptionListAttributes extends HudAiListAttributes {
     userId?: string;

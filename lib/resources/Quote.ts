@@ -6,19 +6,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import { Person } from './Person';
-
-export interface Quote {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    personId: string;
-    articleId: string;
-    text: string;
-    term: string;
-    importanceScore: number;
-    person?: Person;
-}
+import { Quote } from '../entities';
 
 export interface QuoteListAttributes extends HudAiListAttributes {
     personId?: string;

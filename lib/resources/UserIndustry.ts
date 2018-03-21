@@ -7,14 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface UserIndustry {
-    id: string;
-    userId?: string;
-    industryId: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { UserIndustry } from '../entities';
 
 export interface UserIndustryGetAttributes {
     userId?: string;
