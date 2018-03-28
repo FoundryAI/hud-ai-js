@@ -60,10 +60,10 @@ export class CompanyResource extends Resource<
         })
     }
 
-    public suggest(query: string): Promise<{}> {
+    public suggest(text: string): Promise<{}> {
         return this.makeRequest({
             method: 'GET',
-            url: `${this.basePath}/search/suggest?query=${query}`
+            url: `${this.basePath}/search/suggest?query=${text}`
         })
     }
 

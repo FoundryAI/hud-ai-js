@@ -30,11 +30,11 @@
 | `query.limit`   | number |
 | `query.offset`  | number |
 
-## `client.companies.suggest(query)`
+## `client.companies.suggest(text)`
 
 | Param | Type |
 |-------|------|
-| `query`         | string |
+| `text`         | string |
 
 ## `client.companies.availableData(ids)`
 
