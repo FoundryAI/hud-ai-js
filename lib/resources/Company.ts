@@ -23,6 +23,11 @@ export interface CompanyListAttributes extends HudAiListAttributes {
     keyTerm?: string;
 }
 
+export interface CompanySearchAttributes extends HudAiListAttributes {
+    id?: string;
+    query?: string;
+}
+
 export interface CompanyCreateAttributes extends HudAiCreateAttributes {
     name: string;
     ticker?: string;
@@ -45,6 +50,21 @@ export class CompanyResource extends Resource<
 
     public list(listArgs: CompanyListAttributes): Promise<{ count: number, rows: Company[] }> {
         return this._list(listArgs);
+    }
+
+    public search(searchArgs: CompanySearchAttributes): Promise<{}> {
+        return this.makeRequest({
+            method: 'GET',
+            params: searchArgs,
+            url: `${this.basePath}/search`
+        })
+    }
+
+    public suggest(query: string): Promise<{}> {
+        return this.makeRequest({
+            method: 'GET',
+            url: `${this.basePath}/search/suggest?query=${query}`
+        })
     }
 
     public availableData(ids: string | string []): Promise<Company[]> {
