@@ -20,6 +20,22 @@
 | `query.limit`   | number |
 | `query.offset`  | number |
 
+## `client.companies.search(query)`
+
+| Param | Type |
+|-------|------|
+| `query`         | Object |
+| `query.name`    | string |
+| `query.id`      | string |
+| `query.limit`   | number |
+| `query.offset`  | number |
+
+## `client.companies.suggest(query)`
+
+| Param | Type |
+|-------|------|
+| `query`         | string |
+
 ## `client.companies.availableData(ids)`
 
 | Param | Type |
