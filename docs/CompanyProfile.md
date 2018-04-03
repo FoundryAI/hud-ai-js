@@ -1,4 +1,4 @@
-# CompanyKeyTerm
+# CompanyProfile
 
 | Attribute | Type | Description |
 | --------- | ---- | ----------- |
