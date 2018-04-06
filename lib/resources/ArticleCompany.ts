@@ -42,6 +42,14 @@ export class ArticleCompanyResource extends Resource<
         })
     }
 
+    public related(companyId: string): Promise<{ rows: { companyId: string }[] }> {
+        return this.makeRequest({
+            method: 'GET',
+            params: { companyId },
+            url: `${this.basePath}/{companyId}/related`
+        })
+    }
+
     public create(createArgs: ArticleCompanyCreateAttributes): Promise<ArticleCompany> {
         return this.makeRequest({
             method: 'POST',
