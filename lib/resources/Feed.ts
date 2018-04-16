@@ -6,20 +6,21 @@ import { RequestManager } from '../RequestManager';
 import { FeedItem } from '../entities';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
-    userId?: string;
-    text?: string;
-    tags?: string[];
+    companyIds?: string[] | string;
     keyTerms?: string[];
-    companyIds?: string[]|string;
-    sourceIds?: string[]|string;
-    minImportance?: number;
     maxImportance?: number;
-    minRelevance?: number;
     maxRelevance?: number;
-    publishedBefore?: Date;
+    minImportance?: number;
+    minRelevance?: number;
     publishedAfter?: Date;
-    scoredBefore?: Date;
+    publishedBefore?: Date;
     scoredAfter?: Date;
+    scoredBefore?: Date;
+    sourceIds?: string[] | string;
+    tags?: string[];
+    text?: string;
+    types?: string[];
+    userId?: string;
     weights?: {
         importance: number;
         article: number;
