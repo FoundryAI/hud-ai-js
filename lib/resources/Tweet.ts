@@ -6,19 +6,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import {Person} from './Person';
-
-export interface Tweet {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    twitterCreatedAt: Date;
-    personId: string;
-    twitterTweetId: string;
-    text: string;
-    importanceScore: number;
-    person?: Person;
-}
+import { Tweet } from '../entities';
 
 export interface TweetListAttributes extends HudAiListAttributes {
     personId?: string;

@@ -1,6 +1,8 @@
 import * as Promise from 'bluebird';
 import {RequestManager, RequestOptions} from '../RequestManager';
 
+import { Highlights } from '../entities';
+
 export interface TextAnalysisQueryOpts {
     corpus?: string;
 }
@@ -12,12 +14,6 @@ export interface PageHighlightQueryOpts extends TextAnalysisQueryOpts {
 export interface TextHighlightQueryOpts extends TextAnalysisQueryOpts {
     text: string;
 }
-
-export interface Highlights {
-    sentence: { [key: string]: string };
-    relevance: { [key: string]: number };
-}
-
 
 export class HighlightResource {
     private basePath = '/highlights';

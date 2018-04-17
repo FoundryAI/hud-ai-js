@@ -8,45 +8,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import { ArticleKeyTerm } from './ArticleKeyTerm';
-import { Author, BasicAuthor } from './Author';
-import { ArticleTag, BasicArticleTag } from './ArticleTag';
-import { BasicKeyTerm } from './KeyTerm';
-import { BasicArticleCompany } from './ArticleCompany';
-
-export interface Article extends BasicArticle {
-    keyTerms?: ArticleKeyTerm[];
-    authors?: Author[];
-    tags?: ArticleTag[];
-    linkHash: string;
-    rawDataUrl: string;
-    sourceUrl: string;
-}
-
-export interface BasicArticle {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    keyTerms?: BasicKeyTerm[];
-    authors?: BasicAuthor[];
-    tags?: BasicArticleTag[];
-    imageUrl: string;
-    importanceScore: number;
-    linkUrl: string;
-    sourceId: string;
-    publishedAt: Date;
-    text: string;
-    title: string;
-    type: string;
-}
-
-export interface ArticleSearchResult extends BasicArticle {
-    groupId?: string;
-    authors: BasicAuthor[];
-    companies: BasicArticleCompany[];
-    keyTerms: BasicKeyTerm[];
-    tags: BasicArticleTag[];
-}
+import { Article, ArticleSearchResult } from '../entities';
 
 export interface ArticleListAttributes extends HudAiListAttributes {
     companyId?: string;
@@ -56,6 +18,11 @@ export interface ArticleListAttributes extends HudAiListAttributes {
     publishedAfter?: Date;
     publishedBefore?: Date;
     type?: string;
+}
+
+export interface ArticleListResults {
+    count: number,
+    rows: Article[]
 }
 
 export interface ArticleCreateAttributes extends HudAiCreateAttributes {
@@ -104,6 +71,11 @@ export interface ArticleSearchAttributes {
     type?: string,
 }
 
+export interface ArticleSearchResults {
+    count: number,
+    rows: ArticleSearchResult[]
+}
+
 export interface ArticleSearchRelevantAttributes {
     limit?: number,
     offset?: number,
@@ -141,11 +113,11 @@ export class ArticleResource extends Resource<
         super('/articles', requestManager);
     }
 
-    public list(listArgs: ArticleListAttributes): Promise<{ count: number, rows: Article[] }> {
+    public list(listArgs: ArticleListAttributes): Promise<ArticleListResults> {
         return this._list(listArgs);
     }
 
-    public search(searchArgs: ArticleSearchAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
+    public search(searchArgs: ArticleSearchAttributes): Promise<ArticleSearchResults> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,
@@ -153,7 +125,7 @@ export class ArticleResource extends Resource<
         })
     }
 
-    public searchRelevant(searchArgs: ArticleSearchRelevantAttributes): Promise<{ count: number, rows: ArticleSearchResult[] }> {
+    public searchRelevant(searchArgs: ArticleSearchRelevantAttributes): Promise<ArticleSearchResults> {
         return this.makeRequest({
             method: 'GET',
             params: searchArgs,

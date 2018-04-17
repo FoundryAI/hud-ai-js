@@ -8,17 +8,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface UserContact {
-    id: string;
-    userId: string;
-    companyId: string;
-    name: string;
-    email: string;
-    phoneNumber: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { UserContact } from '../entities';
 
 export interface UserContactListAttributes extends HudAiListAttributes {
     userId?: string;

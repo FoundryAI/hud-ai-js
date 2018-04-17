@@ -7,16 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface TextCorpus {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    type: string;
-    userId: string;
-    body: string;
-    parsedBody: string;
-}
+import { TextCorpus } from '../entities';
 
 export interface TextCorpusListAttributes extends HudAiListAttributes {
     type?: string;

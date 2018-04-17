@@ -7,14 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface PersonKeyTerm {
-    id: string;
-    personId: string;
-    term: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { PersonKeyTerm } from '../entities';
 
 export interface PersonKeyTermGetAttributes {
     personId: string;

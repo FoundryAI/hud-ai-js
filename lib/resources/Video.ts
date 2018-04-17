@@ -36,13 +36,12 @@ export interface VideoSearchResult extends BasicVideo {
 }
 
 export interface VideoListAttributes extends HudAiListAttributes {
+    personId?: string;
     companyId?: string;
     importanceScoreMin?: number;
-    keyTerm?: string;
-    linkHash?: string;
+    sourceId?: string;
     publishedAfter?: Date;
     publishedBefore?: Date;
-    type?: string;
 }
 
 export interface VideoCreateAttributes extends HudAiCreateAttributes {
@@ -68,42 +67,16 @@ export interface VideoUpdateAttributes extends HudAiUpdateAttributes {
 export interface VideoSearchAttributes {
     limit?: number,
     offset?: number,
-    authors?: string[],
-    companyId?: string | string[];
-    createdAfter?: Date,
-    createdBefore?: Date,
-    keyTerms?: string[],
-    maxImportance?: number,
-    minImportance?: number,
-    groupId?: string,
-    publishedAfter?: Date,
-    publishedBefore?: Date,
-    scoredAfter?: Date,
-    scoredBefore?: Date,
-    tags?: string[],
-    text?: string,
-    type?: string,
-}
-
-export interface VideoSearchRelevantAttributes {
-    limit?: number,
-    offset?: number,
-    authors?: string[],
-    createdAfter?: Date,
-    createdBefore?: Date,
-    keyTerms?: string[],
-    maxImportance?: number,
-    maxRelevance?: number,
-    minImportance?: number,
-    minRelevance?: number,
-    publishedAfter?: Date,
-    publishedBefore?: Date,
-    scoredAfter?: Date,
-    scoredBefore?: Date,
-    tags?: string[],
-    text?: string,
-    type?: string,
-    userId?: string,
+    personId?: string|string[];
+    companyId?: string|string[];
+    minImportance?: number;
+    maxImportance?: number;
+    text?: string;
+    sourceId?: string;
+    createdAfter?: Date;
+    createdBefore?: Date;
+    publishedAfter?: Date;
+    publishedBefore?: Date;
 }
 
 export interface GroupedTagCount {
@@ -131,30 +104,6 @@ export class VideoResource extends Resource<
             method: 'GET',
             params: searchArgs,
             url: `${this.basePath}/search`
-        })
-    }
-
-    public searchRelevant(searchArgs: VideoSearchRelevantAttributes): Promise<{ count: number, rows: VideoSearchResult[] }> {
-        return this.makeRequest({
-            method: 'GET',
-            params: searchArgs,
-            url: `${this.basePath}/search/relevant`
-        })
-    }
-
-    public searchRelevantByTerm(searchArgs: VideoSearchRelevantAttributes): Promise<{ term: string, count: number, rows: VideoSearchResult[] }[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: searchArgs,
-            url: `${this.basePath}/search/relevant/grouped/by-term`
-        })
-    }
-
-    public searchRelevantByTermAndCountTags(countArgs: VideoSearchRelevantAttributes): Promise<GroupedTagCount> {
-        return this.makeRequest({
-            method: 'GET',
-            params: _.merge(countArgs, { countTags: true }),
-            url: `${this.basePath}/search/relevant/grouped/by-term`
         })
     }
 

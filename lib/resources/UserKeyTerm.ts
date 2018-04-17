@@ -7,15 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import {BasicKeyTerm} from './KeyTerm';
-
-export interface UserKeyTerm extends BasicKeyTerm {
-    id: string;
-    userId?: string;
-    term: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { UserKeyTerm } from '../entities';
 
 export interface UserKeyTermGetAttributes {
     userId?: string;

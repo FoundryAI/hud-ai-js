@@ -7,18 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface Source {
-    id: string;
-    name: string;
-    description: string;
-    domain: string;
-    language: string;
-    country: string;
-    reliabilityScore: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { Source } from '../entities';
 
 export interface SourceListAttributes extends HudAiListAttributes {
     name?: string;

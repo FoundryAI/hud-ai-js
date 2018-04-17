@@ -10,81 +10,9 @@ import { Factory as ClientConfigFactory } from './utils/ClientConfigFactory';
 import { RequestManager } from './RequestManager';
 import { HudAiError } from './utils/HudAiError';
 
-import {
-    ArticleResource,
-    ArticleCompanyResource,
-    ArticleKeyTermResource,
-    ArticleTagResource,
-    CollateralResource,
-    CompanyResource,
-    CompanyEventResource,
-    CompanyIndustryResource,
-    CompanyKeyTermResource,
-    CompanyProfileResource,
-    DomainResource,
-    FeedResource,
-    HighlightResource,
-    IndustryResource,
-    KeyTermResource,
-    OrganizationResource,
-    PersonResource,
-    PersonKeyTermResource,
-    QuoteResource,
-    RelevantArticleResource,
-    RelevantArticleCollateralResource,
-    SourceResource,
-    StockAlertResource,
-    TextCorpusResource,
-    TweetResource,
-    UserResource,
-    UserCompanyResource,
-    UserCompanyGroupResource,
-    UserContactResource,
-    UserDigestSubscriptionResource,
-    UserIndustryResource,
-    UserKeyTermResource,
-    UserPersonResource,
-    UserSourceResource,
-    UserTemplateResource,
-} from './resources';
+import * as resources from './resources';
 
-export {
-    Article,
-    ArticleCompany,
-    ArticleKeyTerm,
-    ArticleTag,
-    Collateral,
-    Company,
-    CompanyEvent,
-    CompanyIndustry,
-    CompanyKeyTerm,
-    CompanyProfile,
-    Domain,
-    Highlights,
-    Industry,
-    KeyTerm,
-    Organization,
-    Person,
-    PersonKeyTerm,
-    Quote,
-    RelevantArticle,
-    RelevantArticleCollateral,
-    Source,
-    StockAlert,
-    TextCorpus,
-    Tweet,
-    User,
-    UserCompany,
-    UserCompanyGroup,
-    UserContact,
-    UserDigestSubscription,
-    UserIndustry,
-    UserKeyTerm,
-    UserPerson,
-    UserSource,
-    UserTemplate,
-} from './resources';
-
+export * from './entities';
 
 export interface HudAiClientConfiguration {
     clientId: string;
@@ -101,49 +29,51 @@ export class HudAiClient {
     public refreshToken?: string;
     public tokenExpiresAt?: Date;
 
-    public articles: ArticleResource;
-    public articleCompanies: ArticleCompanyResource;
-    public articleKeyTerms: ArticleKeyTermResource;
-    public articleTags: ArticleTagResource;
-    public collateral: CollateralResource;
-    public companies: CompanyResource;
-    public companyEvents: CompanyEventResource;
-    public companyIndustries: CompanyIndustryResource;
-    public companyKeyTerms: CompanyKeyTermResource;
-    public companyProfiles: CompanyProfileResource;
-    public domains: DomainResource;
-    public feed: FeedResource;
-    public highlights: HighlightResource;
-    public industries: IndustryResource;
-    public keyTerms: KeyTermResource;
-    public organizations: OrganizationResource;
-    public people: PersonResource;
-    public peopleKeyTerms: PersonKeyTermResource;
-    public quotes: QuoteResource;
-    public relevantArticles: RelevantArticleResource;
-    public relevantArticleCollateral: RelevantArticleCollateralResource;
-    public sources: SourceResource;
-    public stockAlerts: StockAlertResource;
-    public textCorpora: TextCorpusResource;
-    public tweets: TweetResource;
-    public users: UserResource;
-    public userCompanies: UserCompanyResource;
-    public userCompanyGroups: UserCompanyGroupResource;
-    public userContacts: UserContactResource;
-    public userDigestSubscriptions: UserDigestSubscriptionResource;
-    public userIndustries: UserIndustryResource;
-    public userKeyTerms: UserKeyTermResource;
-    public userPeople: UserPersonResource;
-    public userSources: UserSourceResource;
-    public userTemplates: UserTemplateResource;
+    public articleCompanies: resources.ArticleCompanyResource;
+    public articleKeyTerms: resources.ArticleKeyTermResource;
+    public articleTags: resources.ArticleTagResource;
+    public articles: resources.ArticleResource;
+    public collateral: resources.CollateralResource;
+    public companies: resources.CompanyResource;
+    public companyEvents: resources.CompanyEventResource;
+    public companyIndustries: resources.CompanyIndustryResource;
+    public companyKeyTerms: resources.CompanyKeyTermResource;
+    public companyProfiles: resources.CompanyProfileResource;
+    public domains: resources.DomainResource;
+    public feed: resources.FeedResource;
+    public highlights: resources.HighlightResource;
+    public industries: resources.IndustryResource;
+    public jobFunctions: resources.JobFunctionResource;
+    public keyTerms: resources.KeyTermResource;
+    public organizations: resources.OrganizationResource;
+    public people: resources.PersonResource;
+    public peopleKeyTerms: resources.PersonKeyTermResource;
+    public quotes: resources.QuoteResource;
+    public relevantArticleCollateral: resources.RelevantArticleCollateralResource;
+    public relevantArticles: resources.RelevantArticleResource;
+    public sources: resources.SourceResource;
+    public stockAlerts: resources.StockAlertResource;
+    public textCorpora: resources.TextCorpusResource;
+    public tweets: resources.TweetResource;
+    public userCompanies: resources.UserCompanyResource;
+    public userCompanyGroups: resources.UserCompanyGroupResource;
+    public userContacts: resources.UserContactResource;
+    public userDigestSubscriptions: resources.UserDigestSubscriptionResource;
+    public userIndustries: resources.UserIndustryResource;
+    public userJobFunctions: resources.UserJobFunctionResource;
+    public userKeyTerms: resources.UserKeyTermResource;
+    public userPeople: resources.UserPersonResource;
+    public userSources: resources.UserSourceResource;
+    public userTemplates: resources.UserTemplateResource;
+    public users: resources.UserResource;
 
     // Deprecated
-    public article: ArticleResource;
-    public company: CompanyResource;
-    public domain: DomainResource;
-    public keyTerm: KeyTermResource;
-    public textCorpus: TextCorpusResource;
-    public user: UserResource;
+    public article: resources.ArticleResource;
+    public company: resources.CompanyResource;
+    public domain: resources.DomainResource;
+    public keyTerm: resources.KeyTermResource;
+    public textCorpus: resources.TextCorpusResource;
+    public user: resources.UserResource;
 
     private authorizationCode?: string;
     private baseAuthUrl: string;
@@ -168,41 +98,43 @@ export class HudAiClient {
 
         this.requestManager = new RequestManager(this, config);
 
-        this.articles = new ArticleResource(this.requestManager);
-        this.articleCompanies = new ArticleCompanyResource(this.requestManager);
-        this.articleKeyTerms = new ArticleKeyTermResource(this.requestManager);
-        this.articleTags = new ArticleTagResource(this.requestManager);
-        this.collateral = new CollateralResource(this.requestManager);
-        this.companies = new CompanyResource(this.requestManager);
-        this.companyEvents = new CompanyEventResource(this.requestManager);
-        this.companyIndustries = new CompanyIndustryResource(this.requestManager);
-        this.companyKeyTerms = new CompanyKeyTermResource(this.requestManager);
-        this.companyProfiles = new CompanyProfileResource(this.requestManager);
-        this.domains = new DomainResource(this.requestManager);
-        this.feed = new FeedResource(this.requestManager);
-        this.highlights = new HighlightResource(this.requestManager);
-        this.industries = new IndustryResource(this.requestManager);
-        this.keyTerms = new KeyTermResource(this.requestManager);
-        this.organizations = new OrganizationResource(this.requestManager);
-        this.people = new PersonResource(this.requestManager);
-        this.peopleKeyTerms = new PersonKeyTermResource(this.requestManager);
-        this.quotes = new QuoteResource(this.requestManager);
-        this.relevantArticles = new RelevantArticleResource(this.requestManager);
-        this.relevantArticleCollateral = new RelevantArticleCollateralResource(this.requestManager);
-        this.sources = new SourceResource(this.requestManager);
-        this.stockAlerts = new StockAlertResource(this.requestManager);
-        this.textCorpora = new TextCorpusResource(this.requestManager);
-        this.tweets = new TweetResource(this.requestManager);
-        this.users = new UserResource(this.requestManager);
-        this.userCompanies = new UserCompanyResource(this.requestManager);
-        this.userCompanyGroups = new UserCompanyGroupResource(this.requestManager);
-        this.userContacts = new UserContactResource(this.requestManager);
-        this.userDigestSubscriptions = new UserDigestSubscriptionResource(this.requestManager);
-        this.userIndustries = new UserIndustryResource(this.requestManager);
-        this.userKeyTerms = new UserKeyTermResource(this.requestManager);
-        this.userPeople = new UserPersonResource(this.requestManager);
-        this.userSources = new UserSourceResource(this.requestManager);
-        this.userTemplates = new UserTemplateResource(this.requestManager);
+        this.articleCompanies = new resources.ArticleCompanyResource(this.requestManager);
+        this.articleKeyTerms = new resources.ArticleKeyTermResource(this.requestManager);
+        this.articleTags = new resources.ArticleTagResource(this.requestManager);
+        this.articles = new resources.ArticleResource(this.requestManager);
+        this.collateral = new resources.CollateralResource(this.requestManager);
+        this.companies = new resources.CompanyResource(this.requestManager);
+        this.companyEvents = new resources.CompanyEventResource(this.requestManager);
+        this.companyIndustries = new resources.CompanyIndustryResource(this.requestManager);
+        this.companyKeyTerms = new resources.CompanyKeyTermResource(this.requestManager);
+        this.companyProfiles = new resources.CompanyProfileResource(this.requestManager);
+        this.domains = new resources.DomainResource(this.requestManager);
+        this.feed = new resources.FeedResource(this.requestManager);
+        this.highlights = new resources.HighlightResource(this.requestManager);
+        this.industries = new resources.IndustryResource(this.requestManager);
+        this.jobFunctions = new resources.JobFunctionResource(this.requestManager);
+        this.keyTerms = new resources.KeyTermResource(this.requestManager);
+        this.organizations = new resources.OrganizationResource(this.requestManager);
+        this.people = new resources.PersonResource(this.requestManager);
+        this.peopleKeyTerms = new resources.PersonKeyTermResource(this.requestManager);
+        this.quotes = new resources.QuoteResource(this.requestManager);
+        this.relevantArticleCollateral = new resources.RelevantArticleCollateralResource(this.requestManager);
+        this.relevantArticles = new resources.RelevantArticleResource(this.requestManager);
+        this.sources = new resources.SourceResource(this.requestManager);
+        this.stockAlerts = new resources.StockAlertResource(this.requestManager);
+        this.textCorpora = new resources.TextCorpusResource(this.requestManager);
+        this.tweets = new resources.TweetResource(this.requestManager);
+        this.userCompanies = new resources.UserCompanyResource(this.requestManager);
+        this.userCompanyGroups = new resources.UserCompanyGroupResource(this.requestManager);
+        this.userContacts = new resources.UserContactResource(this.requestManager);
+        this.userDigestSubscriptions = new resources.UserDigestSubscriptionResource(this.requestManager);
+        this.userIndustries = new resources.UserIndustryResource(this.requestManager);
+        this.userJobFunctions = new resources.UserJobFunctionResource(this.requestManager);
+        this.userKeyTerms = new resources.UserKeyTermResource(this.requestManager);
+        this.userPeople = new resources.UserPersonResource(this.requestManager);
+        this.userSources = new resources.UserSourceResource(this.requestManager);
+        this.userTemplates = new resources.UserTemplateResource(this.requestManager);
+        this.users = new resources.UserResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }

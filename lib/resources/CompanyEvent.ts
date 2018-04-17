@@ -7,19 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface CompanyEvent {
-    id: string;
-    companyId: string;
-    title: string;
-    description: string;
-    type: string;
-    linkUrl: string;
-    startsAt: Date;
-    endsAt: Date;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { CompanyEvent } from '../entities';
 
 export interface CompanyEventListAttributes extends HudAiListAttributes {
     companyId?: string | string[];

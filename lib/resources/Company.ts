@@ -7,14 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-
-export interface Company {
-    id: string;
-    name: string;
-    ticker: string;
-    createdAt: Date;
-    updatedAt: Date;
-}
+import { Company } from '../entities';
 
 export interface CompanyListAttributes extends HudAiListAttributes {
     id?: string;
