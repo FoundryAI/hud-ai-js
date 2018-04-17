@@ -79,12 +79,6 @@ export interface VideoSearchAttributes {
     publishedBefore?: Date;
 }
 
-export interface GroupedTagCount {
-    [term: string]: {
-        [tag: string]: number
-    };
-}
-
 export class VideoResource extends Resource<
     Video,
     VideoListAttributes,
