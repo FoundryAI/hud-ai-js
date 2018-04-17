@@ -129,6 +129,7 @@ client.articles.get('SOME_ARTICLE_ID')
 | UserKeyTerm               | [client.userKeyTerms](docs/UserKeyTerm.md) |
 | UserSource                | [client.userSources](docs/UserSource.md) |
 | UserTemplate              | [client.userTemplates](docs/UserTemplate.md) |
+| Video                     | [client.videos](docs/Video.md) |
 
 [npm-version-badge]: https://img.shields.io/npm/v/hud-ai.svg
 [npm-version-link]: https://www.npmjs.org/package/hud-ai
