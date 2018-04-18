@@ -66,6 +66,9 @@ export class HudAiClient {
     public userSources: resources.UserSourceResource;
     public userTemplates: resources.UserTemplateResource;
     public users: resources.UserResource;
+    public videos: resources.VideoResource;
+    public videoCompanies: resources.VideoCompanyResource;
+    public videoPeople: resources.VideoPersonResource;
 
     // Deprecated
     public article: resources.ArticleResource;
@@ -135,6 +138,9 @@ export class HudAiClient {
         this.userSources = new resources.UserSourceResource(this.requestManager);
         this.userTemplates = new resources.UserTemplateResource(this.requestManager);
         this.users = new resources.UserResource(this.requestManager);
+        this.videos = new resources.VideoResource(this.requestManager);
+        this.videoCompanies = new resources.VideoCompanyResource(this.requestManager);
+        this.videoPeople = new resources.VideoPersonResource(this.requestManager);
 
         this.addDeprecatedAttributes();
     }

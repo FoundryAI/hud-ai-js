@@ -35,3 +35,6 @@ export { UserPersonResource } from './UserPerson';
 export { UserResource } from './User';
 export { UserSourceResource } from './UserSource';
 export { UserTemplateResource } from './UserTemplate';
+export { VideoResource } from './Video';
+export { VideoCompanyResource } from './VideoCompany';
+export { VideoPersonResource } from './VideoPerson';
