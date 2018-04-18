@@ -86,7 +86,7 @@ export class VideoResource extends Resource<
     VideoUpdateAttributes
     > {
     constructor(requestManager: RequestManager) {
-        super('/videos', requestManager);
+        super('/articles/videos', requestManager);
     }
 
     public list(listArgs: VideoListAttributes): Promise<{ count: number, rows: Video[] }> {

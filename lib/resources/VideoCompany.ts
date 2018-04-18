@@ -42,7 +42,7 @@ export class VideoCompanyResource extends Resource<
     any
     > {
     constructor(requestManager: RequestManager) {
-        super('/videos/companies', requestManager);
+        super('/articles/videos/companies', requestManager);
     }
 
     public list(listArgs: VideoCompanyListAttributes): Promise<{ count: number, rows: VideoCompany[] }> {

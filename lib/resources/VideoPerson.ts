@@ -42,7 +42,7 @@ export class VideoPersonResource extends Resource<
     any
     > {
     constructor(requestManager: RequestManager) {
-        super('/videos/people', requestManager);
+        super('/articles/videos/people', requestManager);
     }
 
     public list(listArgs: VideoPersonListAttributes): Promise<{ count: number, rows: VideoPerson[] }> {
