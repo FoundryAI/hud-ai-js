@@ -29,6 +29,7 @@ export class HudAiClient {
     public refreshToken?: string;
     public tokenExpiresAt?: Date;
 
+    public actionItems: resources.ActionItemResource;
     public articleCompanies: resources.ArticleCompanyResource;
     public articleKeyTerms: resources.ArticleKeyTermResource;
     public articleTags: resources.ArticleTagResource;
@@ -101,6 +102,7 @@ export class HudAiClient {
 
         this.requestManager = new RequestManager(this, config);
 
+        this.actionItems = new resources.ActionItemResource(this.requestManager);
         this.articleCompanies = new resources.ArticleCompanyResource(this.requestManager);
         this.articleKeyTerms = new resources.ArticleKeyTermResource(this.requestManager);
         this.articleTags = new resources.ArticleTagResource(this.requestManager);
