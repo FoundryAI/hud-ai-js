@@ -60,19 +60,19 @@ export class ActionItemResource extends Resource<
         return this._create(createArgs);
     }
 
-    public get(id: string | number): Promise<ActionItem> {
+    public get(id: string): Promise<ActionItem> {
         return this._get(id);
     }
 
-    public update(id: string | number, updateArgs: ActionItemUpdateAttributes): Promise<ActionItem> {
+    public update(id: string, updateArgs: ActionItemUpdateAttributes): Promise<ActionItem> {
         return this._update(id, updateArgs);
     }
 
-    public del(id: string | number): Promise<void> {
+    public del(id: string): Promise<void> {
         return this.destroy(id);
     }
 
-    public destroy(id: string | number): Promise<void> {
+    public destroy(id: string): Promise<void> {
         return this._destroy(id);
     }
 }
