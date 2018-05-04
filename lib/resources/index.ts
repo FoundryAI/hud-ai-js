@@ -1,3 +1,4 @@
+export { ActionItemResource } from './ActionItem';
 export { ArticleCompanyResource } from './ArticleCompany';
 export { ArticleKeyTermResource } from './ArticleKeyTerm';
 export { ArticleResource } from './Article';

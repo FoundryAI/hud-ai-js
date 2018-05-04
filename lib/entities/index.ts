@@ -1,3 +1,4 @@
+export * from './ActionItem';
 export * from './Article';
 export * from './ArticleCompany';
 export * from './ArticleKeyTerm';
