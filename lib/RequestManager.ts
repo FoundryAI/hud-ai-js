@@ -50,7 +50,7 @@ export class RequestManager {
         const axiosConfig = flow(
             merge({ baseURL: client.baseApiUrl }),
             defaults(defaultAxiosConfig)
-        )(config.request);
+        )(config.request || {});
 
         if (isBrowser) _.unset(axiosConfig, 'headers.User-Agent');
 
