@@ -3,6 +3,7 @@ import { Author, BasicAuthor } from './Author';
 import { ArticleTag, BasicArticleTag } from './ArticleTag';
 import { BasicKeyTerm } from './KeyTerm';
 import { BasicArticleCompany } from './ArticleCompany';
+import { BasicArticlePerson } from './ArticlePerson';
 
 export interface Article extends BasicArticle {
     keyTerms?: ArticleKeyTerm[];
@@ -36,4 +37,5 @@ export interface ArticleSearchResult extends BasicArticle {
     companies: BasicArticleCompany[];
     keyTerms: BasicKeyTerm[];
     tags: BasicArticleTag[];
+    people: BasicArticlePerson[];
 }
