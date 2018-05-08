@@ -36,3 +36,4 @@ export * from './UserKeyTerm';
 export * from './UserPerson';
 export * from './UserSource';
 export * from './UserTemplate';
+export * from './ArticlePerson';
