@@ -31,6 +31,7 @@ export class HudAiClient {
 
     public actionItems: resources.ActionItemResource;
     public articleCompanies: resources.ArticleCompanyResource;
+    public articlePeople: resources.ArticlePersonResource;
     public articleKeyTerms: resources.ArticleKeyTermResource;
     public articleTags: resources.ArticleTagResource;
     public articles: resources.ArticleResource;
@@ -104,6 +105,7 @@ export class HudAiClient {
 
         this.actionItems = new resources.ActionItemResource(this.requestManager);
         this.articleCompanies = new resources.ArticleCompanyResource(this.requestManager);
+        this.articlePeople = new resources.ArticlePersonResource(this.requestManager);
         this.articleKeyTerms = new resources.ArticleKeyTermResource(this.requestManager);
         this.articleTags = new resources.ArticleTagResource(this.requestManager);
         this.articles = new resources.ArticleResource(this.requestManager);

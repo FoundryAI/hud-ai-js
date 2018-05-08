@@ -1,5 +1,6 @@
 export { ActionItemResource } from './ActionItem';
 export { ArticleCompanyResource } from './ArticleCompany';
+export { ArticlePersonResource } from './ArticlePerson';
 export { ArticleKeyTermResource } from './ArticleKeyTerm';
 export { ArticleResource } from './Article';
 export { ArticleTagResource } from './ArticleTag';
