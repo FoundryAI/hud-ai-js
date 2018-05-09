@@ -10,6 +10,8 @@ export { CompanyIndustryResource } from './CompanyIndustry';
 export { CompanyKeyTermResource } from './CompanyKeyTerm';
 export { CompanyProfileResource } from './CompanyProfile';
 export { CompanyResource } from './Company';
+export { ConferenceResource } from './Conference';
+export { ConferenceSpeakerResource } from './ConferenceSpeaker';
 export { DomainResource } from './Domain';
 export { FeedResource} from './Feed';
 export { HighlightResource} from './Highlights';

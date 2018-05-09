@@ -9,6 +9,8 @@ export * from './CompanyEvent';
 export * from './CompanyIndustry';
 export * from './CompanyKeyTerm';
 export * from './CompanyProfile';
+export * from './Conference';
+export * from './ConferenceSpeaker';
 export * from './Domain';
 export * from './Feed';
 export * from './Highlights';
