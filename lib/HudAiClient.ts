@@ -43,6 +43,7 @@ export class HudAiClient {
     public companyProfiles: resources.CompanyProfileResource;
     public conferences: resources.ConferenceResource;
     public conferenceSpeakers: resources.ConferenceSpeakerResource;
+    public conferenceLocations: resources.ConferenceLocationResource;
     public domains: resources.DomainResource;
     public feed: resources.FeedResource;
     public highlights: resources.HighlightResource;
@@ -119,6 +120,7 @@ export class HudAiClient {
         this.companyProfiles = new resources.CompanyProfileResource(this.requestManager);
         this.conferences = new resources.ConferenceResource(this.requestManager);
         this.conferenceSpeakers = new resources.ConferenceSpeakerResource(this.requestManager);
+        this.conferenceLocations = new resources.ConferenceLocationResource(this.requestManager);
         this.domains = new resources.DomainResource(this.requestManager);
         this.feed = new resources.FeedResource(this.requestManager);
         this.highlights = new resources.HighlightResource(this.requestManager);
