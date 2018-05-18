@@ -9,10 +9,11 @@ import { RequestManager } from '../RequestManager';
 import { Quote } from '../entities';
 
 export interface QuoteListAttributes extends HudAiListAttributes {
-    personId?: string;
+    personId?: string | string[];
     articleId?: string;
     term?: string;
     minImportance?: number;
+    id?: string | string[];
 }
 
 export interface QuoteSearchAttributes extends HudAiListAttributes {
