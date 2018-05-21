@@ -44,7 +44,7 @@ export interface ConferenceLocationUpdateAttributes extends HudAiUpdateAttribute
 
 export class ConferenceLocationResource extends Resource<ConferenceLocation, ConferenceLocationListAttributes, ConferenceLocationCreateAttributes, ConferenceLocationUpdateAttributes> {
     constructor(requestManager: RequestManager) {
-        super('/conferences/locations', requestManager);
+        super('/people/conferences/locations', requestManager);
     }
 
     public list(listArgs: ConferenceLocationListAttributes): Promise<{ count: number, rows: ConferenceLocation[] }> {
