@@ -27,6 +27,7 @@ export interface ConferenceCreateAttributes extends HudAiCreateAttributes {
     description?: string;
     url?: string;
     timezone?: string;
+    speakersJobId?: string;
 }
 
 export interface ConferenceUpdateAttributes extends HudAiUpdateAttributes {
@@ -34,6 +35,7 @@ export interface ConferenceUpdateAttributes extends HudAiUpdateAttributes {
     description?: string;
     url?: string;
     timezone?: string;
+    speakersJobId?: string;
 }
 
 export class ConferenceResource extends Resource<
