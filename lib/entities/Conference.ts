@@ -4,6 +4,7 @@ export interface Conference {
     description: string|null;
     url: string|null;
     timezone: string|null;
+    speakersJobId: string|null;
     createdAt: Date;
     updatedAt: Date;
 }
