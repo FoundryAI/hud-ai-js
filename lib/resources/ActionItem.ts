@@ -10,12 +10,18 @@ import { RequestManager } from '../RequestManager';
 import { ActionItem } from '../entities';
 
 export interface ActionItemListAttributes extends HudAiListAttributes {
+    companyIds?: string | string[];
+    completed?: Boolean;
+    completedAfter?: Date;
+    completedBefore?: Date;
     createdAfter?: Date;
     createdBefore?: Date;
+    dismissed?: Boolean;
+    dismissedAfter?: Date;
+    dismissedBefore?: Date;
     id?: string;
-    userId?: string;
-    companyIds?: string | string[];
     personIds?: string | string[];
+    userId?: string;
 }
 
 export interface ActionItemCreateAttributes extends HudAiCreateAttributes {
