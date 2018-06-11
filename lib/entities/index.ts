@@ -36,6 +36,7 @@ export * from './UserIndustry';
 export * from './UserJobFunction';
 export * from './UserKeyTerm';
 export * from './UserPerson';
+export * from './UserSavedItem';
 export * from './UserSource';
 export * from './UserTemplate';
 export * from './ArticlePerson';

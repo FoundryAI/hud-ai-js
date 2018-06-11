@@ -37,6 +37,7 @@ export { UserIndustryResource } from './UserIndustry';
 export { UserJobFunctionResource } from './UserJobFunction';
 export { UserKeyTermResource } from './UserKeyTerm';
 export { UserPersonResource } from './UserPerson';
+export { UserSavedItemResource } from './UserSavedItem';
 export { UserResource } from './User';
 export { UserSourceResource } from './UserSource';
 export { UserTemplateResource } from './UserTemplate';
