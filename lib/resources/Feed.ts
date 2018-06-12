@@ -6,6 +6,7 @@ import { RequestManager } from '../RequestManager';
 import { FeedItem } from '../entities';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
+    itemIds?: string[] | string;
     companyIds?: string[] | string;
     keyTerms?: string[];
     maxImportance?: number;
