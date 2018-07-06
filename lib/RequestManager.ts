@@ -20,7 +20,6 @@ export interface MakeRequestOptions {
 }
 
 const clientVersion = require('../package.json').version;
-const isBrowser = this.window === this;
 
 export const defaultAxiosConfig = <AxiosRequestConfig> {
     headers: { 'User-Agent': `HUD.ai Javascript SDK v${clientVersion}` },
@@ -52,7 +51,7 @@ export class RequestManager {
             defaults(defaultAxiosConfig)
         )(config.request || {});
 
-        if (isBrowser) _.unset(axiosConfig, 'headers.User-Agent');
+        if (typeof window !== undefined) _.unset(axiosConfig, 'headers.User-Agent');
 
         this.axios = axios.create(axiosConfig);
     }
