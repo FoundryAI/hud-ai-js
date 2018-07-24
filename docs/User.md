@@ -8,6 +8,7 @@
 | `email`*            | **string** | Primary email address for updates/notifications |
 | `name`*             | **string** | User's full name (used in emails and other communications) |
 | `linkedinProfileId` | string     | Linked LinkedIn profile |
+| `salesforceProfileId` | string     | Linked LinkedIn profile |
 | `organizationId`    | string     | Organization (billable account) the user is a part of |
 
 ## `client.users.list(params)`
@@ -32,6 +33,7 @@
 | `params.email`*            | **string** |
 | `params.name`*             | **string** |
 | `params.linkedinProfileId` | string |
+| `params.salesforceProfileId` | string |
 | `params.organizationId`    | string |
 
 ## `client.users.get(id)`
@@ -54,6 +56,7 @@
 | `params.email`             | string |
 | `params.name`              | string |
 | `params.linkedinProfileId` | string |
+| `params.salesforceProfileId` | string |
 | `params.organizationId`    | string |
 
 ## `client.users.destroy(id)`

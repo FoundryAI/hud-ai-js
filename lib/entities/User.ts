@@ -5,5 +5,6 @@ export interface User {
     name: string;
     email: string;
     linkedinProfileId?: string | null;
+    salesforceProfileId?: string | null;
     organizationId?: string;
 }
