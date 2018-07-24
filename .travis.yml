@@ -1,29 +1,28 @@
 language: node_js
 install:
-  - npm update -g npm@5
-  - npm install -g typescript
-  - npm install
+- npm update -g npm@5
+- npm install -g typescript
+- npm install
 script: npm test
 node_js:
-  - '6'
-  - '7'
-  - '8'
-  - '9'
-  - '10'
+- '6'
+- '7'
+- '8'
+- '9'
+- '10'
 cache:
   directories:
-  - $HOME/.npm
-
+  - "$HOME/.npm"
 jobs:
   include:
-    - stage: npm release
-      node_js: '8'
-      script: echo "Deploying to npm ..."
-      deploy:
-        provider: npm
-        skip_cleanup: true
-        email: engineering@foundry.ai
-        api_key:
-          secure: guZabVR5wR+izJz521BrGeaYlkWabMXwdz65oU5VRkconX12p/s+MjDrdw6uPb81yKyQ+Ykfkpi1pE2/dbAc8Ofq+bEFBiv8teBssRFT7u90VIFifJI6QCO783e1Ybt4V+Y9ple61UdUgHCWAWqvkwcJ+wr7tJKb30ZjT4c/6nSvZuTFsUMY/Hb5yZV5snpQxjMZEvgTiO0hHoPFEtz5r94Corxz9WsjDOOQ4dqGot/pXolnEa7fSMwfjiHlk/gLRYVSInAVRqg6gen5LSgveVL0N36jZHb60NNDGP7v8Z9nIIA72FiPGabU/MsRqcdeQFyUxieMg5rDtKn949y+LfHKtQULjtSygQcX4RFAElz8Kns+piQj+JQwJ2M1IJL1OLvjZZFWuD0dBjoa3vqpqa6K13WX1bNa3tZto77378SKVlvL+7d+94X7qSA/+gnjuWYfwZJT/PDGAfDNGLgHlTtJpcGI8CdPAWdeYCNjSj8inpqNSvl0ClQjdXUmwan9FlTz3NIyqxo9tU0sh+6hT6m7Yyze8m0tbC+cjs65kMAWNn9uVS+V0CopfxulMOZI4A5rif8z5hwimSUbwNE6Ra7pz3Ie4Aqs+33ZHOfcFbK2cuWQGCTWmwXdjtu+5EdqcVtfnYF/LKhFMFwn+NAZn/rK9PN8I0bmUcAwUIRhRcY=
-        on:
-          tags: true
+  - stage: npm release
+    node_js: '8'
+    script: echo "Deploying to npm ..."
+    deploy:
+      provider: npm
+      skip_cleanup: true
+      email: engineering@foundry.ai
+      api_key:
+        secure: CkxY8j444ct81spS5DPKR49rNvBzWVUM1H8/6MXIZ7NRs9sq5/WMzvUULfHWHzcZqy8V6rvg4thRww6T5wx4AgQyeDiZOzrtFF8XJ1L0aKqBs14ivcDSu1FiQXFQ6Zy387e7zMN+0l8Hp/K/45QfSWbJJVTO7GfnYmDafEh0LlItvqymCym6cumTFJ05g9+5okzINUfzynNkCLyPOo01Nc6vB248nUKgHZzBeagCuFLbXOozFZmP85U5oDXTUxaDqplzzLI6W18UEmwfseE1FqurA0DRwHfCxtAf6LvoYhKDmWGydiC9ozlAHfFHNOLQlEarOf6A/bTzXfiN67W3H5do+Bvc5zY1VbwdNczBs+DjjUyJU3TwzhF/Hka/Y7zsRuJSkY6Id6zb8y2FxQywwveTFgerUA6NmhPNSPbXlbNxc40i77fkpBuJmsaENyUUPy0Oq0GMLlDRohw7CNrfu2XKYeLfcwX3kBfKVQ7b7tHYGEqOhDeexlCUMdYF3rFPsOqt5iy/wpajlnjpTdS+QtMUqhMcxP18H4Pd0Z2cBsuNxre2pnI38scseOuTwO/lzFmrQIKp7Vv9wtqBFmOEb/CYYRrwjjc1Ym4mUSm4sWX0SbXon5UJy5hXd9E8XRabf9eosA/6KBBWlTgGm4yKAFPLgJnX88wt2BR+QoOV+vI=
+      on:
+        tags: true
