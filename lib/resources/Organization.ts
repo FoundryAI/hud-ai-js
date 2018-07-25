@@ -23,6 +23,7 @@ export interface OrganizationCreateAttributes extends HudAiCreateAttributes {
     emailDomain: string;
     signedLicenseAgreementAt?: Date;
     ownerUserId?: string;
+    planId?: string;
 }
 
 export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
@@ -31,6 +32,7 @@ export interface OrganizationUpdateAttributes extends HudAiUpdateAttributes {
     emailDomain?: string;
     signedLicenseAgreementAt?: Date;
     ownerUserId?: string;
+    planId?: string;
 }
 
 export interface OrganizationSubscriptionCreateAttributes extends HudAiCreateAttributes {
