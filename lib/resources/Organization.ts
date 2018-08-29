@@ -88,4 +88,11 @@ export class OrganizationResource extends Resource<
             url: `${this.basePath}/billing/subscriptions/cancel`
         })
     }
+
+    public getSubscription() {
+        return this.makeRequest({
+            method: 'GET',
+            url: `${this.basePath}/billing/subscriptions`
+        })
+    }
 }
