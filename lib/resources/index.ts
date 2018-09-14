@@ -20,7 +20,6 @@ export { IndustryResource} from './Industry';
 export { JobFunctionResource} from './JobFunction';
 export { KeyTermResource } from './KeyTerm';
 export { OrganizationResource } from './Organization';
-export { OrganizationUserResource } from './OrganizationUser';
 export { PersonKeyTermResource } from './PersonKeyTerm';
 export { PersonResource } from './Person';
 export { QuoteResource } from './Quote';

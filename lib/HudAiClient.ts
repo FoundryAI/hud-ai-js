@@ -51,7 +51,6 @@ export class HudAiClient {
     public jobFunctions: resources.JobFunctionResource;
     public keyTerms: resources.KeyTermResource;
     public organizations: resources.OrganizationResource;
-    public organizationUsers: resources.OrganizationUserResource;
     public people: resources.PersonResource;
     public peopleKeyTerms: resources.PersonKeyTermResource;
     public quotes: resources.QuoteResource;
