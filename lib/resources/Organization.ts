@@ -8,8 +8,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import { Organization, User } from '../entities';
-import { UserListAttributes } from './User';
+import {Organization, OrganizationUserRole, User} from '../entities';
 
 export interface OrganizationListAttributes extends HudAiListAttributes {
     id?: string;
@@ -42,8 +41,21 @@ export interface OrganizationSubscriptionCreateAttributes extends HudAiCreateAtt
     source?: string
 }
 
-export interface OrganizationUserListAttributes extends UserListAttributes {
+export interface OrganizationUserListAttributes extends HudAiListAttributes {
     organizationId: string;
+    email?: string;
+    name?: string;
+}
+
+export interface OrganizationUserRoleGetAttributes {
+    organizationId: string;
+    userId: string;
+}
+
+export interface OrganizationUserRoleUpdateAttributes {
+    organizationId: string;
+    userId: string;
+    role: 'admin' | 'owner' | 'manager' | 'member';
 }
 
 export class OrganizationResource extends Resource<
@@ -78,6 +90,21 @@ export class OrganizationResource extends Resource<
 
     public destroy(id: string): Promise<void> {
         return this._destroy(id);
+    }
+
+    public getRole(args: OrganizationUserRoleGetAttributes): Promise<OrganizationUserRole>{
+        return this.makeRequest({
+            method: 'GET',
+            url: `${this.basePath}/${args.organizationId}/roles/${args.userId}`
+        })
+    }
+
+    public updateRole(args: OrganizationUserRoleUpdateAttributes): Promise<OrganizationUserRole>{
+        return this.makeRequest({
+            method: 'PUT',
+            data: { role: args.role },
+            url: `${this.basePath}/${args.organizationId}/roles/${args.userId}`
+        })
     }
 
     public getUsers(listArgs: OrganizationUserListAttributes): Promise<{ count: number, rows: User[] }>{

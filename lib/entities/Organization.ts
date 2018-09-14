@@ -11,3 +11,11 @@ export interface Organization {
     subscriptionId: string|null;
     customerId: string|null;
 }
+
+export interface OrganizationUserRole {
+    userId: string;
+    organizationId: string;
+    role: 'admin' | 'owner' | 'manager' | 'member';
+    createdAt: Date;
+    updatedAt: Date;
+}
