@@ -19,6 +19,7 @@ export interface CompanyListAttributes extends HudAiListAttributes {
 export interface CompanySearchAttributes extends HudAiListAttributes {
     id?: string;
     query?: string;
+    homepageUrl?: string;
 }
 
 export interface CompanyCreateAttributes extends HudAiCreateAttributes {
