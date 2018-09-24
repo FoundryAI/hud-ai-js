@@ -39,7 +39,7 @@ client.setAccessToken(parsed.access_token);
 ```
 
 NOTE: The process of token retrieval will need to be performed again when the
-token becomes invalid (they're currently valid for 24 hours).
+token becomes invalid (they're currently valid for 30 days).
 
 ### Server Applications
 
