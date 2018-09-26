@@ -9,7 +9,6 @@ import { RequestManager } from '../RequestManager';
 import { StagedSalesforceData } from '../entities';
 
 export interface StagedSalesforceDataListAttributes extends HudAiListAttributes {
-    userId: string;
     type?: string;
     status?: string;
 }
