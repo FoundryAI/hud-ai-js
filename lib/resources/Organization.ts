@@ -47,6 +47,11 @@ export interface OrganizationUserListAttributes extends HudAiListAttributes {
     name?: string;
 }
 
+export interface OrganizationUserDeactivateAttributes {
+    organizationId: string;
+    userId: string;
+}
+
 export interface OrganizationUserRoleGetAttributes {
     organizationId: string;
     userId: string;
@@ -107,10 +112,10 @@ export class OrganizationResource extends Resource<
         })
     }
 
-    public deactivateUser(listArgs: OrganizationUserListAttributes): Promise<User>{
+    public deactivateUser(args: OrganizationUserDeactivateAttributes): Promise<User>{
         return this.makeRequest({
             method: 'POST',
-            params: listArgs,
+            params: args,
             url: `${this.basePath}/{organizationId}/users/deactivate`
         })
     }
