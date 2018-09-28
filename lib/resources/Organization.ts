@@ -107,6 +107,14 @@ export class OrganizationResource extends Resource<
         })
     }
 
+    public deactivateUser(listArgs: OrganizationUserListAttributes): Promise<User>{
+        return this.makeRequest({
+            method: 'POST',
+            params: listArgs,
+            url: `${this.basePath}/{organizationId}/users`
+        })
+    }
+
     public getUsers(listArgs: OrganizationUserListAttributes): Promise<{ count: number, rows: User[] }>{
         return this.makeRequest({
             method: 'GET',
