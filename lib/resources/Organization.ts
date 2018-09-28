@@ -116,7 +116,7 @@ export class OrganizationResource extends Resource<
         return this.makeRequest({
             method: 'POST',
             params: args,
-            url: `${this.basePath}/{organizationId}/users/deactivate`
+            url: `${this.basePath}/{organizationId}/users/deactivate/{userId}`
         })
     }
 
