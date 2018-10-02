@@ -15,7 +15,6 @@ export interface StagedSalesforceDataListAttributes extends HudAiListAttributes 
 }
 
 export interface StagedSalesforceDataUpdateAttributes extends HudAiUpdateAttributes {
-    id: string;
     userId?: string;
     status: string;
     failedMessage?: string;
@@ -32,18 +31,10 @@ export class StagedSalesforceDataResource extends Resource<
     }
 
     public list(listArgs: StagedSalesforceDataListAttributes): Promise<{ count: number, rows: StagedSalesforceData[] }> {
-        return this.makeRequest({
-            method: 'GET',
-            params: listArgs,
-            url: `${this.basePath}`,
-        });
+        return this._list(listArgs);
     }
 
-    public update(updateArgs: StagedSalesforceDataUpdateAttributes): Promise<StagedSalesforceData> {
-        return this.makeRequest({
-            method: 'PUT',
-            data: updateArgs,
-            url: `${this.basePath}/{id}`,
-        });
+    public update(id: string, updateArgs: StagedSalesforceDataUpdateAttributes): Promise<StagedSalesforceData> {
+        return this._update(id, updateArgs);
     }
 }
