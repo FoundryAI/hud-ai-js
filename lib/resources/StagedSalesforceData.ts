@@ -43,7 +43,7 @@ export class StagedSalesforceDataResource extends Resource<
         return this.makeRequest({
             method: 'PUT',
             data: updateArgs,
-            url: `${this.basePath}/{id}`,
+            url: `${this.basePath}/${updateArgs.id}`,
         });
     }
 }
