@@ -47,6 +47,7 @@ class HudAiClientSpec {
         expect(client.company).to.be.an.instanceOf(resources.CompanyResource);
         expect(client.domain).to.be.an.instanceOf(resources.DomainResource);
         expect(client.keyTerm).to.be.an.instanceOf(resources.KeyTermResource);
+        expect(client.stagedSalesforceData).to.be.an.instanceOf(resources.StagedSalesforceDataResource);
         expect(client.textCorpus).to.be.an.instanceOf(resources.TextCorpusResource);
         expect(client.user).to.be.an.instanceOf(resources.UserResource);
     }

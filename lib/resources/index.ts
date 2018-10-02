@@ -26,6 +26,7 @@ export { QuoteResource } from './Quote';
 export { RelevantArticleCollateralResource } from './RelevantArticleCollateral';
 export { RelevantArticleResource } from './RelevantArticle';
 export { SourceResource } from './Source';
+export { StagedSalesforceDataResource } from './StagedSalesforceData';
 export { StockAlertResource } from './StockAlert';
 export { TextCorpusResource } from './TextCorpus';
 export { TweetResource } from './Tweet';
