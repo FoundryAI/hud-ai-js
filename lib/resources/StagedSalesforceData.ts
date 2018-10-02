@@ -9,14 +9,14 @@ import { RequestManager } from '../RequestManager';
 import { StagedSalesforceData } from '../entities';
 
 export interface StagedSalesforceDataListAttributes extends HudAiListAttributes {
-    userId?: string;
+    userId: string;
     type?: string;
     status?: string;
 }
 
 export interface StagedSalesforceDataUpdateAttributes extends HudAiUpdateAttributes {
     id: string;
-    userId?: string;
+    userId: string;
     status: string;
     failedMessage?: string;
 }
