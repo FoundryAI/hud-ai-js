@@ -1,5 +1,5 @@
 import * as Promise from 'bluebird';
-import { omit } from 'lodash';
+import { omit, pick } from 'lodash';
 
 import {
     HudAiCreateAttributes,
@@ -45,6 +45,12 @@ export interface OrganizationUserListAttributes extends HudAiListAttributes {
     organizationId: string;
     email?: string;
     name?: string;
+}
+
+export interface OrganizationUserActivateAttributes {
+    organizationId: string;
+    userId: string;
+    role?: string;
 }
 
 export interface OrganizationUserDeactivateAttributes {
@@ -109,6 +115,15 @@ export class OrganizationResource extends Resource<
             method: 'PUT',
             data: { role: args.role },
             url: `${this.basePath}/${args.organizationId}/roles/${args.userId}`
+        })
+    }
+
+    public activateUser(args: OrganizationUserActivateAttributes): Promise<User>{
+        return this.makeRequest({
+            method: 'POST',
+            params: omit(args, 'role'),
+            data: pick(args, 'role'),
+            url: `${this.basePath}/{organizationId}/users/activate/{userId}`
         })
     }
 
