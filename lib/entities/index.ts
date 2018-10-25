@@ -24,6 +24,7 @@ export * from './Quote';
 export * from './RelevantArticle';
 export * from './RelevantArticleCollateral';
 export * from './Source';
+export * from './StagedSalesforceData';
 export * from './StockAlert';
 export * from './TextCorpus';
 export * from './Tweet';
