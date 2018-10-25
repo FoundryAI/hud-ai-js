@@ -21,6 +21,8 @@ export interface UserListAttributes extends HudAiListAttributes {
 export interface UserCreateAttributes extends HudAiCreateAttributes {
     name: string;
     email: string;
+    phone?: string;
+    timezone?: string;
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string | null;
@@ -29,6 +31,8 @@ export interface UserCreateAttributes extends HudAiCreateAttributes {
 export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     name?: string;
     email?: string;
+    phone?: string;
+    timezone?: string;
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string | null;
