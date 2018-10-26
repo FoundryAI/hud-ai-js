@@ -4,6 +4,8 @@ export interface User {
     updatedAt: Date;
     name: string;
     email: string;
+    phone?: string;
+    timezone?: string;
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string;
