@@ -123,7 +123,7 @@ export class OrganizationResource extends Resource<
             method: 'POST',
             params: omit(args, 'role'),
             data: pick(args, 'role'),
-            url: `${this.basePath}/{organizationId}/users/activate/{userId}`
+            url: `${this.basePath}/{organizationId}/users/{userId}/activate`
         })
     }
 
@@ -131,7 +131,7 @@ export class OrganizationResource extends Resource<
         return this.makeRequest({
             method: 'POST',
             params: args,
-            url: `${this.basePath}/{organizationId}/users/deactivate/{userId}`
+            url: `${this.basePath}/{organizationId}/users/{userId}/deactivate`
         })
     }
 
