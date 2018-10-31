@@ -36,6 +36,7 @@ export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string | null;
+    isEmailVerified?: boolean;
 }
 
 export class UserResource extends Resource<User, UserListAttributes, UserCreateAttributes, UserUpdateAttributes> {
