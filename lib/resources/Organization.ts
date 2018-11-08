@@ -8,7 +8,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import {Organization, OrganizationUserRole, User} from '../entities';
+import {Organization, OrganizationUserRole, User, OrganizationFeedSettings } from '../entities';
 
 export interface OrganizationListAttributes extends HudAiListAttributes {
     id?: string;
@@ -69,6 +69,34 @@ export interface OrganizationUserRoleUpdateAttributes {
     role: 'admin' | 'owner' | 'manager' | 'member';
 }
 
+export interface OrganizationFeedSettingsGetAttributes {
+    organizationId: string;
+}
+
+export interface OrganizationFeedSettingsUpdateAttributes {
+    organizationId: string;
+    importance?: number;
+    article?: number;
+    tweet?: number;
+    quote?: number;
+    stockAlert?: number;
+    video?: number;
+    businessWord?: number;
+    feedContext?: number;
+    followedPerson?: number;
+    industryTerm?: number;
+    jobFunctionTerm?: number;
+    corpusTerm?: number;
+    source?: number;
+    minImportance?: number;
+    decay?: number;
+    decayOffset?: string;
+}
+
+export interface OrganizationFeedSettingsDeleteAttributes {
+    organizationId: string;
+}
+
 export class OrganizationResource extends Resource<
     Organization,
     OrganizationListAttributes,
@@ -115,6 +143,28 @@ export class OrganizationResource extends Resource<
             method: 'PUT',
             data: { role: args.role },
             url: `${this.basePath}/${args.organizationId}/roles/${args.userId}`
+        })
+    }
+    
+    public getFeedSettings(args: OrganizationFeedSettingsGetAttributes): Promise<OrganizationFeedSettings>{
+        return this.makeRequest({
+            method: 'GET',
+            url: `${this.basePath}/${args.organizationId}/feed-settings`,
+        })
+    }
+
+    public updateFeedSettings(args: OrganizationFeedSettingsUpdateAttributes): Promise<OrganizationFeedSettings>{
+        return this.makeRequest({
+            method: 'PUT',
+            data: omit(args, 'organizationId'),
+            url: `${this.basePath}/${args.organizationId}/feed-settings`,
+        })
+    }
+
+    public deleteFeedSettings(args: OrganizationFeedSettingsDeleteAttributes): Promise<OrganizationFeedSettings>{
+        return this.makeRequest({
+            method: 'DELETE',
+            url: `${this.basePath}/${args.organizationId}/feed-settings`,
         })
     }
 
