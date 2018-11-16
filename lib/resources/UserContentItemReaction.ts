@@ -13,7 +13,7 @@ export interface UserContentItemReactionListAttributes extends HudAiListAttribut
     contentType?: 'article' | 'quote' | 'tweet' | 'stockAlert' | 'video' | 'earningsCall' | 'conferencePerson';
     contentId?: string;
     userId?: string;
-    reaction: 'relevant' | 'not_relevant';
+    reaction?: 'relevant' | 'not_relevant';
 }
 
 export interface UserContentItemReactionCreateAttributes extends HudAiCreateAttributes {
