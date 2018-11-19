@@ -32,6 +32,7 @@ export * from './User';
 export * from './UserCompany';
 export * from './UserCompanyGroup';
 export * from './UserContact';
+export * from './UserContentItemReaction';
 export * from './UserDigestSubscription';
 export * from './UserIndustry';
 export * from './UserJobFunction';
