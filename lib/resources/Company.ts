@@ -61,7 +61,7 @@ export class CompanyResource extends Resource<
         })
     }
 
-    public availableData(ids: string | string []): Promise<Company[]> {
+    public availableData(ids: string | string []): Promise<{}[]> {
         return this.makeRequest({
             method: 'GET',
             params: { id: ids },
