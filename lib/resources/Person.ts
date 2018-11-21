@@ -17,6 +17,7 @@ export interface PersonListAttributes extends HudAiListAttributes {
     term?: string;
     twitterHandle?: string;
     sortBy?: string;
+    personId: string | string[];
 }
 
 export interface PersonCreateAttributes extends HudAiCreateAttributes {
