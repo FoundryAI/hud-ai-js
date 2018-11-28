@@ -8,7 +8,6 @@ import {
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 import { Person } from '../entities';
-import * as _ from 'lodash';
 
 export interface PersonListAttributes extends HudAiListAttributes {
     companyId?: string;
@@ -21,6 +20,7 @@ export interface PersonListAttributes extends HudAiListAttributes {
 }
 
 export interface PersonCreateAttributes extends HudAiCreateAttributes {
+    companyId?: string;
     name: string;
     title: string;
     imageUrl?: string;
@@ -29,6 +29,7 @@ export interface PersonCreateAttributes extends HudAiCreateAttributes {
 }
 
 export interface PersonUpdateAttributes extends HudAiUpdateAttributes {
+    companyId?: string;
     name?: string;
     title?: string;
     imageUrl?: string;
