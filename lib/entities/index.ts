@@ -31,6 +31,7 @@ export * from './Tweet';
 export * from './User';
 export * from './UserCompany';
 export * from './UserCompanyGroup';
+export * from './UserConference';
 export * from './UserContact';
 export * from './UserContentItemReaction';
 export * from './UserDigestSubscription';
