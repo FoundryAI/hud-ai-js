@@ -33,6 +33,7 @@ export { TweetResource } from './Tweet';
 export { UserCompanyGroupResource } from './UserCompanyGroup';
 export { UserCompanyResource } from './UserCompany';
 export { UserContactResource } from './UserContact';
+export { UserConferenceResource } from './UserConference';
 export { UserContentItemReactionResource } from './UserContentItemReaction';
 export { UserDigestSubscriptionResource } from './UserDigestSubscription';
 export { UserIndustryResource } from './UserIndustry';
