@@ -6,10 +6,10 @@
 [![Try on RunKit][runkit-badge]][runkit-link]
 
 A JavaScript interface to the [Hud.ai API][hud-ai-docs-link]. To get started
-install via npm:
+install via yarn:
 
 ```bash
-npm install --save hud-ai
+yarn install --save hud-ai
 ```
 
 ## Getting Started
