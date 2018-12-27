@@ -10,10 +10,13 @@ node_js:
 - '8'
 - '9'
 - '10'
-cache: true
+cache:
+  yarn: true
+  directories:
+    - node_modules
 jobs:
   include:
-  - stage: yarn release
+  - stage: npm release
     node_js: '8'
     script: echo "Deploying to npm ..."
     deploy:
