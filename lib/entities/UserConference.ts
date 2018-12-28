@@ -1,6 +1,6 @@
 export enum UserConferenceStatus {
-    ADDED = 'ADDED',
-    REMOVED = 'REMOVED'
+    ADDED = 'added',
+    REMOVED = 'removed'
 }
 
 export interface UserConference {
