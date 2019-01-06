@@ -9,6 +9,16 @@ import {
 import { RequestManager } from '../RequestManager';
 import { Company } from '../entities';
 
+export interface CompanyProfileAttributes {
+    description?: string;
+    profileImageUrl?: string;
+    homepageUrl?: string;
+    linkedinUrl?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+}
+
 export interface CompanyListAttributes extends HudAiListAttributes {
     id?: string;
     name?: string;
@@ -25,11 +35,13 @@ export interface CompanySearchAttributes extends HudAiListAttributes {
 export interface CompanyCreateAttributes extends HudAiCreateAttributes {
     name: string;
     ticker?: string;
+    profile?: CompanyProfileAttributes;
 }
 
 export interface CompanyUpdateAttributes extends HudAiUpdateAttributes {
     name?: string;
     ticker?: string;
+    profile?: CompanyProfileAttributes;
 }
 
 export class CompanyResource extends Resource<
