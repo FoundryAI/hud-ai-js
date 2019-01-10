@@ -7,12 +7,14 @@ import {
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 import { CompanyProfile } from '../entities';
+import * as _ from "lodash";
 
 export interface CompanyProfileGetAttributes {
     companyId: string;
 }
 
 export interface CompanyProfileCreateAttributes extends HudAiCreateAttributes {
+    companyId: string;
     description?: string;
     profileImageUrl?: string;
     homepageUrl?: string;
@@ -23,6 +25,7 @@ export interface CompanyProfileCreateAttributes extends HudAiCreateAttributes {
 }
 
 export interface CompanyProfileUpdateAttributes extends HudAiUpdateAttributes {
+    companyId: string;
     description?: string;
     profileImageUrl?: string;
     homepageUrl?: string;
@@ -53,7 +56,8 @@ export class CompanyProfileResource extends Resource<
     public create(createArgs: CompanyProfileCreateAttributes): Promise<CompanyProfile> {
         return this.makeRequest({
             method: 'POST',
-            params: createArgs,
+            params: _.pick(createArgs, 'companyId'),
+            data: _.omit(createArgs, 'companyId'),
             url: `${this.basePath}`
         })
     }
@@ -61,7 +65,8 @@ export class CompanyProfileResource extends Resource<
     public update(id: string | number, updateArgs: CompanyProfileUpdateAttributes): Promise<CompanyProfile> {
         return this.makeRequest({
             method: 'PUT',
-            params: updateArgs,
+            params: _.pick(updateArgs, 'companyId'),
+            data: _.omit(updateArgs, 'companyId'),
             url: `${this.basePath}`
         })
     }
