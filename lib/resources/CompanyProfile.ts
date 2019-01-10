@@ -62,7 +62,7 @@ export class CompanyProfileResource extends Resource<
         })
     }
 
-    public update(id: string | number, updateArgs: CompanyProfileUpdateAttributes): Promise<CompanyProfile> {
+    public update(updateArgs: CompanyProfileUpdateAttributes): Promise<CompanyProfile> {
         return this.makeRequest({
             method: 'PUT',
             params: _.pick(updateArgs, 'companyId'),
