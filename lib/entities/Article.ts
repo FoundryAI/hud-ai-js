@@ -33,6 +33,7 @@ export interface BasicArticle {
 
 export interface ArticleSearchResult extends BasicArticle {
     groupId?: string;
+    reactions?: object;
     authors: BasicAuthor[];
     companies: BasicArticleCompany[];
     keyTerms: BasicKeyTerm[];
