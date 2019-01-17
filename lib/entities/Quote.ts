@@ -10,4 +10,5 @@ export interface Quote {
     term: string;
     importanceScore: number;
     person?: Person;
+    reactions?: object;
 }

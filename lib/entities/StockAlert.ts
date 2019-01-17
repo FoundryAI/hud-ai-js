@@ -7,4 +7,5 @@ export interface StockAlert {
     secondValueOccurredAt: Date;
     createdAt: Date;
     updatedAt: Date;
+    reactions?: object;
 }

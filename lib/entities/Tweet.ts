@@ -10,4 +10,5 @@ export interface Tweet {
     text: string;
     importanceScore: number;
     person?: Person;
+    reactions?: object;
 }

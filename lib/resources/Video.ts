@@ -33,6 +33,7 @@ export interface BasicVideo {
 export interface VideoSearchResult extends BasicVideo {
     companies: BasicVideoCompany[];
     people: BasicVideoPerson[];
+    reactions?: object;
 }
 
 export interface VideoListAttributes extends HudAiListAttributes {
