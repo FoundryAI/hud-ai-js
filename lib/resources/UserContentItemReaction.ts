@@ -9,18 +9,39 @@ import {
 import { RequestManager } from '../RequestManager';
 import { UserContentItemReaction } from '../entities';
 
+export enum ContentItemReaction {
+    relevant = 'relevant',
+    notRelevant = 'not_relevant',
+}
+
+export enum ContentItemReactionType {
+	article = 'article',
+    quote = 'quote',
+    tweet = 'tweet',
+    stockAlert = 'stockAlert',
+    video = 'video',
+    earningsCall = 'earningsCall',
+    conferencePerson = 'conferencePerson',
+}
+
 export interface UserContentItemReactionListAttributes extends HudAiListAttributes {
-    contentType?: 'article' | 'quote' | 'tweet' | 'stockAlert' | 'video' | 'earningsCall' | 'conferencePerson';
+    contentType?: ContentItemReactionType;
     contentId?: string;
     userId?: string;
-    reaction?: 'relevant' | 'not_relevant';
+    reaction?: ContentItemReaction;
 }
 
 export interface UserContentItemReactionCreateAttributes extends HudAiCreateAttributes {
     userId: string;
-    contentType: 'article' | 'quote' | 'tweet' | 'stockAlert' | 'video' | 'earningsCall' | 'conferencePerson';
+    contentType: ContentItemReactionType;
     contentId: string;
-    reaction: 'relevant' | 'not_relevant';
+    reaction: ContentItemReaction;
+}
+
+export interface UserContentItemReactionUpdateAttributes extends HudAiUpdateAttributes {
+	contentType: ContentItemReactionType;
+	contentId: string;
+	reaction: ContentItemReaction;
 }
 
 export class UserContentItemReactionResource extends Resource<
@@ -44,6 +65,10 @@ export class UserContentItemReactionResource extends Resource<
     public get(id: string): Promise<UserContentItemReaction> {
         return this._get(id);
     }
+
+	public update(id: string, updateArgs: UserContentItemReactionUpdateAttributes): Promise<UserContentItemReaction> {
+		return this._update(id, updateArgs);
+	}
 
     public del(id: string): Promise<void> {
         return this.destroy(id);
