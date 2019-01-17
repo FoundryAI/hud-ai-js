@@ -15,7 +15,7 @@ export enum ContentItemReaction {
 }
 
 export enum ContentItemReactionType {
-	article = 'article',
+    article = 'article',
     quote = 'quote',
     tweet = 'tweet',
     stockAlert = 'stockAlert',
