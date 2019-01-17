@@ -15,7 +15,7 @@ export enum ContentItemReaction {
 }
 
 export enum ContentItemReactionType {
-	article = 'article',
+    article = 'article',
     quote = 'quote',
     tweet = 'tweet',
     stockAlert = 'stockAlert',
@@ -39,17 +39,15 @@ export interface UserContentItemReactionCreateAttributes extends HudAiCreateAttr
 }
 
 export interface UserContentItemReactionUpdateAttributes extends HudAiUpdateAttributes {
-	contentType: ContentItemReactionType;
-	contentId: string;
-	reaction: ContentItemReaction;
+    contentType: ContentItemReactionType;
+    contentId: string;
+    reaction: ContentItemReaction;
 }
 
-export class UserContentItemReactionResource extends Resource<
-    UserContentItemReaction,
+export class UserContentItemReactionResource extends Resource<UserContentItemReaction,
     UserContentItemReactionListAttributes,
     UserContentItemReactionCreateAttributes,
-    HudAiUpdateAttributes
-    > {
+    HudAiUpdateAttributes> {
     constructor(requestManager: RequestManager) {
         super('/users/reactions', requestManager);
     }
@@ -66,9 +64,9 @@ export class UserContentItemReactionResource extends Resource<
         return this._get(id);
     }
 
-	public update(id: string, updateArgs: UserContentItemReactionUpdateAttributes): Promise<UserContentItemReaction> {
-		return this._update(id, updateArgs);
-	}
+    public update(id: string, updateArgs: UserContentItemReactionUpdateAttributes): Promise<UserContentItemReaction> {
+        return this._update(id, updateArgs);
+    }
 
     public del(id: string): Promise<void> {
         return this.destroy(id);
