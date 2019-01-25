@@ -7,4 +7,6 @@ export interface Conference {
     speakersJobId: string|null;
     createdAt: Date;
     updatedAt: Date;
+    startsAt: Date;
+    endsAt: Date;
 }

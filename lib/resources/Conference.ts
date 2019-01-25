@@ -11,8 +11,8 @@ import { Conference } from '../entities';
 
 export interface ConferenceListAttributes extends HudAiListAttributes {
     name?: string;
-    personId?: string;
-    companyId?: string;
+    personId?: string | string[];
+    companyId?: string | string[];
     after?: Date;
     before?: Date;
 }
