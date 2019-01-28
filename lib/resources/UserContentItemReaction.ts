@@ -39,9 +39,14 @@ export interface UserContentItemReactionCreateAttributes extends HudAiCreateAttr
 }
 
 export interface UserContentItemReactionUpdateAttributes extends HudAiUpdateAttributes {
-    contentType: ContentItemReactionType;
+    userId?: string;
     contentId: string;
     reaction: ContentItemReaction;
+}
+
+export interface UserContentItemReactionDeleteAttributes {
+    userId: string;
+    contentId: string;
 }
 
 export class UserContentItemReactionResource extends Resource<UserContentItemReaction,
@@ -64,15 +69,23 @@ export class UserContentItemReactionResource extends Resource<UserContentItemRea
         return this._get(id);
     }
 
-    public update(id: string, updateArgs: UserContentItemReactionUpdateAttributes): Promise<UserContentItemReaction> {
-        return this._update(id, updateArgs);
+    public update(updateArgs: UserContentItemReactionUpdateAttributes): Promise<UserContentItemReaction> {
+        return this.makeRequest({
+            method: 'PUT',
+            params: updateArgs,
+            url: `${this.basePath}/`
+        });
     }
 
-    public del(id: string): Promise<void> {
-        return this.destroy(id);
+    public del(deleteArgs: UserContentItemReactionDeleteAttributes): Promise<void> {
+        return this.destroy(deleteArgs);
     }
 
-    public destroy(id: string): Promise<void> {
-        return this._destroy(id);
+    public destroy(deleteArgs: UserContentItemReactionDeleteAttributes): Promise<void> {
+        return this.makeRequest({
+            method: 'DELETE',
+            params: deleteArgs,
+            url: `${this.basePath}/`
+        });
     }
 }
