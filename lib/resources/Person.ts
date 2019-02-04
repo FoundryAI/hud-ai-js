@@ -88,6 +88,13 @@ export class PersonResource extends Resource<Person, PersonListAttributes, Perso
         })
     }
 
+    public deleteIndex(): Promise<void> {
+        return this.makeRequest({
+            method: 'POST',
+            url: `${this.basePath}/deleteIndex`
+        })
+    }
+
     public del(id: string | number): Promise<void> {
         return this.destroy(id);
     }
