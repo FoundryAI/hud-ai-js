@@ -58,6 +58,13 @@ export class QuoteResource extends Resource<
         });
     }
 
+    public reindex() {
+        return this.makeRequest({
+            method: 'POST',
+            url: `${this.basePath}/search/reindex`
+        });
+    }
+
     public create(createArgs: QuoteCreateAttributes): Promise<Quote> {
         return this._create(createArgs);
     }
