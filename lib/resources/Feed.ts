@@ -48,4 +48,20 @@ export class FeedResource extends Resource<FeedItem, any, any, any> {
             url: `${this.basePath}`
         })
     }
+
+    public refresh(index: string) {
+        return this.makeRequest({
+            method: 'GET',
+            params: { index },
+            url: `${this.basePath}/refresh`
+        })
+    }
+
+    public getOrCreate(index: string) {
+        return this.makeRequest({
+            method: 'GET',
+            params: { index },
+            url: `${this.basePath}/getCreateIndex`
+        })
+    }
 }
