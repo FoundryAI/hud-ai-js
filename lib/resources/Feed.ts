@@ -72,4 +72,12 @@ export class FeedResource extends Resource<FeedItem, any, any, any> {
             url: `${this.basePath}/getOrCreateIndex`
         })
     }
+
+    public destroyIndex(index: string) {
+        return this.makeRequest({
+            method: 'GET',
+            params: { index },
+            url: `${this.basePath}/destroyIndex`
+        })
+    }
 }
