@@ -1,6 +1,6 @@
 {
   "name": "hud-ai",
-  "version": "1.72.3",
+  "version": "1.72.4",
   "description": "Hud.ai API Client",
   "main": "./build/HudAiClient.js",
   "types": "./build/HudAiClient.d.ts",
