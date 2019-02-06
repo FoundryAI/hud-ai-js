@@ -55,6 +55,13 @@ export class TweetResource extends Resource<
         });
     }
 
+    public reindex() {
+        return this.makeRequest({
+            method: 'POST',
+            url: `${this.basePath}/search/reindex`
+        });
+    }
+
     public create(createArgs: TweetCreateAttributes): Promise<Tweet> {
         return this._create(createArgs);
     }
