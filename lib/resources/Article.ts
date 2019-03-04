@@ -29,6 +29,7 @@ export interface ArticleCreateAttributes extends HudAiCreateAttributes {
     authors?: string[];
     imageUrl?: string;
     importanceScore?: number;
+    localScore?: number;
     linkUrl: string;
     publishedAt?: Date;
     rawDataUrl: string;
@@ -42,6 +43,7 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
     authors?: string[];
     imageUrl?: string;
     importanceScore?: number;
+    localScore?: number;
     linkUrl?: string;
     publishedAt?: Date;
     rawDataUrl?: string;
