@@ -23,7 +23,6 @@ export interface BasicArticle {
     tags?: BasicArticleTag[];
     imageUrl: string;
     importanceScore: number;
-    localScore?: number;
     linkUrl: string;
     sourceId: string;
     publishedAt: Date;
@@ -35,6 +34,7 @@ export interface BasicArticle {
 export interface ArticleSearchResult extends BasicArticle {
     groupId?: string;
     reactions?: object;
+    localScore?: number;
     authors: BasicAuthor[];
     companies: BasicArticleCompany[];
     keyTerms: BasicKeyTerm[];
