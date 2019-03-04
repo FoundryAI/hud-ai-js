@@ -23,7 +23,7 @@ export interface BasicArticle {
     tags?: BasicArticleTag[];
     imageUrl: string;
     importanceScore: number;
-    isLocalScore: number;
+    isLocalScore?: number;
     linkUrl: string;
     sourceId: string;
     publishedAt: Date;
