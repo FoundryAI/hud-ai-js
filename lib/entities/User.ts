@@ -6,6 +6,7 @@ export interface User {
     email: string;
     phone?: string;
     timezone?: string;
+    showLocal?: boolean;
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string;
