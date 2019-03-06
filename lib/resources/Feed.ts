@@ -6,6 +6,7 @@ import { RequestManager } from '../RequestManager';
 import { FeedItem } from '../entities';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
+    userId: string;
     itemIds?: string[] | string;
     companyIds?: string[] | string;
     keyTerms?: string[];
@@ -23,18 +24,22 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
     tags?: string[];
     text?: string;
     types?: string[];
-    userId?: string;
     weights?: {
-        importance: number;
-        article: number;
-        tweet: number;
-        quote: number;
-        businessWord: number;
-        industryTerm: number;
-        corpusTerm: number;
-        source: number;
-        feedContext: number;
-        followedPerson: number;
+        decayOffset?: string;
+        decay?: number;
+        importance?: number;
+        article?: number;
+        tweet?: number;
+        stockAlert?: number;
+        quote?: number;
+        video?: number;
+        businessWord?: number;
+        industryTerm?: number;
+        jobFunctionTerm?: number;
+        corpusTerm?: number;
+        source?: number;
+        feedContext?: number;
+        followedPerson?: number;
     }
 }
 
