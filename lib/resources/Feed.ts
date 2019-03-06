@@ -11,8 +11,10 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
     keyTerms?: string[];
     maxImportance?: number;
     maxRelevance?: number;
+    maxLocal?: number;
     minImportance?: number;
     minRelevance?: number;
+    minLocal?: number;
     publishedAfter?: Date;
     publishedBefore?: Date;
     scoredAfter?: Date;
