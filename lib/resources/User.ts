@@ -26,6 +26,7 @@ export interface UserCreateAttributes extends HudAiCreateAttributes {
     linkedinProfileId?: string | null;
     salesforceProfileId?: string | null;
     organizationId?: string | null;
+    showLocal?: boolean | null;
 }
 
 export interface UserUpdateAttributes extends HudAiUpdateAttributes {
@@ -37,6 +38,7 @@ export interface UserUpdateAttributes extends HudAiUpdateAttributes {
     salesforceProfileId?: string | null;
     organizationId?: string | null;
     isEmailVerified?: boolean;
+    showLocal?: boolean | null;
 }
 
 export class UserResource extends Resource<User, UserListAttributes, UserCreateAttributes, UserUpdateAttributes> {
