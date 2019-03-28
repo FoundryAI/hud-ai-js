@@ -1,6 +1,6 @@
 # Feed
 
-Returns a user's feed containing articles, quotes, and tweets.
+Returns a user's feed containing articles, quotes, videos.
 
 ## `client.feed.fetch(params)`
 
@@ -10,6 +10,7 @@ Returns a user's feed containing articles, quotes, and tweets.
 | `params.userId`                 | string |
 | `params.text`                   | string |
 | `params.tags`                   | Array |
+| `params.geographies`            | Array |
 | `params.keyTerms`               | Array |
 | `params.minRelevance`           | number |
 | `params.maxRelevance`           | number |

@@ -3,6 +3,7 @@ export * from './Article';
 export * from './ArticleCompany';
 export * from './ArticleKeyTerm';
 export * from './ArticleTag';
+export * from './ArticleGeography';
 export * from './Collateral';
 export * from './Company';
 export * from './CompanyEvent';
