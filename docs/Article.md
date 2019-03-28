@@ -40,6 +40,7 @@
 | `query.type`            | string |
 | `query.text`            | string |
 | `query.tags`            | string[] |
+| `query.geographies`     | string[] |
 | `query.keyTerms`        | string[] |
 | `query.authors`         | string[] |
 | `query.groupId`         | string |
@@ -74,6 +75,7 @@
 | `query.scoredAfter`     | Date |
 | `query.scoredBefore`    | Date |
 | `query.tags`            | string[] |
+| `query.geographies`     | string[] |
 | `query.text`            | string |
 | `query.type`            | string |
 | `query.userId`          | string |
@@ -100,6 +102,7 @@ Returns an array of `{ term: string, count: number, rows: ArticleSearchResult[] 
 | `query.scoredAfter`     | Date |
 | `query.scoredBefore`    | Date |
 | `query.tags`            | string[] |
+| `query.geographies`     | string[] |
 | `query.text`            | string |
 | `query.type`            | string |
 | `query.userId`          | string |
@@ -126,6 +129,7 @@ Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: num
 | `query.scoredAfter`     | Date |
 | `query.scoredBefore`    | Date |
 | `query.tags`            | string[] |
+| `query.geographies`     | string[] |
 | `query.text`            | string |
 | `query.type`            | string |
 | `query.userId`          | string |
