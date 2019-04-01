@@ -24,8 +24,6 @@ export { OrganizationResource } from './Organization';
 export { PersonKeyTermResource } from './PersonKeyTerm';
 export { PersonResource } from './Person';
 export { QuoteResource } from './Quote';
-export { RelevantArticleCollateralResource } from './RelevantArticleCollateral';
-export { RelevantArticleResource } from './RelevantArticle';
 export { SourceResource } from './Source';
 export { StagedSalesforceDataResource } from './StagedSalesforceData';
 export { StockAlertResource } from './StockAlert';
