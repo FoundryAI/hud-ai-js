@@ -55,6 +55,8 @@ export class HudAiClient {
     public people: resources.PersonResource;
     public peopleKeyTerms: resources.PersonKeyTermResource;
     public quotes: resources.QuoteResource;
+    public relevantArticleCollateral: resources.RelevantArticleCollateralResource;
+    public relevantArticles: resources.RelevantArticleResource;
     public sources: resources.SourceResource;
     public stagedSalesforceData: resources.StagedSalesforceDataResource;
     public stockAlerts: resources.StockAlertResource;
@@ -135,6 +137,8 @@ export class HudAiClient {
         this.people = new resources.PersonResource(this.requestManager);
         this.peopleKeyTerms = new resources.PersonKeyTermResource(this.requestManager);
         this.quotes = new resources.QuoteResource(this.requestManager);
+        this.relevantArticleCollateral = new resources.RelevantArticleCollateralResource(this.requestManager);
+        this.relevantArticles = new resources.RelevantArticleResource(this.requestManager);
         this.sources = new resources.SourceResource(this.requestManager);
         this.stagedSalesforceData = new resources.StagedSalesforceDataResource(this.requestManager);
         this.stockAlerts = new resources.StockAlertResource(this.requestManager);
