@@ -22,8 +22,6 @@ export * from './Organization';
 export * from './Person';
 export * from './PersonKeyTerm';
 export * from './Quote';
-export * from './RelevantArticle';
-export * from './RelevantArticleCollateral';
 export * from './Source';
 export * from './StagedSalesforceData';
 export * from './StockAlert';
