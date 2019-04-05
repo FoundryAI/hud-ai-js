@@ -26,7 +26,6 @@ export interface ArticleListResults {
 }
 
 export interface ArticleCreateAttributes extends HudAiCreateAttributes {
-    authors?: string[];
     imageUrl?: string;
     importanceScore?: number;
     localScore?: number;
@@ -40,7 +39,6 @@ export interface ArticleCreateAttributes extends HudAiCreateAttributes {
 }
 
 export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
-    authors?: string[];
     imageUrl?: string;
     importanceScore?: number;
     localScore?: number;
@@ -56,7 +54,6 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
 export interface ArticleSearchAttributes {
     limit?: number,
     offset?: number,
-    authors?: string[],
     companyId?: string | string[];
     createdAfter?: Date,
     createdBefore?: Date,
@@ -83,7 +80,6 @@ export interface ArticleSearchResults {
 export interface ArticleSearchRelevantAttributes {
     limit?: number,
     offset?: number,
-    authors?: string[],
     createdAfter?: Date,
     createdBefore?: Date,
     keyTerms?: string[],

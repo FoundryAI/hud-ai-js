@@ -1,5 +1,4 @@
 import { ArticleKeyTerm } from './ArticleKeyTerm';
-import { Author, BasicAuthor } from './Author';
 import { ArticleTag, BasicArticleTag } from './ArticleTag';
 import { ArticleGeography, BasicArticleGeography } from './ArticleGeography';
 import { BasicKeyTerm } from './KeyTerm';
@@ -8,7 +7,6 @@ import { BasicArticlePerson } from './ArticlePerson';
 
 export interface Article extends BasicArticle {
     keyTerms?: ArticleKeyTerm[];
-    authors?: Author[];
     tags?: ArticleTag[];
     geographies?: ArticleGeography[];
     linkHash: string;
@@ -21,7 +19,6 @@ export interface BasicArticle {
     createdAt: Date;
     updatedAt: Date;
     keyTerms?: BasicKeyTerm[];
-    authors?: BasicAuthor[];
     tags?: BasicArticleTag[];
     geographies?: BasicArticleGeography[];
     imageUrl: string;
@@ -38,7 +35,6 @@ export interface ArticleSearchResult extends BasicArticle {
     groupId?: string;
     reactions?: object;
     localScore?: number;
-    authors: BasicAuthor[];
     companies: BasicArticleCompany[];
     keyTerms: BasicKeyTerm[];
     tags: BasicArticleTag[];
