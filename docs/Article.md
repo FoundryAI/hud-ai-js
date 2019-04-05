@@ -5,7 +5,6 @@
 | `id`              | string     | Resource ID **Cannot be edited** |
 | `createdAt`       | Date       | Creation date **Cannot be edited** |
 | `updatedAt`       | Date       | Last touch date **Cannot be edited** |
-| `authors`         | string[]   | List of author names |
 | `imageUrl`        | string     | Image published in the article's metadata |
 | `importanceScore` | number     | `hudai-importance-scorer` output |
 | `linkHash`        | string     | MD5 hash of the `linkUrl` **Cannot be edited** |
@@ -42,7 +41,6 @@
 | `query.tags`            | string[] |
 | `query.geographies`     | string[] |
 | `query.keyTerms`        | string[] |
-| `query.authors`         | string[] |
 | `query.groupId`         | string |
 | `query.publishedBefore` | Date |
 | `query.publishedAfter`  | Date |
@@ -60,7 +58,6 @@
 | Param | Type |
 |-------|------|
 | `query`                 | Object |
-| `query.authors`         | string[] |
 | `query.createdAfter`    | Date |
 | `query.createdBefore`   | Date |
 | `query.keyTerms`        | string[] |
@@ -87,7 +84,6 @@ Returns an array of `{ term: string, count: number, rows: ArticleSearchResult[] 
 | Param | Type |
 |-------|------|
 | `query`                 | Object |
-| `query.authors`         | string[] |
 | `query.createdAfter`    | Date |
 | `query.createdBefore`   | Date |
 | `query.keyTerms`        | string[] |
@@ -114,7 +110,6 @@ Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: num
 | Param | Type |
 |-------|------|
 | `query`                 | Object |
-| `query.authors`         | string[] |
 | `query.createdAfter`    | Date |
 | `query.createdBefore`   | Date |
 | `query.keyTerms`        | string[] |
@@ -139,7 +134,6 @@ Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: num
 | Param | Type |
 |-------|------|
 | `params`                 | Object |
-| `params.authors`         | string[] |
 | `params.imageUrl`        | string |
 | `params.importanceScore` | number |
 | `params.linkHash`        | string |
@@ -163,7 +157,6 @@ Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: num
 |-------|------|
 | `id`                     | string |
 | `params`                 | Object |
-| `params.authors`         | string[] |
 | `params.imageUrl`        | string |
 | `params.importanceScore` | number |
 | `params.linkHash`        | string |
