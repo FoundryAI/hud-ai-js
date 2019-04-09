@@ -1,4 +1,5 @@
 import * as Promise from 'bluebird';
+import { pick, omit } from 'lodash';
 
 import {
     HudAiCreateAttributes,
@@ -50,7 +51,8 @@ export class ArticleKeyTermResource extends Resource<
     public create(createArgs: ArticleKeyTermCreateAttributes): Promise<ArticleKeyTerm> {
         return this.makeRequest({
             method: 'POST',
-            data: createArgs,
+            params: pick(createArgs, 'articleId'),
+            data: omit(createArgs, 'articleId'),
             url: `${this.basePath}`
         })
     }
