@@ -96,10 +96,10 @@ export class FeedResource extends Resource<FeedItem, any, any, any> {
         })
     }
 
-    public createHeatmap(countArgs: ArticleSearchAttributes): Promise<GroupedTagCount> {
+    public generateHeatmap(countArgs: FeedFetchAttributes): Promise<GroupedTagCount> {
         return this.makeRequest({
             method: 'GET',
-            params: _.merge(countArgs, { countTags: true }),
+            params: countArgs,
             url: `${this.basePath}/heatmap`
         })
     }

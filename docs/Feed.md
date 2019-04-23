@@ -20,7 +20,7 @@ Returns a user's feed containing articles, quotes, videos.
 | `params.offset`                 | number |
 
 
-## `client.feed.createHeatmap(params)`
+## `client.feed.generateHeatmap(params)`
 
 Returns an object of `{ term: { tag1: number }, term2: { tag1: number, tag2: number } }`
 
