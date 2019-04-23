@@ -1,5 +1,4 @@
 import * as Promise from 'bluebird';
-import * as _ from 'lodash';
 
 import {
     HudAiCreateAttributes,
@@ -77,34 +76,6 @@ export interface ArticleSearchResults {
     rows: ArticleSearchResult[]
 }
 
-export interface ArticleSearchRelevantAttributes {
-    limit?: number,
-    offset?: number,
-    createdAfter?: Date,
-    createdBefore?: Date,
-    keyTerms?: string[],
-    maxImportance?: number,
-    maxLocal?: number,
-    maxRelevance?: number,
-    minImportance?: number,
-    minLocal?: number,
-    minRelevance?: number,
-    publishedAfter?: Date,
-    publishedBefore?: Date,
-    scoredAfter?: Date,
-    scoredBefore?: Date,
-    tags?: string[],
-    text?: string,
-    type?: string,
-    userId?: string,
-}
-
-export interface GroupedTagCount {
-    [term: string]: {
-        [tag: string]: number
-    };
-}
-
 export class ArticleResource extends Resource<
     Article,
     ArticleListAttributes,
@@ -124,30 +95,6 @@ export class ArticleResource extends Resource<
             method: 'GET',
             params: searchArgs,
             url: `${this.basePath}/search`
-        })
-    }
-
-    public searchRelevant(searchArgs: ArticleSearchRelevantAttributes): Promise<ArticleSearchResults> {
-        return this.makeRequest({
-            method: 'GET',
-            params: searchArgs,
-            url: `${this.basePath}/search/relevant`
-        })
-    }
-
-    public searchRelevantByTerm(searchArgs: ArticleSearchRelevantAttributes): Promise<{ term: string, count: number, rows: ArticleSearchResult[] }[]> {
-        return this.makeRequest({
-            method: 'GET',
-            params: searchArgs,
-            url: `${this.basePath}/search/relevant/grouped/by-term`
-        })
-    }
-
-    public searchRelevantByTermAndCountTags(countArgs: ArticleSearchRelevantAttributes): Promise<GroupedTagCount> {
-        return this.makeRequest({
-            method: 'GET',
-            params: _.merge(countArgs, { countTags: true }),
-            url: `${this.basePath}/search/relevant/grouped/by-term`
         })
     }
 

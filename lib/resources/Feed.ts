@@ -43,6 +43,12 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
     }
 }
 
+export interface GroupedTagCount {
+    [term: string]: {
+        [tag: string]: number
+    };
+}
+
 export class FeedResource extends Resource<FeedItem, any, any, any> {
     constructor(requestManager: RequestManager) {
         super('/users/feed', requestManager);
@@ -85,6 +91,14 @@ export class FeedResource extends Resource<FeedItem, any, any, any> {
             method: 'GET',
             params: { index },
             url: `${this.basePath}/destroyIndex`
+        })
+    }
+
+    public generateHeatmap(countArgs: FeedFetchAttributes): Promise<GroupedTagCount> {
+        return this.makeRequest({
+            method: 'GET',
+            params: countArgs,
+            url: `${this.basePath}/heatmap`
         })
     }
 }
