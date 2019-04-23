@@ -77,28 +77,6 @@ export interface ArticleSearchResults {
     rows: ArticleSearchResult[]
 }
 
-export interface ArticleSearchRelevantAttributes {
-    limit?: number,
-    offset?: number,
-    createdAfter?: Date,
-    createdBefore?: Date,
-    keyTerms?: string[],
-    maxImportance?: number,
-    maxLocal?: number,
-    maxRelevance?: number,
-    minImportance?: number,
-    minLocal?: number,
-    minRelevance?: number,
-    publishedAfter?: Date,
-    publishedBefore?: Date,
-    scoredAfter?: Date,
-    scoredBefore?: Date,
-    tags?: string[],
-    text?: string,
-    type?: string,
-    userId?: string,
-}
-
 export class ArticleResource extends Resource<
     Article,
     ArticleListAttributes,
