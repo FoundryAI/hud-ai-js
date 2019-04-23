@@ -4,8 +4,6 @@ import { HudAiListAttributes, Resource } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 
 import { FeedItem } from '../entities';
-import * as _ from 'lodash';
-import { ArticleSearchAttributes } from './Article';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
     userId: string;
