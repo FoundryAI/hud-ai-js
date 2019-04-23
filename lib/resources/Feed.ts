@@ -4,6 +4,8 @@ import { HudAiListAttributes, Resource } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 
 import { FeedItem } from '../entities';
+import * as _ from 'lodash';
+import { ArticleSearchAttributes } from './Article';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
     userId: string;
@@ -41,6 +43,12 @@ export interface FeedFetchAttributes extends HudAiListAttributes {
         feedContext?: number;
         followedPerson?: number;
     }
+}
+
+export interface GroupedTagCount {
+    [term: string]: {
+        [tag: string]: number
+    };
 }
 
 export class FeedResource extends Resource<FeedItem, any, any, any> {
@@ -85,6 +93,14 @@ export class FeedResource extends Resource<FeedItem, any, any, any> {
             method: 'GET',
             params: { index },
             url: `${this.basePath}/destroyIndex`
+        })
+    }
+
+    public createHeatmap(countArgs: ArticleSearchAttributes): Promise<GroupedTagCount> {
+        return this.makeRequest({
+            method: 'GET',
+            params: _.merge(countArgs, { countTags: true }),
+            url: `${this.basePath}/heatmap`
         })
     }
 }
