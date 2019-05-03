@@ -31,28 +31,6 @@
 | `query.limit`              | number |
 | `query.offset`             | number |
 
-## `client.articles.search(query)`
-
-| Param | Type |
-|-------|------|
-| `query`                 | Object |
-| `query.type`            | string |
-| `query.text`            | string |
-| `query.tags`            | string[] |
-| `query.geographies`     | string[] |
-| `query.keyTerms`        | string[] |
-| `query.groupId`         | string |
-| `query.publishedBefore` | Date |
-| `query.publishedAfter`  | Date |
-| `query.createdBefore`   | Date |
-| `query.createdAfter`    | Date |
-| `query.maxImportance`   | number |
-| `query.minImportance`   | number |
-| `query.limit`           | number |
-| `query.offset`          | number |
-| `query.scoredBefore`    | Date |
-| `query.scoredAfter`     | Date |
-
 ## `client.articles.create(params)`
 
 | Param | Type |

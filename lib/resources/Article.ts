@@ -7,7 +7,7 @@ import {
     Resource
 } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
-import { Article, ArticleSearchResult } from '../entities';
+import { Article } from '../entities';
 
 export interface ArticleListAttributes extends HudAiListAttributes {
     companyId?: string;
@@ -50,32 +50,6 @@ export interface ArticleUpdateAttributes extends HudAiUpdateAttributes {
     type?: string;
 }
 
-export interface ArticleSearchAttributes {
-    limit?: number,
-    offset?: number,
-    companyId?: string | string[];
-    createdAfter?: Date,
-    createdBefore?: Date,
-    keyTerms?: string[],
-    maxImportance?: number,
-    maxLocal?: number,
-    minImportance?: number,
-    minLocal?: number,
-    groupId?: string,
-    publishedAfter?: Date,
-    publishedBefore?: Date,
-    scoredAfter?: Date,
-    scoredBefore?: Date,
-    tags?: string[],
-    text?: string,
-    type?: string,
-}
-
-export interface ArticleSearchResults {
-    count: number,
-    rows: ArticleSearchResult[]
-}
-
 export class ArticleResource extends Resource<
     Article,
     ArticleListAttributes,
@@ -88,14 +62,6 @@ export class ArticleResource extends Resource<
 
     public list(listArgs: ArticleListAttributes): Promise<ArticleListResults> {
         return this._list(listArgs);
-    }
-
-    public search(searchArgs: ArticleSearchAttributes): Promise<ArticleSearchResults> {
-        return this.makeRequest({
-            method: 'GET',
-            params: searchArgs,
-            url: `${this.basePath}/search`
-        })
     }
 
     public create(createArgs: ArticleCreateAttributes): Promise<Article> {
