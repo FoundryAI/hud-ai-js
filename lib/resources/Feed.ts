@@ -7,38 +7,39 @@ import { FeedItem } from '../entities';
 
 export interface FeedFetchAttributes extends HudAiListAttributes {
     userId: string;
+    text?: string;
+    tags?: string[];
+    geographies?: string[];
+    types?: string[];
+    keyTerms?: string[];
     itemIds?: string[] | string;
     companyIds?: string[] | string;
-    keyTerms?: string[];
-    maxImportance?: number;
-    maxRelevance?: number;
-    maxLocal?: number;
-    minImportance?: number;
-    minRelevance?: number;
-    minLocal?: number;
-    publishedAfter?: Date;
-    publishedBefore?: Date;
-    scoredAfter?: Date;
-    scoredBefore?: Date;
     sourceIds?: string[] | string;
-    tags?: string[];
-    text?: string;
-    types?: string[];
+    peopleIds?: string[] | string;
+    minImportance?: number;
+    minLocal?: number;
+    maxImportance?: number;
+    maxLocal?: number;
+    publishedBefore?: Date;
+    publishedAfter?: Date;
+    scoredBefore?: Date;
+    scoredAfter?: Date;
     weights?: {
-        decayOffset?: string;
-        decay?: number;
         importance?: number;
         article?: number;
         tweet?: number;
         stockAlert?: number;
-        quote?: number;
         video?: number;
+        quote?: number;
+        decay?: number;
+        decayOffset?: string;
+        decayScale?: string;
         businessWord?: number;
         industryTerm?: number;
         jobFunctionTerm?: number;
         corpusTerm?: number;
         source?: number;
-        feedContext?: number;
+        followedCompany?: number;
         followedPerson?: number;
     }
 }
