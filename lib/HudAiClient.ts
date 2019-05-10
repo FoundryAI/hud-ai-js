@@ -66,6 +66,7 @@ export class HudAiClient {
     public userConferences: resources.UserConferenceResource;
     public userContentItemReactions: resources.UserContentItemReactionResource;
     public userDigestSubscriptions: resources.UserDigestSubscriptionResource;
+    public userFeedSettings: resources.UserFeedSettingResource;
     public userIndustries: resources.UserIndustryResource;
     public userJobFunctions: resources.UserJobFunctionResource;
     public userKeyTerms: resources.UserKeyTermResource;
@@ -146,6 +147,7 @@ export class HudAiClient {
         this.userConferences = new resources.UserConferenceResource(this.requestManager);
         this.userContentItemReactions = new resources.UserContentItemReactionResource(this.requestManager);
         this.userDigestSubscriptions = new resources.UserDigestSubscriptionResource(this.requestManager);
+        this.userFeedSettings = new resources.UserFeedSettingResource(this.requestManager);
         this.userIndustries = new resources.UserIndustryResource(this.requestManager);
         this.userJobFunctions = new resources.UserJobFunctionResource(this.requestManager);
         this.userKeyTerms = new resources.UserKeyTermResource(this.requestManager);
