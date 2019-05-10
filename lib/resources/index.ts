@@ -35,6 +35,7 @@ export { UserContactResource } from './UserContact';
 export { UserConferenceResource } from './UserConference';
 export { UserContentItemReactionResource } from './UserContentItemReaction';
 export { UserDigestSubscriptionResource } from './UserDigestSubscription';
+export { UserFeedSettingResource } from './UserFeedSetting';
 export { UserIndustryResource } from './UserIndustry';
 export { UserJobFunctionResource } from './UserJobFunction';
 export { UserKeyTermResource } from './UserKeyTerm';
