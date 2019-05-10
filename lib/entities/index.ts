@@ -34,6 +34,7 @@ export * from './UserConference';
 export * from './UserContact';
 export * from './UserContentItemReaction';
 export * from './UserDigestSubscription';
+export * from './UserFeedSetting';
 export * from './UserIndustry';
 export * from './UserJobFunction';
 export * from './UserKeyTerm';
