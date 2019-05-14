@@ -10,7 +10,8 @@ import * as _ from "lodash";
 
 export interface UserFeedSettingCreateAttributes extends HudAiCreateAttributes {
     userId: string;
-    recency?: number;
+    isBetaTester?: boolean;
+    lookback?: number;
     showLocal?: boolean;
     showForeign?: boolean;
     companiesWeight?: number;
