@@ -9,7 +9,7 @@ export interface CacheRefreshAttributes {
 
 export class CacheResource extends Resource<any, any, any, any> {
     constructor(requestManager: RequestManager) {
-        super('/cache/refresh', requestManager);
+        super('/users/cache/refresh', requestManager);
     }
 
     public refresh(refreshArgs: CacheRefreshAttributes): Promise<void> {
