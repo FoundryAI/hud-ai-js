@@ -4,7 +4,7 @@ import { Resource } from '../utils/Resource';
 import { RequestManager } from '../RequestManager';
 
 export interface CacheRefreshAttributes {
-    userId: string;
+    userId?: string;
 }
 
 export class CacheResource extends Resource<any, any, any, any> {
