@@ -36,6 +36,7 @@ export class HudAiClient {
     public articleTags: resources.ArticleTagResource;
     public articleGeographies: resources.ArticleGeographyResource;
     public articles: resources.ArticleResource;
+    public cache: resources.CacheResource;
     public collateral: resources.CollateralResource;
     public companies: resources.CompanyResource;
     public companyEvents: resources.CompanyEventResource;
@@ -117,6 +118,7 @@ export class HudAiClient {
         this.articleTags = new resources.ArticleTagResource(this.requestManager);
         this.articleGeographies = new resources.ArticleGeographyResource(this.requestManager);
         this.articles = new resources.ArticleResource(this.requestManager);
+        this.cache = new resources.CacheResource(this.requestManager);
         this.collateral = new resources.CollateralResource(this.requestManager);
         this.companies = new resources.CompanyResource(this.requestManager);
         this.companyEvents = new resources.CompanyEventResource(this.requestManager);
