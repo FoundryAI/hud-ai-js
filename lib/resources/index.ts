@@ -5,6 +5,7 @@ export { ArticleKeyTermResource } from './ArticleKeyTerm';
 export { ArticleResource } from './Article';
 export { ArticleTagResource } from './ArticleTag';
 export { ArticleGeographyResource } from './ArticleGeography';
+export { CacheResource } from './Cache';
 export { CollateralResource } from './Collateral';
 export { CompanyEventResource } from './CompanyEvent';
 export { CompanyIndustryResource } from './CompanyIndustry';
