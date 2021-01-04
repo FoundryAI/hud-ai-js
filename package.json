@@ -53,7 +53,7 @@
     "typescript": "^2.8.3"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.1",
     "date-fns": "^1.29.0",
     "joi": "^13.2.0",
